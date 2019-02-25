@@ -1,19 +1,4 @@
 
-## What is a Bot Server?
-
-![General Bots Starting From Scrach](https://github.com/pragmatismo-io/BotServer/blob/master/docs/images/generalbots-open-core-starting-from-scratch.gif)
-
-Bot Server accelerates the process of developing a bot. It provisions all code
-base, resources and deployment to the cloud, and gives you templates you can
-choose from whenever you need a new bot. The server has a database and service 
-backend allowing you to further modify your bot package directly by downloading 
-a zip file, editing and uploading it back to the server (deploying process) with 
-no code. The Bot Server also provides a framework to develop bot packages in a more
-advanced fashion writing custom code in editors like Visual Studio Code, Atom or Brackets.
-
-Everyone can create bots by just copying and pasting some files and using their
-favorite tools like Excel (or any text editor) or Photoshop (or any image
-editor).
 
 Package Quick Reference
 ------------
