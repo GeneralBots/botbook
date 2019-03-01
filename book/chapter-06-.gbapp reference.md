@@ -22,11 +22,11 @@ this deployed .gbapp.
 8. Run the bot server by `gbot.cmd`.
 
 
-* Recomended Chocolatey packages
+#### Recomended Chocolatey packages
+
+Please, note --confirm was added for convenience. 
 
 ```cmd
-
-choco feature enable -n allowGlobalConfirmation
 
 cinst git --confirm
 cinst nodejs --confirm
@@ -122,4 +122,3 @@ static getDialogs(bot: BotAdapter, min: GBMinInstance) {
 | tomashubelbauer.vscode-markdown-table-format | Formats MarkDown tables so that all columns have the same width |
 | esbenp.prettier-vscode | VS Code plugin for prettier/prettier (wraps at column 80) |
 | mikestead.dotenv | .env support |
-
