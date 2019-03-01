@@ -92,34 +92,49 @@ static getDialogs(bot: BotAdapter, min: GBMinInstance) {
 
 ### JavaScript
 
-| Título | Endereço                                                            |
-|--------|---------------------------------------------------------------------|
-|        																		| https://deeplearnjs.org/                                            |
-|        																		| Oimo.js http://lo-th.github.io/Oimo.js/\#stacking                   |
-|        																		| js-sequence-diagrams: https://bramp.github.io/js-sequence-diagrams/ |
-|        																		| http://blog.avenuecode.com/a-library-for-data-visualization-d3.js   |
-| Chrome inside Node.js        													| https://github.com/GoogleChrome/puppeteer|
-| XLSX loader                       											| https://github.com/mgcrea/node-xlsx      |
-| Node.js bindings for CNTK         											| https://github.com/nadavbar/node-cntk    |
-| API Repository 																| https://any-api.com/|
-| ORM 																			| http://docs.sequelizejs.com/manual/tutorial/associations.html
-| Migração de .NET para JavaScript (Node.js)									| https://www.reddit.com/r/webdev/comments/2val7s/as_a_net_developer_do_i_need_to_care_about_nodejs |
-| Simplified JavaScript Jargon 													| http://jargon.js.org |
+| Título                                     | Endereço                                                                                          |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------|
+|                                            | https://deeplearnjs.org/                                                                          |
+|                                            | Oimo.js http://lo-th.github.io/Oimo.js/\#stacking                                                 |
+|                                            | js-sequence-diagrams: https://bramp.github.io/js-sequence-diagrams/                               |
+|                                            | http://blog.avenuecode.com/a-library-for-data-visualization-d3.js                                 |
+| Chrome inside Node.js                      | https://github.com/GoogleChrome/puppeteer                                                         |
+| XLSX loader                                | https://github.com/mgcrea/node-xlsx                                                               |
+| Node.js bindings for CNTK                  | https://github.com/nadavbar/node-cntk                                                             |
+| API Repository                             | https://any-api.com/                                                                              |
+| ORM                                        |                                                                                                   |
+| Migração de .NET para JavaScript (Node.js) | https://www.reddit.com/r/webdev/comments/2val7s/as_a_net_developer_do_i_need_to_care_about_nodejs |
+| Simplified JavaScript Jargon               | http://jargon.js.org                                                                              |
 
 ### Packages
 
-| Título | Descrição                                                            | URL |
-|--------|---------------------------------------------------------------------|-----------------|
-| MSAL | Microsoft Authentication Library | https://www.npmjs.com/package/msal|
+| Título | Descrição                        | URL                                |
+|--------|----------------------------------|------------------------------------|
+| MSAL   | Microsoft Authentication Library | https://www.npmjs.com/package/msal |
 
 
 ### Visual Studio Code Extensions
 
 
-| Title | Description | 
-| ------|-------------|
-| mbinic.tgit-cmds | Set of commands for launching TortoiseGit dialogs |
+| Title                                        | Description                                                     |
+|----------------------------------------------|-----------------------------------------------------------------|
+| mbinic.tgit-cmds                             | Set of commands for launching TortoiseGit dialogs               |
 | tomashubelbauer.vscode-markdown-table-format | Formats MarkDown tables so that all columns have the same width |
-| esbenp.prettier-vscode | VS Code plugin for prettier/prettier (wraps at column 80) |
-| mikestead.dotenv | .env support |
-
+| esbenp.prettier-vscode                       | VS Code plugin for prettier/prettier (wraps at column 80)       |
+| mikestead.dotenv                             | .env support                                                    |
+| abhinavk99.codewall                          | Description here                                                |
+| christian-kohler.npm-intellisense            | Description here                                                |
+| csholmq.excel-to-markdown-table              | Description here                                                |
+| davidanson.vscode-markdownlint               | Description here                                                |
+| eg2.ts-tslint                                | Description here                                                |
+| eg2.vscode-npm-script                        | Description here                                                |
+| esbenp.prettier-vscode                       | Description here                                                |
+| formulahendry.auto-rename-tag-               | Description here                                                |
+| gruntfuggly.align-mode                       | Description here                                                |
+| jmfirth.vsc-space-block-jumper               | Description here                                                |
+| kaiwood.indentation-level-movement           | Description here                                                |
+| mbinic.tgit-cmds                             | Description here                                                |
+| mechatroner.rainbow-csv                      | Description here                                                |
+| mikestead.dotenv                             | Description here                                                |
+| sirtori.indenticator                         | Description here                                                |
+| tandy.color-basic                            | Description here                                                |
