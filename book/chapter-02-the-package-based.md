@@ -1,4 +1,11 @@
-# General Bots Packages Reference
+# About Packages
+
+Packages can be stored as folders in the file system, synced with cloud storages and
+content management systems like SharePoint and even sent like .zip files on a e-mail.
+Just to increse bot knowledge, intelligence and how they look to us. So working on a
+General Bots project is like to split the work on several packages if needed and work
+on a package at once or even share the work with collegues, agencies or development
+companies to more advanced package building.
 
 ## How To
 
@@ -67,3 +74,9 @@ A set of subjects that bot knows in a form of hierarchical menu-based QnA. [A sa
 ### .gblib
 
 Shared code that can be used across bot apps.
+
+## System Package Quick Reference
+
+|Whatsapp|Web|Core|KB|
+|----|-----|----|----|
+|[whatsapp.gblib](https://github.com/pragmatismo-io/BotServer/tree/master/packages/whatsapp.gblib)|[default.gbui](https://github.com/pragmatismo-io/BotServer/tree/master/packages/default.gbui)|[core.gbapp](https://github.com/pragmatismo-io/BotServer/tree/master/packages/core.gbapp)|[kb.gbapp](https://github.com/pragmatismo-io/BotServer/tree/master/packages/kb.gbapp)|

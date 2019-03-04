@@ -23,3 +23,7 @@ Discontinued commands:
 ### Move to production (Azure)
 
 * Update bot endpoint;
+
+## Bot Analytics
+
+## Cloud Internals

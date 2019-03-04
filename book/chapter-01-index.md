@@ -1,10 +1,26 @@
-# General Bots Book
+# General Bots - The Bot Server
 
-## Package Quick Reference
+Welcome to the General Bots Book. This is a reference material that can be used
+to understand how the bot server is organized in a form of packages itself and 
+this arrangement can be used to all custom deployed packages like .gbkb, .gbtheme
+or .gbapp.
+This book is organized in ten chapters that can be accessed throuhg this table bellow:
 
-|Whatsapp|Web|Core|KB|
-|----|-----|----|----|
-|[whatsapp.gblib](https://github.com/pragmatismo-io/BotServer/tree/master/packages/whatsapp.gblib)|[default.gbui](https://github.com/pragmatismo-io/BotServer/tree/master/packages/default.gbui)|[core.gbapp](https://github.com/pragmatismo-io/BotServer/tree/master/packages/core.gbapp)|[kb.gbapp](https://github.com/pragmatismo-io/BotServer/tree/master/packages/kb.gbapp)|
+* [Acknowledgments](acknowledgments.md)
+* [Chapter 01 - The Bot Server ](chapter-01-index.md)
+* [Chapter 02 - About Packages](chapter-02-about-packages.md)
+* [Chapter 03 - gbkb Reference](chapter-03-gbkb-reference.md)
+* [Chapter 04 - gbtheme Reference](chapter-04-gbtheme-reference.md)
+* [Chapter 05 - gbdialog Reference](chapter-05-gbdialog-reference.md)
+* [Chapter 06 - gbapp Reference](chapter-06-gbappreference.md)
+* [Chapter 07 - Administration](chapter-07-administration.md)
+* [Chapter 08 - Tooling](chapter-08-tooling.md)
+* [Chapter 09 - Services](chapter-09-services.md)
+* [Chapter 10 - Contributing](chapter-10-contributing.md)
+* [Copyright](copyright.md)
+* [Foreward](foreward.md)
+* [Glossary](glossary.md)
+* [Preface](preface.md)
 
 ### The bot development stack
 
@@ -39,24 +55,14 @@ Notes:
 
 1. [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master) the Zip file.
 
+## NLP
 
-## Trainning Topics
+## Spell Checker
 
-* Clone BotServer, BotLib repository
-* Keyboard centric
-* WIN: micro.exe
-* Launcher
-* dir/ls/ll, cd, mkdir, move
-* Npm run build
-* npm update -g
-* node -v
-* SHIFT+PAGE DOWN/UP on Terminal Window
-* ncu -a Update all packages in package.json
-* npm update -g All NPM package on the system
-* Introduction to General Bo
-* Environment setup and get the server runni
-* KB loading
-* NLP and toolin
-* Find a NPM package to create a .gbapp that asks for data and output the result
-* Visual Studio Code Insiders and plugins
-* Run Build Task tsc:watch
+## Speech to Text
+
+## Omnichannel
+
+## Branding
+
+## Bot Factory

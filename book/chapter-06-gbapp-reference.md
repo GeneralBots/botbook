@@ -8,6 +8,13 @@ like a TypeScript application. This conversational application will contain
 the source code for custom dialogs and behaviour for any .gbot that associate
 this deployed .gbapp.
 
+A good way to start a .gbapp is to find a NPM package to create a .gbapp that
+asks for data and output the result. For example, a temperature package can
+be installed via `npm install temperature` and then have its methods
+convertToKelvin or convertToCelsius called when user asks for conversion. A
+.gbapp can persist and read data from database according to the conversation
+session.
+
 ## Preparing Environment
 
 ### Windows
@@ -138,3 +145,11 @@ static getDialogs(bot: BotAdapter, min: GBMinInstance) {
 | mikestead.dotenv                             | Description here                                                |
 | sirtori.indenticator                         | Description here                                                |
 | tandy.color-basic                            | Description here                                                |
+
+## Common tasks
+
+| Task          | Description                         |
+|---------------|-------------------------------------|
+| npm update -g | Updates NPM                         |
+| node -v       | Checks node version                 |
+| ncu -a        | Update all packages in package.json |
