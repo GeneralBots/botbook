@@ -12,7 +12,7 @@ This book is organized in ten chapters that can be accessed throuhg this table b
 * [Chapter 03 - gbkb Reference](chapter-03-gbkb-reference.md)
 * [Chapter 04 - gbtheme Reference](chapter-04-gbtheme-reference.md)
 * [Chapter 05 - gbdialog Reference](chapter-05-gbdialog-reference.md)
-* [Chapter 06 - gbapp Reference](chapter-06-gbappreference.md)
+* [Chapter 06 - gbapp Reference](chapter-06-gbapp-reference.md)
 * [Chapter 07 - Administration](chapter-07-administration.md)
 * [Chapter 08 - Tooling](chapter-08-tooling.md)
 * [Chapter 09 - Services](chapter-09-services.md)
