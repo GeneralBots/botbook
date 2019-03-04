@@ -1,26 +1,4 @@
-# General Bots - The Bot Server
-
-Welcome to the General Bots Book. This is a reference material that can be used
-to understand how the bot server is organized in a form of packages itself and 
-this arrangement can be used to all custom deployed packages like .gbkb, .gbtheme
-or .gbapp.
-This book is organized in ten chapters that can be accessed throuhg this table bellow:
-
-* [Acknowledgments](acknowledgments.md)
-* [Chapter 01 - The Bot Server ](chapter-01-index.md)
-* [Chapter 02 - About Packages](chapter-02-about-packages.md)
-* [Chapter 03 - gbkb Reference](chapter-03-gbkb-reference.md)
-* [Chapter 04 - gbtheme Reference](chapter-04-gbtheme-reference.md)
-* [Chapter 05 - gbdialog Reference](chapter-05-gbdialog-reference.md)
-* [Chapter 06 - gbapp Reference](chapter-06-gbapp-reference.md)
-* [Chapter 07 - Administration](chapter-07-administration.md)
-* [Chapter 08 - Tooling](chapter-08-tooling.md)
-* [Chapter 09 - Services](chapter-09-services.md)
-* [Chapter 10 - Contributing](chapter-10-contributing.md)
-* [Copyright](copyright.md)
-* [Foreward](foreward.md)
-* [Glossary](glossary.md)
-* [Preface](preface.md)
+# General Bots - Run and Talk to the Bot
 
 ### The bot development stack
 
