@@ -13,22 +13,35 @@ The table below shows the description of each one of them:
 | subjects | List of images of subjects that can be trated by the bot.                                          |
 | articles | Articles in .md that will be presented instead of text-only answers.                               |
 
-## Using Videos
+## Presenting Answers
 
-## Answering questions as videos
+## With text
+
+To answer with a text phrase, just type the answer in the Answer column. Whenever the
+search engine elects the answer as the next thing to say, the text present in this
+column will be talked.
+
+## With an article
+
+A Markdown (.md) file can be used as an answer instead of plain text, so the experience
+will be more appealing whenever the channel allow the text to be present that way. The
+answer column specifies the .md file to be presented whenever the question is elected
+as matching the user intent.
+
+## With a video
 
 To display a video on the projector, just provide the Video URL to the desired question,
 instead of specifing an text answer in the column **answer**.
 The list of answers is a series of tabular files (.tsv, .csv, etc.) inside the **tabular** directory of the .gbkb.
 
-## Calling dialogs from .gbkb
-
-### Use Dialogs as answers instead of the default content
+## With a dialog
 
 To call a dialog just when an answer would provide the desired question, just
 use dialog:*dialogName* instead of specifing an text answer in the column
 **answer**. The list of answers is a series of tabular files (.tsv, .csv, etc.)
 inside the **tabular** directory of the .gbkb.
+
+## Subject Menu 
 
 ### Associating a [Subject Menu Item](glossary.md#subject-menu-item) to a Dialog
 
