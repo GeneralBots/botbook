@@ -7,7 +7,7 @@ or .gbapp.
 This book is organized in ten chapters that can be accessed throuhg this table bellow:
 
 * [Acknowledgments](book/acknowledgments.md)
-* [Chapter 01 - Run and Talk ](book/chapter-01-run-and-talk.md)
+* [Chapter 01 - Run and Talk](book/chapter-01-run-and-talk.md)
 * [Chapter 02 - About Packages](book/chapter-02-the-package-based.md)
 * [Chapter 03 - gbkb Reference](book/chapter-03-gbkb-reference.md)
 * [Chapter 04 - gbtheme Reference](book/chapter-04-gbtheme-reference.md)
@@ -22,5 +22,3 @@ This book is organized in ten chapters that can be accessed throuhg this table b
 * [Foreward](book/foreward.md)
 * [Glossary](book/glossary.md)
 * [Preface](book/preface.md)
-
-
