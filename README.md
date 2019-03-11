@@ -17,6 +17,7 @@ This book is organized in ten chapters that can be accessed throuhg this table b
 * [Chapter 08 - Tooling](book/chapter-08-tooling.md)
 * [Chapter 09 - Services](book/chapter-09-services.md)
 * [Chapter 10 - Contributing](book/chapter-10-contributing.md)
+* [Apendix I - Database Model](book/apendix-i-database-model.md)
 * [Copyright](book/copyright.md)
 * [Foreward](book/foreward.md)
 * [Glossary](book/glossary.md)
