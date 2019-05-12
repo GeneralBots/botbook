@@ -2,6 +2,8 @@
 
 ## Using Conversational BASIC
 
+The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.basic` and `.bas`.
+
 ## General Bots BASIC reference
 
 | Instruction                      | Description                                                                 |
