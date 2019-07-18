@@ -11,12 +11,8 @@ here is a list of admin commands related to deploying .gb* files.
 | undeployPackage | Undeploy a KB. Usage **undeployPackage** [package-name].                                                        |
 | redeployPackage | Undeploy and then deploys the KB. Usage **redeployPackage** [package-name]. Then, you need to run rebuildIndex. |
 | setupSecurity   | Setup connection to user directories.                                                                           |
-
-Discontinued commands:
-
-| Command      | Description                                                                               | Reason                         |
-|--------------|-------------------------------------------------------------------------------------------|--------------------------------|
-| rebuildIndex | Rebuild Azure Search indexes, must be run after **deployPackage** or **redeployPackage**. | Now it is called automatically |
+| syncBotServer   | Updates the cloud with the latest version from GitHub BotServer repository.                                     |
+| rebuildIndex    | Rebuild Azure Search indexes, must be run after **deployPackage** or **redeployPackage**. | Now it is called automatically |
 
 ## Enviroment Variables Reference
 
