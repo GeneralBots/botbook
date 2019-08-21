@@ -20,7 +20,7 @@ session.
 ### Windows
 
 1. [Optional] Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager;
-2. Install [git](`https://git-scm.com/`), a Software Configuration Management (SCM).;
+2. Install [git](`https://git-scm.com/`), a Software Configuration Management (SCM);
 3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system);
 4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
 5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
@@ -29,15 +29,18 @@ session.
 8. Run the bot server by `gbot.cmd`.
 
 
-* Recomended Chocolatey packages
+* Required packages
 
 ```cmd
 
-choco feature enable -n allowGlobalConfirmation
-
 cinst git --confirm
 cinst nodejs --confirm
-npm install -g npm-check-updates
+
+```
+
+* Optional packages
+
+```
 
 cinst 7zip.install --confirm
 cinst tortoisegit --confirm
@@ -50,6 +53,14 @@ cinst micro --confirm
 cinst ccleaner --confirm
 cinst notepadplusplus --confirm
 cinst sql-server-management-studio --confirm
+
+```
+
+* node packages
+
+```
+
+npm install -g npm-check-updates
 
 ```
 
