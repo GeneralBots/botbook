@@ -19,15 +19,31 @@ session.
 
 ### Windows
 
+#### PowerShell Script
+
+Copy and paste on a PowerShell prompt with elavated privileges:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+cinst git --confirm
+cinst nodejs --confirm --version=12.0.0
+cinst vscode --confirm
+
+&"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
+cd BotServer
+&"C:\Program Files\Microsoft VS Code\bin\code.cmd" .
+
+```
+#### Manual steps.
+
 1. [Optional] Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager;
 2. Install [git](`https://git-scm.com/`), a Software Configuration Management (SCM);
 3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system);
 4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
 5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
 6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git`;
-7. Run `npm install -g typescript`;
-8. Run the bot server by `gbot.cmd`.
-
+7. Run the bot server by `gbot.cmd`.
 
 * Required packages
 
