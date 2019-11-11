@@ -21,7 +21,7 @@ session.
 
 #### PowerShell Script
 
-Copy and paste on a PowerShell prompt with elavated privileges:
+Copy and paste on a PowerShell prompt with elavated privileges and when VSCode is opened just press F5 to run the development server.
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
