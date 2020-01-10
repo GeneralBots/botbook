@@ -41,6 +41,10 @@ use dialog:*dialogName* instead of specifing an text answer in the column
 **answer**. The list of answers is a series of tabular files (.tsv, .csv, etc.)
 inside the **tabular** directory of the .gbkb.
 
+## With a Script (PREVIEW)
+
+To call a VBA script stored on a .gbdialog, just specify the script file name in a form of `script:<FILENAME>` instead of specifing an text answer in the column **answer**. When someone asks that match the **question**, the script will be invoked and the answer dialog will be started.
+
 ## Subject Menu 
 
 ### Associating a [Subject Menu Item](glossary.md#subject-menu-item) to a Dialog
