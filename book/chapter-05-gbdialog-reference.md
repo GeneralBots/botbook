@@ -9,6 +9,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | Instruction                      | Description                                                                 |
 |----------------------------------|-----------------------------------------------------------------------------|
 | hear *variable*                  | Hears something from the person into a *variable* for later use.            |
+| confirm *variable* (Comming soon)| Waits for confirmation like 'yes', 'y', 'yeah' and return true or false     |
 | talk *message*                   | Talk the specified *message* to the person.                                 |
 | generate a password              | Creates a new password into the system variable **password** for later use. |
 | create a bot farm using *params* | Deploys a new bot farm to the cloud.                                        |
