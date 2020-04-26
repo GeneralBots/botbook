@@ -29,6 +29,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 cinst git --confirm
 cinst nodejs --confirm --version=12.0.0
 cinst vscode --confirm
+npm install windows-build-tools -g
 
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
@@ -51,6 +52,7 @@ cd BotServer
 
 cinst git --confirm
 cinst nodejs --confirm
+npm install windows-build-tools -g
 
 ```
 
