@@ -17,6 +17,10 @@ session.
 
 ## Preparing Environment
 
+Currently the node version supported is 10.19.0 due to `ogg` and `vorbis` libs. 
+Please see the same issue on this address: https://github.com/TooTallNate/node-ogg/issues/27.
+
+
 ### Windows
 
 #### PowerShell Script
