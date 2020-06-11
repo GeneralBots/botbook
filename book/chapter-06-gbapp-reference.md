@@ -20,14 +20,13 @@ session.
 Currently the node version supported is 10.19.0 due to `ogg` and `vorbis` libs. 
 Please see the same issue on this address: https://github.com/TooTallNate/node-ogg/issues/27.
 
-
 ### Windows
 
 #### PowerShell Script
 
 Copy and paste on a PowerShell prompt with elavated privileges and when VSCode is opened just press F5 to run the development server.
 
-```powershell
+``` powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 cinst git --confirm
@@ -40,19 +39,20 @@ cd BotServer
 &"C:\Program Files\Microsoft VS Code\bin\code.cmd" .
 
 ```
+
 #### Manual steps.
 
-1. [Optional] Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager;
-2. Install [git](`https://git-scm.com/`), a Software Configuration Management (SCM);
-3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system);
+1. [Optional] Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager; 
+2. Install [git]( `https://git-scm.com/` ), a Software Configuration Management (SCM); 
+3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system); 
 4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
 5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
-6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git`;
-7. Run the bot server by `gbot.cmd`.
+6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git` ; 
+7. Run the bot server by `gbot.cmd` .
 
 * Required packages
 
-```cmd
+``` cmd
 
 cinst git --confirm
 cinst nodejs --confirm
@@ -62,7 +62,7 @@ npm install windows-build-tools -g
 
 * Optional packages
 
-```
+``` 
 
 cinst 7zip.install --confirm
 cinst tortoisegit --confirm
@@ -80,14 +80,13 @@ cinst sql-server-management-studio --confirm
 
 * node packages
 
-```
+``` 
 
 npm install -g npm-check-updates
 
 ```
 
 ![General Bots Inside Visual Studio Code provides a complete artificial intelligence based conversational platform](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-inside-visual-studio-code-provides-a-complete-artificial-intelligence-based-conversational-platform.png)
-
 
 ## Specifications 
 
@@ -99,7 +98,7 @@ engines like kb.gbapp, which handles cloud based search for documents and other
 knowledge base information and also routes for the natural language processing
 (NLP) engine.
 
-```typescript
+``` typescript
 
 static getDialogs(bot: BotAdapter, min: GBMinInstance) {
     return [{name:"/convertTemperature", waterfall: [
@@ -132,19 +131,19 @@ static getDialogs(bot: BotAdapter, min: GBMinInstance) {
 
 ### JavaScript
 
-| Título                                     | Endereço                                                                                          |
-|--------------------------------------------|---------------------------------------------------------------------------------------------------|
-|                                            | https://deeplearnjs.org/                                                                          |
-|                                            | Oimo.js http://lo-th.github.io/Oimo.js/\#stacking                                                 |
-|                                            | js-sequence-diagrams: https://bramp.github.io/js-sequence-diagrams/                               |
-|                                            | http://blog.avenuecode.com/a-library-for-data-visualization-d3.js                                 |
-| Chrome inside Node.js                      | https://github.com/GoogleChrome/puppeteer                                                         |
-| XLSX loader                                | https://github.com/mgcrea/node-xlsx                                                               |
-| Node.js bindings for CNTK                  | https://github.com/nadavbar/node-cntk                                                             |
-| API Repository                             | https://any-api.com/                                                                              |
-| ORM                                        |                                                                                                   |
-| Migração de .NET para JavaScript (Node.js) | https://www.reddit.com/r/webdev/comments/2val7s/as_a_net_developer_do_i_need_to_care_about_nodejs |
-| Simplified JavaScript Jargon               | http://jargon.js.org                                                                              |
+| Título                                      | Endereço                                                                                          |
+|---------------------------------------------|---------------------------------------------------------------------------------------------------|
+|                                             | https://deeplearnjs.org/                                                                          |
+|                                             | Oimo.js http://lo-th.github.io/Oimo.js/\#stacking                                                 |
+|                                             | js-sequence-diagrams: https://bramp.github.io/js-sequence-diagrams/                               |
+|                                             | http://blog.avenuecode.com/a-library-for-data-visualization-d3.js                                 |
+| Chrome inside Node.js                       | https://github.com/GoogleChrome/puppeteer                                                         |
+| XLSX loader                                 | https://github.com/mgcrea/node-xlsx                                                               |
+| Node.js bindings for CNTK                   | https://github.com/nadavbar/node-cntk                                                             |
+| API Repository                              | https://any-api.com/                                                                              |
+| ORM                                         |                                                                                                   |
+| Migração de . NET para JavaScript (Node.js) | https://www.reddit.com/r/webdev/comments/2val7s/as_a_net_developer_do_i_need_to_care_about_nodejs |
+| Simplified JavaScript Jargon                | http://jargon.js.org                                                                              |
 
 ### Packages
 
@@ -152,9 +151,20 @@ static getDialogs(bot: BotAdapter, min: GBMinInstance) {
 |--------|----------------------------------|------------------------------------|
 | MSAL   | Microsoft Authentication Library | https://www.npmjs.com/package/msal |
 
+### Visual Studio Code Shotcut keys
+
+| Key                      | Description                                                                   |
+|--------------------------|-------------------------------------------------------------------------------|
+| F8                       | Next error.                                                                   |
+| F5                       | Run.                                                                          |
+| CTRL + .                 | Auto refactoring (Fix).                                                       |
+| ALT + SHIFT + DOWN ARROW | Duplicate the line code.                                                      |
+| CTRL + SHIFT + H         | Replace all followed by CTRL + ALT + ENTER on replace text box.               |
+| CTRL + SHIFT + B         | Compile inside VSCode, you can also open an external terminal and run tsc -w. |
+| CTRL + G                 | Go to the specified line.                                                     |
+| CTRL + SHIFT + G         | Goes to Git.                                                                  |
 
 ### Visual Studio Code Extensions
-
 
 | Title                                        | Description                                                     |
 |----------------------------------------------|-----------------------------------------------------------------|
