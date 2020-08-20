@@ -6,16 +6,44 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ## General Bots BASIC reference
 
-| Instruction                      | Description                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| hear *variable*                  | Hears something from the person into a *variable* for later use.            |
-| confirm *variable* (Comming soon)| Waits for confirmation like 'yes', 'y', 'yeah' and return true or false     |
-| talk *message*                   | Talk the specified *message* to the person.                                 |
-| generate a password              | Creates a new password into the system variable **password** for later use. |
-| create a bot farm using *params* | Deploys a new bot farm to the cloud.                                        |
-| wait *seconds*                   | Wait a number of seconds before continuing the conversation.                |
+| Instruction / Usage                                           | Description                                                                 |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| HEAR _variable_                                               | Hears something from the person into a _variable_ for later use.            |
+| confirm _variable_ (Comming soon)                             | Waits for confirmation like 'yes', 'y', 'yeah' and return true or false     |
+| TALK _message_                                                | Talk the specified _message_ to the person.                                 |
+| GENERATE A PASSWORD                                           | Creates a new password into the system variable **password** for later use. |
+| CREATE A BOT FARM USING _params_                              | Deploys a new bot farm to the cloud.                                        |
+| WAIT _seconds_                                                | Wait a number of seconds before continuing the conversation.                |
+| _variable_ = GET CELL "_file_.xlsx", "_A1:A1_" (Comming soon) | Gets the value of the cell specified in range address                       |
+| SET CELL "_file_.xlsx", "_A1:A1_", 42 (Comming soon)          | Gets the value of the cell specified in range address                       |
+| _variable_ = GET "https://server/query" (Comming soon)        | Gets the value of the cell specified in range address                       |
+| POST "https://", _data_ (Comming soon)                        | Gets the value of the cell specified in range address                       |
+| wait _seconds_ (Comming soon)                                 | Wait a number of seconds before continuing the conversation.                |
 
 ## How To
+
+### Using POST data
+
+You can use POST passing a variable as the second param in the POST call. The example
+bellow shows how to call POST using an object that is returned from the Excel file.
+
+Given the Excel file with the following contents and saved to the standard .gbdialog folder:
+
+| tokenId | token            | comment |
+| ------- | ---------------- | ------- |
+| 29187   | AAMkAGEzMWIxMmI5 | Prod1   |
+| 98739   | jZWYtNGQ3My1iNmM | Prod2   |
+
+The Word bellow will invoke POST call by using line contents as object attributes:
+
+``` BASIC
+obj = FIND "dados.xlsx", "tokenId=29187"
+POST "https://server/query", obj
+' obj here is {tokenId: 29187, token: "AAMkAGEzMWIxMmI5", comment: "Prod1"}
+```
+
+* OAuth2 is being implemented and no modification to previous calls will be necessary
+as this configuration will be an administrative conversation to get the token setup.
 
 ### Generate a password for the person
 
