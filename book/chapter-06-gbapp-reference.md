@@ -42,10 +42,11 @@ cd BotServer
 
 #### Manual steps.
 
-1. [Optional] Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager; 
-2. Install [git]( `https://git-scm.com/` ), a Software Configuration Management (SCM); 
+1. Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager; 
+2. Install [git]( `https://git-scm.com/` ), a Software Configuration Management (SCM) and TortoiseGit; 
 3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system); 
 4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
+
 5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
 6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git` ; 
 7. Run the bot server by `gbot.cmd` .
@@ -57,6 +58,7 @@ cd BotServer
 cinst git --confirm
 cinst nodejs --confirm
 npm install windows-build-tools -g
+cinst tortoisegit --confirm
 
 ```
 
