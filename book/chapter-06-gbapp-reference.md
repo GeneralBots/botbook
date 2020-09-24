@@ -31,6 +31,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 ## Automatic installation by PowerShell
 
+Execute the commands in sequence:
+
 cinst git --confirm
 cinst nodejs --confirm --version=10.19.0
 cinst vscode --confirm
