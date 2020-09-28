@@ -4,6 +4,12 @@
 
 ![General Bot Logo](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-stack.png)
 
+
+
+
+1- gbapp and gblib extensions which are folder extensions for the GeneralBots package type.
+gbapp and gblib are responsible for GeneralBots services in a Back-end development environment
+
 ### The Bot Factory
 
 ![General Bots Block Architecture](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-block-architecture.png)
