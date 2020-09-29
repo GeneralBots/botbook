@@ -16,12 +16,12 @@ Angular, Riot, React and HTML are responsible for the dynamic functioning of Gen
 3- The .gtheme extension is responsible for the GeneralBots designer using css and PS technologies.
 A theme is composed of some CSS files and images. 
 
-4- .gbDialog is extension responsible for GeneralBots communication with the end user. Dialogues are bot services to users.
+4- The .gbDialog is extension responsible for GeneralBots communication with the end user. Dialogues are bot services to users.
 .gbkb is package for execution of various types of media.
 
-5- the .gbot extension refers to the generalBots service product.
+5- The .gbot extension refers to the generalBots service product.
 
-6- the .gbai is architecture construction of the GeneralBots application.
+6- The .gbai is architecture construction of the GeneralBots application.
 
 ### The Bot Factory
 
