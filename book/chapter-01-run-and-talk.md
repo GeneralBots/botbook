@@ -72,9 +72,11 @@ Omnichannel allow the conversation to follow a sequence, regardless of whether t
 
 Spell checker is when GeneralBots spell-checks text to find and correct any typographical errors.
 
-## NLP
-
 ## Speech to Text
+
+User speech recognition directly with generalBots.
+
+## NLP
 
 ## Branding
 
