@@ -68,10 +68,11 @@ Notes:
 
 Omnichannel allow the conversation to follow a sequence, regardless of whether the customer uses the same channel or not, because all calls record the consumer's history and profile.
 
+## Spell Checker
+
+Spell checker is when GeneralBots spell-checks text to find and correct any typographical errors.
 
 ## NLP
-
-## Spell Checker
 
 ## Speech to Text
 
