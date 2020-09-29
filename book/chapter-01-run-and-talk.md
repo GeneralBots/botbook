@@ -38,6 +38,8 @@ GeneralBots aims to delivery bots in azure in a very easy and fast fashion. Use 
 3. Type `npm install -g botserver` and press *ENTER*;
 4. Type `gbot` to run the server core.
 
+(file:///C:/Users/Asus/Desktop/print%20instalation%20npm.png)
+
 Notes:
 
 * [*nodejs.install* Chocolatey Package](https://chocolatey.org/packages/nodejs.install) is also available. (Chocolatey is windows package manager).
