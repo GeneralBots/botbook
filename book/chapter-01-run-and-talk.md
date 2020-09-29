@@ -14,8 +14,13 @@ gbapp and gblib are responsible for GeneralBots services in a Back-end developme
 Angular, Riot, React and HTML are responsible for the dynamic functioning of GeneralBots services.
 
 3- The .gtheme extension is responsible for the GeneralBots designer using css and PS technologies.
+A theme is composed of some CSS files and images. 
 
 4- .gbDialog and .gbkb are extensions responsible for GeneralBots communication with the end user. Dialogues are bot services to users.
+
+5- the .gbot extension refers to the generalBots service product.
+
+6- the .gbai is architecture
 
 ### The Bot Factory
 
