@@ -5,13 +5,15 @@
 ![General Bot Logo](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-stack.png)
 
 
-
+### Diagram Description
 
 1- gbapp and gblib extensions which are folder extensions for the GeneralBots package type.
 gbapp and gblib are responsible for GeneralBots services in a Back-end development environment.
 
 2- The .gbui extension is assigned to the GeneralBots front-end development environment. 
 Angular, Riot, React and HTML are responsible for the dynamic functioning of GeneralBots services.
+
+3- The .gtheme extension is responsible for the general bots designer using css and PS technologies.
 
 ### The Bot Factory
 
