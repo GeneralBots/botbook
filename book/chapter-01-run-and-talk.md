@@ -40,7 +40,7 @@ GeneralBots aims to delivery bots in azure in a very easy and fast fashion. Use 
 
 Notes:
 
-* [*nodejs.install* Chocolatey Package](https://chocolatey.org/packages/nodejs.install) is also available.
+* [*nodejs.install* Chocolatey Package](https://chocolatey.org/packages/nodejs.install) is also available. (Chocolatey is windows package manager).
 * The zip source code of General Bot is also available for [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master);
 
 ### Running unit tests
