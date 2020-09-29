@@ -63,13 +63,17 @@ Notes:
 
 1. [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master) the Zip file.
 
+
+## Omnichannel
+
+Omnichannel allow the conversation to follow a sequence, regardless of whether the customer uses the same channel or not, because all calls record the consumer's history and profile.
+
+
 ## NLP
 
 ## Spell Checker
 
 ## Speech to Text
-
-## Omnichannel
 
 ## Branding
 
