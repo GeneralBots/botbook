@@ -34,10 +34,11 @@ GeneralBots aims to delivery bots in azure in a very easy and fast fashion. Use 
 ### Run the server locally
 
 1. Install [Node.js](https://www.npmjs.com/get-npm) the current generation General Bot code execution platform;
-2. Open a **Terminal** on Linux and Mac or a **Command Prompt** window on Windows;
+2. Open a **Terminal** on Linux and Mac or a **Command Prompt** and PowerShell window on Windows;
 3. Type `npm install -g botserver` and press *ENTER*;
 4. Type `gbot` to run the server core.
 
+##Instalation by PowerShell or Command Prompt
 ![print instalation npm](https://user-images.githubusercontent.com/65977273/94572520-81e2f380-0247-11eb-9d69-ff70ad26b027.png)
 
 
