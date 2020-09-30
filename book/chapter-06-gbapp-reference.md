@@ -130,7 +130,7 @@ static getDialogs(bot: BotAdapter, min: GBMinInstance) {
 
 ## Fork concept
 
-is the implementation of new software based on existing software. The branch takes advantage of the data already used in other software to generate a new one.
+Is the implementation of new software based on existing software. The branch takes advantage of the data already used in other software to generate a new one.
 
 ## How To...
 
