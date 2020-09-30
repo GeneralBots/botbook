@@ -5,7 +5,7 @@ content management systems like SharePoint and even sent like .zip files on a e-
 Just to increse bot knowledge, intelligence and how they look to us. So working on a
 General Bots project is like to split the work on several packages if needed and work
 on a package at once or even share the work with collegues, agencies or development
-companies to more advanced package building.composite packages on GeneralBots:
+companies to more advanced package building. Composite packages on GeneralBots:
 
  .gbai
  .gbapp
@@ -14,6 +14,7 @@ companies to more advanced package building.composite packages on GeneralBots:
  .gbkb
  .gblib
 
+![print packages](https://user-images.githubusercontent.com/65977273/94712159-7662fb80-031f-11eb-8217-1c0507bfe5d5.png)
 
 
 ## How To
