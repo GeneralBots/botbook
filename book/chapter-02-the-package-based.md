@@ -7,6 +7,16 @@ General Bots project is like to split the work on several packages if needed and
 on a package at once or even share the work with collegues, agencies or development
 companies to more advanced package building.
 
+composite packages on GeneralBots:
+1 .gbai
+2 .gbapp
+3 .gbot
+4 .gbtheme
+5 .gbkb
+6 .gblib
+
+
+
 ## How To
 
 ### Configure the server to deploy specific directory
@@ -19,7 +29,7 @@ Note:
 
 - You can specify several bots separated by semicolon, the BotServer will serve all of them at once.
 
-## Package Types
+## Description of packages
 
 ### .gbai
 
