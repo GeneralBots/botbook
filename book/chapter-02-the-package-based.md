@@ -8,6 +8,7 @@ on a package at once or even share the work with collegues, agencies or developm
 companies to more advanced package building.
 
 composite packages on GeneralBots:
+
 1 .gbai
 2 .gbapp
 3 .gbot
