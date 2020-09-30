@@ -7,22 +7,22 @@
 
 ### Diagram Description
 
-1- gbapp and gblib extensions which are folder extensions for the GeneralBots package type.
+1. gbapp and gblib extensions which are folder extensions for the GeneralBots package type.
 gbapp and gblib are responsible for GeneralBots services in a Back-end development environment.
-Four components builds up a General Bot App: dialogs, models, services and tests. 
+Four components builds up a General Bot App: dialogs, models, services and tests; 
 
-2- The .gbui extension is assigned to the GeneralBots front-end development environment. 
-Angular, Riot, React and HTML are responsible for the dynamic functioning of GeneralBots services.
+2. The .gbui extension is assigned to the GeneralBots front-end development environment. 
+Angular, Riot, React and HTML are responsible for the dynamic functioning of GeneralBots services;
 
-3- The .gtheme extension is responsible for the GeneralBots designer using css and PS technologies.
-A theme is composed of some CSS files and images. 
+3. The .gtheme extension is responsible for the GeneralBots designer using css and PS technologies.
+A theme is composed of some CSS files and images;
 
-4- The .gbDialog is extension responsible for GeneralBots communication with the end user. Dialogues are bot services to users.
-.gbkb is package for execution of various types of media.
+4. The .gbDialog is extension responsible for GeneralBots communication with the end user. Dialogues are bot services to users.
+.gbkb is package for execution of various types of media;
 
-5- The .gbot extension refers to the generalBots service product.
+5. The .gbot extension refers to the generalBots service product;
 
-6- The .gbai is architecture construction of the GeneralBots application.
+6. The .gbai is architecture construction of the GeneralBots application.
 
 ### The Bot Factory
 
