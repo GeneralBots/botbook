@@ -9,12 +9,12 @@ companies to more advanced package building.
 
 composite packages on GeneralBots:
 
-1 .gbai
-2 .gbapp
-3 .gbot
-4 .gbtheme
-5 .gbkb
-6 .gblib
+ .gbai
+ .gbapp
+ .gbot
+ .gbtheme
+ .gbkb
+ .gblib
 
 
 
