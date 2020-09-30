@@ -9,6 +9,7 @@
 
 1- gbapp and gblib extensions which are folder extensions for the GeneralBots package type.
 gbapp and gblib are responsible for GeneralBots services in a Back-end development environment.
+Four components builds up a General Bot App: dialogs, models, services and tests. 
 
 2- The .gbui extension is assigned to the GeneralBots front-end development environment. 
 Angular, Riot, React and HTML are responsible for the dynamic functioning of GeneralBots services.
