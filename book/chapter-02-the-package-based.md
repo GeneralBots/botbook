@@ -47,7 +47,7 @@ Four components builds up a General Bot App:
 #### Dialogs
 
 All code contained in a dialog builds the flow to custom conversations in
-built-in and additional packages .
+built-in and additional packages. GeneralBots also has the user's direct speech dialog, containing the spell checker.
 
 #### Models
 
