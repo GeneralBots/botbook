@@ -56,6 +56,7 @@ Models builds the foundation of data relationships in form of entities.
 #### Services
 
 Services are a façade for bot back-end logic and other custom processing.
+all GeneralBots functionality comes down to services.
 
 #### Tests
 
