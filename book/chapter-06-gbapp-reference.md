@@ -134,10 +134,6 @@ A fork or branch it happens when a developer (or a group of developers) starts a
 
 The term is particularly used in free or open source software, when a division occurs because of different goals or personality fights. Some see bifurcations as a weakness in free software, but others believe that they demonstrate the adaptability of the model.
 
-### Juno API
-
-juno is a financial control and management api, with which it is possible to generate payment slips and transactions with credit and debit cards for example.
-it is assigned to the GeneralBots source code.
 
 ## How To...
 
