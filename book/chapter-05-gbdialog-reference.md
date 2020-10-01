@@ -1,5 +1,7 @@
 # .gbdialog Reference
 
+ All direct communication from GeneralBots to the end user is made up of the .gbDialog extension. It can be composed of speech or writing directly with the bot.
+
 ## Using Conversational BASIC
 
 The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.basic` and `.bas`.
@@ -19,6 +21,9 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | _variable_ = GET "https://server/query" (Comming soon)        | Gets the value of the cell specified in range address                       |
 | POST "https://", _data_ (Comming soon)                        | Gets the value of the cell specified in range address                       |
 | wait _seconds_ (Comming soon)                                 | Wait a number of seconds before continuing the conversation.                |
+
+
+
 
 ## How To
 
