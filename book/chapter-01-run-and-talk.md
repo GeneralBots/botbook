@@ -79,7 +79,7 @@ User speech recognition directly with generalBots.
 
 ## Branding
 
-means software brand.
+Means software brand.
 
 ## NLP
 
