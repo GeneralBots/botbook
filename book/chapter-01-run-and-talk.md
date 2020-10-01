@@ -77,8 +77,10 @@ Spell checker is when GeneralBots spell-checks text to find and correct any typo
 
 User speech recognition directly with generalBots.
 
-## NLP
-
 ## Branding
+
+means software brand.
+
+## NLP
 
 ## Bot Factory
