@@ -1,6 +1,7 @@
 # .gbdialog Reference
 
  All direct communication from GeneralBots to the end user is made up of the .gbDialog extension. It can be composed of speech or writing directly with the bot.
+ This extension facilitates support related to dialogues, as the system is divided by each service extension.
 
 ## Using Conversational BASIC
 
