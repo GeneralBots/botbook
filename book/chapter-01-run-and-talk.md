@@ -83,4 +83,7 @@ Means software brand.
 
 ## NLP
 
+Means natural language processing.
+Artificial intelligence creates a subfield for better interactions between humans and computers. GeneralBots understands data input, processing and output through natural language.
+
 ## Bot Factory
