@@ -8,4 +8,5 @@
 A theme is composed of some CSS files and images. That set of files can change
 everything in the General Bot UI. Use them extensively before going to change
 the UI application itself (HTML & JS).
+
 The css complements for the final visual with the user, aesthetics is linked to the general usability of GeneralBots which facilitates the interaction with the user.
