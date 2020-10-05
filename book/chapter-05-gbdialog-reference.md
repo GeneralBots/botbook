@@ -3,6 +3,10 @@
 
  All direct communication from GeneralBots to the end user is made up of the .gbDialog extension. It can be composed of speech or writing directly with the bot.
  This extension facilitates support related to dialogues, as the system is divided by each service extension.
+ 
+## Importance of dialogue services.
+
+Communication or dialogue between the end user is one of the most important services of a software, because the smooth functioning of the dialogue directly reflects the functioning for the user.
 
 ## Using Conversational BASIC
 
