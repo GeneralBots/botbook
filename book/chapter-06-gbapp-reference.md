@@ -45,6 +45,10 @@ cd BotServer
 
 ```
 
+### Commands to check version of Node.js and NPM.
+![verificar](https://user-images.githubusercontent.com/65977273/95104867-bace0d00-070c-11eb-9699-66d3b6134ea5.png)
+
+
 #### Manual steps.
 
 1. Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager; 
