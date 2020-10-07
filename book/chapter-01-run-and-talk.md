@@ -79,7 +79,7 @@ User speech recognition directly with generalBots.
 
 ## Branding
 
-Means software brand.
+Branding is linked to a company's brand management, everything that includes, as its name, ideas among all the corporate ties that have its identification.
 
 ## NLP
 
