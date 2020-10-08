@@ -11,4 +11,4 @@ the UI application itself (HTML & JS).
 
 ## Importance of the themes linked to the visual with user.
 
-The css complements for the final visual with the user, aesthetics is linked to the general usability of GeneralBots which facilitates the interaction with the user.
+The css complements for the final visual with the user, aesthetics is linked to the general usability of GeneralBots which facilitates the interaction with the user. GeneralBots uses what is most current to improve its interface through css.
