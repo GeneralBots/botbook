@@ -55,8 +55,6 @@ Notes:
 1. Enter the BotServer root folder.
 2. Run tests by `npm test`.
 
-## Test by PowerShell
-
 
 
 ### Just copy the source code to your machine
