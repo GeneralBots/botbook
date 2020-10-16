@@ -181,6 +181,10 @@ This in some way contributes to a better understanding of how it works.
 | CTRL + SHIFT + B         | Compile inside VSCode, you can also open an external terminal and run tsc -w. |
 | CTRL + G                 | Go to the specified line.                                                     |
 | CTRL + SHIFT + G         | Goes to Git.                                                                  |
+| CTRL + SHIFT+P           | Opens the Command Palette                                                     |
+| CTRL + ALT+UP/DOWN ARROW | Enter the Vertical Selection mode                                             |
+| ALT + UP/DOWN ARROW      | Move lines                                                                    |
+
 
 ### Visual Studio Code Extensions
 
