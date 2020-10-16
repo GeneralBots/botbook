@@ -57,7 +57,6 @@ Notes:
 
 ## Test by PowerShell
 
-![npm test](https://user-images.githubusercontent.com/65977273/94598386-3e977d80-0265-11eb-93e8-ca3013c3f1e1.png)
 
 
 ### Just copy the source code to your machine
