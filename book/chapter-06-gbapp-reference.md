@@ -174,6 +174,7 @@ This in some way contributes to a better understanding of how it works.
 | Key                      | Description                                                                   |
 |--------------------------|-------------------------------------------------------------------------------|
 | F8                       | Next error.                                                                   |
+| F12                      | Go to symbol definition.                                                      |
 | F5                       | Run.                                                                          |
 | CTRL + .                 | Auto refactoring (Fix).                                                       |
 | ALT + SHIFT + DOWN ARROW | Duplicate the line code.                                                      |
