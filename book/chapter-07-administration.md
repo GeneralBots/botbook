@@ -36,7 +36,7 @@ here is a list of admin commands related to deploying .gb* files.
 | STORAGE_USERNAME       | sahaaksfqiehke                                   | The bot database security username configuration value.
 | STORAGE_PASSWORD       | <use a password generator>                       | The bot database security password configuration value.
 | STORAGE_SYNC           | true                                             | If the bot server should sync database before running.
-| PRIVACY MESSAGES       | true                                             | If the bot server should store message logs in the database
+| PRIVACY_STORE_MESSAGES | true                                             | If the bot server should store message logs in the database
 
 ## How to
 
