@@ -32,10 +32,11 @@ here is a list of admin commands related to deploying .gb* files.
 | NLP_AUTHORING_KEY      | 0aa343b06d044b66a2159abf080ff1c3                 | The key from NLP service allowing creating of bot NLP libraries.
 | STORAGE_DIALECT        | mssql                                            | The bot database dialect configuration value. Can be MSSQL or SQLITE.
 | STORAGE_SERVER         | newassistant-storage-server.database.windows.net | The bot database server name configuration value.
-| STORAGE_NAME           | newassistant-storage                             | The bot database database name configuration value.
+| STORAGE_NAME           | newassistant-storage                             | The bot database name configuration value.
 | STORAGE_USERNAME       | sahaaksfqiehke                                   | The bot database security username configuration value.
 | STORAGE_PASSWORD       | <use a password generator>                       | The bot database security password configuration value.
 | STORAGE_SYNC           | true                                             | If the bot server should sync database before running.
+| PRIVACY MESSAGES       | true                                             | If the bot server should store message logs in the database
 
 ## How to
 
