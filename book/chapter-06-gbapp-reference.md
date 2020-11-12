@@ -219,3 +219,6 @@ This in some way contributes to a better understanding of how it works.
 | npm update -g | Updates NPM                         |
 | node -v       | Checks node version                 |
 | ncu -a        | Update all packages in package.json |
+
+## Useful documentation 
+-https://www.typescriptlang.org/docs/handbook (TypeScript Documentation).
