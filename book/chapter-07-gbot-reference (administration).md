@@ -1,5 +1,7 @@
 # General Bots Administration
 
+## Instance custom params
+
 ## Commands
 
 General Bot can be controlled by the same chat window people talk to, so
