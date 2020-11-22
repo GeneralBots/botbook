@@ -94,6 +94,7 @@ cinst sql-server-management-studio --confirm
 ``` 
 
 npm install -g npm-check-updates
+npm install -g cost-of-modules
 
 ```
 
