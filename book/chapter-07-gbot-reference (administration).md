@@ -31,7 +31,6 @@ here is a list of admin commands related to deploying .gb* files.
 | CLOUD_PASSWORD         | <use a password generator>                       | Cloud password used to deploy new bots.
 | MARKETPLACE_ID         | 9c90ff1c3-101b-4f0d-85cd-4bada2226fe3            | Martplace identifier associated to the boot bot.
 | MARKETPLACE_SECRET     | nzrNUUG6214%raqzYWQ8(+%                          | Martplace password associated to the boot bot.
-| NLP_AUTHORING_KEY      | 0aa343b06d044b66a2159abf080ff1c3                 | The key from NLP service allowing creating of bot NLP libraries.
 | STORAGE_DIALECT        | mssql                                            | The bot database dialect configuration value. Can be MSSQL or SQLITE.
 | STORAGE_SERVER         | newassistant-storage-server.database.windows.net | The bot database server name configuration value.
 | STORAGE_NAME           | newassistant-storage                             | The bot database name configuration value.
