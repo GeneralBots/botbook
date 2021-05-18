@@ -22,13 +22,18 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | GENERATE A PASSWORD                                           | Creates a new password into the system variable **password** for later use. |
 | CREATE A BOT FARM USING _params_                              | Deploys a new bot farm to the cloud.                                        |
 | WAIT _seconds_                                                | Wait a number of seconds before continuing the conversation.                |
-| _variable_ = GET CELL "_file_.xlsx", "_A1:A1_" (Comming soon) | Gets the value of the cell specified in range address                       |
-| SET CELL "_file_.xlsx", "_A1:A1_", 42 (Comming soon)          | Gets the value of the cell specified in range address                       |
-| _variable_ = GET "https://server/query" (Comming soon)        | Gets the value of the cell specified in range address                       |
-| POST "https://", _data_ (Comming soon)                        | Gets the value of the cell specified in range address                       |
-| wait _seconds_ (Comming soon)                                 | Wait a number of seconds before continuing the conversation.                |
-
-
+| _variable_ = GET "_file_.xlsx", "_A1:A1_"                     | Gets the value of the cell specified in range address                       |
+| SET "_file_.xlsx", "_A1:A1_", 42                              | Gets the value of the cell specified in range address                       |
+| _variable_ = GET "https://server/query"                       | Gets the value of the cell specified in range address                       |
+| POST "https://", _data_                                       | Gets the value of the cell specified in range address                       |
+| wait _seconds_                                                | Wait a number of seconds before continuing the conversation.                |
+| HEAR _variable_ AS EMAIL                                      | |
+| HEAR _variable_ AS DATE                                       | |
+| HEAR _variable_ AS NAME                                       | |
+| HEAR _variable_ AS INTEGER                                    | |
+| HEAR _variable_ AS BOOLEAN                                    | |
+| HEAR _variable_ AS HOUR                                       | |
+| HEAR _variable_ AS MONEY                                      | |
 
 
 ## How To
