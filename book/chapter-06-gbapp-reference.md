@@ -30,12 +30,8 @@ Copy and paste on a PowerShell prompt with elavated privileges and when VSCode i
 ``` powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-## Automatic installation by PowerShell
-
-Execute the commands in sequence:
-
 cinst git --confirm
-cinst nodejs --confirm --version=10.19.0
+cinst nodejs --confirm --version=14.10.1
 cinst vscode --confirm
 npm install windows-build-tools -g
 
