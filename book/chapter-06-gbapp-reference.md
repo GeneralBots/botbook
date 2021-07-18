@@ -18,8 +18,15 @@ session.
 
 ## Preparing Environment
 
-Currently the node version supported is 10.19.0 due to `ogg` and `vorbis` libs. 
-Please see the same issue on this address: https://github.com/TooTallNate/node-ogg/issues/27.
+General procedures:
+
+1. Get SubscriptionId, username and password;
+2. Create AppId and Secret;
+3. Deploy General Bots;
+4. /setupSecurity to get access to Bot Drive;
+5. /publish to publish packages on root bot.
+
+
 
 ### Windows
 
