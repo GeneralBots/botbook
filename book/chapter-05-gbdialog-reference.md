@@ -38,7 +38,8 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | HEAR _variable_ AS ZIPCODE                                    | |
 | HEAR _variable_ AS "Abacate", "Maçã", "Morango"               | Displays the specified menu and waits for this input until user select one of them. | 
 | HEAR _variable_ AS LANGUAGE                                   | |
-| HEAR _variable_ AS LOGIN (internal)                           | Waits for Active Directoy login integration before proceeding with the dialog .|
+| HEAR _variable_ AS LOGIN (internal)                           | Waits for Active Directoy login integration before proceeding with the dialog .     |
+| GO TO [number,] dialogName                                    | Transfers the conversation to a next dialog for the specificed number.              |
 
 ## How To
 
