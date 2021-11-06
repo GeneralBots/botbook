@@ -63,6 +63,13 @@ cd BotServer
 6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git` ; 
 7. Run the bot server by `gbot.cmd` .
 
+
+#### Common Errors
+
+- The subscription is not registered to use namespace 'Microsoft.Web'. See https://aka.ms/rps-not-found for how to register subscriptions.
+-- Enter Azure | <Subscription> | Resource providers | Find Microsoft.Web and check it.
+
+
 * Required packages
 
 ``` cmd
