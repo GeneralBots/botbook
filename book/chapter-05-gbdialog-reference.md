@@ -40,12 +40,12 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | HEAR _variable_ AS LANGUAGE                                   | |
 | HEAR _variable_ AS LOGIN (internal)                           | Waits for Active Directoy login integration before proceeding with the dialog .     |
 | GO TO [number,] dialogName                                    | Transfers the conversation to a next dialog for the specificed number or as last command, transfers the context to this dialog.              |
-| SET HTTP HEADER _key =  _value_                         | Defines an HTTP header to be used to next GET call |
-| SET HTTP USERNAME = _value_                             | Defines the HTTP username to be used to next GET call |
-| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call |
-| SEE CAPTION OF _url_ AS _variable_                      | Extracts an caption, using a pre-trained neural network, from a image| 
+| SET HTTP HEADER _key =  _value_                         | Defines an HTTP header to be used to next GET call. |
+| SET HTTP USERNAME = _value_                             | Defines the HTTP username to be used to next GET call. |
+| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
+| SEE CAPTION OF _url_ AS _variable_                      | Extracts an caption, using a pre-trained neural network, from a image. | 
 | SEE TEXT OF _url_ AS _variable_                      | Extracts text from the image in a OCR (Optical Character Recognition) feature. | 
-| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call |
+| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
 
 ## How To
 
