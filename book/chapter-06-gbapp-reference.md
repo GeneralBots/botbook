@@ -27,7 +27,6 @@ General procedures:
 5. /publish to publish packages on root bot.
 
 
-
 ### Windows
 
 #### PowerShell Script
@@ -47,6 +46,17 @@ cd BotServer
 &"C:\Program Files\Microsoft VS Code\bin\code.cmd" .
 
 ```
+
+### Linux (Ubuntu)
+
+sudo apt update
+sudo apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt update
+sudo apt install code
+
+
 
 ### Commands to check version of Node.js and NPM.
 ![verificar](https://user-images.githubusercontent.com/65977273/95104867-bace0d00-070c-11eb-9699-66d3b6134ea5.png)
