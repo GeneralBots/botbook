@@ -58,6 +58,14 @@ sudo apt update
 sudo apt install code
 ```
 
+```
+curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+$ cat /etc/apt/sources.list.d/nodesource.list
+deb https://deb.nodesource.com/node_14.x focal main
+deb-src https://deb.nodesource.com/node_14.x focal main
+sudo apt -y install nodejs
+node  -v
+```
 
 ### Commands to check version of Node.js and NPM.
 ![verificar](https://user-images.githubusercontent.com/65977273/95104867-bace0d00-070c-11eb-9699-66d3b6134ea5.png)
