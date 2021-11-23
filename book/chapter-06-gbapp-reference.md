@@ -59,15 +59,12 @@ sudo apt update
 sudo apt install code
 ```
 
-NOde JS 14
+Node JS 14
 ```
-# Using Ubuntu
+
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Using Debian, as root
-curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
-apt-get install -y nodejs
 
 node -v
 ```
