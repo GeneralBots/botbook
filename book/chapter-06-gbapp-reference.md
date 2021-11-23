@@ -64,9 +64,10 @@ Node JS 14
 
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
-
-
 node -v
+sudo apt install npm 
+npm -v
+
 ```
 
 ### Commands to check version of Node.js and NPM.
