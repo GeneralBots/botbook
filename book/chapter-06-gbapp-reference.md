@@ -49,6 +49,7 @@ cd BotServer
 
 ### Linux (Ubuntu)
 
+Visual Studio Code
 ```
 sudo apt update
 sudo apt install software-properties-common apt-transport-https wget
@@ -58,13 +59,17 @@ sudo apt update
 sudo apt install code
 ```
 
+NOde JS 14
 ```
-curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-$ cat /etc/apt/sources.list.d/nodesource.list
-deb https://deb.nodesource.com/node_14.x focal main
-deb-src https://deb.nodesource.com/node_14.x focal main
-sudo apt -y install nodejs
-node  -v
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+apt-get install -y nodejs
+
+node -v
 ```
 
 ### Commands to check version of Node.js and NPM.
