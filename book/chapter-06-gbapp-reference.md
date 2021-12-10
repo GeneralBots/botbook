@@ -130,6 +130,18 @@ npm install -g cost-of-modules
 
 ```
 
+Linux
+    
+```
+# MS Remote Desktop Connection (RDP Client) 
+    
+sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
+sudo apt update
+sudo apt install remmina remmina-plugin-rdp remmina-plugin-secret
+
+```
+    
+    
 ![General Bots Inside Visual Studio Code provides a complete artificial intelligence based conversational platform](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-inside-visual-studio-code-provides-a-complete-artificial-intelligence-based-conversational-platform.png)
 
 ## Specifications 
