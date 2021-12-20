@@ -49,6 +49,17 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ## How To
 
+### Use General Bots computer vision
+
+1. Develop a BASIC dialog and publish;
+
+![image](https://user-images.githubusercontent.com/14840374/146782500-26f0dc27-e722-41aa-b79e-619d6403fa0d.png)
+
+2. Test it in the conversation
+
+![image](https://user-images.githubusercontent.com/14840374/146782691-7c28998b-7485-4d34-af33-da87d1b26088.png)
+
+
 ### Using POST data
 
 You can use POST passing a variable as the second param in the POST call. The example
