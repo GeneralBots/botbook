@@ -42,6 +42,7 @@ here is a list of admin commands related to deploying .gb* files.
 | HelloGoodX                  | TRUE if Bot should give hello. |
 | XRM Key                     | String key of HubSpot (currently) API. |
 | WhatsApp Group Name         | WhatsApp group name that this Bot belongs to. | 
+| WhatsApp Group Shortcuts |   Space separeted list of triggers in text that will active Bot in groups.|
   
   
 ## Enviroment Variables Reference
