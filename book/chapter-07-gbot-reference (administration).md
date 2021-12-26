@@ -17,7 +17,33 @@ here is a list of admin commands related to deploying .gb* files.
 | rebuildIndex    | Rebuild Azure Search indexes, must be run after **deployPackage** or **redeployPackage**. | Now it is called automatically |
 | /publish [package]  | Deploy the package to the bot storage. When ommited, the command will publish the package named <botId>.gbkb by default. |
 
-
+# Config.xlsx (.gbot) Configuration
+  
+| Name                        | Description|
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Admin Notify E-mail         | E-mail used to notify administrators. |
+| Avatar Logo                 | Bot logo URL.                                                                                      |
+| Can Publish                 | Comma separeted list of mobile numbers that can publish directly. |
+| Description                 | Description of the Bot.                                                                            |
+| Enable Audio Hearing        | TRUE if the Bot can hear.                                                                          |
+| Enable Audio Talking        | TRUE if the Bot can talk.                                                                          |
+| Enable Spelling Checker     | TRUE if everything input by user should be spell checked.                                          |
+| Enable Worldwide Translator | TRUE if the Bot should be polyglot.                                                                |
+| Default User Language       | Language (eg.: en or pt) that user will be presented by the Bot.                                   |
+| Default Content Language    | Language (eg.: en or pt) that content files in .gbkb, .gbdialog and so on are written.             |
+| Language Detector           | TRUE if Bot should get the language automatically.                                                 |
+| NLP Score                   | Number between 0 and 1 that will be used to classify text to use NLP neural network. |
+| Search Score                | Number between 0 and 1 that will be used to consider Full Text Search as content retrieval method. |
+| Transfer To                 | Comma separeted list of mobile numbers that Bot will use to tranfer chats from WhatsApp.           |
+| WhatsApp Admins             | Comma separeted list of mobile numbers that will be admin. |
+| Feedback Improve.Message    | Message to user when the Bot was unable to find something. |
+| Keep Text                   | Comma separeted list of words that should be keep intact between Bot understanding process.                                                                                                                                                  |
+| Start Dialog                | Name of .docx (without the Extension) that will be used as Dialog entry point.                                                                                                                                             |
+| HelloGoodX                  | TRUE if Bot should give hello. |
+| XRM Key                     | String key of HubSpot (currently) API. |
+| WhatsApp Group Name         | WhatsApp group name that this Bot belongs to. | 
+  
+  
 ## Enviroment Variables Reference
 
 | Name                   | Sample Value                                     | Description |
