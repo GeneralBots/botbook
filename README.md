@@ -13,7 +13,7 @@ This book is organized in ten chapters that can be accessed throuhg this table b
 * [Chapter 04 - gbtheme Reference](book/chapter-04-gbtheme-reference.md)
 * [Chapter 05 - gbdialog Reference](book/chapter-05-gbdialog-reference.md)
 * [Chapter 06 - gbapp Reference](book/chapter-06-gbapp-reference.md)
-* [Chapter 07 - Administration](book/chapter-07-administration.md)
+* [Chapter 07 - gbot Refere](book/chapter-07-gbot-reference.md)
 * [Chapter 08 - Tooling](book/chapter-08-tooling.md)
 * [Chapter 09 - Services](book/chapter-09-services.md)
 * [Chapter 10 - Contributing](book/chapter-10-contributing.md)
