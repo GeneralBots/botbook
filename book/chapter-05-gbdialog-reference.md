@@ -30,7 +30,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | HEAR _variable_ AS EMAIL                                      | |
 | HEAR _variable_ AS DATE                                       | |
 | HEAR _variable_ AS NAME                                       | |
-| HEAR _variable_ AS INTEGER                                    | |
+| HEAR _variable_ AS INTEGER                                    | eg.: HEAR approve as Boolean. |
 | HEAR _variable_ AS BOOLEAN                                    | |
 | HEAR _variable_ AS HOUR                                       | |
 | HEAR _variable_ AS MONEY                                      | |
