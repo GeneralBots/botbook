@@ -80,7 +80,6 @@ npm -v
 2. Install [git]( `https://git-scm.com/` ), a Software Configuration Management (SCM) and TortoiseGit; 
 3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system); 
 4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
-
 5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
 6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git` ; 
 7. Run the bot server by `gbot.cmd` .
@@ -139,6 +138,20 @@ sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
 sudo apt update
 sudo apt install remmina remmina-plugin-rdp remmina-plugin-secret
 
+```
+
+# File compression
+    
+``` 
+
+    Compressing a directory in Linux:
+    
+    tar -cvzf my_archive.tar.gz input_dir
+    
+    Expanding an archive in Linux:
+    
+    tar -xf my_archive.tar.gz 
+    
 ```
     
     
