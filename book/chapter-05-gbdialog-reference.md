@@ -35,8 +35,8 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | HEAR _variable_ AS HOUR                                       | |
 | HEAR _variable_ AS MONEY                                      | |
 | HEAR _variable_ AS MOBILE                                     | |
-| HEAR _variable_ AS FILE                                       | Returns a file uploaded by user to be save with SAVE. |
-| HEAR _variable_ AS AUDIO                                      | Returns a audio uploaded by user to be save with SAVE. |
+| HEAR _variable_ AS FILE                                       | Returns a file uploaded by user to be saved with SAVE. |
+| HEAR _variable_ AS AUDIO                                      | Returns a audio uploaded by user to be saved with SAVE. |
 | HEAR _variable_ AS ZIPCODE                                    | |
 | HEAR _variable_ AS "Abacate", "Maçã", "Morango"               | Displays the specified menu and waits for this input until user select one of them. | 
 | HEAR _variable_ AS LANGUAGE                                   | |
