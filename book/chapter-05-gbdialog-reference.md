@@ -42,9 +42,6 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | HEAR _variable_ AS LANGUAGE                                   | |
 | HEAR _variable_ AS LOGIN (internal)                           | Waits for Active Directoy login integration before proceeding with the dialog .     |
 | GO TO [number,] dialogName                                    | Transfers the conversation to a next dialog for the specificed number or as last command, transfers the context to this dialog.              |
-| SET HTTP HEADER _key =  _value_                         | Defines an HTTP header to be used to next GET call. |
-| SET HTTP USERNAME = _value_                             | Defines the HTTP username to be used to next GET call. |
-| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
 | SEE CAPTION OF _url_ AS _variable_                      | Extracts an caption, using a pre-trained neural network, from a image. | 
 | SEE TEXT OF _url_ AS _variable_                      | Extracts text from the image in a OCR (Optical Character Recognition) feature. | 
 | SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
@@ -54,13 +51,19 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | * _variable_ = GET page, cssSelector, "body > img" | Retrives an element within an IFRAME specified by selector eg.: "[name=iFrameName]", to be used later. | 
 | * SET page, cssSelector, value  | Define an field to value eg. "value 123" on the webpage specified by selector eg. "#id". | 
 | * CLICK page, cssSelector | Clicks on an element inside the web page being automated by General Bots. | 
-
+| * DOWNLOAD | |
 
 ### Options
 
-- SET HEAR ON "mobile"
-- SET MAX LINES
-- SET 
+| SET HTTP HEADER _key =  _value_                         | Defines an HTTP header to be used to next GET call. |
+| SET HTTP USERNAME = _value_                             | Defines the HTTP username to be used to next GET call. |
+| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
+| SET HEAR ON "mobile"| | 
+| SET MAX LINES _value_ | | 
+| SET SCHEDULE "2 * * * * *" | | 
+| SET LANGUAGE _value_ | | 
+| set translator [ON|OFF]| | 
+| set whole word [TRUE|FALSE]| | 
 
 
 * = Work in progress.
