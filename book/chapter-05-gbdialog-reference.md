@@ -35,7 +35,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | HEAR _variable_ AS HOUR                                       | |
 | HEAR _variable_ AS MONEY                                      | |
 | HEAR _variable_ AS MOBILE                                     | |
-| HEAR _variable_ AS FILE                                       | Returns a file uploaded by user to be saved with SAVE _variable_ AS "folder/folder/file" on .gbdrive. |
+| * HEAR _variable_ AS FILE                                       | Returns a file uploaded by user to be saved with SAVE _variable_ AS "folder/folder/file" on .gbdrive. |
 | HEAR _variable_ AS AUDIO                                      | Returns a audio uploaded by user to be saved with SAVE. |
 | HEAR _variable_ AS ZIPCODE                                    | |
 | HEAR _variable_ AS "Abacate", "Maçã", "Morango"               | Displays the specified menu and waits for this input until user select one of them. | 
@@ -48,11 +48,10 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | SEE CAPTION OF _url_ AS _variable_                      | Extracts an caption, using a pre-trained neural network, from a image. | 
 | SEE TEXT OF _url_ AS _variable_                      | Extracts text from the image in a OCR (Optical Character Recognition) feature. | 
 | SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
-| data = SELECT name, address FROM data    | Use SQL to manipulate a data variable returned from FIND or an array |
-| _variable_ = CHART "pie", data| Generates a chart from data.
+| * data = SELECT a, SUM(b) AS b FROM data GROUP BY a    | Use SQL to manipulate a data variable returned from FIND or an array | _variable_ = CHART "pie", data| Generates a chart from data. |
+| * file = data AS IMAGE| Converts a two dimension array into an image file, ready to be used with SAVE AS or SEND FILE.|
 
-
-
+* = Work in progress.
 
 ## How To
 
