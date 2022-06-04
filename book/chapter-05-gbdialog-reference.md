@@ -67,7 +67,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | SET LANGUAGE _value_ | | 
 | SET TRANSLATOR [ON or OFF]| | 
 | SET WHOLE WORD [TRUE or FALSE]| | 
-
+| SET THEME "dark" or "white" or "blue" | Defines the theme to the next content generation (PDF, images, vídeos, etc.)|
 
 * = Work in progress.
 
