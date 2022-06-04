@@ -4,9 +4,9 @@
  All direct communication from GeneralBots to the end user is made up of the .gbDialog extension. It can be composed of speech or writing directly with the bot.
  This extension facilitates support related to dialogues, as the system is divided by each service extension.
  
-## Importance of dialogue services.
+## The Dialog 
 
-Communication or dialogue between the end user is one of the most important services of a software, because the smooth functioning of the dialogue directly reflects the functioning for the user.
+Communication or dialogue between the end user is one of the most important services of a software, because the smooth functioning of the dialogue directly reflects the functioning for the user .
 
 ## Using Conversational BASIC
 
@@ -55,6 +55,8 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ### Options
 
+| Instruction / Usage                                           | Description                                                                 |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | SET HTTP HEADER _key =  _value_                         | Defines an HTTP header to be used to next GET call. |
 | SET HTTP USERNAME = _value_                             | Defines the HTTP username to be used to next GET call. |
 | SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
