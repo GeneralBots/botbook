@@ -46,11 +46,12 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | SEE TEXT OF _url_ AS _variable_                      | Extracts text from the image in a OCR (Optical Character Recognition) feature. | 
 | * data = SELECT a, SUM(b) AS b FROM data GROUP BY a    | Use SQL to manipulate a data variable returned from FIND or an array | _variable_ = CHART "pie", data| Generates a chart from data. |
 | * file = data AS IMAGE| Converts a two dimension array into an image file, ready to be used with SAVE AS or SEND FILE.|
+| * file = data AS PDF| Converts a two dimension array into an PDF file, ready to be used with SAVE AS or SEND FILE.|
 | * page = GET PAGE _url_ | Web automation retrival of a web page.|
 | * _variable_ = GET page, cssSelector, "body > img" | Retrives an element within an IFRAME specified by selector eg.: "[name=iFrameName]", to be used later. | 
 | * SET page, cssSelector, value  | Define an field to value eg. "value 123" on the webpage specified by selector eg. "#id". | 
 | * CLICK page, cssSelector | Clicks on an element inside the web page being automated by General Bots. | 
-| * DOWNLOAD | |
+| * file = DOWNLOAD _url_ |  |
 
 * = Work in progress.
 
