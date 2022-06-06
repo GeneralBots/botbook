@@ -14,11 +14,17 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ## General Bots BASIC reference
 
-| Instruction / Usage                                           | Description                                                                 |
-| ------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| HEAR _variable_                                               | Hears something from the person into a _variable_ for later use.            |
+| Instruction / Usage                                           | Description                                                                 | Example |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- |----|
+| HEAR _variable_                                               | Hears something from the person into a _variable_ for later use.            | 
+
+HEAR name 
+TALK "Your name is " + name.
+
+
+|
 | confirm _variable_ (Comming soon)                             | Waits for confirmation like 'yes', 'y', 'yeah' and return true or false     |
-| TALK _message_                                                | Talk the specified _message_ to the person.                                 |
+| TALK _message_                                                | Talk the specified _message_ to the person.                                 | TALK "Hello world." | 
 | GENERATE A PASSWORD                                           | Creates a new password into the system variable **password** for later use. |
 | CREATE A BOT FARM USING _params_                              | Deploys a new bot farm to the cloud.                                        |
 | WAIT _seconds_                                                | Wait a number of seconds before continuing the conversation.                |
