@@ -118,9 +118,6 @@ png = data as IMAGE
 SEND FILE png 
 ```
 
-![image](https://user-images.githubusercontent.com/14840374/178154752-b93c8878-2995-4130-9941-41a62fcd2ffe.png)
-
-
 On the fly charts
 
 ```
@@ -130,7 +127,25 @@ img = CHART "pie", data, legends
 SEND FILE img  
 SAVE img as "folder/filename.jpg" 
 ```
-![image](https://user-images.githubusercontent.com/14840374/178154760-bdafaf87-f6a8-4d80-af1a-65fe441aac11.png)
+
+### Using complete General Bots Data Analytics
+
+result = GET "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/gift_contributions?page[size]=500" 
+data = result.data 
+data = SELECT YEAR(record_date) as Yr, SUM(CAST(contribution_amt AS NUMBER)) AS Amount FROM data GROUP BY YEAR(record_date) 
+
+TALK "Demonstration of Gift Contributions with AS IMAGE keyword" 
+SET THEME dark 
+png = data as IMAGE  
+SEND FILE png 
+
+DELAY 5 
+TALK " Demonstration of Gift Contributions CHART keyword" 
+ img = CHART "bar", data  
+SEND FILE img 
+
+![image](https://user-images.githubusercontent.com/14840374/178154826-8188029e-b4f4-48aa-bc0d-126307ce5121.png)
+
 
 
 
