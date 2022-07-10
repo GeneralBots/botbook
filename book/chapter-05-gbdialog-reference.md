@@ -128,8 +128,13 @@ SEND FILE img
 SAVE img as "folder/filename.jpg" 
 ```
 
-### Using complete General Bots Data Analytics
+### Using complete General Bots Conversational Data Analytics
 
+```
+TALK  "General Bots Labs presents FISCAL DATA SHOW BY BASIC" 
+
+TALK "Gift Contributions to Reduce the Public Debt API (https://fiscaldata.treasury.gov/datasets/gift-contributions-reduce-debt-held-by-public/gift-contributions-to-reduce-the-public-debt)" 
+ 
 result = GET "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/gift_contributions?page[size]=500" 
 data = result.data 
 data = SELECT YEAR(record_date) as Yr, SUM(CAST(contribution_amt AS NUMBER)) AS Amount FROM data GROUP BY YEAR(record_date) 
@@ -143,6 +148,7 @@ DELAY 5
 TALK " Demonstration of Gift Contributions CHART keyword" 
  img = CHART "bar", data  
 SEND FILE img 
+```
 
 ![image](https://user-images.githubusercontent.com/14840374/178154826-8188029e-b4f4-48aa-bc0d-126307ce5121.png)
 
