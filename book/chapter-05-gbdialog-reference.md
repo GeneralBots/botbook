@@ -85,7 +85,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ![image](https://user-images.githubusercontent.com/14840374/146782691-7c28998b-7485-4d34-af33-da87d1b26088.png)
 
-### Use General Bots Web Automation
+### Using General Bots Web Automation
 
 ```
 mobile = "5521000000000" 
@@ -104,6 +104,37 @@ SET page, "#captcha", captcha
 
 CLICK page, "#bt-login" 
 TALK TO mobile, "Login done, thanks." 
+```
+### Using General Bots SQL and dynamic image and chart generation
+
+On the fly table as images.
+
+```
+SET MAX LINES 1000 
+data = FIND "data.xlsx",  
+data = SELECT a, SUM(b) AS b FROM data GROUP BY a 
+SET THEME dark 
+png = data as IMAGE  
+SEND FILE png 
+```
+
+On the fly charts
+
+```
+data = [10, 20, 30] 
+legends= "Steve;Yui;Carlos"   
+img = CHART "pie", data, legends  
+SEND FILE img  
+SAVE img as "folder/filename.jpg" 
+```
+
+### Using General Bots Office templates
+
+```
+data = FIND "Customer.xlsx", "Idade=25" 
+doc = TEMPLATE "template.docx" WITH data 
+SAVE doc AS "resume.docx" 
+SEND EMAIL "noreply@pragmatismo.io", "Subject", doc 
 ```
 
 ### Using POST data
