@@ -118,6 +118,9 @@ png = data as IMAGE
 SEND FILE png 
 ```
 
+![image](https://user-images.githubusercontent.com/14840374/178154752-b93c8878-2995-4130-9941-41a62fcd2ffe.png)
+
+
 On the fly charts
 
 ```
@@ -127,6 +130,9 @@ img = CHART "pie", data, legends
 SEND FILE img  
 SAVE img as "folder/filename.jpg" 
 ```
+![image](https://user-images.githubusercontent.com/14840374/178154760-bdafaf87-f6a8-4d80-af1a-65fe441aac11.png)
+
+
 
 ### Using General Bots Office templates
 
