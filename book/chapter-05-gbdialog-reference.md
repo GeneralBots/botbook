@@ -85,6 +85,26 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ![image](https://user-images.githubusercontent.com/14840374/146782691-7c28998b-7485-4d34-af33-da87d1b26088.png)
 
+### Use General Bots Web Automation
+
+```
+mobile = "5521000000000" 
+
+page = GET HTML "https://www.any-website.com/" 
+SET page, "#usuario", "user"  
+SET page, "#j_password", "xxxxxxxxxxx"   
+
+ 
+img = GET page, "[name=iCaptcha]", "body > img" 
+SEND FILE TO mobile, img 
+TALK TO mobile, "Digite o código da imagem para prosseguir:" 
+SET HEAR ON mobile 
+HEAR captcha  
+SET page, "#captcha", captcha 
+
+CLICK page, "#bt-login" 
+TALK TO mobile, "Login done, thanks." 
+```
 
 ### Using POST data
 
