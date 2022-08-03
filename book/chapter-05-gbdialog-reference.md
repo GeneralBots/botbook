@@ -52,6 +52,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | * SET page, cssSelector, value  | Define an field to value eg. "value 123" on the webpage specified by selector eg. "#id". | 
 | * CLICK page, cssSelector | Clicks on an element inside the web page being automated by General Bots. | 
 | * file = DOWNLOAD _url_ |  |
+|NEW OBJECT| Creates a new object to be used with REST calls for example. data = NEw OBJECT <br> data.color = "blue" |
 
 * = Work in progress.
 
