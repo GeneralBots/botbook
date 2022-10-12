@@ -43,7 +43,9 @@ here is a list of admin commands related to deploying .gb* files.
 | XRM Key                     | String key of HubSpot (currently) API. |
 | WhatsApp Group Name         | WhatsApp group name that this Bot belongs to. | 
 | WhatsApp Group Shortcuts |   Space separeted list of triggers in text that will active Bot in groups.|
-  
+| Bot Admin Number |   Administration mobile number which will receive Debug screenshots and other notifications.|  
+| WhatsApp Group ID |   Group ID (accessible only in internal log) used to connect the Bot to a WhatsApp group.|
+| Debug Web Automation |   TRUE if Bot Admin Number will receive an screenshot to each web automation step.|
   
 ## Enviroment Variables Reference
 
