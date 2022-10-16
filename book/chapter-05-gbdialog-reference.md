@@ -82,9 +82,9 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ![image](https://user-images.githubusercontent.com/14840374/146782691-7c28998b-7485-4d34-af33-da87d1b26088.png)
 
-### Using General Bots Web Automation
+### Using General Bots Web Automation to ask humans about unreadable captchas
 
-```
+```BASIC
 mobile = "5521000000000" 
 
 page = GET HTML "https://www.any-website.com/" 
@@ -106,7 +106,7 @@ TALK TO mobile, "Login done, thanks."
 
 On the fly table as images.
 
-```
+```BASIC
 SET MAX LINES 1000 
 data = FIND "data.xlsx",  
 data = SELECT a, SUM(b) AS b FROM data GROUP BY a 
@@ -117,7 +117,7 @@ SEND FILE png
 
 On the fly charts
 
-```
+```BASIC
 data = [10, 20, 30] 
 legends= "Steve;Yui;Carlos"   
 img = CHART "pie", data, legends  
@@ -127,7 +127,7 @@ SAVE img as "folder/filename.jpg"
 
 ### Using complete General Bots Conversational Data Analytics
 
-```
+```BASIC
 TALK  "General Bots Labs presents FISCAL DATA SHOW BY BASIC" 
 
 TALK "Gift Contributions to Reduce the Public Debt API (https://fiscaldata.treasury.gov/datasets/gift-contributions-reduce-debt-held-by-public/gift-contributions-to-reduce-the-public-debt)" 
@@ -159,6 +159,64 @@ data = FIND "Customer.xlsx", "Idade=25"
 doc = TEMPLATE "template.docx" WITH data 
 SAVE doc AS "resume.docx" 
 SEND EMAIL "noreply@pragmatismo.io", "Subject", doc 
+```
+
+### Automating GitHub Issue creation with General Bots Automation
+
+```BASIC
+REM Realiza login no GitHub. 
+
+page = GET HTML "https://github.com/login" 
+
+SET page, "#login_field", "username" 
+
+SET page, "#password", "*******" 
+
+ 
+
+PRESS ENTER ON page 
+
+REM Verificar 2FA. 
+
+SET HEAR ON "5521999999999" 
+
+TALK "Digite o código de dupla autenticação enviado..." 
+
+HEAR code 
+
+SET page, "#otp", code 
+
+PRESS ENTER ON page	 
+
+ 
+
+REM Extrai cada Issue da planilha e cria no GitHub. 
+
+list = FIND "issues.xlsx" 
+
+index = 1   
+
+DO WHILE index <38 
+
+row = list[index]   
+
+page = GET HTML "https://github.com/GeneralBots/BotServer/issues/new" 
+
+SET page, "#issue_title", row.title 
+
+SET page, "#issue_body", row.body 
+
+CLICK page, "#new_issue > div > div > div.Layout-main > div > div.timeline-comment.color-bg-default.hx_comment-box--tip > div > div.flex-items-center.flex-justify-end.d-none.d-md-flex.mx-2.mb-2.px-0 > button" 
+
+TALK "Issue '" + row.title + "' criado." 
+
+WAIT 5 
+
+index = index + 1   
+
+LOOP 
+
+EXIT 
 ```
 
 ### Using POST data
