@@ -41,6 +41,7 @@ cinst nodejs --confirm --version=14.10.1
 cinst vscode --confirm
 cinst python
 npm install windows-build-tools -g
+npm install -g node-gyp
 
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
@@ -77,6 +78,7 @@ Additional Infrastructure
 sudo apt-get install libxtst-dev
 apt-get install libpng-dev
 sudo apt-get install python g++ build-essential
+npm install -g node-gyp
 
 ```
 
