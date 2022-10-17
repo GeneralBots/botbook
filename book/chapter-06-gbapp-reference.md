@@ -39,6 +39,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 cinst git --confirm
 cinst nodejs --confirm --version=14.10.1
 cinst vscode --confirm
+cinst python
 npm install windows-build-tools -g
 
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
@@ -58,9 +59,6 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 sudo apt update
 sudo apt install code
 
-sudo apt-get install libxtst-dev
-apt-get install libpng-dev
-
 ```
 
 Node JS 14
@@ -73,6 +71,15 @@ sudo apt install npm
 npm -v
 
 ```
+
+Additional Infrastructure
+```
+sudo apt-get install libxtst-dev
+apt-get install libpng-dev
+sudo apt-get install python g++ build-essential
+
+```
+
 
 ### Commands to check version of Node.js and NPM.
 ![verificar](https://user-images.githubusercontent.com/65977273/95104867-bace0d00-070c-11eb-9699-66d3b6134ea5.png)
