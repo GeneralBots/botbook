@@ -44,6 +44,9 @@ Install Python: https://www.python.org/downloads/release/python-2718/
 npm install windows-build-tools -g
 npm install -g node-gyp
 
+
+Enter your Source Directory:
+
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
 &"C:\Program Files\Microsoft VS Code\bin\code.cmd" .
