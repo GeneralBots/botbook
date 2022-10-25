@@ -26,7 +26,6 @@ General procedures:
 4. /setupSecurity to get access to Bot Drive;
 5. /publish to publish packages on root bot.
 
-
 ### Windows
 
 #### PowerShell Script
@@ -77,7 +76,7 @@ npm -v
 
 ```
 
-Additional Infrastructure
+Additional Infrastructure 
 ```
 sudo apt-get install libxtst-dev
 apt-get install libpng-dev
@@ -85,7 +84,12 @@ sudo apt-get install python g++ build-essential
 npm install -g node-gyp
 
 ```
+### Setup git
 
+```
+    git config --global user.name "Your Name"
+    git config --global user.email "someone@domain.com"
+```
 
 ### Commands to check version of Node.js and NPM.
 ![verificar](https://user-images.githubusercontent.com/65977273/95104867-bace0d00-070c-11eb-9699-66d3b6134ea5.png)
