@@ -3,6 +3,11 @@
 
 General Bots BASIC using HEAR and TALK keywords provides a easy to write bot language accessible to everyone and used as incomer for people willing to make their own bot.
 
+It is like creating a conversation Node.js application just using BASIC. All code will run isolated on a Node VM:
+
+![image](https://user-images.githubusercontent.com/14840374/200206510-9f5bd788-e710-4932-9ed8-a09599656cea.png)
+
+
 ## Using Conversational BASIC
 
 The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.basic` and `.bas`.
