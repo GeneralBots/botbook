@@ -241,6 +241,7 @@ This in some way contributes to a better understanding of how it works.
 | ORM                                         |                                                                                                   |
 | Migração de . NET para JavaScript (Node.js) | https://www.reddit.com/r/webdev/comments/2val7s/as_a_net_developer_do_i_need_to_care_about_nodejs |
 | Simplified JavaScript Jargon                | http://jargon.js.org                                                                              |
+| RegExp | | https://regexp101.com |
 
 ### Packages
 
