@@ -130,7 +130,7 @@ SEND FILE img
 SAVE img as "folder/filename.jpg" 
 ```
 
-### Using General Bots Web Automation to custom notify about Calendar
+### Using General Bots Web Automation to custom notify about Google Calendar
 
 ```basic
 
@@ -139,7 +139,7 @@ OPEN "https://accounts.google.com/ServiceLogin"
 SET "#identifierId", "test@gmail.com" 
 PRESS ENTER 
 WAIT 3 
-SET "input[type='password']", "hempoil" 
+SET "input[type='password']", "******" 
 PRESS ENTER 
 WAIT 5 
 
