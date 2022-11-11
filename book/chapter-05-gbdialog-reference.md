@@ -159,24 +159,6 @@ LOOP
  
 ```
 
-list = FIND "People.xlsx", "Calendar=Y"  
-
-index = 1  
-
-DO WHILE index < ubound(list)  
-
-row = list[index]  
-
-TALK TO row.Mobile, "Hello " + row.Name + ", here is your calendar:"  
-
-SEND FILE TO row.Mobile, file, "Calendar"  
-
-index = index + 1  
-
-LOOP 
-
- 
-
 ### Using complete General Bots Conversational Data Analytics
 
 ```BASIC
