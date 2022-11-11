@@ -130,6 +130,53 @@ SEND FILE img
 SAVE img as "folder/filename.jpg" 
 ```
 
+### Using General Bots Web Automation to custom notify about Calendar
+
+```basic
+
+REM Perform G. Login. 
+OPEN "https://accounts.google.com/ServiceLogin" 
+SET "#identifierId", "test@gmail.com" 
+PRESS ENTER 
+WAIT 3 
+SET "input[type='password']", "hempoil" 
+PRESS ENTER 
+WAIT 5 
+
+REM Enter on the Calendar page and capture the calendar grid inside the page. 
+OPEN "https://calendar.google.com/calendar/u/0/r?tab=mc&pli=1" 
+file = SCREENSHOT "div.K2fuAf" 
+
+REM Notify all team members with the updated calendar image. 
+list = FIND "People.xlsx", "Calendar=Y"  
+index = 1  
+DO WHILE index < ubound(list)  
+  row = list[index]  
+  TALK TO row.Mobile, "Hello " + row.Name + ", here is your calendar:"  
+  SEND FILE TO row.Mobile, file, "Calendar"  
+  index = index + 1  
+LOOP 
+ 
+```
+
+list = FIND "People.xlsx", "Calendar=Y"  
+
+index = 1  
+
+DO WHILE index < ubound(list)  
+
+row = list[index]  
+
+TALK TO row.Mobile, "Hello " + row.Name + ", here is your calendar:"  
+
+SEND FILE TO row.Mobile, file, "Calendar"  
+
+index = index + 1  
+
+LOOP 
+
+ 
+
 ### Using complete General Bots Conversational Data Analytics
 
 ```BASIC
@@ -153,8 +200,6 @@ SEND FILE img
 ```
 
 ![image](https://user-images.githubusercontent.com/14840374/178154826-8188029e-b4f4-48aa-bc0d-126307ce5121.png)
-
-
 
 
 ### Using General Bots Office templates
@@ -200,6 +245,8 @@ DO WHILE index <38
 LOOP 
 EXIT 
 ```
+
+
 
 ### Using POST data
 
