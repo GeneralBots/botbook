@@ -319,7 +319,7 @@ This in some way contributes to a better understanding of how it works.
 | exceljs | |
 | express | |
 | express-remove-route | |
-| ffmpeg-static                                | Converts multiple video/audio format, wrapper to [ffpmeg](https://ffmpeg.org/) |
+| ffmpeg-static                                | Converts multiple video/audio format, wrapper to [ffpmeg](https://ffmpeg.org/). |
 | google-libphonenumber | |
 | googleapis | |
 | ibm-watson | |
