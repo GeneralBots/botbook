@@ -266,7 +266,14 @@ This in some way contributes to a better understanding of how it works.
 | CTRL + ALT+UP/DOWN ARROW | Enter the Vertical Selection mode                                             |
 | ALT + UP/DOWN ARROW      | Move lines                                                                    |
 
+### Node Packages
 
+| Title                                        | Description                                                                    |
+|----------------------------------------------|--------------------------------------------------------------------------------|
+| ffmpeg-static                                | Converts multiple video/audio format, wrapper to [ffpmeg](https://ffmpeg.org/) |
+
+    
+    
 ### Visual Studio Code Extensions
 
 | Title                                        | Description                                                     |
