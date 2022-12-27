@@ -229,13 +229,14 @@ This in some way contributes to a better understanding of how it works.
     
     1.0.0
     MAJOR.MINOR.PATCH
-    BREAK.FEATURE.BUG
+    (BREAK.FEATURE.BUG)
     
     Rules:
     
-    If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
-    If the type contains feat/feature, then MINOR version is incremented.
-    If the type contains fix, then PATCH version is incremented.
+    BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
+    FEATURE: If the type contains feat/feature, then MINOR version is incremented.
+    BUG If the type contains fix, then PATCH version is incremented.
+    
     And finally, if the type contains refactor/style/perf/doc/test/chore, then nothing is increment and no release is made.
     
     
