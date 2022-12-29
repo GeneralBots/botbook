@@ -39,9 +39,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 cinst git --confirm
 cinst nodejs --confirm --version=19.3.0
 cinst vscode --confirm
+
 Install Python: https://www.python.org/downloads/release/python-2718/
-npm install windows-build-tools -g
-npm install -g node-gyp
 
 
 Enter your Source Directory:
