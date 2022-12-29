@@ -37,7 +37,7 @@ Please ensure that Node.js is not installed.
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 cinst git --confirm
-cinst nodejs --confirm --version=14.10.1
+cinst nodejs --confirm --version=19.3.0
 cinst vscode --confirm
 Install Python: https://www.python.org/downloads/release/python-2718/
 npm install windows-build-tools -g
