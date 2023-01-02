@@ -22,9 +22,10 @@ General procedures:
 
 1. Get SubscriptionId, username and password;
 2. Create AppId and Secret;
-3. Deploy General Bots;
-4. /setupSecurity to get access to Bot Drive;
-5. /publish to publish packages on root bot.
+3. Agree to MSFT Responsible AI;
+4. Deploy General Bots;
+5. /setupSecurity to get access to Bot Drive;
+6. /publish to publish packages on root bot.
 
 ### Windows
 
