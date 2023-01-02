@@ -228,39 +228,38 @@ This in some way contributes to a better understanding of how it works.
     
 See https://semver.org/.
 
-### Numbering
 
-1.0.0
-MAJOR.MINOR.PATCH
-(BREAK.FEATURE.BUG)
+The numbering rules are defined as the following syntax:
+    
+1.0.0<br/>
+MAJOR.MINOR.PATCH<br/>
+(BREAK.FEATURE.BUG)<br/>
 
-### Messsages
+### Details
 
-- A fix in the code:
+- A fix in the code (0.0.*1*):
 
 ```
 fix(azuredeployer.gbapp): stop graphite breaking when too much pressure applied Patch Fix Release 
 ```
 
-- A new feature
+- A new feature (0.*1*.0):
 
 ```
 feat(core.gbapp): add 'graphiteWidth' option 
 ```
 
-- A commit without incrementing version number:
+- A commit incrementing main version number (*1*.0.0):
 
 ```
 BREAKING CHANGE: The graphiteWidth option has been removed.
 ```
 
-or
-
+- A commit without incrementing version number (version remains unchanged)
 ```
 perf(core.gbapp): Improved loop.
 ```
-    
-    
+        
 ### Rules
 
 - BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
