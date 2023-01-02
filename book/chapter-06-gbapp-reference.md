@@ -224,51 +224,51 @@ This in some way contributes to a better understanding of how it works.
 
 ## Commit code
     
-    See https://semver.org/.
-    
-    Numbering:
-    
-    1.0.0
-    MAJOR.MINOR.PATCH
-    (BREAK.FEATURE.BUG)
-    
-    Messsages:
-    
-    - A fix in the code:
+See https://semver.org/.
 
-        ```
-        fix(azuredeployer.gbapp): stop graphite breaking when too much pressure applied Patch Fix Release 
-        ```
+### Numbering
 
-        - A new feature
+1.0.0
+MAJOR.MINOR.PATCH
+(BREAK.FEATURE.BUG)
 
-        ```
-        feat(core.gbapp): add 'graphiteWidth' option 
-        ```
+### Messsages
 
-        - A commit without incrementing version number:
+- A fix in the code:
 
-        ```
-        BREAKING CHANGE: The graphiteWidth option has been removed.
-        ```
+```
+fix(azuredeployer.gbapp): stop graphite breaking when too much pressure applied Patch Fix Release 
+```
 
-        or
+- A new feature
 
-        ```
-        perf(core.gbapp): Improved loop.
-        ```
+```
+feat(core.gbapp): add 'graphiteWidth' option 
+```
+
+- A commit without incrementing version number:
+
+```
+BREAKING CHANGE: The graphiteWidth option has been removed.
+```
+
+or
+
+```
+perf(core.gbapp): Improved loop.
+```
     
     
-    Rules:
-    
-    BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
-    FEATURE: If the type contains feat/feature, then MINOR version is incremented.
-    BUG If the type contains fix, then PATCH version is incremented.
-    
-    And finally, if the type contains refactor/style/perf/doc/test/chore, then nothing is increment and no release is made.
-    
-    
-    Source: https://medium.com/agoda-engineering/automating-versioning-and-releases-using-semantic-release-6ed355ede742
+### Rules
+
+BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
+FEATURE: If the type contains feat/feature, then MINOR version is incremented.
+BUG If the type contains fix, then PATCH version is incremented.
+
+And finally, if the type contains refactor/style/perf/doc/test/chore, then nothing is increment and no release is made.
+
+
+Source: https://medium.com/agoda-engineering/automating-versioning-and-releases-using-semantic-release-6ed355ede742
     
     
 ## Tooling
