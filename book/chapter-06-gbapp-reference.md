@@ -22,7 +22,7 @@ General procedures:
 
 1. Get SubscriptionId, username and password;
 2. Create AppId and Secret;
-3. Agree to MSFT Responsible AI;
+3. Agree to MSFT [Responsible AI](https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/TextAnalyticsCreate_Dx/searchEnabled~/false/storageEnabled~/false/dxParameters~/%7B%22searchEnabled%22%3Afalse%2C%22storageEnabled%22%3Afalse%7D) creating a temporary Text Analytics resource;
 4. Deploy General Bots;
 5. /setupSecurity to get access to Bot Drive;
 6. /publish to publish packages on root bot.
