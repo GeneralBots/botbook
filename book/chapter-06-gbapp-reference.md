@@ -261,15 +261,13 @@ perf(core.gbapp): Improved loop.
     
 ### Rules
 
-BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
-FEATURE: If the type contains feat/feature, then MINOR version is incremented.
-BUG If the type contains fix, then PATCH version is incremented.
+- BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
+- FEATURE: If the type contains feat/feature, then MINOR version is incremented.
+- BUG If the type contains fix, then PATCH version is incremented.
 
 And finally, if the type contains refactor/style/perf/doc/test/chore, then nothing is increment and no release is made.
 
-
 Source: https://medium.com/agoda-engineering/automating-versioning-and-releases-using-semantic-release-6ed355ede742
-    
     
 ## Tooling
 
