@@ -224,11 +224,40 @@ This in some way contributes to a better understanding of how it works.
 
 ## Commit code
     
+    See https://semver.org/.
+    
     Numbering:
     
     1.0.0
     MAJOR.MINOR.PATCH
     (BREAK.FEATURE.BUG)
+    
+    Messsages:
+    
+    - A fix in the code:
+
+        ```
+        fix(azuredeployer.gbapp): stop graphite breaking when too much pressure applied Patch Fix Release 
+        ```
+
+        - A new feature
+
+        ```
+        feat(core.gbapp): add 'graphiteWidth' option 
+        ```
+
+        - A commit without incrementing version number:
+
+        ```
+        BREAKING CHANGE: The graphiteWidth option has been removed.
+        ```
+
+        or
+
+        ```
+        perf(core.gbapp): Improved loop.
+        ```
+    
     
     Rules:
     
