@@ -33,7 +33,7 @@ General procedures:
 #### PowerShell Script
 
 Copy and paste on a PowerShell prompt with elavated privileges and when VSCode is opened just press F5 to run the development server. 
-Please ensure that Node.js is not installed.
+Please ensure that Node.js is not installed and enter your Source Directory.
 
 ``` powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -42,14 +42,16 @@ cinst git --confirm
 cinst nodejs --confirm --version=19.3.0
 cinst vscode --confirm
 
-Install Python: https://www.python.org/downloads/release/python-2718/
-
-
-Enter your Source Directory:
-
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
 &"C:\Program Files\Microsoft VS Code\bin\code.cmd" .
+
+#### Python & GCC 
+
+Install Python: https://www.python.org/downloads/release/python-2718/
+npm install windows-build-tools -g
+npm install -g node-gyp
+
 
 ```
 
