@@ -16,6 +16,8 @@ convertToKelvin or convertToCelsius called when user asks for conversion. A
 .gbapp can persist and read data from database according to the conversation
 session.
 
+Please read: [Anti Patterns Catalog](http://wiki.c2.com/?AntiPatternsCatalog).
+
 ## Preparing Environment
 
 General procedures:
