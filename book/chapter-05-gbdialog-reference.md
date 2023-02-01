@@ -59,19 +59,21 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ### Options
 
-| Instruction / Usage                                           | Description                                                                 |
-| ------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| SET HTTP HEADER _key =  _value_                         | Defines an HTTP header to be used to next GET call. |
-| SET HTTP USERNAME = _value_                             | Defines the HTTP username to be used to next GET call. |
-| SET HTTP PASSWORD = _value_                             | Defines the HTTP password to be used to next GET call. |
-| * SET HEAR ON "mobile"| | 
-| SET MAX LINES _value_ | | 
-| SET SCHEDULE "2 * * * * *" | | 
-| SET LANGUAGE _value_ | | 
-| SET TRANSLATOR [ON or OFF]| | 
-| SET WHOLE WORD [TRUE or FALSE]| | 
-| SET THEME "dark" or "white" or "blue" | Defines the theme to the next content generation (PDF, images, vídeos, etc.)|
-| SET OPERATOR [OR] | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
+| Instruction / Usage                                           | Description                                                                  |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| SET PARAM name AS value                        | Defines a retrievable param in the storage in the scope of the user                         |
+| GET PARAM name                                 | Returns a previously user scoped param via SET PARAM from the storage.                      |
+| SET HTTP HEADER _key =  _value_                | Defines an HTTP header to be used to next GET call.                                         |
+| SET HTTP USERNAME = _value_                    | Defines the HTTP username to be used to next GET call.                                      |
+| SET HTTP PASSWORD = _value_                    | Defines the HTTP password to be used to next GET call.                                      |
+| * SET HEAR ON "mobile"                         |                                                                                             | 
+| SET MAX LINES _value_                          |                                                                                             | 
+| SET SCHEDULE "2 * * * * *"                     |                                                                                             | 
+| SET LANGUAGE _value_                           |                                                                                             | 
+| SET TRANSLATOR [ON or OFF]                     |                                                                                             | 
+| SET WHOLE WORD [TRUE or FALSE]                 |                                                                                             | 
+| SET THEME "dark" or "white" or "blue"          | Defines the theme to the next content generation (PDF, images, vídeos, etc.)                |
+| SET OPERATOR [OR]                              | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
 
 * = Work in progress.
 
