@@ -224,6 +224,13 @@ This in some way contributes to a better understanding of how it works.
 
 ## How To...
 
+### Create a new keyword
+
+- 10min. Find the package on npmjs.com;
+- 2min.  Perform keywords list update;
+- (Optional) 10min. Create a new facade of keywords (Create service file, add reference to package/index.ts, and make a call);
+- 20min. Keyword code call and infrastructure to support it.
+    
 ### Debugging .gbapp deployed on Azure
 
 1. Visit https://<SITENAME>.scm.azurewebsites.net/api/vfs/LogFiles/Application/index.html
