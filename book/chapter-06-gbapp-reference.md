@@ -277,10 +277,19 @@ perf(core.gbapp): Improved loop.
 - FEATURE: If the type contains feat/feature, then MINOR version is incremented.
 - BUG If the type contains fix, then PATCH version is incremented.
 
-And finally, if the type contains refactor/style/perf/doc/test/chore, then nothing is increment and no release is made.
+### Types
 
-Source: https://medium.com/agoda-engineering/automating-versioning-and-releases-using-semantic-release-6ed355ede742
-    
+    build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+    ci: Changes to our CI configuration files and scripts (examples: CircleCi, SauceLabs)
+    docs: Documentation only changes
+    feat: A new feature
+    fix: A bug fix
+    perf: A code change that improves performance
+    refactor: A code change that neither fixes a bug nor adds a feature
+    test: Adding missing tests or correcting existing tests
+Sources: 
+    - https://medium.com/agoda-engineering/automating-versioning-and-releases-using-semantic-release-6ed355ede742
+    - https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format (Types)
 ## Tooling
 
 ### JavaScript
