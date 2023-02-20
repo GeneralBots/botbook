@@ -87,8 +87,10 @@ sudo apt-get install libxtst-dev
 apt-get install libpng-dev
 sudo apt-get install python g++ build-essential
 npm install -g node-gyp
-
 ```
+
+Add export GTK_IM_MODULE="xim" to .profile to fix Key Bindings in VSCode on Ubuntu.
+
 ### Setup git
 
 ```
