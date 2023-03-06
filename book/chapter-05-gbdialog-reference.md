@@ -55,7 +55,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 |NEW OBJECT| Creates a new object to be used with REST calls for example. <br>```data = NEW OBJECT``` <br> ```data.color = "blue"``` |
 |NEW ARRAY| Creates a new array. <br>```data = NEW ARRAY``` <br> ```data[0] = "blue"``` |
 | QRCODE | Creates a QRCode from specified text, eg.: file = QRCODE "data" |
-* = Work in progress.
+
 
 ### Options
 
@@ -74,7 +74,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | SET WHOLE WORD [TRUE or FALSE]                 |                                                                                             | 
 | SET THEME "dark" or "white" or "blue"          | Defines the theme to the next content generation (PDF, images, vídeos, etc.)                |
 | SET OPERATOR [OR]                              | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
-| SET FILTER TYPE date, string                   | Uses the specified type in next FIND calls, disabling auto detection of filter type. | 
+| SET FILTER TYPE <comma separated list of types>| Uses the specified type in next FIND calls, disabling auto detection of filter type, eg.: SET FILTER TYPE date, string | 
 
 * = Work in progress.
 
