@@ -2,8 +2,7 @@
 
 ### The bot development stack
 
-![General Bot Logo](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-stack.png)
-
+![General Bot Logo](https://github.com/GeneralBots/BotServer/blob/main/docs/images/general-bots-stack.png)
 
 ### Diagram Description
 
