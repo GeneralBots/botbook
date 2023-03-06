@@ -74,6 +74,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | SET WHOLE WORD [TRUE or FALSE]                 |                                                                                             | 
 | SET THEME "dark" or "white" or "blue"          | Defines the theme to the next content generation (PDF, images, vídeos, etc.)                |
 | SET OPERATOR [OR]                              | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
+| SET FILTER TYPE date, string                   | Uses the specified type in next FIND calls, disabling auto detection of filter type. | 
 
 * = Work in progress.
 
