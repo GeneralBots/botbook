@@ -70,7 +70,7 @@ here is a list of admin commands related to deploying .gb* files.
 | PRIVACY_STORE_MESSAGES | true                                             | If the bot server should store message logs in the database.
 | TEST_MESSAGE           | /publish                                         | If the bot server should auto send a message for test.
 | TEST_SHELL             | rm work/..                                       | If the user needs to continuously remove an archive.
-
+| GBDIALOG_GBDATABOT     | Shared.gbai/Shared.gbdata                        | If defined, BotServer will use this .gbdata instead of default location.
 ## How to
 
 ### Move to production (Azure)
