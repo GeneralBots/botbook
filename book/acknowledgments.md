@@ -7,6 +7,7 @@
 * Eduardo Romeiro (eromeirosp@outlook.com) - Content & UX.
 * Jorge Ramos (jramos@pobox.com) - Coding, Docs & Architecture
 * PH Nascimento (ph.an@outlook.com) - Product Manager
+* Alan Perdomo (alanperdomo@hotmail.com) - Coding, Docs & Architecture
 
 Powered by  Microsoft [BOT Framework](https://dev.botframework.com/) and [Azure](http://www.azure.com).
 
