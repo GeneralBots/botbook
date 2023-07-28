@@ -184,7 +184,19 @@ sudo apt install remmina remmina-plugin-rdp remmina-plugin-secret
     tar -xf my_archive.tar.gz 
     
 ```
-    
+# Removing Node.js on Linux
+
+sudo rm -rf /usr/local/bin/npm 
+sudo rm -rf /usr/local/share/man/man1/node* 
+sudo rm -rf /usr/local/lib/dtrace/node.d 
+sudo rm -rf ~/.npm 
+sudo rm -rf ~/.node-gyp 
+sudo rm -rf /opt/local/bin/node 
+sudo rm -rf opt/local/include/node 
+sudo rm -rf /opt/local/lib/node_modules  
+sudo rm -rf /usr/local/lib/node*
+sudo rm -rf /usr/local/include/node*
+sudo rm -rf /usr/local/bin/node*
     
 ![General Bots Inside Visual Studio Code provides a complete artificial intelligence based conversational platform](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-inside-visual-studio-code-provides-a-complete-artificial-intelligence-based-conversational-platform.png)
 
