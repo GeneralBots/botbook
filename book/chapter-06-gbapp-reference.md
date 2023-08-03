@@ -43,9 +43,9 @@ Please ensure that Node.js is not installed and enter your Source Directory.
 ``` powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-cinst git --confirm
-cinst nodejs --confirm --version=19.3.0
-cinst vscode --confirm
+choco install git --confirm
+choco install nodejs --confirm --version=19.3.0
+choco install vscode --confirm
 
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
