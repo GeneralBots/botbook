@@ -49,7 +49,7 @@ choco install vscode --confirm
 
 &"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
-&"C:\Program Files\Microsoft VS Code\bin\code.cmd" .
+code .
 
 #### Python & GCC 
 
