@@ -9,12 +9,11 @@ here is a list of admin commands related to deploying .gb* files.
 
 | Command         | Description                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------|
-| deployPackage   | Deploy a KB package. Usage **deployPackage** [package-name]. Then, you need to run rebuildIndex.                |
+| /edit           | Sends a link to the Bot Storage so package folders like .gbdialog, .gbkb, .gbot and others can be edited.       |
 | undeployPackage | Undeploy a KB. Usage **undeployPackage** [package-name].                                                        |
 | redeployPackage | Undeploy and then deploys the KB. Usage **redeployPackage** [package-name]. Then, you need to run rebuildIndex. |
-| setupSecurity   | Setup connection between General Bots and the Cloud, so the bot drive can be accessed by BotServer during publishing and direct access like the FIND keyword. |
-| syncBotServer   | Updates the cloud with the latest version from GitHub BotServer repository.                                     |
-| rebuildIndex    | Rebuild Azure Search indexes, must be run after **deployPackage** or **redeployPackage**. | Now it is called automatically |
+| /setupSecurity   | Setup connection between General Bots and the Cloud, so the bot drive can be accessed by BotServer during publishing and direct access like the FIND keyword. |
+
 | /publish [package]  | Deploy the package to the bot storage. When ommited, the command will publish the package named <botId>.gbkb by default. |
 
 # Config.xlsx (.gbot) Configuration
