@@ -55,6 +55,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 |NEW OBJECT| Creates a new object to be used with REST calls for example. <br>```data = NEW OBJECT``` <br> ```data.color = "blue"``` |
 |NEW ARRAY| Creates a new array. <br>```data = NEW ARRAY``` <br> ```data[0] = "blue"``` |
 | QRCODE | Creates a QRCode from specified text, eg.: file = QRCODE "data" |
+| ADD NOTE | Adds a note to a file named Notes.xls of .gbdata. eg.: ADD NOTE "text"  |
 
 
 ### Options
