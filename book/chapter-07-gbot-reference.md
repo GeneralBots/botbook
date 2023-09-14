@@ -43,6 +43,7 @@ here is a list of admin commands related to deploying .gb* files.
 | WhatsApp Group ID |   Group ID (accessible only in internal log) used to connect the Bot to a WhatsApp group.|
 | Debug Web Automation |   TRUE if Bot Admin Number will receive an screenshot to each web automation step.|
 | .gbapp List |   List of associated .gbapp packages to this .gbot. |
+| Group Spell |  Enable spell checker for groups. |
   
 ## Enviroment Variables Reference
 
