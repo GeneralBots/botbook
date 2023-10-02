@@ -58,6 +58,18 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | ADD NOTE | Adds a note to a file named Notes.xls of .gbdata. eg.: ADD NOTE "text"  |
 | ALLOW ROLE | Check if role specified in People sheet (.gbdata) will have access. eg.: ALLOW ROLE "DevOps"  |
 
+### Internal Variables and Functions.
+
+These are variables that can be used in General Bots BASIC to faster dialog and services faster.
+All values from .gbot Config.xlsx are also provided as variables, so it can be acessed directly in dialog.
+
+| Instruction / Usage                                           | Description                                                                  |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| aadToken() | Auto generated variable that contains Azure AD Token useful for calling Microsoft Web Services.           |
+
+
+
+
 ### Options
 
 | Instruction / Usage                                           | Description                                                                  |
@@ -76,6 +88,8 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | SET THEME "dark" or "white" or "blue"          | Defines the theme to the next content generation (PDF, images, vídeos, etc.)                |
 | SET OPERATOR [OR]                              | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
 | SET FILTER TYPE <comma separated list of types>| Uses the specified type in next FIND calls, disabling auto detection of filter type, eg.: SET FILTER TYPE date, string | 
+
+
 
 * = Work in progress.
 
