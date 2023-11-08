@@ -523,4 +523,5 @@ Sources:
 | ncu -a        | Update all packages in package.json |
 
 ## Useful documentation 
--https://www.typescriptlang.org/docs/handbook (TypeScript Documentation).
+- https://www.typescriptlang.org/docs/handbook (TypeScript Documentation).
+- https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/
