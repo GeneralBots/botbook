@@ -97,6 +97,16 @@ All values from .gbot Config.xlsx are also provided as variables, so it can be a
 
 ## How To
 
+### Use code in Excel 
+
+To reply as code in Excel, start the cell value with /basic followed by the code itself. Eg.:
+
+```
+/basic
+TALK "Hello."
+```
+
+
 ### Use General Bots computer vision
 
 1. Develop a BASIC dialog and publish;
