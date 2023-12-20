@@ -92,6 +92,12 @@ npm -v
 
 ```
 
+Opening 443 Port in Linux
+```
+sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
+sudo setcap 'cap_net_bind_service=+ep' `which node`
+```
+
 Additional Infrastructure 
 ```
 sudo apt-get install libxtst-dev
