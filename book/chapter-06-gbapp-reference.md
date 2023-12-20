@@ -31,12 +31,12 @@ General procedures:
 
 4. Deploy General Bots;
 5. Setup Azure Permissions to connect to SharePoint Drive
-Microsoft Graph
-    Sites.Read.All
-    Sites.ReadWrite.All
-    User.Read
-    Application.Read.All
-    Application.ReadWrite.All
+    - Microsoft Graph
+        - Sites.Read.All
+        - Sites.ReadWrite.All
+        - User.Read
+        - Application.Read.All
+        - Application.ReadWrite.All
 6. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
 7. /publish to publish packages on root bot.
 
