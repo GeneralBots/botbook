@@ -81,10 +81,10 @@ sudo apt install code
 
 ```
 
-Node JS 14
+Node JS 19
 ```
 
-curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
 sudo apt-get install -y nodejs
 node -v
 sudo apt install npm 
