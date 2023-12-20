@@ -30,13 +30,14 @@ General procedures:
 3. Agree to MSFT [Responsible AI #1](https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/TextAnalyticsCreate_Dx/searchEnabled~/false/storageEnabled~/false/dxParameters~/%7B%22searchEnabled%22%3Afalse%2C%22storageEnabled%22%3Afalse%7D) and [Responsible AI #2](https://portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne);
 
 4. Deploy General Bots;
-5. Setup Azure Permissions to connect to SharePoint Drive
+5. In Application | Permissions:
     - Microsoft Graph
         - Sites.Read.All
         - Sites.ReadWrite.All
         - User.Read
         - Application.Read.All
         - Application.ReadWrite.All
+6. In Authentication | Add Platform | Web | Redirect URL: https://{server}/{botId}/token;
 6. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
 7. /publish to publish packages on root bot.
 
