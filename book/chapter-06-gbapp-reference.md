@@ -94,8 +94,8 @@ npm -v
 
 Opening 443 Port in Linux
 ```
-sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
-sudo setcap 'cap_net_bind_service=+ep' `which node`
+sudo setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
+
 ```
 
 Additional Infrastructure 
