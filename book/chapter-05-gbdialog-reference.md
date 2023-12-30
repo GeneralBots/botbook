@@ -92,7 +92,7 @@ All values from .gbot Config.xlsx are also provided as variables, so it can be a
 | SET THEME "dark" or "white" or "blue"          | Defines the theme to the next content generation (PDF, images, vídeos, etc.)                |
 | SET OPERATOR [OR]                              | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
 | SET FILTER TYPE <comma separated list of types>| Uses the specified type in next FIND calls, disabling auto detection of filter type, eg.: SET FILTER TYPE date, string | 
-
+| SET PAGED "auto" or "none" | Defines auto pagging for HTTP REST GET calls. | 
 
 
 * = Work in progress.
