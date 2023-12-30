@@ -10,7 +10,7 @@ here is a list of admin commands related to deploying .gb* files.
 | Command         | Description                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------|
 | /edit           | Sends a link to the Bot Storage so package folders like .gbdialog, .gbkb, .gbot and others can be edited.       |
-| /setupSecurity   | Setup connection between General Bots and the Cloud, so the bot drive can be accessed by BotServer during publishing and direct access like the FIND keyword. |
+| /setupSecurity [tokenName]   | Setup connection between General Bots and the Cloud, so the bot drive can be accessed by BotServer during publishing and direct access like the FIND keyword. Or using tokenName, setups a connection defined in Config.xlsx.|
 | /publish [extension]  | Deploy the package to the bot storage. When ommited, the command will publish the package named <botId>.gbkb by default. |
 
 # Config.xlsx (.gbot) Configuration
