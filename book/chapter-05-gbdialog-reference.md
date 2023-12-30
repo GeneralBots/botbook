@@ -58,7 +58,9 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | ADD NOTE | Adds a note to a file named Notes.xls of .gbdata. eg.: ADD NOTE "text"  |
 | ALLOW ROLE | Check if role specified in People sheet (.gbdata) will have access. eg.: ALLOW ROLE "DevOps"  |
 | CONTINUATION TOKEN| Retuns the value of the continuation token associated with the current dialog. | 
-
+| UPLOAD file | Uploads a file to a storage blob, like Azure Storage. | 
+| DIR  path | Returns a list of files to be used with FOR EACH and performs actions. | 
+| TABLE name ON connection | Defines a TABLE on specified storage (database) connection. | 
 
 ### Internal Variables and Functions.
 
