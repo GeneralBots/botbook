@@ -61,6 +61,8 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | UPLOAD file | Uploads a file to a storage blob, like Azure Storage. | 
 | DIR  path | Returns a list of files to be used with FOR EACH and performs actions. | 
 | TABLE name ON connection | Defines a TABLE on specified storage (database) connection. | 
+| field AS dataType| Defines a field in TABLE. Eg.: name string(50). | 
+| FILL| Fills a data into a Word document to be exported as images | 
 
 ### Internal Variables and Functions.
 
