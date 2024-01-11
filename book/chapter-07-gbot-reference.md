@@ -44,6 +44,7 @@ here is a list of admin commands related to deploying .gb* files.
 | Debug Web Automation |   TRUE if Bot Admin Number will receive an screenshot to each web automation step.|
 | .gbapp List |   List of associated .gbapp packages to this .gbot. |
 | Group Spell |  Enable spell checker for groups. |
+| Synchronize Database | TRUE if TABLE keyword should *MODIFY* database. Be careful in Production storage this value should be FALSE (default). |
 
 Note that this variables are available in every .gbdialog code, automatically.
   
