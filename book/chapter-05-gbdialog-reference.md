@@ -64,6 +64,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | field AS dataType| Defines a field in TABLE. Eg.: name string(50). | 
 | FILL| Fills a data into a Word document to be exported as images | 
 | INCLUDE file | Includes a file into .gbdialog | 
+| FORMAT value, format | Formats a value according to format specified. Eg. d = FORMAT today, "YYYY-MM-dd" | 
 
 ### Internal Variables and Functions.
 
