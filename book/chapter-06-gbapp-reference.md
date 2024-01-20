@@ -41,6 +41,20 @@ General procedures:
 6. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
 7. /publish to publish packages on root bot.
 
+## .env
+
+.env is generated automatically, but if you want to advance, editing by yourself, put this file, filled, at BotServer root:
+```
+BOT_ID=
+CLOUD_SUBSCRIPTIONID=
+CLOUD_LOCATION=
+CLOUD_GROUP=
+CLOUD_USERNAME=
+CLOUD_PASSWORD=
+MARKETPLACE_ID=
+MARKETPLACE_SECRET=
+```
+
 ### Windows
 
 #### PowerShell Script
