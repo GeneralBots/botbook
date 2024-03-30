@@ -24,9 +24,6 @@ General procedures:
 
 1. Get SubscriptionId, username and password;
 2. Create AppId and Secret;
-    App.manifest on Azure:
-    "accessTokenAcceptedVersion": 2,
-    "signInAudience": "AzureADandPersonalMicrosoftAccount"
 3. Agree to MSFT [Responsible AI #1](https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/TextAnalyticsCreate_Dx/searchEnabled~/false/storageEnabled~/false/dxParameters~/%7B%22searchEnabled%22%3Afalse%2C%22storageEnabled%22%3Afalse%7D) and [Responsible AI #2](https://portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne);
 
 4. Deploy General Bots;
