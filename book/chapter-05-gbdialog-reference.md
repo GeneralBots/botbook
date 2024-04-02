@@ -65,6 +65,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | FILL| Fills a data into a Word document to be exported as images | 
 | INCLUDE file | Includes a file into .gbdialog | 
 | FORMAT value, format | Formats a value according to format specified. Eg. d = FORMAT today, "YYYY-MM-dd" | 
+| SEND MAIL | Sends an e-mail, eg.: SEND MAIL "mail@domain.com", "Subject", "Message body."
 
 ### Internal Variables and Functions.
 
