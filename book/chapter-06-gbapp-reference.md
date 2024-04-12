@@ -268,6 +268,14 @@ Is the implementation of new software based on existing software. The branch tak
 This in some way contributes to a better understanding of how it works.
 
 ## How To...
+### Clean up bot directly on database
+@@id = 0
+DELETE FROM GuaribasConversationMessage WHERE instanceId = @id
+DELETE FROM GuaribasConversation WHERE instanceId = @id
+DELETE FROM GuaribasUser WHERE instanceId = @id
+DELETE FROM GuaribasAnswer WHERE instanceId = @id
+DELETE FROM GuaribasQuestion WHERE instanceId = @id
+DELETE FROM GuaribasPackage WHERE instanceId = @id
 
 ### Create a new keyword
 
