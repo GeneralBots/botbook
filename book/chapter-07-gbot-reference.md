@@ -80,19 +80,19 @@ Note that this variables are available in every .gbdialog code, automatically.
 
 ### WhatsApp Procedures
 
-# Register PIN.
+#### Register PIN.
 
 https://graph.facebook.com/v18.0/999996037087713/
 {"pin" : "999999"}
 
-# Register Account.
+##### Register Account.
 
 https://graph.facebook.com/v18.0/999997245497156/register
 {
     "messaging_product": "whatsapp", "pin":999999
 }
 
-# Define message in profile.
+##### Define message in profile.
 
 https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
 {
