@@ -76,6 +76,29 @@ Note that this variables are available in every .gbdialog code, automatically.
 ### Move to production (Azure)
 
 * Update bot endpoint;
+* 
+
+### WhatsApp Procedures
+
+# Register PIN.
+
+https://graph.facebook.com/v18.0/999996037087713/
+{"pin" : "999999"}
+
+# Register Account.
+
+https://graph.facebook.com/v18.0/999997245497156/register
+{
+    "messaging_product": "whatsapp", "pin":999999
+}
+
+# Define message in profile.
+
+https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
+{
+"messaging_product": "whatsapp",
+"about": "Online"
+}
 
 ## Bot Analytics
 
