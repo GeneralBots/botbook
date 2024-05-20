@@ -80,6 +80,13 @@ Note that this variables are available in every .gbdialog code, automatically.
 
 ### WhatsApp Procedures
 
+#### Register Phone Number
+
+1. Open [Facebook App Dashboard](https://developers.facebook.com/apps) and register the App;
+2. Go to WhatsApp, API Setup and register the phone and save the Phone number ID to update the WhatsAppServiceNumer in GuaribasInstance.
+3. Generate a System User and associate it to the App;
+4. Get the token from User and update the WhatsAppServiceKey;
+
 #### Register PIN.
 
 https://graph.facebook.com/v18.0/999996037087713/
