@@ -1,85 +1,71 @@
 # General Bots - Run and Talk to the Bot
 
-### The bot development stack
+### Bot Development Stack
 
 ![General Bot Logo](https://github.com/GeneralBots/BotServer/blob/main/docs/images/general-bots-stack.png)
 
 ### Diagram Description
 
-1. gbapp and gblib extensions which are folder extensions for the GeneralBots package type.
-gbapp and gblib are responsible for GeneralBots services in a Back-end development environment.
-Four components builds up a General Bot App: dialogs, models, services and tests; 
+1. **gbapp** and **gblib** are folder extensions within the GeneralBots package type, responsible for GeneralBots services in a back-end development environment. A General Bot App comprises four components: dialogs, models, services, and tests.
 
-2. The .gbui extension is assigned to the GeneralBots front-end development environment. 
-Angular, Riot, React and HTML are responsible for the dynamic functioning of GeneralBots services;
+2. The **.gbui** extension pertains to the GeneralBots front-end development environment. Angular, Riot, React, and HTML enable dynamic functionality for GeneralBots services.
 
-3. The .gtheme extension is responsible for the GeneralBots designer using css and PS technologies.
-A theme is composed of some CSS files and images;
+3. The **.gtheme** extension is utilized by GeneralBots designers using CSS and PS technologies. A theme consists of CSS files and images.
 
-4. The .gbDialog is extension responsible for GeneralBots communication with the end user. Dialogues are bot services to users.
-.gbkb is package for execution of various types of media;
+4. **.gbDialog** is an extension responsible for GeneralBots' communication with end-users through bot services. **.gbkb** is a package for executing various types of media.
 
-5. The .gbot extension refers to the generalBots service product;
+5. The **.gbot** extension refers to the GeneralBots service product.
 
-6. The .gbai is architecture construction of the GeneralBots application.
+6. **.gbai** denotes the architecture construction of the GeneralBots application.
 
 ### The Bot Factory
 
 ![General Bots Block Architecture](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-block-architecture.png)
 
-GeneralBots aims to delivery bots in azure in a very easy and fast fashion. Use Office tools like Word or Excel to edit your Bot - using code (JavaScript or TypeScript) just to empower custom requirements.
+GeneralBots aims to deliver bots on Azure in an easy and efficient manner. Utilize office tools like Word or Excel for editing your bot, leveraging code (JavaScript or TypeScript) only for custom requirements.
 
 ## How To
 
-### Run the server locally
+### Running the Server Locally
 
-1. Install [Node.js](https://www.npmjs.com/get-npm) the current generation General Bot code execution platform;
-2. Open a **Terminal** on Linux and Mac or a **Command Prompt** and PowerShell window on Windows;
-3. Type `npm install -g botserver` and press *ENTER*;
-4. Type `gbot` to run the server core.
+1. Install [Node.js](https://www.npmjs.com/get-npm), the current-generation General Bot code execution platform.
+2. Open a **Terminal** on Linux and Mac, or a **Command Prompt** or PowerShell window on Windows.
+3. Type `npm install -g botserver` and press **ENTER**.
+4. Type `gbot` to start the server core.
 
-## Instalation by PowerShell or Command Prompt
+## Installation via PowerShell or Command Prompt
 
-![print instalation npm](https://user-images.githubusercontent.com/65977273/94572520-81e2f380-0247-11eb-9d69-ff70ad26b027.png)
+![Installation via npm](https://user-images.githubusercontent.com/65977273/94572520-81e2f380-0247-11eb-9d69-ff70ad26b027.png)
 
+### Notes:
 
+- [*nodejs.install* Chocolatey Package](https://chocolatey.org/packages/nodejs.install) is also available (Chocolatey is a Windows package manager).
+- The zip source code for General Bot is available for [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master).
 
-Notes:
+### Running Unit Tests
 
-* [*nodejs.install* Chocolatey Package](https://chocolatey.org/packages/nodejs.install) is also available. (Chocolatey is windows package manager).
-* The zip source code of General Bot is also available for [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master);
+1. Navigate to the BotServer root folder.
+2. Execute tests with `npm test`.
 
-### Running unit tests
+### Copying Source Code to Your Machine
 
-1. Enter the BotServer root folder.
-2. Run tests by `npm test`.
-
-
-
-### Just copy the source code to your machine
-
-1. [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master) the Zip file.
-
+1. [Download](https://codeload.github.com/pragmatismo-io/BotServer/zip/master) the zip file.
 
 ## Omnichannel
 
-Omnichannel allow the conversation to follow a sequence, regardless of whether the customer uses the same channel or not, because all calls record the consumer's history and profile.
+Omnichannel allows conversations to flow seamlessly regardless of the channel, as all interactions are recorded, preserving the consumer's history and profile.
 
 ## Spell Checker
 
-Spell checker is when GeneralBots spell-checks text to find and correct any typographical errors.
+GeneralBots performs spell-checking to identify and correct typographical errors.
 
 ## Speech to Text
 
-User speech recognition directly with generalBots.
+Enable user speech recognition directly with GeneralBots.
 
 ## Branding
 
-Branding is linked to a company's brand management, everything that includes, as its name, ideas among all the corporate ties that have its identification.
+Branding encompasses all aspects of a company's identity management, including its name and corporate visual elements.
+processing, and output through natural language.
 
-## NLP
-
-Means natural language processing.
-Artificial intelligence creates a subfield for better interactions between humans and computers. GeneralBots understands data input, processing and output through natural language.
-
-## Bot Factory
+---
