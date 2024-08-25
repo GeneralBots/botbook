@@ -1,1 +1,8 @@
 theme: jekyll-theme-slate
+presets:
+  - - redocusaurus
+    - specs:
+        - spec: https://gb.pragmatismo.cloud/swagger.yaml
+          route: /api/
+      theme:
+        primaryColor: '#1890ff'

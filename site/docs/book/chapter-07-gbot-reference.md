@@ -11,7 +11,7 @@ here is a list of admin commands related to deploying .gb* files.
 |-----------------|-----------------------------------------------------------------------------------------------------------------|
 | /edit           | Sends a link to the Bot Storage so package folders like .gbdialog, .gbkb, .gbot and others can be edited.       |
 | /setupSecurity [tokenName]   | Setup connection between General Bots and the Cloud, so the bot drive can be accessed by BotServer during publishing and direct access like the FIND keyword. Or using tokenName, setups a connection defined in Config.xlsx.|
-| /publish [extension]  | Deploy the package to the bot storage. When ommited, the command will publish the package named <botId>.gbkb by default. |
+| /publish [extension]  | Deploy the package to the bot storage. When ommited, the command will publish the package named (botId).gbkb by default. |
 
 # Config.xlsx (.gbot) Configuration
   
@@ -58,14 +58,14 @@ Note that this variables are available in every .gbdialog code, automatically.
 | CLOUD_LOCATION         | westus                                           | Cloud location used to deploy new bots.
 | CLOUD_GROUP            | newassistant                                     | Cloud group used to deploy new bots.
 | CLOUD_USERNAME         | someone@domain                                   | Cloud username used to deploy new bots.
-| CLOUD_PASSWORD         | <use a password generator>                       | Cloud password used to deploy new bots.
+| CLOUD_PASSWORD         | (use a password generator)                       | Cloud password used to deploy new bots.
 | MARKETPLACE_ID         | 9c90ff1c3-101b-4f0d-85cd-4bada2226fe3            | Martplace identifier associated to the boot bot.
 | MARKETPLACE_SECRET     | nzrNUUG6214%raqzYWQ8(+%                          | Martplace password associated to the boot bot.
 | STORAGE_DIALECT        | mssql                                            | The bot database dialect configuration value. Can be MSSQL or SQLITE.
 | STORAGE_SERVER         | newassistant-storage-server.database.windows.net | The bot database server name configuration value.
 | STORAGE_NAME           | newassistant-storage                             | The bot database name configuration value.
 | STORAGE_USERNAME       | sahaaksfqiehke                                   | The bot database security username configuration value.
-| STORAGE_PASSWORD       | <use a password generator>                       | The bot database security password configuration value.
+| STORAGE_PASSWORD       | (use a password generator)                       | The bot database security password configuration value.
 | STORAGE_SYNC           | true                                             | If the bot server should sync database before running.
 | PRIVACY_STORE_MESSAGES | true                                             | If the bot server should store message logs in the database.
 | TEST_MESSAGE           | /publish                                         | If the bot server should auto send a message for test.
@@ -88,24 +88,27 @@ Note that this variables are available in every .gbdialog code, automatically.
 4. Get the token from User and update the WhatsAppServiceKey;
 
 #### Register PIN.
-
+```
 https://graph.facebook.com/v18.0/999996037087713/
 {"pin" : "999999"}
+```
 
 ##### Register Account.
-
+```
 https://graph.facebook.com/v18.0/999997245497156/register
 {
     "messaging_product": "whatsapp", "pin":999999
 }
+```
 
 ##### Define message in profile.
-
+```
 https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
 {
 "messaging_product": "whatsapp",
 "about": "Online"
 }
+```
 
 ## Bot Analytics
 

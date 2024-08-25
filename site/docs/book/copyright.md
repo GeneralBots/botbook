@@ -1,12 +1,12 @@
 #
 
-{<} Published by %publisher%
+Published by Pragmatismo
 
-{<} Copyright © %copyright-year% %copyright-owner%
+Copyright © 2018-2024
 
-{<} License & Warranty
+License & Warranty
 
-General Bot Copyright (c) Pragmatismo.io. All rights reserved. Licensed under the AGPL-3.0.
+General Bots Copyright (c) Pragmatismo. All rights reserved. Licensed under the AGPL-3.0.
 
 According to our dual licensing model, this program can be used either under the terms of
 
@@ -18,5 +18,5 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 "General Bots" is a registered trademark of Pragmatismo.io. The licensing of the program under the AGPLv3 does not imply a trademark license. Therefore any rights, title and interest in our trademarks remain entirely with us.
 
-{<} www.pragmatismo.io
+pragmatismo.cloud
 

@@ -144,7 +144,7 @@ Add export GTK_IM_MODULE="xim" to .profile to fix Key Bindings in VSCode on Ubun
 #### Common Errors
 
 - The subscription is not registered to use namespace 'Microsoft.Web'. See https://aka.ms/rps-not-found for how to register subscriptions.
--- Enter Azure | <Subscription> | Resource providers | Find Microsoft.Web and check it.
+-- Enter Azure | Subscription | Resource providers | Find Microsoft.Web and check it.
 
 
 * Required packages
@@ -286,7 +286,7 @@ DELETE FROM GuaribasPackage WHERE instanceId = @id
     
 ### Debugging .gbapp deployed on Azure
 
-1. Visit https://<SITENAME>.scm.azurewebsites.net/api/vfs/LogFiles/Application/index.html
+1. Visit https://SITENAME.scm.azurewebsites.net/api/vfs/LogFiles/Application/index.html
 
 ## Commit code
     

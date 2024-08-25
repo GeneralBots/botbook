@@ -52,8 +52,8 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 | * SET page, cssSelector, value  | Define an field to value eg. "value 123" on the webpage specified by selector eg. "#id". | 
 | * CLICK page, cssSelector | Clicks on an element inside the web page being automated by General Bots. | 
 | * file = DOWNLOAD _url_ |  |
-|NEW OBJECT| Creates a new object to be used with REST calls for example. <br>```data = NEW OBJECT``` <br> ```data.color = "blue"``` |
-|NEW ARRAY| Creates a new array. <br>```data = NEW ARRAY``` <br> ```data[0] = "blue"``` |
+|NEW OBJECT| Creates a new object to be used with REST calls for example. <br/>```data = NEW OBJECT``` <br/> ```data.color = "blue"``` |
+|NEW ARRAY| Creates a new array. <br/>```data = NEW ARRAY``` <br/> ```data[0] = "blue"``` |
 | QRCODE | Creates a QRCode from specified text, eg.: file = QRCODE "data" |
 | ADD NOTE | Adds a note to a file named Notes.xls of .gbdata. eg.: ADD NOTE "text"  |
 | ALLOW ROLE | Check if role specified in People sheet (.gbdata) will have access. eg.: ALLOW ROLE "DevOps"  |
@@ -96,7 +96,7 @@ All values from .gbot Config.xlsx are also provided as variables, so it can be a
 | SET WHOLE WORD [TRUE or FALSE]                 |                                                                                             | 
 | SET THEME "dark" or "white" or "blue"          | Defines the theme to the next content generation (PDF, images, vídeos, etc.)                |
 | SET OPERATOR [OR]                              | Defines OR operations on multiple FIND filters separated by comma, eg.: FIND "A1=2", "A3=4" | 
-| SET FILTER TYPE <comma separated list of types>| Uses the specified type in next FIND calls, disabling auto detection of filter type, eg.: SET FILTER TYPE date, string | 
+| SET FILTER TYPE [comma separated list of types]| Uses the specified type in next FIND calls, disabling auto detection of filter type, eg.: SET FILTER TYPE date, string | 
 | SET PAGED "auto" or "none" | Defines auto pagging for HTTP REST GET calls. | 
 
 
