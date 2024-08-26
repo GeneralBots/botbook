@@ -1,4 +1,8 @@
-# General Bots Administration
+---
+sidebar_position: 70
+---
+
+# .gbot Reference
 
 ## Instance custom params
 
@@ -113,5 +117,4 @@ https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
 ## Bot Analytics
 
 ## Cloud Internals
-
 

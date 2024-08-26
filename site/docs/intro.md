@@ -1,47 +1,52 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 ---
 
-# Tutorial Intro
+# General Bots Documentation
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the General Bots documentation. This is a reference material that can be used
+to understand how the bot server is organized in a form of packages itself and 
+this arrangement can be used to all custom deployed packages like .gbkb, .gbtheme
+or .gbapp.
+This book is organized in ten chapters that can be accessed throuhg this table bellow:
+
+* [Chapter 01 - Run and Talk](chapter-01-run-and-talk.md)
+* [Chapter 02 - About Packages](chapter-02-the-package-based.md)
+* [Chapter 03 - gbkb Reference](chapter-03-gbkb-reference.md)
+* [Chapter 04 - gbtheme Reference](chapter-04-gbtheme-reference.md)
+* [Chapter 05 - gbdialog Reference](chapter-05-gbdialog-reference.md)
+* [Chapter 06 - gbapp Reference](chapter-06-gbapp-reference.md)
+* [Chapter 07 - gbot Reference](chapter-07-gbot-reference.md)
+* [Chapter 08 - Tooling](chapter-08-tooling.md)
+* [Chapter 09 - Services](chapter-09-services.md)
+* [Chapter 10 - Contributing](chapter-10-contributing.md)
+* [Apendix I - Database Model](apendix-i-database-model.md)
+* [Glossary](glossary.md)
+
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Get started by **creating a new bot**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+Or **[Create Bot](https://gb.pragmatismo.cloud/PROD-GeneralBots006)** with General Bots Online.
 
 ### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+- [Node.js](https://nodejs.org/en/download/) version 20:
+- [Git](https://nodejs.org/en/download/) version 20:
+  
+```
+  git clone https://github.com/GeneralBots/BotServer
+  npm run start
 ```
 
 You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
 The command also installs all necessary dependencies you need to run Docusaurus.
 
-## Start your site
+## Navigate to your bot
 
-Run the development server:
 
-```bash
-cd my-website
-npm run start
-```
+The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:4242/.
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Type `/publish` to publish bot packages and start talking to the bot.

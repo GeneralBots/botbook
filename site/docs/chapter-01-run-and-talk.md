@@ -1,4 +1,8 @@
-# General Bots - Run and Talk to the Bot
+---
+sidebar_position: 10
+---
+
+# Run and Talk
 
 ### Bot Development Stack
 
@@ -32,10 +36,6 @@ GeneralBots aims to deliver bots on Azure in an easy and efficient manner. Utili
 2. Open a **Terminal** on Linux and Mac, or a **Command Prompt** or PowerShell window on Windows.
 3. Type `npm install -g botserver` and press **ENTER**.
 4. Type `gbot` to start the server core.
-
-## Installation via PowerShell or Command Prompt
-
-![Installation via npm](https://user-images.githubusercontent.com/65977273/94572520-81e2f380-0247-11eb-9d69-ff70ad26b027.png)
 
 ### Notes:
 

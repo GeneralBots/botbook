@@ -1,3 +1,7 @@
+---
+sidebar_position: 30
+---
+
 # .gbkb Reference
 ![generalbots-2018](https://user-images.githubusercontent.com/65977273/94922431-949c3900-0490-11eb-800a-6b478d689f2a.png)
 

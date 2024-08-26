@@ -1,3 +1,0 @@
-# Preface
-
-Probably not necessary.

@@ -1,4 +1,9 @@
-# .gbapp Guide
+---
+sidebar_position: 60
+---
+
+# .gbapp Reference
+
 ![generalbots-2018](https://user-images.githubusercontent.com/65977273/94922431-949c3900-0490-11eb-800a-6b478d689f2a.png)
 
 ## Introduction
@@ -34,7 +39,7 @@ General procedures:
         - User.Read
         - Application.Read.All
         - Application.ReadWrite.All
-6. In Authentication | Add Platform | Web | Redirect URL: https://{server}/{botId}/token;
+6. In Authentication | Add Platform | Web | Redirect URL: https://server/botId/token;
 6. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
 7. /publish to publish packages on root bot.
 
@@ -92,10 +97,10 @@ sudo apt install code
 
 ```
 
-Node JS 19
+Node JS 20
 ```
 
-curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
 node -v
 sudo apt install npm 
@@ -137,7 +142,7 @@ Add export GTK_IM_MODULE="xim" to .profile to fix Key Bindings in VSCode on Ubun
 3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system); 
 4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
 5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
-6. Clone the just forked repository by running `git clone <your-forked-repository-url>/BotServer.git` ; 
+6. Clone the just forked repository by running `git clone your-forked-repository-url/BotServer.git` ; 
 7. Run the bot server by `gbot.cmd` .
 
 
@@ -295,9 +300,9 @@ See https://semver.org/.
 
 The numbering rules are defined as the following syntax:
     
-1.0.0<br/>
-MAJOR.MINOR.PATCH<br/>
-(BREAK.FEATURE.BUG)<br/>
+1.0.0
+MAJOR.MINOR.PATCH
+(BREAK.FEATURE.BUG)
 
 ### Details
 

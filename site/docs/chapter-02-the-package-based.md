@@ -1,6 +1,10 @@
-# About Packages
+---
+sidebar_position: 20
+---
 
-Packages can be stored as folders in the file system, synced with cloud storages and
+# Package Based principles
+
+Packages are folders in the file system, synced with cloud storages and
 content management systems like SharePoint and even sent like .zip files on a e-mail.
 Just to increse bot knowledge, intelligence and how they look to us. So working on a
 General Bots project is like to split the work on several packages if needed and work
@@ -10,6 +14,9 @@ companies to more advanced package building. Composite packages on GeneralBots:
 
 ![print packages](https://user-images.githubusercontent.com/65977273/94712159-7662fb80-031f-11eb-8217-1c0507bfe5d5.png)
 
+# Your own data
+
+You will see your data in .gbdata.
 
 ## How To
 

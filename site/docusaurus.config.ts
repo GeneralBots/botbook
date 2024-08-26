@@ -8,7 +8,7 @@ const config: Config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://gb.pragmatismo.cloud",
+  url: "https://docs.pragmatismo.cloud",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -18,7 +18,7 @@ const config: Config = {
   organizationName: "General Bots", // Usually your GitHub org/user name.
   projectName: "General Bots", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   // // Even if you don't use internationalization, you can use this field to set
@@ -89,10 +89,10 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Docs",
         },
         { to: "/api", label: "API", position: "left" },
-        { to: "/blog", label: "Blog", position: "left" },
+        { to: "https://github.com/GeneralBots/BotServer/tree/main/templates", label: "Templates", position: "left" },
         {
           href: "https://github.com/GeneralBots",
           label: "GitHub",
@@ -107,7 +107,7 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
+              label: "Documentation",
               to: "/docs/intro",
             },
           ],

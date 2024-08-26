@@ -1,4 +1,8 @@
-# Contributing to the General Bots open-core
+---
+sidebar_position: 100
+---
+
+# Contributing
 
 ## How To
 
