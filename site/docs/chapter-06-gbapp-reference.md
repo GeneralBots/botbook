@@ -88,37 +88,39 @@ npm install -g node-gyp
 
 Visual Studio Code
 ```
-sudo apt update
-sudo apt install software-properties-common apt-transport-https wget
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-sudo apt update
-sudo apt install code
+apt update
+apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+apt update
+apt install code
 
 ```
 
 Node JS 20
 ```
 
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_20.x | -E bash -
+apt-get install -y nodejs
 node -v
-sudo apt install npm 
+apt install npm 
 npm -v
 
 ```
 
 Opening 443 Port in Linux
 ```
-sudo setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
+setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
 
 ```
 
 Additional Infrastructure 
 ```
-sudo apt-get install libxtst-dev
+apt-get install cpulimit
+sudo apt-get install expect
+apt-get install libxtst-dev
 apt-get install libpng-dev
-sudo apt-get install python g++ build-essential
+apt-get install python g++ build-essential
 npm install -g node-gyp
 ```
 
@@ -195,9 +197,9 @@ Linux
 ```
 # MS Remote Desktop Connection (RDP Client) 
     
-sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
-sudo apt update
-sudo apt install remmina remmina-plugin-rdp remmina-plugin-secret
+apt-add-repository ppa:remmina-ppa-team/remmina-next
+apt update
+apt install remmina remmina-plugin-rdp remmina-plugin-secret
 
 ```
 
@@ -216,17 +218,17 @@ sudo apt install remmina remmina-plugin-rdp remmina-plugin-secret
 ```
 # Removing Node.js on Linux
 ```
-sudo rm -rf /usr/local/bin/npm 
-sudo rm -rf /usr/local/share/man/man1/node* 
-sudo rm -rf /usr/local/lib/dtrace/node.d 
-sudo rm -rf ~/.npm 
-sudo rm -rf ~/.node-gyp 
-sudo rm -rf /opt/local/bin/node 
-sudo rm -rf opt/local/include/node 
-sudo rm -rf /opt/local/lib/node_modules  
-sudo rm -rf /usr/local/lib/node*
-sudo rm -rf /usr/local/include/node*
-sudo rm -rf /usr/local/bin/node*
+rm -rf /usr/local/bin/npm 
+rm -rf /usr/local/share/man/man1/node* 
+rm -rf /usr/local/lib/dtrace/node.d 
+rm -rf ~/.npm 
+rm -rf ~/.node-gyp 
+rm -rf /opt/local/bin/node 
+rm -rf opt/local/include/node 
+rm -rf /opt/local/lib/node_modules  
+rm -rf /usr/local/lib/node*
+rm -rf /usr/local/include/node*
+rm -rf /usr/local/bin/node*
 ```
 
 
