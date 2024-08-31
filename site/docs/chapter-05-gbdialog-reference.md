@@ -315,16 +315,11 @@ hear one of subscriptions with email, password into subscriptionId
 talk "The subscription selected was: " + subscriptionId
 
 
-# Simple and Advances examples.
+```markdown
+# General Bots BASIC Sample Programs
 
 Here’s a single markdown document containing the 20 sample programs in General Bots BASIC, each with a modern and engaging approach:
 
-```
-## 20 very simple samples of BASIC 
-
-
-```markdown
-# General Bots BASIC Sample Programs
 
 ## 1. Welcome Message
 ```basic
@@ -470,7 +465,6 @@ ELSE
 Here’s a more complex set of 20 advanced General Bots BASIC programs that integrate web services, web automation, file handling, and dynamic interactions. These samples are designed to showcase the full potential of General Bots BASIC for advanced users.
 
 ```markdown
-# Advanced General Bots BASIC Sample Programs
 
 ## 1. **Retrieve and Save Web Data to Excel**
 ```basic
