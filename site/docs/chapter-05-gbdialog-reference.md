@@ -11,13 +11,10 @@ General Bots BASIC using HEAR and TALK keywords provides a easy to write bot lan
 
 ## Architecture
 
+## 
 
+A BASIC Isolated Virtual Machine Architecture, like creating a conversation Node.js application just using BASIC. All code will run isolated on a Node, (https://user-images.githubusercontent.com/14840374/200206510-9f5bd788-e710-4932-9ed8-a09599656cea.png).
 
-## BASIC Isolated Virtual Machine Architecture
-
-It is like creating a conversation Node.js application just using BASIC. All code will run isolated on a Node VM:
-
-![image](https://user-images.githubusercontent.com/14840374/200206510-9f5bd788-e710-4932-9ed8-a09599656cea.png)
 One of the key security features of the General Bots platform is its use of isolated virtual machines (VMs) for each dialog. This architecture provides a robust layer of security and isolation, significantly reducing the risk of cross-contamination or unauthorized access between different bot interactions.
 
 ### How It Works
