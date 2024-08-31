@@ -76,7 +76,7 @@ To organize the instructions functionally, I'll group them into five categories:
 | HEAR _variable_ AS FILE  | Returns a file uploaded by the user to be saved.        | <pre>HEAR file AS FILE <br/> SAVE file AS "uploads/myfile.pdf" <br/> TALK "File uploaded and saved."</pre>           |
 | HEAR _variable_ AS AUDIO | Returns an audio file uploaded by the user to be saved. | <pre>HEAR audio AS AUDIO <br/> SAVE audio AS "recordings/audiofile.mp3" <br/> TALK "Audio received and saved."</pre> |
 | INCLUDE file             | Includes a file into .gbdialog.                         | <pre>INCLUDE "script.gbdialog" <br/> TALK "File included."</pre>                                                     |
-| UPLOAD file              | Uploads a file to a storage blob, like Azure Storage.   | <pre>UPLOAD "                                                                                                        |
+| UPLOAD file              | Uploads a file to a storage blob, like Azure Storage.   | <pre>UPLOAD "                                   </pre>                                                                     |
 
 path/to/file.pdf" <br/> TALK "File uploaded to cloud storage."</pre> |
 | DIR path | Returns a list of files in the specified directory. | <pre>files = DIR "uploads/" <br/> TALK "Files in directory: " + files.</pre> |
