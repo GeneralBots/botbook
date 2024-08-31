@@ -315,4 +315,356 @@ hear one of subscriptions with email, password into subscriptionId
 talk "The subscription selected was: " + subscriptionId
 
 
+# Simple and Advances examples.
+
+Here’s a single markdown document containing the 20 sample programs in General Bots BASIC, each with a modern and engaging approach:
+
 ```
+## 20 very simple samples of BASIC 
+
+
+```markdown
+# General Bots BASIC Sample Programs
+
+## 1. Welcome Message
+```basic
+HEAR name AS NAME
+TALK "Hey " + name + ", welcome to our awesome service! 🎉"
+```
+
+## 2. Simple Password Generator
+```basic
+GENERATE A PASSWORD
+TALK "Your new password is: " + password
+```
+
+## 3. Remind User to Take a Break
+```basic
+WAIT 3600
+TALK "You've been working for an hour! Remember to take a break and stretch! 💪"
+```
+
+## 4. Get User's Favorite Fruit
+```basic
+HEAR fruit AS "Apple", "Banana", "Cherry"
+TALK "Nice choice! " + fruit + " is a great fruit! 🍓"
+```
+
+## 5. Send a Calendar Invite
+```basic
+HEAR email AS EMAIL
+HEAR date AS DATE
+TALK "Sending a calendar invite for " + date + " to " + email
+SEND MAIL email, "Calendar Invite", "You are invited to an event on " + date
+```
+
+## 6. Generate and Send QR Code
+```basic
+HEAR url AS "https://example.com"
+file = QRCODE url
+SEND FILE file
+TALK "Here is your QR code for the URL: " + url
+```
+
+## 7. Weather Update
+```basic
+GET "https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=YOUR_LOCATION"
+data = result.current
+TALK "The current temperature is " + data.temp_c + "°C with " + data.condition.text
+```
+
+## 8. Todo List Reminder
+```basic
+HEAR task AS STRING
+TALK "Got it! I'll remind you about: " + task
+```
+
+## 9. Send Motivational Quote
+```basic
+quotes = ["Keep going!", "You got this!", "Believe in yourself!"]
+index = RANDOM(0, 2)
+TALK quotes[index]
+```
+
+## 10. Capture and Send Screenshot
+```basic
+OPEN "https://example.com"
+file = SCREENSHOT "body"
+SEND FILE file
+TALK "Here's a screenshot of the page."
+```
+
+## 11. Daily Affirmation
+```basic
+HEAR user AS NAME
+TALK "Good morning " + user + "! Remember, today is going to be amazing! 🌟"
+```
+
+## 12. Send a Joke
+```basic
+jokes = ["Why don’t scientists trust atoms? Because they make up everything!", "Why did the scarecrow win an award? Because he was outstanding in his field!"]
+index = RANDOM(0, 1)
+TALK jokes[index]
+```
+
+## 13. User Poll
+```basic
+HEAR choice AS "Option 1", "Option 2", "Option 3"
+TALK "You selected " + choice + ". Thanks for your input! 🗳️"
+```
+
+## 14. Image Caption Extraction
+```basic
+SEE CAPTION OF "https://example.com/image.jpg" AS caption
+TALK "The caption of the image is: " + caption
+```
+
+## 15. Send Reminder Email
+```basic
+HEAR email AS EMAIL
+HEAR reminder AS STRING
+SEND MAIL email, "Reminder", "Just a friendly reminder: " + reminder
+```
+
+## 16. Capture Text from Image
+```basic
+SEE TEXT OF "https://example.com/image-with-text.jpg" AS text
+TALK "The text from the image is: " + text
+```
+
+## 17. Add a Note
+```basic
+HEAR note AS STRING
+ADD NOTE note
+TALK "Note added: " + note
+```
+
+## 18. Generate Dynamic Chart
+```basic
+data = [5, 15, 25]
+labels = "Red;Green;Blue"
+img = CHART "bar", data, labels
+SEND FILE img
+TALK "Here’s your dynamic chart!"
+```
+
+## 19. Create and Send PDF Report
+```basic
+data = FIND "data.xlsx", "A1:B10"
+pdf = data AS PDF
+SEND FILE pdf
+TALK "Here's your report in PDF format."
+```
+
+## 20. Interactive Game
+```basic
+TALK "Guess a number between 1 and 10."
+HEAR guess AS INTEGER
+IF guess == 7
+    TALK "Congratulations! You guessed the right number! 🎉"
+ELSE
+    TALK "Oops! Try again next time!"
+```
+
+
+Here’s a more complex set of 20 advanced General Bots BASIC programs that integrate web services, web automation, file handling, and dynamic interactions. These samples are designed to showcase the full potential of General Bots BASIC for advanced users.
+
+```markdown
+# Advanced General Bots BASIC Sample Programs
+
+## 1. **Retrieve and Save Web Data to Excel**
+```basic
+GET "https://api.example.com/data"
+data = result.data
+SAVE "data.xlsx", "A1:A" + UBOUND(data), data
+TALK "Data retrieved and saved to data.xlsx successfully!"
+```
+
+## 2. **Automated Web Form Submission**
+```basic
+OPEN "https://example.com/form"
+SET page, "#name", "John Doe"
+SET page, "#email", "john.doe@example.com"
+SET page, "#message", "This is a test message."
+CLICK page, "#submit"
+TALK "Form submitted successfully!"
+```
+
+## 3. **Generate and Save Dynamic Report as PDF**
+```basic
+data = FIND "report_data.xlsx", "A1:C10"
+pdf = data AS PDF
+SAVE pdf AS "report.pdf"
+TALK "Dynamic report generated and saved as report.pdf!"
+```
+
+## 4. **Create and Upload Image from Data**
+```basic
+data = [10, 20, 30, 40]
+labels = "Q1;Q2;Q3;Q4"
+img = CHART "bar", data, labels
+UPLOAD img
+TALK "Chart image generated and uploaded!"
+```
+
+## 5. **Automate GitHub Issue Creation from Spreadsheet**
+```basic
+list = FIND "issues.xlsx"
+index = 1
+DO WHILE index <= UBOUND(list)
+    row = list[index]
+    page = GET HTML "https://github.com/GeneralBots/BotServer/issues/new"
+    SET page, "#issue_title", row.title
+    SET page, "#issue_body", row.body
+    CLICK page, "#new_issue > div > div > div.Layout-main > div > div.timeline-comment.color-bg-default.hx_comment-box--tip > div > div.flex-items-center.flex-justify-end.d-none.d-md-flex.mx-2.mb-2.px-0 > button"
+    TALK "Issue '" + row.title + "' created."
+    WAIT 5
+    index = index + 1
+LOOP
+```
+
+## 6. **Extract and Save Web Page Content**
+```basic
+OPEN "https://example.com/page"
+content = GET page, "body"
+SAVE "page_content.txt", content
+TALK "Page content saved as page_content.txt!"
+```
+
+## 7. **Interactive Poll Results Analysis**
+```basic
+HEAR poll_data AS FILE
+data = LOAD poll_data
+analysis = SELECT question, COUNT(*) AS responses FROM data GROUP BY question
+SAVE "poll_analysis.xlsx", "A1:C" + UBOUND(analysis), analysis
+TALK "Poll results analyzed and saved to poll_analysis.xlsx!"
+```
+
+## 8. **Send User-Specific Notifications**
+```basic
+list = FIND "users.xlsx", "Notify=Y"
+index = 1
+DO WHILE index <= UBOUND(list)
+    row = list[index]
+    SEND MAIL row.email, "Notification", "Hello " + row.name + ", you have a new notification!"
+    index = index + 1
+LOOP
+TALK "Notifications sent to all users."
+```
+
+## 9. **Automate Data Entry into Web Application**
+```basic
+OPEN "https://example.com/data-entry"
+SET page, "#field1", "Value1"
+SET page, "#field2", "Value2"
+SET page, "#field3", "Value3"
+CLICK page, "#submit"
+TALK "Data entry completed successfully!"
+```
+
+## 10. **Generate and Save QR Codes for Multiple URLs**
+```basic
+urls = ["https://example1.com", "https://example2.com", "https://example3.com"]
+index = 1
+DO WHILE index <= UBOUND(urls)
+    file = QRCODE urls[index]
+    SAVE file AS "qrcode_" + index + ".png"
+    index = index + 1
+LOOP
+TALK "QR codes generated and saved!"
+```
+
+## 11. **Automate Google Calendar Event Creation**
+```basic
+OPEN "https://calendar.google.com/calendar/u/0/r?tab=mc&pli=1"
+HEAR event_date AS DATE
+HEAR event_details AS STRING
+SET "#title", "New Event"
+SET "#details", event_details
+SET "#date", event_date
+CLICK "#save"
+TALK "Event created on Google Calendar for " + event_date
+```
+
+## 12. **Send Customized Reports to a List of Recipients**
+```basic
+data = FIND "reports.xlsx"
+index = 1
+DO WHILE index <= UBOUND(data)
+    row = data[index]
+    report = TEMPLATE "report_template.docx" WITH row
+    SEND MAIL row.email, "Your Report", report
+    index = index + 1
+LOOP
+TALK "Reports sent to all recipients."
+```
+
+## 13. **Create and Save Dynamic Chart with User Input**
+```basic
+HEAR user_data AS "10,20,30,40"
+data = SPLIT(user_data, ",")
+img = CHART "line", data
+SAVE img AS "dynamic_chart.png"
+TALK "Dynamic chart created and saved as dynamic_chart.png!"
+```
+
+## 14. **Extract and Save Image Metadata**
+```basic
+SEE TEXT OF "https://example.com/image.jpg" AS metadata
+SAVE "image_metadata.txt", metadata
+TALK "Image metadata extracted and saved as image_metadata.txt!"
+```
+
+## 15. **Automate Form Filling Based on Data from Excel**
+```basic
+data = FIND "form_data.xlsx", "A1:C1"
+OPEN "https://example.com/form"
+SET page, "#name", data[0].name
+SET page, "#email", data[0].email
+SET page, "#message", data[0].message
+CLICK page, "#submit"
+TALK "Form filled and submitted based on Excel data!"
+```
+
+## 16. **Generate PDF from Dynamic SQL Query Results**
+```basic
+data = FIND "database.xlsx", "A1:C100"
+query = SELECT name, age, city FROM data WHERE age > 30
+pdf = query AS PDF
+SAVE pdf AS "filtered_data_report.pdf"
+TALK "PDF report generated and saved!"
+```
+
+## 17. **Capture and Save Web Page Screenshot with Timestamp**
+```basic
+timestamp = FORMAT NOW(), "YYYY-MM-DD_HH-MM-SS"
+OPEN "https://example.com"
+file = SCREENSHOT "body"
+SAVE file AS "screenshot_" + timestamp + ".png"
+TALK "Screenshot captured and saved with timestamp!"
+```
+
+## 18. **Handle and Save User-Uploaded Files**
+```basic
+HEAR user_file AS FILE
+SAVE user_file AS "uploads/user_file_" + FORMAT NOW(), "YYYY-MM-DD_HH-MM-SS" + ".pdf"
+TALK "File uploaded and saved successfully!"
+```
+
+## 19. **Extract Data from Web Page and Save to Excel**
+```basic
+OPEN "https://example.com/data-page"
+data = GET page, "#data-table"
+SAVE "web_data.xlsx", "A1:A" + UBOUND(data), data
+TALK "Data extracted from web page and saved to web_data.xlsx!"
+```
+
+## 20. **Perform Complex Data Analysis and Save Results**
+```basic
+data = FIND "complex_data.xlsx", "A1:D100"
+analysis = SELECT category, SUM(amount) AS total FROM data GROUP BY category
+SAVE "data_analysis.xlsx", "A1:B" + UBOUND(analysis), analysis
+TALK "Data analysis completed and saved to data_analysis.xlsx!"
+```
+
+These advanced samples illustrate a range of functionalities that can be implemented with General Bots BASIC, from data manipulation and web automation to dynamic content generation and complex file handling.
