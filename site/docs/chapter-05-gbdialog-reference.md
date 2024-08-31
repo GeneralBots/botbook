@@ -21,7 +21,7 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 To organize the instructions functionally, I'll group them into five categories: **Basic Interaction**, **Data Handling**, **Web Automation**, **File Management**, and **Advanced Operations**. Each group will include relevant instructions with examples.
 
-```markdown
+
 ## Basic Interaction
 
 | Instruction / Usage                                           | Description                                                                 | Example |
