@@ -91,8 +91,6 @@ To organize the instructions functionally, I'll group them into five categories:
 | NEW OBJECT               | Creates a new object to be used with REST calls.                                | <pre>data = NEW OBJECT <br/> data.color = "blue" <br/> TALK "New object created."</pre> |
 | NEW ARRAY                | Creates a new array.                                                            | <pre>data = NEW ARRAY <br/> data[0] = "red" <br/> TALK "New array created."</pre>       |
 
-```
-
 
 ### Internal Variables and Functions.
 
