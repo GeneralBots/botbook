@@ -8,9 +8,48 @@ sidebar_position: 50
 
 General Bots BASIC using HEAR and TALK keywords provides a easy to write bot language accessible to everyone and used as incomer for people willing to make their own bot.
 
+
+## Architecture
+
+
+
+## BASIC Isolated Virtual Machine Architecture
+
 It is like creating a conversation Node.js application just using BASIC. All code will run isolated on a Node VM:
 
 ![image](https://user-images.githubusercontent.com/14840374/200206510-9f5bd788-e710-4932-9ed8-a09599656cea.png)
+One of the key security features of the General Bots platform is its use of isolated virtual machines (VMs) for each dialog. This architecture provides a robust layer of security and isolation, significantly reducing the risk of cross-contamination or unauthorized access between different bot interactions.
+
+### How It Works
+
+1. **Individual VM per Dialog**: Each time a user initiates a dialog with a bot, the platform spawns a new, isolated virtual machine dedicated to that specific interaction.
+
+2. **Limited Capabilities**: These VMs are configured with restricted capabilities, adhering to the principle of least privilege. This means that each VM has only the minimum permissions and access necessary to perform its intended functions.
+
+3. **Sandboxing**: The VM acts as a sandbox environment, containing the execution of bot logic and preventing it from affecting other parts of the system or other user interactions.
+
+### Security Benefits
+
+- **Isolation**: If a security breach occurs within one dialog, it remains contained within that specific VM, protecting other user interactions and the broader system.
+
+- **Resource Control**: The VM architecture allows for fine-grained control over resource allocation, preventing any single interaction from monopolizing system resources.
+
+- **Clean Slate**: Each new dialog starts with a fresh VM instance, eliminating the risk of data leakage between different user interactions.
+
+- **Easier Updates and Patches**: Security updates can be applied to the VM template, ensuring that all new dialogs benefit from the latest security measures.
+
+### Considerations for Bot Developers
+
+1. **Performance Impact**: While the isolated VM approach significantly enhances security, it may introduce slight latency in bot responses. Developers should optimize their bot logic to work efficiently within this environment.
+
+2. **Stateless Design**: Since each dialog runs in a new VM instance, developers should design their bots to be stateless or use external state management systems that can be securely accessed from within the VM.
+
+3. **Resource Awareness**: Developers should be mindful of the limited resources available within each VM and design their bots accordingly, avoiding resource-intensive operations where possible.
+
+4. **Security-First Mindset**: Even with the isolated VM architecture, developers should continue to follow security best practices in their bot development, such as input validation and secure handling of sensitive data.
+
+By leveraging this isolated VM architecture, the General Bots platform provides a secure environment for bot interactions, giving both developers and users confidence in the system's integrity and data protection capabilities.
+
 
 ## Using Conversational BASIC
 
