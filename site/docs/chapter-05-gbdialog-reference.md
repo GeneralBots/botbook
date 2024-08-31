@@ -19,58 +19,83 @@ The following file types are loaded from a .gbdialog package: `.vbs`, `.vb`, `.b
 
 ## General Bots BASIC reference
 
+To organize the instructions functionally, I'll group them into five categories: **Basic Interaction**, **Data Handling**, **Web Automation**, **File Management**, and **Advanced Operations**. Each group will include relevant instructions with examples.
+
+```markdown
+## Basic Interaction
+
 | Instruction / Usage                                           | Description                                                                 | Example |
-| ------------------------------------------------------------- | --------------------------------------------------------------------------- |----|
-| HEAR _variable_                                               | Hears something from the person into a _variable_ for later use.            | <pre>HEAR name <br/>TALK "Your name is " + name.<br/></pre>|
-| confirm _variable_ (Comming soon)                             | Waits for confirmation like 'yes', 'y', 'yeah' and return true or false     |
-| TALK _message_                                                | Talk the specified _message_ to the person.                                 | <pre>TALK "Hello world." </pre>| 
-| GENERATE A PASSWORD                                           | Creates a new password into the system variable **password** for later use. |
-| CREATE A BOT FARM USING _params_                              | Deploys a new bot farm to the cloud.                                        |
-| WAIT _seconds_                                                | Wait a number of seconds before continuing the conversation.                |
-| _variable_ = GET "_file_.xlsx", "_A1:A1_"                     | Gets the value of the cell specified in range address                       |
-| SET "_file_.xlsx", "_A1:A1_", 42                              | Gets the value of the cell specified in range address                       |
-| _variable_ = GET "https://server/query"                       | Gets the value of the cell specified in range address                       |
-| POST "https://", _data_                                       | Gets the value of the cell specified in range address                       |
-| wait _seconds_                                                | Wait a number of seconds before continuing the conversation.                |
-| HEAR _variable_ AS EMAIL                                      | |
-| HEAR _variable_ AS DATE                                       | |
-| HEAR _variable_ AS NAME                                       | |
-| HEAR _variable_ AS INTEGER                                    | eg.: HEAR approve as Boolean. |
-| HEAR _variable_ AS BOOLEAN                                    | |
-| HEAR _variable_ AS HOUR                                       | |
-| HEAR _variable_ AS MONEY                                      | |
-| HEAR _variable_ AS MOBILE                                     | |
-| * HEAR _variable_ AS FILE                                       | Returns a file uploaded by user to be saved with SAVE _variable_ AS "folder/folder/file" on .gbdrive. |
-| HEAR _variable_ AS AUDIO                                      | Returns a audio uploaded by user to be saved with SAVE. |
-| HEAR _variable_ AS ZIPCODE                                    | |
-| HEAR _variable_ AS "Abacate", "Maçã", "Morango"               | Displays the specified menu and waits for this input until user select one of them. | 
-| HEAR _variable_ AS LANGUAGE                                   | |
-| HEAR _variable_ AS LOGIN (internal)                           | Waits for Active Directoy login integration before proceeding with the dialog .     |
-| GO TO [number,] dialogName                                    | Transfers the conversation to a next dialog for the specificed number or as last command, transfers the context to this dialog.              |
-| SEE CAPTION OF _url_ AS _variable_                      | Extracts an caption, using a pre-trained neural network, from a image. | 
-| SEE TEXT OF _url_ AS _variable_                      | Extracts text from the image in a OCR (Optical Character Recognition) feature. | 
-| data = SELECT a, SUM(b) AS b FROM data GROUP BY a    | Use SQL to manipulate a data variable returned from FIND or an array | _variable_ = CHART "pie", data| Generates a chart from data. |
-| file = data AS IMAGE| Converts a two dimension array into an image file, ready to be used with SAVE AS or SEND FILE.|
-| file = data AS PDF| Converts a two dimension array into an PDF file, ready to be used with SAVE AS or SEND FILE.|
-| page = OPEN _url_ [AS #namedSession] | Web automation retrival of a web page saving the session for reuse in other dialogs (optional).|
-| * _variable_ = GET page, cssSelector, "body > img" | Retrives an element within an IFRAME specified by selector eg.: "[name=iFrameName]", to be used later. | 
-| * SET page, cssSelector, value  | Define an field to value eg. "value 123" on the webpage specified by selector eg. "#id". | 
-| * CLICK page, cssSelector | Clicks on an element inside the web page being automated by General Bots. | 
-| * file = DOWNLOAD _url_ |  |
-|NEW OBJECT| Creates a new object to be used with REST calls for example. <br/>```data = NEW OBJECT``` <br/> ```data.color = "blue"``` |
-|NEW ARRAY| Creates a new array. <br/>```data = NEW ARRAY``` <br/> ```data[0] = "blue"``` |
-| QRCODE | Creates a QRCode from specified text, eg.: file = QRCODE "data" |
-| ADD NOTE | Adds a note to a file named Notes.xls of .gbdata. eg.: ADD NOTE "text"  |
-| ALLOW ROLE | Check if role specified in People sheet (.gbdata) will have access. eg.: ALLOW ROLE "DevOps"  |
-| CONTINUATION TOKEN| Retuns the value of the continuation token associated with the current dialog. | 
-| UPLOAD file | Uploads a file to a storage blob, like Azure Storage. | 
-| DIR  path | Returns a list of files to be used with FOR EACH and performs actions. | 
-| TABLE name ON connection | Defines a TABLE on specified storage (database) connection. | 
-| field AS dataType| Defines a field in TABLE. Eg.: name string(50). | 
-| FILL| Fills a data into a Word document to be exported as images | 
-| INCLUDE file | Includes a file into .gbdialog | 
-| FORMAT value, format | Formats a value according to format specified. Eg. d = FORMAT today, "YYYY-MM-dd" | 
-| SEND MAIL | Sends an e-mail, eg.: SEND MAIL "mail@domain.com", "Subject", "Message body."
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- | ------- |
+| HEAR _variable_                                               | Hears something from the person into a _variable_ for later use.            | <pre>HEAR name <br/>TALK "Your name is " + name.<br/></pre> |
+| TALK _message_                                                | Talk the specified _message_ to the person.                                 | <pre>TALK "Hello world."</pre> |
+| WAIT _seconds_                                                | Wait a number of seconds before continuing the conversation.                | <pre>WAIT 10 <br/> TALK "Waited for 10 seconds."</pre> |
+| confirm _variable_ (Comming soon)                             | Waits for confirmation like 'yes', 'y', 'yeah' and returns true or false     | <pre>HEAR confirm <br/>TALK "Please confirm if you want to proceed." <br/> if confirm THEN TALK "Confirmed." ELSE TALK "Not confirmed."</pre> |
+| HEAR _variable_ AS EMAIL                                      | Hears and validates an email address from the user.                         | <pre>HEAR email AS EMAIL <br/> TALK "Email received: " + email.</pre> |
+| HEAR _variable_ AS DATE                                       | Hears and validates a date from the user.                                   | <pre>HEAR date AS DATE <br/> TALK "Date received: " + date.</pre> |
+| HEAR _variable_ AS NAME                                       | Hears and validates a name from the user.                                   | <pre>HEAR name AS NAME <br/> TALK "Name received: " + name.</pre> |
+| HEAR _variable_ AS INTEGER                                    | Hears and validates an integer from the user.                               | <pre>HEAR age AS INTEGER <br/> TALK "Age received: " + age.</pre> |
+| HEAR _variable_ AS BOOLEAN                                    | Hears and validates a boolean (true/false) from the user.                   | <pre>HEAR agree AS BOOLEAN <br/> TALK "Agreement status: " + agree.</pre> |
+| HEAR _variable_ AS HOUR                                       | Hears and validates an hour from the user.                                  | <pre>HEAR hour AS HOUR <br/> TALK "Hour received: " + hour.</pre> |
+| HEAR _variable_ AS MONEY                                      | Hears and validates a monetary amount from the user.                        | <pre>HEAR amount AS MONEY <br/> TALK "Amount received: " + amount.</pre> |
+| HEAR _variable_ AS MOBILE                                     | Hears and validates a mobile number from the user.                          | <pre>HEAR mobile AS MOBILE <br/> TALK "Mobile number received: " + mobile.</pre> |
+| HEAR _variable_ AS ZIPCODE                                    | Hears and validates a ZIP code from the user.                               | <pre>HEAR zipcode AS ZIPCODE <br/> TALK "ZIP Code received: " + zipcode.</pre> |
+| HEAR _variable_ AS "Abacate", "Maçã", "Morango"               | Displays the specified menu and waits for user selection.                    | <pre>HEAR fruit AS "Abacate", "Maçã", "Morango" <br/> TALK "You selected: " + fruit.</pre> |
+| HEAR _variable_ AS LANGUAGE                                   | Hears and validates a language code from the user.                          | <pre>HEAR language AS LANGUAGE <br/> TALK "Language selected: " + language.</pre> |
+| HEAR _variable_ AS LOGIN (internal)                           | Waits for Active Directory login integration before proceeding.            | <pre>HEAR user AS LOGIN <br/> TALK "User logged in: " + user.</pre> |
+
+## Data Handling
+
+| Instruction / Usage                                           | Description                                                                 | Example |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- | ------- |
+| _variable_ = GET "_file_.xlsx", "_A1:A1_"                     | Gets the value of the cell specified in range address                       | <pre>name = GET "data.xlsx", "A1:A1" <br/> TALK "The value is " + name.</pre> |
+| SET "_file_.xlsx", "_A1:A1_", 42                              | Sets the value of the cell specified in range address                       | <pre>SET "data.xlsx", "A1:A1", 42 <br/> TALK "Value set in Excel."</pre> |
+| _variable_ = GET "https://server/query"                       | Gets the value from the specified web service                                | <pre>result = GET "https://api.example.com/data" <br/> TALK "Data received: " + result.</pre> |
+| POST "https://", _data_                                       | Sends data to the specified URL                                              | <pre>POST "https://api.example.com/submit", "data" <br/> TALK "Data posted successfully."</pre> |
+| data = SELECT a, SUM(b) AS b FROM data GROUP BY a             | Use SQL to manipulate a data variable returned from FIND or an array        | <pre>data = FIND "sales_data.xlsx", "A1:B10" <br/> result = SELECT product, SUM(amount) AS total FROM data GROUP BY product <br/> TALK "Query result: " + result.</pre> |
+| file = data AS IMAGE                                          | Converts a two-dimensional array into an image file.                        | <pre>file = data AS IMAGE <br/> SAVE file AS "sales_chart.png" <br/> TALK "Chart saved as image."</pre> |
+| file = data AS PDF                                            | Converts a two-dimensional array into a PDF file.                           | <pre>file = data AS PDF <br/> SAVE file AS "sales_report.pdf" <br/> TALK "Report saved as PDF."</pre> |
+| NEW OBJECT                                                    | Creates a new object to be used with REST calls.                            | <pre>data = NEW OBJECT <br/> data.color = "blue" <br/> TALK "New object created."</pre> |
+| NEW ARRAY                                                     | Creates a new array.                                                        | <pre>data = NEW ARRAY <br/> data[0] = "red" <br/> TALK "New array created."</pre> |
+| QRCODE                                                         | Creates a QR code from specified text.                                     | <pre>file = QRCODE "https://example.com" <br/> SAVE file AS "qrcode.png" <br/> TALK "QR Code generated."</pre> |
+| FORMAT value, format                                          | Formats a value according to the specified format.                          | <pre>d = FORMAT today, "YYYY-MM-dd" <br/> TALK "Formatted date: " + d.</pre> |
+| ADD NOTE                                                      | Adds a note to a file named Notes.xls of .gbdata.                           | <pre>ADD NOTE "This is a new note." <br/> TALK "Note added."</pre> |
+| ALLOW ROLE                                                    | Check if role specified in People sheet (.gbdata) will have access.        | <pre>ALLOW ROLE "Admin" <br/> TALK "Role access granted."</pre> |
+
+## Web Automation
+
+| Instruction / Usage                                           | Description                                                                 | Example |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- | ------- |
+| page = OPEN _url_ [AS #namedSession]                          | Web automation retrieval of a web page, saving the session for reuse.      | <pre>page = OPEN "https://example.com" AS #session1 <br/> TALK "Page opened and session saved."</pre> |
+| * _variable_ = GET page, cssSelector, "body > img"             | Retrieves an element within an IFRAME specified by selector.                | <pre>image = GET page, "#profile-picture" <br/> TALK "Profile picture retrieved."</pre> |
+| * SET page, cssSelector, value                                | Defines a field to a value on the webpage specified by selector.            | <pre>SET page, "#username", "user123" <br/> TALK "Username set."</pre> |
+| * CLICK page, cssSelector                                     | Clicks on an element inside the web page being automated.                   | <pre>CLICK page, "#submit-button" <br/> TALK "Submit button clicked."</pre> |
+| * file = DOWNLOAD _url_                                       | Downloads a file from the specified URL.                                   | <pre>file = DOWNLOAD "https://example.com/file.zip" <br/> SAVE file AS "downloads/file.zip" <br/> TALK "File downloaded."</pre> |
+
+## File Management
+
+| Instruction / Usage                                           | Description                                                                 | Example |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- | ------- |
+| HEAR _variable_ AS FILE                                       | Returns a file uploaded by the user to be saved.                            | <pre>HEAR file AS FILE <br/> SAVE file AS "uploads/myfile.pdf" <br/> TALK "File uploaded and saved."</pre> |
+| HEAR _variable_ AS AUDIO                                      | Returns an audio file uploaded by the user to be saved.                     | <pre>HEAR audio AS AUDIO <br/> SAVE audio AS "recordings/audiofile.mp3" <br/> TALK "Audio received and saved."</pre> |
+| INCLUDE file                                                  | Includes a file into .gbdialog.                                             | <pre>INCLUDE "script.gbdialog" <br/> TALK "File included."</pre> |
+| UPLOAD file                                                    | Uploads a file to a storage blob, like Azure Storage.                      | <pre>UPLOAD "
+
+path/to/file.pdf" <br/> TALK "File uploaded to cloud storage."</pre> |
+| DIR path                                                      | Returns a list of files in the specified directory.                        | <pre>files = DIR "uploads/" <br/> TALK "Files in directory: " + files.</pre> |
+| FILL                                                           | Fills data into a Word document to be exported as images.                  | <pre>FILL "template.docx", data <br/> TALK "Document filled and exported."</pre> |
+| SAVE _variable_ AS "path/file"                                 | Saves the specified variable as a file at the given path.                   | <pre>SAVE file AS "path/to/save/file.pdf" <br/> TALK "File saved."</pre> |
+
+## Advanced Operations
+
+| Instruction / Usage                                           | Description                                                                 | Example |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------- | ------- |
+| TABLE name ON connection                                     | Defines a TABLE on the specified storage (database) connection.            | <pre>TABLE "Sales" ON "DBConnection" <br/> TALK "Table defined."</pre> |
+| field AS dataType                                             | Defines a field in TABLE. Eg.: name string(50).                             | <pre>field = "price" AS number(10,2) <br/> TALK "Field defined as number."</pre> |
+| CONTINUATION TOKEN                                            | Returns the value of the continuation token associated with the current dialog. | <pre>token = CONTINUATION TOKEN <br/> TALK "Continuation token: " + token.</pre> |
+| NEW OBJECT                                                    | Creates a new object to be used with REST calls.                            | <pre>data = NEW OBJECT <br/> data.color = "blue" <br/> TALK "New object created."</pre> |
+| NEW ARRAY                                                     | Creates a new array.                                                        | <pre>data = NEW ARRAY <br/> data[0] = "red" <br/> TALK "New array created."</pre> |
+```
+
 
 ### Internal Variables and Functions.
 
@@ -313,158 +338,16 @@ talk "Your password is *" + password + "*. Keep it on a safe place only acessibl
 
 hear one of subscriptions with email, password into subscriptionId
 talk "The subscription selected was: " + subscriptionId
-
-
-```markdown
-# General Bots BASIC Sample Programs
-
-Here’s a single markdown document containing the 20 sample programs in General Bots BASIC, each with a modern and engaging approach:
-
-
-## 1. Welcome Message
-```basic
-HEAR name AS NAME
-TALK "Hey " + name + ", welcome to our awesome service! 🎉"
-```
-
-## 2. Simple Password Generator
-```basic
-GENERATE A PASSWORD
-TALK "Your new password is: " + password
-```
-
-## 3. Remind User to Take a Break
-```basic
-WAIT 3600
-TALK "You've been working for an hour! Remember to take a break and stretch! 💪"
-```
-
-## 4. Get User's Favorite Fruit
-```basic
-HEAR fruit AS "Apple", "Banana", "Cherry"
-TALK "Nice choice! " + fruit + " is a great fruit! 🍓"
-```
-
-## 5. Send a Calendar Invite
-```basic
-HEAR email AS EMAIL
-HEAR date AS DATE
-TALK "Sending a calendar invite for " + date + " to " + email
-SEND MAIL email, "Calendar Invite", "You are invited to an event on " + date
-```
-
-## 6. Generate and Send QR Code
-```basic
-HEAR url AS "https://example.com"
-file = QRCODE url
-SEND FILE file
-TALK "Here is your QR code for the URL: " + url
-```
-
-## 7. Weather Update
-```basic
-GET "https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=YOUR_LOCATION"
-data = result.current
-TALK "The current temperature is " + data.temp_c + "°C with " + data.condition.text
-```
-
-## 8. Todo List Reminder
-```basic
-HEAR task AS STRING
-TALK "Got it! I'll remind you about: " + task
-```
-
-## 9. Send Motivational Quote
-```basic
-quotes = ["Keep going!", "You got this!", "Believe in yourself!"]
-index = RANDOM(0, 2)
-TALK quotes[index]
-```
-
-## 10. Capture and Send Screenshot
-```basic
-OPEN "https://example.com"
-file = SCREENSHOT "body"
-SEND FILE file
-TALK "Here's a screenshot of the page."
-```
-
-## 11. Daily Affirmation
-```basic
-HEAR user AS NAME
-TALK "Good morning " + user + "! Remember, today is going to be amazing! 🌟"
-```
-
-## 12. Send a Joke
-```basic
-jokes = ["Why don’t scientists trust atoms? Because they make up everything!", "Why did the scarecrow win an award? Because he was outstanding in his field!"]
-index = RANDOM(0, 1)
-TALK jokes[index]
-```
-
-## 13. User Poll
-```basic
-HEAR choice AS "Option 1", "Option 2", "Option 3"
-TALK "You selected " + choice + ". Thanks for your input! 🗳️"
-```
-
-## 14. Image Caption Extraction
-```basic
-SEE CAPTION OF "https://example.com/image.jpg" AS caption
-TALK "The caption of the image is: " + caption
-```
-
-## 15. Send Reminder Email
-```basic
-HEAR email AS EMAIL
-HEAR reminder AS STRING
-SEND MAIL email, "Reminder", "Just a friendly reminder: " + reminder
-```
-
-## 16. Capture Text from Image
-```basic
-SEE TEXT OF "https://example.com/image-with-text.jpg" AS text
-TALK "The text from the image is: " + text
-```
-
-## 17. Add a Note
-```basic
-HEAR note AS STRING
-ADD NOTE note
-TALK "Note added: " + note
-```
-
-## 18. Generate Dynamic Chart
-```basic
-data = [5, 15, 25]
-labels = "Red;Green;Blue"
-img = CHART "bar", data, labels
-SEND FILE img
-TALK "Here’s your dynamic chart!"
-```
-
-## 19. Create and Send PDF Report
-```basic
-data = FIND "data.xlsx", "A1:B10"
-pdf = data AS PDF
-SEND FILE pdf
-TALK "Here's your report in PDF format."
-```
-
-## 20. Interactive Game
-```basic
-TALK "Guess a number between 1 and 10."
-HEAR guess AS INTEGER
-IF guess == 7
-    TALK "Congratulations! You guessed the right number! 🎉"
-ELSE
-    TALK "Oops! Try again next time!"
 ```
 
 
-Here’s a more complex set of 20 advanced General Bots BASIC programs that integrate web services, web automation, file handling, and dynamic interactions. These samples are designed to showcase the full potential of General Bots BASIC for advanced users.
+# General Bots Simple and Complex Programs
 
-```markdown
+These are sample programs in General Bots BASIC, each presented with a modern and engaging approach. The first 20 examples are simple, while the next 20 delve into more advanced concepts. Check the list
+of [templates](https://github.com/GeneralBots/BotServer/tree/main/templates)
+
+The set of 20 advanced General Bots BASIC programs that integrate web services, web automation, file handling, and dynamic interactions. These samples are designed to showcase the full potential of General Bots BASIC for advanced users. These advanced samples illustrate a range of functionalities that can be implemented with General Bots BASIC, from data manipulation and web automation to dynamic content generation and complex file handling.
+
 
 ## 1. **Retrieve and Save Web Data to Excel**
 ```basic
@@ -661,4 +544,147 @@ SAVE "data_analysis.xlsx", "A1:B" + UBOUND(analysis), analysis
 TALK "Data analysis completed and saved to data_analysis.xlsx!"
 ```
 
-These advanced samples illustrate a range of functionalities that can be implemented with General Bots BASIC, from data manipulation and web automation to dynamic content generation and complex file handling.
+
+And even more simple examples can be seen in this list as begginers use BASIC 
+to understand code:
+
+## 1. Welcome Message
+```basic
+HEAR name AS NAME
+TALK "Hey " + name + ", welcome to our awesome service! 🎉"
+```
+
+## 2. Simple Password Generator
+```basic
+GENERATE A PASSWORD
+TALK "Your new password is: " + password
+```
+
+## 3. Remind User to Take a Break
+```basic
+WAIT 3600
+TALK "You've been working for an hour! Remember to take a break and stretch! 💪"
+```
+
+## 4. Get User's Favorite Fruit
+```basic
+HEAR fruit AS "Apple", "Banana", "Cherry"
+TALK "Nice choice! " + fruit + " is a great fruit! 🍓"
+```
+
+## 5. Send a Calendar Invite
+```basic
+HEAR email AS EMAIL
+HEAR date AS DATE
+TALK "Sending a calendar invite for " + date + " to " + email
+SEND MAIL email, "Calendar Invite", "You are invited to an event on " + date
+```
+
+## 6. Generate and Send QR Code
+```basic
+HEAR url AS "https://example.com"
+file = QRCODE url
+SEND FILE file
+TALK "Here is your QR code for the URL: " + url
+```
+
+## 7. Weather Update
+```basic
+GET "https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=YOUR_LOCATION"
+data = result.current
+TALK "The current temperature is " + data.temp_c + "°C with " + data.condition.text
+```
+
+## 8. Todo List Reminder
+```basic
+HEAR task AS STRING
+TALK "Got it! I'll remind you about: " + task
+```
+
+## 9. Send Motivational Quote
+```basic
+quotes = ["Keep going!", "You got this!", "Believe in yourself!"]
+index = RANDOM(0, 2)
+TALK quotes[index]
+```
+
+## 10. Capture and Send Screenshot
+```basic
+OPEN "https://example.com"
+file = SCREENSHOT "body"
+SEND FILE file
+TALK "Here's a screenshot of the page."
+```
+
+## 11. Daily Affirmation
+```basic
+HEAR user AS NAME
+TALK "Good morning " + user + "! Remember, today is going to be amazing! 🌟"
+```
+
+## 12. Send a Joke
+```basic
+jokes = ["Why don’t scientists trust atoms? Because they make up everything!", "Why did the scarecrow win an award? Because he was outstanding in his field!"]
+index = RANDOM(0, 1)
+TALK jokes[index]
+```
+
+## 13. User Poll
+```basic
+HEAR choice AS "Option 1", "Option 2", "Option 3"
+TALK "You selected " + choice + ". Thanks for your input! 🗳️"
+```
+
+## 14. Image Caption Extraction
+```basic
+SEE CAPTION OF "https://example.com/image.jpg" AS caption
+TALK "The caption of the image is: " + caption
+```
+
+## 15. Send Reminder Email
+```basic
+HEAR email AS EMAIL
+HEAR reminder AS STRING
+SEND MAIL email, "Reminder", "Just a friendly reminder: " + reminder
+```
+
+## 16. Capture Text from Image
+```basic
+SEE TEXT OF "https://example.com/image-with-text.jpg" AS text
+TALK "The text from the image is: " + text
+```
+
+## 17. Add a Note
+```basic
+HEAR note AS STRING
+ADD NOTE note
+TALK "Note added: " + note
+```
+
+## 18. Generate Dynamic Chart
+```basic
+data = [5, 15, 25]
+labels = "Red;Green;Blue"
+img = CHART "bar", data, labels
+SEND FILE img
+TALK "Here’s your dynamic chart!"
+```
+
+## 19. Create and Send PDF Report
+```basic
+data = FIND "data.xlsx", "A1:B10"
+pdf = data AS PDF
+SEND FILE pdf
+TALK "Here's your report in PDF format."
+```
+
+## 20. Interactive Game
+```basic
+TALK "Guess a number between 1 and 10."
+HEAR guess AS INTEGER
+IF guess == 7
+    TALK "Congratulations! You guessed the right number! 🎉"
+ELSE
+    TALK "Oops! Try again next time!"
+```
+These examples demonstrate various capabilities of the language, from simple text manipulation to more complex tasks like image processing.
