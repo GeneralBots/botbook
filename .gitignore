@@ -3,3 +3,4 @@ deploy.sh
 site/build
 site/.docusaurus
 .env
+node_modules

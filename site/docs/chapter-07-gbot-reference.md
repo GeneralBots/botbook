@@ -22,6 +22,7 @@ here is a list of admin commands related to deploying .gb* files.
 | Name                        | Description|
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Admin Notify E-mail         | E-mail used to notify administrators. |
+| Answer Mode                 | How LLM is used.  Can be "direct", "document", "document-ref", "sql", "tool". |
 | Avatar Logo                 | Bot logo URL.                                                                                      |
 | Can Publish                 | Comma separeted list of mobile numbers that can publish directly. |
 | Description                 | Description of the Bot.                                                                            |
@@ -51,7 +52,104 @@ here is a list of admin commands related to deploying .gb* files.
 | Synchronize Database | TRUE if TABLE keyword should *MODIFY* database. Be careful in Production storage this value should be FALSE (default). |
 
 Note that this variables are available in every .gbdialog code, automatically.
-  
+
+## Config in Detail
+
+### Admin Notify E-mail
+The "Admin Notify E-mail" setting specifies the email addresses that will receive notifications regarding the bot’s activities and administrative updates. This feature ensures that administrators are promptly informed about any critical events or issues related to the bot's operation, allowing them to take necessary actions swiftly.
+
+### Answer Mode
+
+In a bot factory configuration, the integration of a Language Learning Model (LLM) is pivotal in enhancing the functionality and efficiency of the bots. The LLM can be employed in various modes depending on the requirements of the bot system. These modes include "direct," "document," "document-ref," "sql," and "tool," each offering a unique method of interaction and data handling. For instance, in the "direct" mode, the LLM is used to generate responses or actions based on real-time user input, providing immediate and contextually relevant replies. This approach is particularly useful for creating conversational agents that can handle a wide range of user queries effectively.
+In the "document" mode, the LLM processes and generates responses based on pre-existing documents or content. This mode is ideal for scenarios where the bot needs to reference detailed information or provide insights derived from specific documents. The LLM analyzes the content of the documents to deliver accurate and contextually appropriate information, thereby enhancing the bot's ability to offer valuable and precise responses. This approach is particularly beneficial for applications that require in-depth knowledge or detailed guidance based on existing resources.
+The "document-ref" mode builds on the document-based approach by allowing the LLM to reference and extract information from multiple documents to generate comprehensive responses. This mode is advantageous when the bot needs to synthesize information from various sources to provide well-rounded answers or perform complex tasks. In contrast, the "sql" mode leverages structured query language to interact with databases, enabling the LLM to retrieve and manipulate data based on specific queries. Lastly, the "tool" mode integrates the LLM with external tools or services, allowing the bot to extend its functionality by interacting with other applications or systems. Each mode offers a distinct advantage, allowing the bot factory to tailor its approach based on the specific needs and objectives of the bot system.
+
+### Avatar Logo
+The "Avatar Logo" is the URL of the bot's logo that represents it visually. This logo is used in user interfaces and communications to create a recognizable identity for the bot, enhancing its brand presence and user engagement.
+
+### Can Publish
+The "Can Publish" setting is a comma-separated list of mobile numbers that have the authority to publish content directly. This feature ensures that only authorized individuals can contribute or update content, maintaining control over the bot's published material.
+
+### Description
+The "Description" provides a brief overview of the bot, including its purpose, functionalities, and key features. This description helps users understand what the bot does and what to expect from its interactions.
+
+### Enable Audio Hearing
+The "Enable Audio Hearing" option indicates whether the bot can process and understand audio inputs. When set to TRUE, the bot is capable of receiving and interpreting spoken language, enhancing its interaction capabilities.
+
+### Enable Audio Talking
+The "Enable Audio Talking" setting specifies if the bot can generate and deliver spoken responses. Enabling this feature allows the bot to communicate with users through audio, making interactions more dynamic and engaging.
+
+### Enable Spelling Checker
+The "Enable Spelling Checker" option determines whether the bot should automatically check and correct spelling errors in user inputs. When set to TRUE, this feature helps maintain the quality and accuracy of interactions by addressing spelling mistakes.
+
+### Enable Worldwide Translator
+The "Enable Worldwide Translator" setting allows the bot to support multiple languages and perform translation tasks. When enabled, the bot can interact with users in various languages, catering to a global audience.
+
+### Default User Language
+The "Default User Language" specifies the language that users will encounter by default when interacting with the bot. This setting ensures that the bot communicates in the preferred language of the user, enhancing their experience.
+
+### Default Content Language
+The "Default Content Language" defines the language in which content files, such as .gbkb and .gbdialog, are written. This setting ensures consistency in content creation and processing within the bot's system.
+
+### Language Detector
+The "Language Detector" feature enables the bot to automatically identify the language of user inputs. When activated, the bot can adapt its responses based on the detected language, improving communication accuracy.
+
+### NLP Score
+The "NLP Score" is a numerical value between 0 and 1 used to assess the relevance and quality of text for Natural Language Processing (NLP) neural networks. This score helps in classifying and processing text more effectively.
+
+### Search Score
+The "Search Score" is a value between 0 and 1 that influences the consideration of Full Text Search as a content retrieval method. A higher score indicates a greater emphasis on search-based content retrieval.
+
+### Transfer To
+The "Transfer To" setting is a comma-separated list of mobile numbers to which the bot will transfer chats from WhatsApp. This feature facilitates the rerouting of conversations to designated contacts or support agents.
+
+### WhatsApp Admins
+The "WhatsApp Admins" field is a comma-separated list of mobile numbers designated as administrators for the bot. These individuals have elevated access and control over the bot’s settings and operations.
+
+### Feedback Improve.Message
+The "Feedback Improve.Message" is a predefined message that the bot will send to users when it fails to find the requested information. This message encourages users to provide feedback or try different queries.
+
+### Keep Text
+The "Keep Text" setting is a comma-separated list of words or phrases that should remain unchanged during the bot’s understanding process. This feature ensures that specific terms are preserved and accurately recognized.
+
+### Start Dialog
+The "Start Dialog" specifies the name of the .docx file (without the extension) that serves as the entry point for the bot’s dialog. This document outlines the initial interactions and flow of the conversation.
+
+### HelloGoodX
+The "HelloGoodX" option determines whether the bot should greet users with a welcome message. When set to TRUE, the bot will initiate interactions with a friendly hello.
+
+### XRM Key
+The "XRM Key" is a string key used to authenticate and access the HubSpot API. This key is essential for integrating the bot with HubSpot services and functionalities.
+
+### WhatsApp Group Name
+The "WhatsApp Group Name" is the name of the WhatsApp group to which the bot belongs. This setting helps in identifying and organizing the bot’s presence within specific groups.
+
+### WhatsApp Group Shortcuts
+The "WhatsApp Group Shortcuts" are space-separated triggers in text that activate the bot within WhatsApp groups. These shortcuts enable users to engage with the bot using predefined commands or keywords.
+
+### Bot Admin Number
+The "Bot Admin Number" is the mobile number that receives debug screenshots and other notifications related to the bot’s operation. This contact is crucial for monitoring and troubleshooting the bot.
+
+### WhatsApp Group ID
+The "WhatsApp Group ID" is a unique identifier used to connect the bot to a specific WhatsApp group. This ID is accessible only in internal logs and is essential for group integration.
+
+### Debug Web Automation
+The "Debug Web Automation" setting indicates whether the Bot Admin Number should receive screenshots of each web automation step. Enabling this feature provides detailed visibility into web automation processes.
+
+### .gbapp List
+The ".gbapp List" is a collection of associated .gbapp packages linked to the .gbot. This list helps in managing and organizing the bot’s application packages.
+
+### Group Spell
+The "Group Spell" option enables the spell checker for group interactions. When activated, the bot will check and correct spelling errors in group chat messages.
+
+### Synchronize Database
+The "Synchronize Database" setting determines whether the TABLE keyword should modify the database. Setting this to TRUE allows changes to the database schema, while FALSE should be used in production environments to prevent unintended modifications.
+
+---
+
+Each title and description has been crafted to clarify the purpose and functionality of the respective configuration setting.
+
+
 ## Enviroment Variables Reference
 
 | Name                   | Sample Value                                     | Description |
