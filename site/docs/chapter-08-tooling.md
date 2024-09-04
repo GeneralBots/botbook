@@ -16,15 +16,27 @@ node ./node_modules/@push-rpc/openapi/dist/cli.js --tsConfig ./tsconfig.api.json
 
 # External Refereces
 
-| Name                     | URL                           |
-| ------------------------ | ----------------------------- |
-| Prompt Engineering Guide | https://www.promptingguide.ai |
+| Name                     | URL                                                  |
+| ------------------------ | ---------------------------------------------------- |
+| Prompt Engineering Guide | https://www.promptingguide.ai                        |
+| GPT Alternatives         | https://github.com/GPT-Alternatives/gpt_alternatives |
 
 ## LLM Propmts
 
 - https://github.com/jamesponddotco/llm-prompts/tree/trunk
 
-
 ## LLM Tools
 
 - https://lmstudio.ai/
+
+# Services
+
+# Useful callable public APIs
+
+| Name                     | URL                                                |
+| ------------------------ | -------------------------------------------------- |
+| Collection of Public API | https://github.com/public-apis/public-apis         |
+| Wheather                 | https://github.com/Yeqzids/7timer-issues/wiki/Wiki |
+| Free Public APIs         | https://www.freepublicapis.com/tags/public-data    |
+
+# Service News
