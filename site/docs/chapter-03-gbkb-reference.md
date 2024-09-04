@@ -13,7 +13,7 @@ The table below shows the description of each one of them:
 | Folder   | File description                                                                                   |
 |----------|----------------------------------------------------------------------------------------------------|
 | tabular  | .csv, .tsv or any tabular file used as an pair of question/answer and an optional hierarchy.       |
-| images   | Images that can be used to enrich the answer to the user in the [Projector](glossary.md#projector) |
+| images   | Images that can be used to enrich the answer to the user in the [Projector](./glossary.md) |
 | videos   | Videos used to answer questions made by users.                                                     |
 | subjects | List of images of subjects that can be trated by the bot.                                          |
 | articles | Articles in .md that will be presented instead of text-only answers.                               |

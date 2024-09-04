@@ -22,7 +22,7 @@ In this documentation, we'll explore the architecture of the General Bots server
 * [Chapter 06 - gbapp Reference](docs/chapter-06-gbapp-reference)
 * [Chapter 07 - gbot Reference](docs/chapter-07-gbot-reference)
 * [Chapter 08 - Tooling](docs/chapter-08-tooling)
-* [Chapter 09 - Services](docs/chapter-09-services)
+* [Chapter 09 - Feature-Matrix](docs/chapter-09-feature-matrix)
 * [Chapter 10 - Contributing](docs/chapter-10-contributing)
 * [Apendix I - Database Model](docs/apendix-i-database-model)
 * [Glossary](docs/glossary)
