@@ -74,3 +74,5 @@ sidebar_position: 90
 | FEAT-A7B         | |  Any files inside public folder of bot .gbdrive will be accessible in /[botId].gbai/[botId].gbdrive/public  ||| Sharing                 | FUTURE     |
 
 
+AUTO SAVE
+.gbdrive public

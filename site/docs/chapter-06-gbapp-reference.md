@@ -59,22 +59,30 @@ MARKETPLACE_SECRET=
 
 ### Windows
 
-#### PowerShell Script
+## Define URLs and file paths
+```
+$software = @{
+    "Git" = "https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/Git-2.40.0-64-bit.exe"
+    "NodeJS" = "https://nodejs.org/dist/v20.17.0/node-v20.17.0-x64.msi"
+    "VSCode" = "https://update.code.visualstudio.com/latest/win32-x64/stable"
+    "VS2023" = "https://visualstudio.microsoft.com/downloads/VS2023.exe"
+    "Python" = "https://www.python.org/ftp/python/9.0.0/python-9.0.0-amd64.exe"
+}
+Invoke-WebRequest -Uri $software.Git -OutFile "Git-Setup.exe"
+Start-Process -FilePath "Git-Setup.exe" -ArgumentList "/SILENT" -Wait
+Invoke-WebRequest -Uri $software.NodeJS -OutFile "NodeJS-Setup.msi"
+Start-Process -FilePath "msiexec.exe" -ArgumentList "/i NodeJS-Setup.msi /quiet" 
+Invoke-WebRequest -Uri $software.VSCode -OutFile "VSCode-Setup.exe"
+Start-Process -FilePath "VSCode-Setup.exe" -ArgumentList "/silent" -Wait
+Invoke-WebRequest -Uri $software.VS2023 -OutFile "VS2023-Setup.exe"
+Start-Process -FilePath "VS2023-Setup.exe" -ArgumentList "--quiet --wait --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended" -Wait
+Invoke-WebRequest -Uri $software.Python -OutFile "Python-Setup.exe"
+Start-Process -FilePath "Python-Setup.exe" -ArgumentList "/quiet" -Wait
 
-Copy and paste on a PowerShell prompt with elavated privileges and when VSCode is opened just press F5 to run the development server. 
-Please ensure that Node.js is not installed and enter your Source Directory.
-
-``` powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-choco install git --confirm
-choco install nodejs --confirm --version=19.3.0
-choco install vscode --confirm
-
-&"C:\Program Files\Git\bin\git.exe" clone https://github.com/GeneralBots/BotServer.git
+git clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
 code .
-
+```
 #### Python & GCC 
 
 Install Python: https://www.python.org/downloads/release/python-2718/
