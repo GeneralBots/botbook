@@ -29,6 +29,12 @@ node ./node_modules/@push-rpc/openapi/dist/cli.js --tsConfig ./tsconfig.api.json
 
 - https://lmstudio.ai/
 
+## LLM Resources
+
+- https://github.com/nichtdax/awesome-totally-open-chatgpt
+- https://github.com/janhq (Offline LLM)
+- https://github.com/sindresorhus/awesome-chatgpt
+
 # Services
 
 # Useful callable public APIs
