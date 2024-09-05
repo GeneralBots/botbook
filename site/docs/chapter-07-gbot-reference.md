@@ -212,7 +212,37 @@ https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
 }
 ```
 
-## Bot Analytics
+# Deploying to Azure
 
-## Cloud Internals
+1. Create Entra User fill .env CLOUD_USERNAME and CLOUD_PASSWORD;
+2. Get SubscriptionId and fill SUBSCRIPTION_ID;
+3. Define BOT_ID, 	CLOUD_LOCATION, CLOUD_GROUP	
+4. Create AppId and Secret in Azure and fill MARKEPLACE_* keys;
+5.  eploy General Bots with the .env ready;
+6. An updated version of .env is generated;
+7. In Application | Permissions:
+    ◦ Microsoft Graph
+        ▪ Sites.Read.All
+        ▪ Sites.ReadWrite.All
+        ▪ User.Read
+        ▪ Application.Read.All
+        ▪ Application.ReadWrite.All
+8. In Authentication | Add Platform | Web | Redirect URL: https://server/botId/token;
+9. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
+10. /publish to publish packages on root bot.
 
+## Common Errors on Azure
+
+- The subscription is not registered to use namespace 'Microsoft.Web'. See https://aka.ms/rps-not-found for how to register subscriptions.
+-- Enter Azure | Subscription | Resource providers | Find Microsoft.Web and check it.
+
+### Setup Linux RDP to access Azure
+    
+```
+# MS Remote Desktop Connection (RDP Client) 
+    
+apt-add-repository ppa:remmina-ppa-team/remmina-next
+apt update
+apt install remmina remmina-plugin-rdp remmina-plugin-secret
+
+```

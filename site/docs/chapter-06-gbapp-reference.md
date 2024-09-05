@@ -2,64 +2,60 @@
 sidebar_position: 60
 ---
 
-# .gbapp Reference
+# Understanding gbapp: An npm Package for Extending General Bots
 
 ![generalbots-2018](https://user-images.githubusercontent.com/65977273/94922431-949c3900-0490-11eb-800a-6b478d689f2a.png)
 
-## Introduction
+## Section 1: Introduction to gbapp
 
-.gbapp is the folder extension for the General Bots Application package type.
-Anything inside a folder considered a .gbapp will be consumed by the server
-like a TypeScript application. This conversational application will contain
-the source code for custom dialogs and behaviour for any .gbot that associate
-this deployed .gbapp.
+### What is a gbapp?
+A gbapp is an npm package designed to extend the functionality of General Bots. It serves as a plugin or module that can be integrated into the General Bots framework to add new features, capabilities, or customizations. Importantly, .gbapp is also the folder extension for the General Bots Application package type.
 
-A good way to start a .gbapp is to find a NPM package to create a .gbapp that
-asks for data and output the result. For example, a temperature package can
-be installed via `npm install temperature` and then have its methods
-convertToKelvin or convertToCelsius called when user asks for conversion. A
-.gbapp can persist and read data from database according to the conversation
-session.
+### Purpose and Benefits
+The primary purpose of a gbapp is to provide a modular and flexible way to enhance General Bots. By using gbapps, developers can easily extend the core functionality of the bot platform without modifying the main codebase, allowing for greater customization and scalability. This approach promotes code reusability and maintainability.
 
-Please read: [Anti Patterns Catalog](http://wiki.c2.com/?AntiPatternsCatalog).
+### Integration with General Bots
+Gbapps are designed to seamlessly integrate with the General Bots ecosystem. They can interact with the core services, access shared resources, and leverage existing functionalities while adding their own unique features to the bot framework. Anything inside a folder considered a .gbapp will be consumed by the server like a TypeScript application.
 
-## Preparing Environment
+## Key Interfaces and Structure of a gbapp
 
-General procedures:
+### IGBCoreService Interface
+The IGBCoreService interface is a crucial component of a gbapp. It defines the core service shared among bot packages, providing direct access to base services. This interface includes methods for database operations, instance management, storage initialization, and various system-level functionalities.
 
-1. Get SubscriptionId, username and password;
-2. Create AppId and Secret;
-3. Agree to MSFT [Responsible AI #1](https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/TextAnalyticsCreate_Dx/searchEnabled~/false/storageEnabled~/false/dxParameters~/%7B%22searchEnabled%22%3Afalse%2C%22storageEnabled%22%3Afalse%7D) and [Responsible AI #2](https://portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne);
+### IGBPackage Interface
+The IGBPackage interface outlines the structure and lifecycle methods of a gbapp. It includes methods for loading and unloading the package, managing bot instances, handling dialogs, and exchanging data between the bot server and the gbapp. This interface ensures that all gbapps follow a consistent pattern for integration with General Bots.
 
-4. Deploy General Bots;
-5. In Application | Permissions:
-    - Microsoft Graph
-        - Sites.Read.All
-        - Sites.ReadWrite.All
-        - User.Read
-        - Application.Read.All
-        - Application.ReadWrite.All
-6. In Authentication | Add Platform | Web | Redirect URL: https://server/botId/token;
-6. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
-7. /publish to publish packages on root bot.
+### Conversational Application Structure
+A .gbapp contains the source code for custom dialogs and behaviors for any .gbot that associates with this deployed .gbapp. This structure allows for the creation of conversational applications that can be reused across different bot instances, promoting modularity and flexibility in bot development.
 
-## .env
+## Developing and Implementing a gbapp
 
-.env is generated automatically, but if you want to advance, editing by yourself, put this file, filled, at BotServer root:
-```
-BOT_ID=
-CLOUD_SUBSCRIPTIONID=
-CLOUD_LOCATION=
-CLOUD_GROUP=
-CLOUD_USERNAME=
-CLOUD_PASSWORD=
-MARKETPLACE_ID=
-MARKETPLACE_SECRET=
-```
+### Creating a gbapp Package
+To create a gbapp, developers start by setting up an npm package with the necessary dependencies. A good way to start is by finding an existing npm package that provides the desired functionality. For example, a temperature conversion gbapp could be created by installing the 'temperature' package via `npm install temperature` and then implementing methods to call `convertToKelvin` or `convertToCelsius` when a user asks for conversion.
+
+### Implementing Core Functionalities
+Developers need to implement the methods defined in the interfaces, such as loadPackage, unloadPackage, getDialogs, and onNewSession. These methods allow the gbapp to interact with the core system, manage its lifecycle, and provide specific functionalities to bot instances. Additionally, a .gbapp can persist and read data from the database according to the conversation session, enabling stateful interactions.
+
+### Best Practices and Anti-Patterns
+When developing gbapps, it's crucial to follow best practices and avoid common anti-patterns. Developers should familiarize themselves with the [Anti Patterns Catalog](http://wiki.c2.com/?AntiPatternsCatalog) to ensure they're creating efficient, maintainable, and scalable gbapps. Some key points to consider include avoiding unnecessary complexity, ensuring proper error handling, and maintaining clear separation of concerns within the gbapp structure.
+
+## Advanced gbapp Features
+
+### Data Persistence and Session Management
+Gbapps have the capability to persist and read data from the database according to the conversation session. This feature allows for the creation of stateful conversations, where the bot can remember previous interactions and user preferences across multiple sessions.
+
+### Integration with External Services
+Developers can leverage external npm packages and APIs within their gbapps to extend functionality. For example, integrating a weather API could allow a gbapp to provide real-time weather information to users, enhancing the bot's capabilities beyond its core functions.
+
+### Customization and Extensibility
+The .gbapp structure allows for high levels of customization. Developers can create specialized dialogs, implement complex business logic, and even extend the core functionality of General Bots. This extensibility ensures that gbapps can be tailored to meet specific business needs or unique use cases.
+
+## Setup 
 
 ### Windows
 
-## Define URLs and file paths
+#### Define URLs and file paths
+
 ```
 $software = @{
     "Git" = "https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/Git-2.40.0-64-bit.exe"
@@ -82,19 +78,12 @@ Start-Process -FilePath "Python-Setup.exe" -ArgumentList "/quiet" -Wait
 git clone https://github.com/GeneralBots/BotServer.git
 cd BotServer
 code .
-```
-#### Python & GCC 
-
-Install Python: https://www.python.org/downloads/release/python-2718/
-npm install windows-build-tools -g
-npm install -g node-gyp
-
 
 ```
 
 ### Linux (Ubuntu)
 
-Visual Studio Code
+#### Visual Studio Code
 ```
 apt update
 apt install software-properties-common apt-transport-https wget
@@ -105,7 +94,7 @@ apt install code
 
 ```
 
-Node JS 20
+#### Node JS 20
 ```
 
 curl -fsSL https://deb.nodesource.com/setup_20.x | -E bash -
@@ -116,13 +105,8 @@ npm -v
 
 ```
 
-Opening 443 Port in Linux
-```
-setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
+#### Additional Infrastructure 
 
-```
-
-Additional Infrastructure 
 ```
 apt-get install cpulimit
 sudo apt-get install expect
@@ -132,149 +116,28 @@ apt-get install python g++ build-essential
 npm install -g node-gyp
 ```
 
+Opening 443 Port in Linux
+
+```
+setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
+```
+
 Add export GTK_IM_MODULE="xim" to .profile to fix Key Bindings in VSCode on Ubuntu.
 
-### Setup git
+## Git
 
 ```
     git config --global user.name "Your Name"
     git config --global user.email "someone@domain.com"
-```
-
-### Commands to check version of Node.js and NPM.
-![verificar](https://user-images.githubusercontent.com/65977273/95104867-bace0d00-070c-11eb-9699-66d3b6134ea5.png)
-
-
-#### Manual steps.
-
-1. Install [Chocolatey](https://chocolatey.org/install), a Windows Package Manager; 
-2. Install [git]( `https://git-scm.com/` ), a Software Configuration Management (SCM) and TortoiseGit; 
-3. Install [Node.js](https://npmjs.com/get-npm), a [Runtime system](https://en.wikipedia.org/wiki/Runtime_system); 
-4. Install Visual Studio Code Insiders, Brackets or Atom as an editor of your choice;
-5. Fork the repository by visiting https://github.com/pragmatismo-io/BotServer/fork;
-6. Clone the just forked repository by running `git clone your-forked-repository-url/BotServer.git` ; 
-7. Run the bot server by `gbot.cmd` .
-
-
-#### Common Errors
-
-- The subscription is not registered to use namespace 'Microsoft.Web'. See https://aka.ms/rps-not-found for how to register subscriptions.
--- Enter Azure | Subscription | Resource providers | Find Microsoft.Web and check it.
-
-
-* Required packages
-
-``` cmd
-
-cinst git --confirm
-cinst nodejs --confirm
-npm install windows-build-tools -g
-cinst tortoisegit --confirm
 
 ```
-
-* Optional packages
+## Additional node packages
 
 ``` 
-
-cinst 7zip.install --confirm
-cinst tortoisegit --confirm
-cinst winscp --confirm
-cinst sysinternals --confirm
-cinst putty --confirm
-cinst pandoc --confirm
-cinst curl --confirm
-cinst micro --confirm
-cinst ccleaner --confirm
-cinst notepadplusplus --confirm
-cinst sql-server-management-studio --confirm
-
-```
-
-* node packages
-
-``` 
-
 npm install -g npm-check-updates
 npm install -g cost-of-modules
 
 ```
-
-Linux
-    
-```
-# MS Remote Desktop Connection (RDP Client) 
-    
-apt-add-repository ppa:remmina-ppa-team/remmina-next
-apt update
-apt install remmina remmina-plugin-rdp remmina-plugin-secret
-
-```
-
-# File compression
-    
-``` 
-
-    Compressing a directory in Linux:
-    
-    tar -cvzf my_archive.tar.gz input_dir
-    
-    Expanding an archive in Linux:
-    
-    tar -xf my_archive.tar.gz 
-    
-```
-# Removing Node.js on Linux
-```
-rm -rf /usr/local/bin/npm 
-rm -rf /usr/local/share/man/man1/node* 
-rm -rf /usr/local/lib/dtrace/node.d 
-rm -rf ~/.npm 
-rm -rf ~/.node-gyp 
-rm -rf /opt/local/bin/node 
-rm -rf opt/local/include/node 
-rm -rf /opt/local/lib/node_modules  
-rm -rf /usr/local/lib/node*
-rm -rf /usr/local/include/node*
-rm -rf /usr/local/bin/node*
-```
-
-
-
-![General Bots Inside Visual Studio Code provides a complete artificial intelligence based conversational platform](https://raw.githubusercontent.com/pragmatismo-io/BotServer/master/docs/images/general-bots-inside-visual-studio-code-provides-a-complete-artificial-intelligence-based-conversational-platform.png)
-
-## Specifications 
-
-## Dialogs
-
-The dialog is built by specifing series of methods, disposed as an array as seen
-on Figure 1. Each dialog has also an identifier that can be called by several
-engines like kb.gbapp, which handles cloud based search for documents and other
-knowledge base information and also routes for the natural language processing
-(NLP) engine.
-
-``` typescript
-
-static getDialogs(bot: BotAdapter, min: GBMinInstance) {
-    return [{name:"/convertTemperature", waterfall: [
-        async step => {
-        },
-        async step => {
-        },
-        async step => {
-        }]
-    },{name:"/convertCurrency", waterfall: [
-        async step => {
-        },
-        async step => {
-        },
-        async step => {
-        }]
-    }
-    ]
-```
-
-    *Figure 1 - How to build dialogs in General Bots using TypeScript*
 
 
 ## Fork concept
@@ -283,14 +146,6 @@ Is the implementation of new software based on existing software. The branch tak
 This in some way contributes to a better understanding of how it works.
 
 ## How To...
-### Clean up bot directly on database
-@@id = 0
-DELETE FROM GuaribasConversationMessage WHERE instanceId = @id
-DELETE FROM GuaribasConversation WHERE instanceId = @id
-DELETE FROM GuaribasUser WHERE instanceId = @id
-DELETE FROM GuaribasAnswer WHERE instanceId = @id
-DELETE FROM GuaribasQuestion WHERE instanceId = @id
-DELETE FROM GuaribasPackage WHERE instanceId = @id
 
 ### Create a new keyword
 
@@ -298,92 +153,243 @@ DELETE FROM GuaribasPackage WHERE instanceId = @id
 - 2min.  Perform keywords list update;
 - (Optional) 10min. Create a new facade of keywords (Create service file, add reference to package/index.ts, and make a call);
 - 20min. Keyword code call and infrastructure to support it.
-    
-### Debugging .gbapp deployed on Azure
-
-1. Visit https://SITENAME.scm.azurewebsites.net/api/vfs/LogFiles/Application/index.html
+   
 
 ## Commit code
-    
-See https://semver.org/.
 
+# Semantic Versioning for gbapp Development
 
-The numbering rules are defined as the following syntax:
-    
-1.0.0
-MAJOR.MINOR.PATCH
-(BREAK.FEATURE.BUG)
+Semantic Versioning (SemVer) in gbapp development follows the format MAJOR.MINOR.PATCH, also thought of as BREAK.FEATURE.BUG. This system helps developers and users understand the impact of new releases at a glance.
 
-### Details
+When you increment these numbers:
+- Increment MAJOR when you make incompatible API changes. This signals to users that they need to update their code to accommodate breaking changes.
+- Increment MINOR when you add new functionality in a backwards-compatible manner. Users can safely update without changing their existing code, but they might want to take advantage of new features.
+- Increment PATCH when you make backwards-compatible bug fixes. These are safe, low-risk updates that users are encouraged to apply promptly.
 
-- A fix in the code (0.0.*1*):
+For example, moving from version 1.2.3 to 2.0.0 indicates a breaking change, while 1.3.0 would indicate new features, and 1.2.4 would be a bug fix.
 
-```
-fix(azuredeployer.gbapp): stop graphite breaking when too much pressure applied Patch Fix Release 
-```
-
-- A new feature (0.*1*.0):
+In gbapp development, we use specific commit message formats to automatically determine version increments. A typical commit message looks like this:
 
 ```
-feat(core.gbapp): add 'graphiteWidth' option 
+<type>(<scope>): <short summary>
+[BREAKING CHANGE: <description>]
 ```
 
-- A commit incrementing main version number (*1*.0.0):
+The 'type' in the commit message helps determine how to increment the version:
+- 'feat' or 'feature' increments the MINOR version
+- 'fix' increments the PATCH version
+- If the commit message body contains "BREAKING CHANGE", it triggers a MAJOR version increment
 
-```
-BREAKING CHANGE: The graphiteWidth option has been removed.
-```
+Here are some examples:
 
-- A commit without incrementing version number (version remains unchanged)
-```
-perf(core.gbapp): Improved loop.
-```
-        
-### Rules
+1. `fix(azuredeployer.gbapp): stop graphite breaking when too much pressure applied` 
+   This would trigger a PATCH increment (e.g., 1.2.3 to 1.2.4).
 
-- BREAK: If the body contains the text “BREAKING CHANGE” then MAJOR version is incremented.
-- FEATURE: If the type contains feat/feature, then MINOR version is incremented.
-- BUG If the type contains fix, then PATCH version is incremented.
+2. `feat(core.gbapp): add 'graphiteWidth' option`
+   This would trigger a MINOR increment (e.g., 1.2.3 to 1.3.0).
 
-### Types
+3. ```
+   feat(api): remove 'graphiteWidth' option
+   BREAKING CHANGE: The graphiteWidth option has been removed.
+   ```
+   This would trigger a MAJOR increment (e.g., 1.2.3 to 2.0.0) due to the breaking change.
 
-    build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-    ci: Changes to our CI configuration files and scripts (examples: CircleCi, SauceLabs)
-    docs: Documentation only changes
-    feat: A new feature
-    fix: A bug fix
-    perf: A code change that improves performance
-    refactor: A code change that neither fixes a bug nor adds a feature
-    test: Adding missing tests or correcting existing tests
-Sources: 
-    - https://medium.com/agoda-engineering/automating-versioning-and-releases-using-semantic-release-6ed355ede742
-    - https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format (Types)
+4. `perf(core.gbapp): Improved loop efficiency`
+   This wouldn't trigger any version increment, as performance improvements don't typically affect the API.
+
+Other commit types like 'docs', 'style', 'refactor', 'test', 'build', and 'ci' don't typically trigger version increments, as they don't affect the functionality of the package from the user's perspective.
+
+When working on your gbapp, always write clear, descriptive commit messages and use the appropriate commit type. Be especially cautious with breaking changes and clearly document them. Keep your commits atomic - each commit should represent a single logical change.
+
+Remember, the goal of SemVer is to help manage dependencies and provide clear communication about the nature of changes in your gbapp. By following these guidelines, you make it easier for others to use and integrate your gbapp into their projects.
+
+For the complete specification and any updates, always refer to semver.org.    
+
+
 ## Tooling
 
 ### JavaScript
 
-| Título                                      | Endereço                                                                                          |
+| Title                                       | URL                                                                                          |
 |---------------------------------------------|---------------------------------------------------------------------------------------------------|
-|                                             | https://deeplearnjs.org/                                                                          |
-|                                             | Oimo.js http://lo-th.github.io/Oimo.js/\#stacking                                                 |
-|                                             | js-sequence-diagrams: https://bramp.github.io/js-sequence-diagrams/                               |
-|                                             | http://blog.avenuecode.com/a-library-for-data-visualization-d3.js                                 |
+| Deep Learning in JavaScript                 | https://deeplearnjs.org/                                                                          |
+| 3D Physics Engine for JavaScript            | Oimo.js http://lo-th.github.io/Oimo.js/#stacking                                                 |
+| Sequence Diagram Generator                  | js-sequence-diagrams: https://bramp.github.io/js-sequence-diagrams/                               |
+| Data Visualization with D3.js               | http://blog.avenuecode.com/a-library-for-data-visualization-d3.js                                 |
 | Chrome inside Node.js                       | https://github.com/GoogleChrome/puppeteer                                                         |
 | XLSX loader                                 | https://github.com/mgcrea/node-xlsx                                                               |
-| Node.js bindings for CNTK                   | https://github.com/nadavbar/node-cntk                                                             |
 | API Repository                              | https://any-api.com/                                                                              |
-| ORM                                         |                                                                                                   |
-| Migração de . NET para JavaScript (Node.js) | https://www.reddit.com/r/webdev/comments/2val7s/as_a_net_developer_do_i_need_to_care_about_nodejs |
+| ORM                                         | https://sequelize.org/                                                                            |
 | Simplified JavaScript Jargon                | http://jargon.js.org                                                                              |
-| RegExp | https://regexp101.com |
+| RegExp Testing and Debugging                | https://regexp101.com                                                                             |
 
-### Packages
 
-| Título | Descrição                        | URL                                |
-|--------|----------------------------------|------------------------------------|
-| MSAL   | Microsoft Authentication Library | https://www.npmjs.com/package/msal |
+### Node Packages
 
-### Visual Studio Code Shotcut keys
+| Title                                        | Description                                                                    |
+|----------------------------------------------|--------------------------------------------------------------------------------|
+| @azure/arm-appservice | Azure SDK for JavaScript to manage App Service resources |
+| @azure/arm-cognitiveservices | Azure SDK for Cognitive Services management |
+| @azure/arm-resources | Azure SDK for resource management |
+| @azure/arm-search | Azure SDK for managing Azure Search services |
+| @azure/arm-sql | Azure SDK for SQL database management |
+| @azure/arm-subscriptions | Azure SDK for subscription management |
+| @azure/cognitiveservices-computervision | Azure Computer Vision API client library |
+| @azure/keyvault-keys | Azure Key Vault keys client library |
+| @azure/ms-rest-js | Isomorphic client runtime for Azure SDK |
+| @azure/msal-node | Microsoft Authentication Library (MSAL) for Node.js |
+| @azure/search-documents | Azure Cognitive Search client library |
+| @google-cloud/pubsub | Google Cloud Pub/Sub client library |
+| @google-cloud/translate | Google Cloud Translation API client library |
+| @hubspot/api-client | HubSpot API client for Node.js |
+| @microsoft/microsoft-graph-client | Microsoft Graph API client library |
+| @nosferatu500/textract | Text extraction from various file formats |
+| @semantic-release/changelog | Semantic-release plugin to create or update a changelog file |
+| @semantic-release/exec | Semantic-release plugin to execute custom shell commands |
+| @semantic-release/git | Semantic-release plugin to commit release assets to the project's git repository |
+| @sendgrid/mail | SendGrid email service client library |
+| @types/node | TypeScript definitions for Node.js |
+| @types/validator | TypeScript definitions for validator.js |
+| adm-zip | ZIP file management library |
+| alasql | JavaScript SQL database for browser and Node.js |
+| any-shell-escape | Escapes a string for use in shell commands |
+| async-promises | Utilities for working with asynchronous code and promises |
+| basic-auth | Basic HTTP authentication parsing |
+| billboard.js | Re-usable, easy interface JavaScript chart library |
+| bluebird | Promise library with performance focus |
+| body-parser | Node.js body parsing middleware |
+| botbuilder | Bot Framework v4 SDK for Node.js |
+| botbuilder-adapter-facebook | Bot Framework v4 adapter for Facebook |
+| botbuilder-ai | Bot Framework v4 AI integration |
+| botbuilder-dialogs | Bot Framework v4 dialogs library |
+| botframework-connector | Bot Framework connector library |
+| botlib | Library for building chatbots |
+| c3-chart-maker | Wrapper for C3.js charting library |
+| chatgpt | Unofficial ChatGPT API client |
+| chrome-remote-interface | Chrome Debugging Protocol interface |
+| cli-progress | Easy to use Progress-Bar for command-line interfaces |
+| cli-spinner | Spinner for command-line interfaces |
+| core-js | Modular standard library for JavaScript |
+| data-forge | Data transformation and analysis library |
+| date-diff | Calculate the difference between two dates |
+| docxtemplater | Template-based document generation |
+| dotenv-extended | Advanced environment variable loader |
+| exceljs | Excel workbook manager |
+| express | Fast, unopinionated, minimalist web framework for Node.js |
+| express-remove-route | Dynamically remove routes in Express |
+| ffmpeg-static | FFmpeg static binaries for Node.js |
+| google-libphonenumber | Google's libphonenumber library for Node.js |
+| googleapis | Google APIs client library |
+| ibm-watson | IBM Watson APIs Node.js SDK |
+| indent.js | JavaScript code indentation library |
+| js-beautify | JavaScript beautifier |
+| keyv | Simple key-value storage with support for multiple backends |
+| koa | Next generation web framework for Node.js |
+| koa-body | Body parser for Koa |
+| koa-router | Router middleware for Koa |
+| lodash | Utility library delivering modularity, performance, & extras |
+| luxon | Library for working with dates and times |
+| mammoth | Convert Word documents (.docx files) to HTML |
+| moment | Parse, validate, manipulate, and display dates in JavaScript |
+| ms-rest-azure | Azure REST API client runtime |
+| nexmo | Vonage API client library |
+| node-cron | Cron-like job scheduler for Node.js |
+| node-nlp | Natural language processing tools for Node.js |
+| node-tesseract-ocr | Tesseract OCR engine for Node.js |
+| npm | Node package manager |
+| open | Open stuff like URLs, files, executables |
+| pdf-extraction | Extract content from PDF files |
+| pdfkit | PDF document generation library |
+| phone | Phone number parsing, validation and formatting |
+| pizzip | ZIP file generation library |
+| pptxtemplater | PowerPoint template engine |
+| pragmatismo-io-framework | Framework for building enterprise applications |
+| prism-media | Interface for streaming media transcoding |
+| public-ip | Get your public IP address |
+| punycode | Robust Punycode converter |
+| puppeteer | Headless Chrome Node.js API |
+| puppeteer-extra | Modular plugin framework for Puppeteer |
+| puppeteer-extra-plugin-stealth | Stealth plugin for Puppeteer |
+| qrcode | QR code generator |
+| qrcode-terminal | QR code generator for terminal |
+| readline | readline utility for Node.js |
+| reflect-metadata | Polyfill for Metadata Reflection API |
+| rimraf | The UNIX command rm -rf for Node.js |
+| safe-buffer | Safer Node.js Buffer API |
+| scanf | C-like scanf for Node.js |
+| sequelize | Promise-based ORM for Node.js |
+| sequelize-cli | Sequelize command line interface |
+| sequelize-typescript | Decorators and TypeScript for Sequelize |
+| simple-git | Simple Git interface for Node.js |
+| speakingurl | Generate a slug from a string |
+| ssr-for-bots | Server-side rendering for bots |
+| strict-password-generator | Generate cryptographically strong passwords |
+| swagger-client | Swagger/OpenAPI client for JavaScript |
+| tabulator-tables | Interactive table generation library |
+| tedious | TDS driver for connecting to SQL Server databases |
+| textract | Text extraction from various file types |
+| twitter-api-v2 | Twitter API v2 client library |
+| typescript | TypeScript language |
+| typescript-rest-rpc | TypeScript RPC framework |
+| url-join | Join all arguments together and normalize the resulting URL |
+| vbscript-to-typescript | Convert VBScript to TypeScript |
+| vhost | Virtual host for Node.js |
+| vm2 | Sandbox for Node.js |
+| vm2-process | Process management for VM2 |
+| walk-promise | Directory tree walker with Promises |
+| washyourmouthoutwithsoap | Profanity filter |
+| whatsapp-web.js | WhatsApp Web API for Node.js |
+| winston | Multi-transport async logging library |
+| winston-logs-display | Display Winston logs in the browser |
+| yarn | Fast, reliable, and secure dependency management |
+
+### Node Packages (Dev Dependencies)
+
+| Title                                        | Description                                                                    |
+|----------------------------------------------|--------------------------------------------------------------------------------|
+| simple-commit-message | Simple commit message validator |
+| @types/url-join | TypeScript definitions for url-join |
+| ban-sensitive-files | Prevent sensitive files from being committed |
+| commitizen | Tool to create commit messages according to conventions |
+| cz-conventional-changelog | Commitizen adapter for conventional changelog |
+| dependency-check | Check for unused and missing dependencies |
+| git-issues | List git issues from command line |
+| license-checker | Check license info for project dependencies |
+| ngrok | Secure tunnels to localhost |
+| prettier-standard | Prettier and standard configuration |
+| semantic-release | Automated version management and package publishing |
+| travis-deploy-once | Run a deployment script only once in Travis CI |
+| ts-node | TypeScript execution and REPL for Node.js |
+| tslint | Linter for TypeScript |
+    
+    
+### Code Extensions
+
+| Title                                        | Description                                                     |
+|----------------------------------------------|-----------------------------------------------------------------|
+| mbinic.tgit-cmds                             | Set of commands for launching TortoiseGit dialogs               |
+| tomashubelbauer.vscode-markdown-table-format | Formats MarkDown tables so that all columns have the same width |
+| esbenp.prettier-vscode                       | VS Code plugin for prettier/prettier (wraps at column 80)       |
+| mikestead.dotenv                             | .env file support for VS Code                                   |
+| abhinavk99.codewall                          | Blocks distracting websites to improve productivity             |
+| christian-kohler.npm-intellisense            | Autocompletes npm modules in import statements                  |
+| csholmq.excel-to-markdown-table              | Converts Excel data to Markdown tables                          |
+| davidanson.vscode-markdownlint               | Markdown linting and style checking for VS Code                 |
+| eg2.ts-tslint                                | TypeScript linter for VS Code                                   |
+| eg2.vscode-npm-script                        | Run npm scripts from the command palette                        |
+| esbenp.prettier-vscode                       | Code formatter using prettier                                   |
+| formulahendry.auto-rename-tag-               | Automatically rename paired HTML/XML tags                       |
+| gruntfuggly.align-mode                       | Aligns text in columns based on regular expressions             |
+| jmfirth.vsc-space-block-jumper               | Jump between blocks of code separated by blank lines            |
+| kaiwood.indentation-level-movement           | Move lines up and down respecting indentation                   |
+| mbinic.tgit-cmds                             | Set of commands for launching TortoiseGit dialogs               |
+| mechatroner.rainbow-csv                      | Highlight CSV and TSV files in different colors                 |
+| mikestead.dotenv                             | .env file support for VS Code                                   |
+| sirtori.indenticator                         | Highlights the current indentation depth                        |
+| tandy.color-basic                            | Syntax highlighting for Color BASIC                             |
+
+
+### Code Shotcut keys
 
 | Key                      | Description                                                                   |
 |--------------------------|-------------------------------------------------------------------------------|
@@ -400,181 +406,11 @@ Sources:
 | CTRL + ALT+UP/DOWN ARROW | Enter the Vertical Selection mode                                             |
 | ALT + UP/DOWN ARROW      | Move lines                                                                    |
 
-### Node Packages
-
-| Title                                        | Description                                                                    |
-|----------------------------------------------|--------------------------------------------------------------------------------|
-| @azure/arm-appservice | |
-| @azure/arm-cognitiveservices | |
-| @azure/arm-resources | |
-| @azure/arm-search | |
-| @azure/arm-sql | |
-| @azure/arm-subscriptions | |
-| @azure/cognitiveservices-computervision | |
-| @azure/keyvault-keys | |
-| @azure/ms-rest-js | |
-| @azure/msal-node | |
-| @azure/search-documents | |
-| @google-cloud/pubsub | |
-| @google-cloud/translate | |
-| @hubspot/api-client | |
-| @microsoft/microsoft-graph-client | |
-| @nosferatu500/textract | |
-| @semantic-release/changelog | |
-| @semantic-release/exec | |
-| @semantic-release/git | |
-| @sendgrid/mail | |
-| @types/node | |
-| @types/validator | |
-| adm-zip | |
-| alasql | |
-| any-shell-escape | |
-| async-promises | |
-| basic-auth | |
-| billboard.js | |
-| bluebird | |
-| body-parser | |
-| botbuilder | |
-| botbuilder-adapter-facebook | |
-| botbuilder-ai | |
-| botbuilder-dialogs | |
-| botframework-connector | |
-| botlib | |
-| c3-chart-maker | |
-| chatgpt | |
-| chrome-remote-interface | |
-| cli-progress | |
-| cli-spinner | |
-| core-js | |
-| data-forge | |
-| date-diff | |
-| docxtemplater | |
-| dotenv-extended | |
-| exceljs | |
-| express | |
-| express-remove-route | |
-| ffmpeg-static                                | Converts multiple video/audio format, wrapper to [ffpmeg](https://ffmpeg.org/). |
-| google-libphonenumber | |
-| googleapis | |
-| ibm-watson | |
-| indent.js | |
-| js-beautify | |
-| keyv | |
-| koa | |
-| koa-body | |
-| koa-router | |
-| lodash | |
-| luxon | |
-| mammoth | |
-| moment | |
-| ms-rest-azure | |
-| nexmo | |
-| node-cron | |
-| node-nlp | |
-| node-tesseract-ocr | |
-| npm | |
-| open | |
-| pdf-extraction | |
-| pdfkit | |
-| phone | |
-| pizzip | |
-| pptxtemplater | |
-| pragmatismo-io-framework | |
-| prism-media | |
-| public-ip | |
-| punycode | |
-| puppeteer | |
-| puppeteer-extra | |
-| puppeteer-extra-plugin-stealth | |
-| qrcode | |
-| qrcode-terminal | |
-| readline | |
-| reflect-metadata | |
-| rimraf | |
-| safe-buffer | |
-| scanf | |
-| sequelize | |
-| sequelize-cli | |
-| sequelize-typescript | |
-| simple-git | |
-| speakingurl | |
-| ssr-for-bots" | |
-| strict-password-generator | |
-| swagger-client | |
-| tabulator-tables | |
-| tedious | |
-| textract | |
-| twitter-api-v2 | |
-| typescript | |
-| typescript-rest-rpc | |
-| url-join | |
-| vbscript-to-typescript | |
-| vhost | |
-| vm2 | |
-| vm2-process | |
-| walk-promise | |
-| washyourmouthoutwithsoap | |
-| whatsapp-web.js | |
-| winston | |
-| winston-logs-display | |
-| yarn | |
-
-### Node Packages (Dev Dependencies)
-
-| Title                                        | Description                                                                    |
-|----------------------------------------------|--------------------------------------------------------------------------------|
-| simple-commit-message | |
-| @types/url-join | |
-| ban-sensitive-files | |
-| commitizen | |
-| cz-conventional-changelog | |
-| dependency-check | |
-| git-issues | |
-| license-checker | |
-| ngrok | |
-| prettier-standard | |
-| semantic-release | |
-| travis-deploy-once | |
-| ts-node | |
-| tslint | |
-
-    
-    
-### Visual Studio Code Extensions
-
-| Title                                        | Description                                                     |
-|----------------------------------------------|-----------------------------------------------------------------|
-| mbinic.tgit-cmds                             | Set of commands for launching TortoiseGit dialogs               |
-| tomashubelbauer.vscode-markdown-table-format | Formats MarkDown tables so that all columns have the same width |
-| esbenp.prettier-vscode                       | VS Code plugin for prettier/prettier (wraps at column 80)       |
-| mikestead.dotenv                             | .env support                                                    |
-| abhinavk99.codewall                          | Description here                                                |
-| christian-kohler.npm-intellisense            | Description here                                                |
-| csholmq.excel-to-markdown-table              | Description here                                                |
-| davidanson.vscode-markdownlint               | Description here                                                |
-| eg2.ts-tslint                                | Description here                                                |
-| eg2.vscode-npm-script                        | Description here                                                |
-| esbenp.prettier-vscode                       | Description here                                                |
-| formulahendry.auto-rename-tag-               | Description here                                                |
-| gruntfuggly.align-mode                       | Description here                                                |
-| jmfirth.vsc-space-block-jumper               | Description here                                                |
-| kaiwood.indentation-level-movement           | Description here                                                |
-| mbinic.tgit-cmds                             | Description here                                                |
-| mechatroner.rainbow-csv                      | Description here                                                |
-| mikestead.dotenv                             | Description here                                                |
-| sirtori.indenticator                         | Description here                                                |
-| tandy.color-basic                            | Description here                                                |
-
-## Common tasks
+### Common tasks
 
 | Task          | Description                         |
 |---------------|-------------------------------------|
 | npm update -g | Updates NPM                         |
 | node -v       | Checks node version                 |
 | ncu -a        | Update all packages in package.json |
-
-## Useful documentation 
-- https://www.typescriptlang.org/docs/handbook (TypeScript Documentation).
-- https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/
-
 
