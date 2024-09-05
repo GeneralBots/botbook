@@ -116,11 +116,6 @@ apt-get install python g++ build-essential
 npm install -g node-gyp
 ```
 
-Opening 443 Port in Linux
-
-```
-setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
-```
 
 Add export GTK_IM_MODULE="xim" to .profile to fix Key Bindings in VSCode on Ubuntu.
 
@@ -140,20 +135,7 @@ npm install -g cost-of-modules
 ```
 
 
-## Fork concept
-
-Is the implementation of new software based on existing software. The branch takes advantage of the data already used in other software to generate a new one.
-This in some way contributes to a better understanding of how it works.
-
 ## How To...
-
-### Create a new keyword
-
-- 10min. Find the package on npmjs.com;
-- 2min.  Perform keywords list update;
-- (Optional) 10min. Create a new facade of keywords (Create service file, add reference to package/index.ts, and make a call);
-- 20min. Keyword code call and infrastructure to support it.
-   
 
 ## Commit code
 
@@ -205,6 +187,14 @@ Remember, the goal of SemVer is to help manage dependencies and provide clear co
 
 For the complete specification and any updates, always refer to semver.org.    
 
+
+### Create a new keyword
+
+- 10min. Find the package on npmjs.com;
+- 2min.  Perform keywords list update;
+- (Optional) 10min. Create a new facade of keywords (Create service file, add reference to package/index.ts, and make a call);
+- 20min. Keyword code call and infrastructure to support it.
+   
 
 ## Tooling
 

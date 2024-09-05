@@ -264,6 +264,15 @@ https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
 9. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
 10. /publish to publish packages on root bot.
 
+
+
+## Opening 443 Port in Linux
+
+```
+setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
+```
+
+
 ## Common Errors on Azure
 
 - The subscription is not registered to use namespace 'Microsoft.Web'. See https://aka.ms/rps-not-found for how to register subscriptions.
