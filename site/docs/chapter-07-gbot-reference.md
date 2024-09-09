@@ -202,6 +202,7 @@ Each title and description has been crafted to clarify the purpose and functiona
 | TEST_MESSAGE           | /publish                                         | If the bot server should auto send a message for test.                   |
 | TEST_SHELL             | rm work/..                                       | If the user needs to continuously remove an archive.                     |
 | GBDIALOG_GBDATABOT     | Shared.gbai/Shared.gbdata                        | If defined, BotServer will use this .gbdata instead of default location. |
+ADMIN_OPEN_PUBLISH| |  If defined, BotServer will open the publish dialog on startup not requiring password. |
 
 ## How to
 
