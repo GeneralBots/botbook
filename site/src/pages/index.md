@@ -61,7 +61,8 @@ Follow these steps to get your General Bots server up and running:
 
 ### Accessing Your Bot
 
-Once the server is running, you can access your bot at `http://localhost:4242/`. This local server allows you to interact with your bot and test its functionality in real-time.
+Once the server is running, you can access your bot at `http://localhost:4242/`. This local server allows you to interact with your bot and test its functionality in real-time. If you want to publish
+without password, define [ADMIN_OPEN_PUBLISH](./docs/chapter-07-gbot-reference#enviroment-variables-reference) as true in BotServer .env file.
 
 To publish bot packages and initiate a conversation with the bot, use the command:
 
