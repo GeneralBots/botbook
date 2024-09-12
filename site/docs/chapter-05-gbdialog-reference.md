@@ -7,6 +7,29 @@ sidebar_position: 50
 ![generalbots-2018](https://user-images.githubusercontent.com/65977273/94922431-949c3900-0490-11eb-800a-6b478d689f2a.png)
 
 General Bots BASIC using HEAR and TALK keywords provides a easy to write bot language accessible to everyone and used as incomer for people willing to make their own bot.
+It's crucial to emphasize just how easy and powerful the General Bots system is:
+
+1. Rapid Development: With just a few lines of BASIC-like code, you can 
+   create complex, AI-powered applications.
+
+2. Automatic REST API: General Bots automatically generates REST API 
+   endpoints for your dialogs, saving you significant development time.
+
+3. Production-Ready: Simply by adding a BASIC text file, you get a General 
+   Bots application running in production. No complex deployment processes 
+   required.
+
+4. Versatility: Whether you're building chatbots, process automation, or 
+   data collection systems, General Bots can handle it all with the same 
+   simple syntax.
+
+5. Integration of LLMs: Seamlessly incorporate the power of Large Language 
+   Models into your applications without dealing with complex AI frameworks.
+
+General Bots truly revolutionizes the way we build AI-powered applications 
+and REST APIs. Its simplicity belies its power, making it accessible to 
+developers of all skill levels while providing the capabilities needed for 
+enterprise-grade applications.
 
 
 ## Architecture
@@ -328,6 +351,75 @@ DO WHILE index <38
 LOOP
 EXIT
 ```
+
+## TURN AN LLM INTO A REST API SERVER
+
+General Bots offers an incredibly simple way to transform a Large Language 
+Model (LLM) into a fully functional REST API server. With just a few lines 
+of our proprietary BASIC-like syntax, you can create sophisticated 
+AI-powered applications. 
+
+For example, here's how easy it is to create a chatbot for a store:
+```basic
+   PARAM operator AS number LIKE 12312312
+   DESCRIPTION "Operator code."
+
+   DESCRIPTION It is a WebService of GB.
+
+   products = FIND "products.csv"
+
+   BEGIN SYSTEM PROMPT
+     You must act as a chatbot that will assist a store attendant by 
+     following these rules: Whenever the attendant places an order, it must 
+     include the table and the customer's name. Example: A 400ml Pineapple 
+     Caipirinha for Rafael at table 10. Orders are based on the products and 
+     sides from this product menu: ${JSON.stringify(products)}.
+
+     For each order placed, return a JSON containing the product name, the 
+     table, and a list of sides with their respective ids.
+   END SYSTEM PROMPT
+```
+That's it! With just this simple BASIC code, you've created a fully 
+functional LLM-powered chatbot that can handle complex order processing. 
+The system automatically generates the necessary REST API endpoints:
+
+   http://localhost:1111/llm-server/dialogs/start?operator=123
+   http://localhost:1111/llm-server/dk/talk?pid=4893749837&text=add%20soda
+
+## USING DIALOGS AS REST API SERVER
+
+Creating a REST API server for any business process is equally 
+straightforward. Here's an example of an enrollment process:
+```basic
+   PARAM name AS string LIKE "João Silva"
+   DESCRIPTION "Required full name of the individual."
+
+   PARAM birthday AS date LIKE "23/09/2001"
+   DESCRIPTION "Required birth date of the individual in DD/MM/YYYY format."
+
+   PARAM email AS string LIKE "joao.silva@example.com"
+   DESCRIPTION "Required email address for contact purposes."
+
+   PARAM personalid AS integer LIKE "12345678900"
+   DESCRIPTION "Required Personal ID number of the individual (only numbers)."
+
+   PARAM address AS string LIKE "Rua das Flores, 123, São Paulo, SP"
+   DESCRIPTION "Required full address of the individual."
+
+   DESCRIPTION
+   "This is the enrollment process, called when the user wants to enroll. 
+   Once all information is collected, confirm the details and inform them 
+   that their enrollment request has been successfully submitted. Provide 
+   a polite and professional tone throughout the interaction."
+
+   SAVE "enrollments.csv", id, name, birthday, email, cpf, rg, address
+```
+Incredibly, this is all you need to create a full-fledged enrollment system 
+with data validation, user interaction, and data storage. The system 
+automatically generates a REST API endpoint:
+
+   http://api.pragmatismo.cloud/llm-server/dialogs/enrollment?birthday...
+
 
 ### Using POST data
 

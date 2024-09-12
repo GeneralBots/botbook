@@ -22,35 +22,36 @@ here is a list of admin commands related to deploying .gb\* files.
 
 | Name                        | Description                                                                                                            |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| .gbapp List                 | List of associated .gbapp packages to this .gbot.                                                                      |
 | Admin Notify E-mail         | E-mail used to notify administrators.                                                                                  |
 | Answer Mode                 | How LLM is used. Can be "direct", "document", "document-ref", "sql", "chart" or "tool".                                |
 | Avatar Logo                 | Bot logo URL.                                                                                                          |
+| Bot Admin Number            | Administration mobile number which will receive Debug screenshots and other notifications.                             |
 | Can Publish                 | Comma separeted list of mobile numbers that can publish directly.                                                      |
+| Debug Web Automation        | TRUE if Bot Admin Number will receive an screenshot to each web automation step.                                       |
+| Default Content Language    | Language (eg.: en or pt) that content files in .gbkb, .gbdialog and so on are written.                                 |
+| Default User Language       | Language (eg.: en or pt) that user will be presented by the Bot.                                                       |
 | Description                 | Description of the Bot.                                                                                                |
 | Enable Audio Hearing        | TRUE if the Bot can hear.                                                                                              |
 | Enable Audio Talking        | TRUE if the Bot can talk.                                                                                              |
 | Enable Spelling Checker     | TRUE if everything input by user should be spell checked.                                                              |
 | Enable Worldwide Translator | TRUE if the Bot should be polyglot.                                                                                    |
-| Default User Language       | Language (eg.: en or pt) that user will be presented by the Bot.                                                       |
-| Default Content Language    | Language (eg.: en or pt) that content files in .gbkb, .gbdialog and so on are written.                                 |
+| Feedback Improve.Message    | Message to user when the Bot was unable to find something.                                                             |
+| Group Spell                 | Enable spell checker for groups.                                                                                       |
+| HelloGoodX                  | TRUE if Bot should give hello.                                                                                         |
+| Keep Text                   | Comma separeted list of words that should be keep intact between Bot understanding process.                            |
 | Language Detector           | TRUE if Bot should get the language automatically.                                                                     |
 | NLP Score                   | Number between 0 and 1 that will be used to classify text to use NLP neural network.                                   |
 | Search Score                | Number between 0 and 1 that will be used to consider Full Text Search as content retrieval method.                     |
+| SSR                         | Generate an HTML for the default.gbui useful for search engines.                                                       |
+| Start Dialog                | Name of .docx (without the Extension) that will be used as Dialog entry point.                                         |
+| Synchronize Database        | TRUE if TABLE keyword should _MODIFY_ database. Be careful in Production storage this value should be FALSE (default). |
 | Transfer To                 | Comma separeted list of mobile numbers that Bot will use to tranfer chats from WhatsApp.                               |
 | WhatsApp Admins             | Comma separeted list of mobile numbers that will be admin.                                                             |
-| Feedback Improve.Message    | Message to user when the Bot was unable to find something.                                                             |
-| Keep Text                   | Comma separeted list of words that should be keep intact between Bot understanding process.                            |
-| Start Dialog                | Name of .docx (without the Extension) that will be used as Dialog entry point.                                         |
-| HelloGoodX                  | TRUE if Bot should give hello.                                                                                         |
-| XRM Key                     | String key of HubSpot (currently) API.                                                                                 |
+| WhatsApp Group ID           | Group ID (accessible only in internal log) used to connect the Bot to a WhatsApp group.                                |
 | WhatsApp Group Name         | WhatsApp group name that this Bot belongs to.                                                                          |
 | WhatsApp Group Shortcuts    | Space separeted list of triggers in text that will active Bot in groups.                                               |
-| Bot Admin Number            | Administration mobile number which will receive Debug screenshots and other notifications.                             |
-| WhatsApp Group ID           | Group ID (accessible only in internal log) used to connect the Bot to a WhatsApp group.                                |
-| Debug Web Automation        | TRUE if Bot Admin Number will receive an screenshot to each web automation step.                                       |
-| .gbapp List                 | List of associated .gbapp packages to this .gbot.                                                                      |
-| Group Spell                 | Enable spell checker for groups.                                                                                       |
-| Synchronize Database        | TRUE if TABLE keyword should _MODIFY_ database. Be careful in Production storage this value should be FALSE (default). |
+| XRM Key                     | String key of HubSpot (currently) API.                                                                                 |
 
 Note that this variables are available in every .gbdialog code, automatically.
 
@@ -65,7 +66,7 @@ The "Admin Notify E-mail" setting specifies the email addresses that will receiv
 In a bot factory configuration, the integration of a Language Learning Model (LLM) is pivotal in enhancing the functionality and efficiency of the bots. The LLM can be employed in various modes depending on the requirements of the bot system. These modes include "direct," "document," "document-ref," "sql," and "tool," each offering a unique method of interaction and data handling. For instance, in the "direct" mode, the LLM is used to generate responses or actions based on real-time user input, providing immediate and contextually relevant replies. This approach is particularly useful for creating conversational agents that can handle a wide range of user queries effectively.
 In the "document" mode, the LLM processes and generates responses based on pre-existing documents or content. This mode is ideal for scenarios where the bot needs to reference detailed information or provide insights derived from specific documents. The LLM analyzes the content of the documents to deliver accurate and contextually appropriate information, thereby enhancing the bot's ability to offer valuable and precise responses. This approach is particularly beneficial for applications that require in-depth knowledge or detailed guidance based on existing resources.
 The "document-ref" mode builds on the document-based approach by allowing the LLM to reference and extract information from multiple documents to generate comprehensive responses. This mode is advantageous when the bot needs to synthesize information from various sources to provide well-rounded answers or perform complex tasks. In contrast, the "sql" mode leverages structured query language to interact with databases, enabling the LLM to retrieve and manipulate data based on specific queries. Lastly, the "tool" mode integrates the LLM with external tools or services, allowing the bot to extend its functionality by interacting with other applications or systems. Each mode offers a distinct advantage, allowing the bot factory to tailor its approach based on the specific needs and objectives of the bot system.
-The "chart" mode,  on the other hand, is used to generate charts and graphs based on data, providing a visual representation.
+The "chart" mode, on the other hand, is used to generate charts and graphs based on data, providing a visual representation.
 
 ### Avatar Logo
 
@@ -182,7 +183,7 @@ Each title and description has been crafted to clarify the purpose and functiona
 ## Enviroment Variables Reference
 
 | Name                   | Sample Value                                     | Description                                                              |
-| ---------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
+| ---------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | ADDITIONAL_DEPLOY_PATH | D:\data\gbai                                     | Deploy folder to look for packages (Just one folder).                    |
 | ADMIN_PASS             | E732+!#xJ3a\_\*!                                 | Administration password for the conversational interface.                |
 | CLOUD_SUBSCRIPTIONID   | 622e5037-f7f1-49f6-a9c4-28babbb0fs               | Cloud subscription ID used to deploy new bots.                           |
@@ -202,7 +203,7 @@ Each title and description has been crafted to clarify the purpose and functiona
 | TEST_MESSAGE           | /publish                                         | If the bot server should auto send a message for test.                   |
 | TEST_SHELL             | rm work/..                                       | If the user needs to continuously remove an archive.                     |
 | GBDIALOG_GBDATABOT     | Shared.gbai/Shared.gbdata                        | If defined, BotServer will use this .gbdata instead of default location. |
-ADMIN_OPEN_PUBLISH| |  If defined, BotServer will open the publish dialog on startup not requiring password. |
+| ADMIN_OPEN_PUBLISH     |                                                  | true                                                                     | If defined, BotServer will open the publish dialog on startup not requiring password. |
 
 ## How to
 
@@ -265,14 +266,11 @@ https://graph.facebook.com/v18.0/99999792462862/whatsapp_business_profile
 9. /setupSecurity to get access to Bot Drive (Clean: https://www.domstamand.com/removing-user-consent-from-an-azure-ad-application/);
 10. /publish to publish packages on root bot.
 
-
-
 ## Opening 443 Port in Linux
 
 ```
 setcap 'cap_net_bind_service=+ep' $(readlink -f $(which node))
 ```
-
 
 ## Common Errors on Azure
 
