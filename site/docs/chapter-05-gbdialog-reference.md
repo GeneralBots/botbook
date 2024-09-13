@@ -352,7 +352,7 @@ LOOP
 EXIT
 ```
 
-## TURN AN LLM INTO A REST API SERVER
+## Turn an LLM into a REST API server
 
 General Bots offers an incredibly simple way to transform a Large Language 
 Model (LLM) into a fully functional REST API server. With just a few lines 
@@ -377,49 +377,61 @@ For example, here's how easy it is to create a chatbot for a store:
 
      For each order placed, return a JSON containing the product name, the 
      table, and a list of sides with their respective ids.
+
    END SYSTEM PROMPT
 ```
 That's it! With just this simple BASIC code, you've created a fully 
 functional LLM-powered chatbot that can handle complex order processing. 
 The system automatically generates the necessary REST API endpoints:
 
-   http://localhost:1111/llm-server/dialogs/start?operator=123
+```
+   pid = http://localhost:1111/llm-server/dialogs/start?operator=123&userSystemId=999
+
+```
+
+This call will return a process identifier or PID, a number like 24795078551392. This should be passed within call chain. So, it is
+possible now to TALK to the bot, like an UI App input or microphone.
+And the return will be the JSON, because BEGIN SYSTEM PROMPT in start
+has told LLM to respond with a valid JSON. 
+TALK "PDF report generated and saved!"
+
+```
    http://localhost:1111/llm-server/dk/talk?pid=4893749837&text=add%20soda
 
-## USING DIALOGS AS REST API SERVER
+```
+
+So this call will act like talking to LLM, but in fact, it can be used
+to anything that General Bots can do in a robotic conversation between systems mediated by LLM.
+
+## Using dialogs as REST API Server
 
 Creating a REST API server for any business process is equally 
 straightforward. Here's an example of an enrollment process:
+
 ```basic
+
    PARAM name AS string LIKE "João Silva"
    DESCRIPTION "Required full name of the individual."
 
-   PARAM birthday AS date LIKE "23/09/2001"
-   DESCRIPTION "Required birth date of the individual in DD/MM/YYYY format."
+   PARAM birthday AS date LIKE "23/09/2001"  DESCRIPTION "Required birth date of the individual in DD/MM/YYYY format."
+   PARAM email AS string LIKE "joao.silva@example.com" DESCRIPTION "Required email address for contact purposes."
+   PARAM personalid AS integer LIKE "12345678900" DESCRIPTION "Required Personal ID number of the individual (only numbers)."
+   PARAM address AS string LIKE "Rua das Flores, 123, São Paulo, SP" DESCRIPTION "Required full address of the individual."
 
-   PARAM email AS string LIKE "joao.silva@example.com"
-   DESCRIPTION "Required email address for contact purposes."
-
-   PARAM personalid AS integer LIKE "12345678900"
-   DESCRIPTION "Required Personal ID number of the individual (only numbers)."
-
-   PARAM address AS string LIKE "Rua das Flores, 123, São Paulo, SP"
-   DESCRIPTION "Required full address of the individual."
-
-   DESCRIPTION
-   "This is the enrollment process, called when the user wants to enroll. 
-   Once all information is collected, confirm the details and inform them 
-   that their enrollment request has been successfully submitted. Provide 
-   a polite and professional tone throughout the interaction."
-
+   DESCRIPTION  "This is the enrollment process, called when the user wants to enroll.    Once all information is collected, confirm the details and inform them    that their enrollment request has been successfully submitted. Provide    a polite and professional tone throughout the interaction."
+   
    SAVE "enrollments.csv", id, name, birthday, email, cpf, rg, address
+
 ```
 Incredibly, this is all you need to create a full-fledged enrollment system 
 with data validation, user interaction, and data storage. The system 
-automatically generates a REST API endpoint:
+automatically generates a REST API endpoint that is called by LLM as a tool.
+So LLM can answer with data of external model train data.
 
+```
    http://api.pragmatismo.cloud/llm-server/dialogs/enrollment?birthday...
 
+```
 
 ### Using POST data
 
