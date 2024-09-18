@@ -176,6 +176,29 @@ The "Group Spell" option enables the spell checker for group interactions. When 
 
 The "Synchronize Database" setting determines whether the TABLE keyword should modify the database. Setting this to TRUE allows changes to the database schema, while FALSE should be used in production environments to prevent unintended modifications.
 
+### Theme Color
+
+You can change  the theme color of the bot by selecting a color from the palette of General Bots available theme colors:
+
+| Color    |
+|----------|
+| grey     |
+| light    |
+| red      |
+| blue     |
+| green    |
+| yellow   |
+| purple   |
+| orange   |
+| brown    |
+| pink     |
+| cyan     |
+| lime     |
+| indigo   |
+| teal     |
+| violet   |
+| black-white |
+
 ---
 
 Each title and description has been crafted to clarify the purpose and functionality of the respective configuration setting.
