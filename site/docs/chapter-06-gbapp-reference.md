@@ -94,14 +94,11 @@ apt install code
 
 ```
 
-#### Node JS 20
+#### Node JS 22
 ```
 
-curl -fsSL https://deb.nodesource.com/setup_20.x | -E bash -
-apt-get install -y nodejs
-node -v
-apt install npm 
-npm -v
+curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo apt-get install -y nodejs && node -v
+
 
 ```
 
@@ -112,8 +109,6 @@ apt-get install cpulimit
 sudo apt-get install expect
 apt-get install libxtst-dev
 apt-get install libpng-dev
-apt-get install python g++ build-essential
-npm install -g node-gyp
 ```
 
 
