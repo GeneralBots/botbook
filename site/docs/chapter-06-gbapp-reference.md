@@ -99,16 +99,26 @@ apt install code
 
 curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo apt-get install -y nodejs && node -v
 
-
 ```
 
 #### Additional Infrastructure 
 
+
+
 ```
+
+apt-get update
+
+apt-get install build-essential cmake git pkg-config libjpeg-dev libtiff-dev libpng-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libatlas-base-dev gfortran python3-dev
+
+export OPENCV4NODEJS_DISABLE_AUTOBUILD=1
+export OPENCV_LIB_DIR=/usr/lib/x86_64-linux-gnu
+
 apt-get install cpulimit
-sudo apt-get install expect
+apt-get install expect
 apt-get install libxtst-dev
 apt-get install libpng-dev
+
 ```
 
 

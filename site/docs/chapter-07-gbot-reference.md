@@ -51,6 +51,9 @@ here is a list of admin commands related to deploying .gb\* files.
 | WhatsApp Group ID           | Group ID (accessible only in internal log) used to connect the Bot to a WhatsApp group.                                |
 | WhatsApp Group Name         | WhatsApp group name that this Bot belongs to.                                                                          |
 | WhatsApp Group Shortcuts    | Space separeted list of triggers in text that will active Bot in groups.                                               |
+| Website                     | URL of website to use as bot knowledge base.  Note: Answer Mode should be 'document' while using crawler.              |
+| Website Depth               | Maximum website hyperlinks depth when crawling page contents.                                                          |
+| Website Max Documents       | Maximum website document count to be added to LLM embeddings.                                                          |
 | XRM Key                     | String key of HubSpot (currently) API.                                                                                 |
 
 Note that this variables are available in every .gbdialog code, automatically.
@@ -180,23 +183,23 @@ The "Synchronize Database" setting determines whether the TABLE keyword should m
 
 You can change  the theme color of the bot by selecting a color from the palette of General Bots available theme colors:
 
-| Color    |
-|----------|
-| grey     |
-| light    |
-| red      |
-| blue     |
-| green    |
-| yellow   |
-| purple   |
-| orange   |
-| brown    |
-| pink     |
-| cyan     |
-| lime     |
-| indigo   |
-| teal     |
-| violet   |
+| Color       |
+| ----------- |
+| grey        |
+| light       |
+| red         |
+| blue        |
+| green       |
+| yellow      |
+| purple      |
+| orange      |
+| brown       |
+| pink        |
+| cyan        |
+| lime        |
+| indigo      |
+| teal        |
+| violet      |
 | black-white |
 
 ---
