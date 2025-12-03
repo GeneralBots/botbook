@@ -1,6 +1,2 @@
-swa-cli.config.json
-deploy.sh
-site/build
-site/.docusaurus
+book
 .env
-node_modules
