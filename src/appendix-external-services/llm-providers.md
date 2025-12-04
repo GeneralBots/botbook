@@ -388,13 +388,16 @@ llm-batch-size,10
 
 ### Context Management
 
-Optimize context window usage:
+Optimize context window usage with episodic memory:
 
 ```csv
-llm-context-compaction,true
-llm-max-history-turns,10
-llm-summarize-long-contexts,true
+episodic-memory-enabled,true
+episodic-memory-threshold,4
+episodic-memory-history,2
+episodic-memory-auto-summarize,true
 ```
+
+See [Episodic Memory](../chapter-03/episodic-memory.md) for details.
 
 ## Troubleshooting
 

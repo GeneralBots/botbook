@@ -358,6 +358,156 @@ stalwart-admin-password,secure-password
 | Inbox | 300/hour per user |
 | Attachments | 50/hour per user |
 
+## Email Read Tracking
+
+General Bots supports email read tracking via an invisible 1x1 pixel embedded in HTML emails. When enabled, you can track when recipients open your emails.
+
+### Configuration
+
+Enable tracking in `config.csv`:
+
+```csv
+name,value
+email-read-pixel,true
+server-url,https://yourdomain.com
+```
+
+### How It Works
+
+1. When sending an HTML email, a tracking pixel is automatically injected
+2. When the recipient opens the email, their email client loads the pixel
+3. The server records the open event with timestamp and metadata
+4. You can query the tracking status via API or view in the Suite UI
+
+### Tracking Endpoints
+
+#### Serve Tracking Pixel
+
+**GET** `/api/email/tracking/pixel/:tracking_id`
+
+This endpoint is called automatically by email clients when loading the tracking pixel. It returns a 1x1 transparent GIF and records the read event.
+
+**Response:** Binary GIF image (1x1 pixel)
+
+**Headers Set:**
+- `Content-Type: image/gif`
+- `Cache-Control: no-store, no-cache, must-revalidate, max-age=0`
+
+#### Get Tracking Status
+
+**GET** `/api/email/tracking/status/:tracking_id`
+
+Get the read status for a specific sent email.
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "tracking_id": "550e8400-e29b-41d4-a716-446655440000",
+    "to_email": "recipient@example.com",
+    "subject": "Meeting Tomorrow",
+    "sent_at": "2024-01-15T10:30:00Z",
+    "is_read": true,
+    "read_at": "2024-01-15T14:22:00Z",
+    "read_count": 3
+  }
+}
+```
+
+#### List Tracked Emails
+
+**GET** `/api/email/tracking/list`
+
+List all sent emails with their tracking status.
+
+**Query Parameters:**
+- `account_id` - Filter by email account (optional)
+- `limit` - Number of results (default: 50)
+- `offset` - Pagination offset (default: 0)
+- `filter` - Filter by status: `all`, `read`, `unread` (default: all)
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "tracking_id": "550e8400-e29b-41d4-a716-446655440000",
+      "to_email": "recipient@example.com",
+      "subject": "Meeting Tomorrow",
+      "sent_at": "2024-01-15T10:30:00Z",
+      "is_read": true,
+      "read_at": "2024-01-15T14:22:00Z",
+      "read_count": 3
+    },
+    {
+      "tracking_id": "661e8400-e29b-41d4-a716-446655440001",
+      "to_email": "another@example.com",
+      "subject": "Project Update",
+      "sent_at": "2024-01-15T11:00:00Z",
+      "is_read": false,
+      "read_at": null,
+      "read_count": 0
+    }
+  ]
+}
+```
+
+#### Get Tracking Statistics
+
+**GET** `/api/email/tracking/stats`
+
+Get aggregate statistics for email tracking.
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "total_sent": 150,
+    "total_read": 98,
+    "read_rate": 65.33,
+    "avg_time_to_read_hours": 4.5
+  }
+}
+```
+
+### Tracking Data Stored
+
+For each tracked email, the following data is recorded:
+
+| Field | Description |
+|-------|-------------|
+| `tracking_id` | Unique ID embedded in the pixel URL |
+| `to_email` | Recipient email address |
+| `subject` | Email subject line |
+| `sent_at` | Timestamp when email was sent |
+| `is_read` | Whether email has been opened |
+| `read_at` | Timestamp of first open |
+| `read_count` | Number of times opened |
+| `first_read_ip` | IP address of first open |
+| `last_read_ip` | IP address of most recent open |
+| `user_agent` | Browser/client user agent string |
+
+### Privacy Considerations
+
+- Email tracking should be used responsibly
+- Consider disclosing tracking in your email footer
+- Some email clients block tracking pixels by default
+- Users may have images disabled, preventing tracking
+- GDPR/LGPD may require consent for tracking
+
+### Suite UI Integration
+
+The Suite email interface shows tracking status:
+
+- **📊 Tracking** folder shows all tracked emails
+- Green checkmarks (✓✓) indicate opened emails
+- Gray checkmarks indicate sent but unread
+- Hover over emails to see open timestamp
+- Statistics panel shows open rates
+
 ## Security Notes
 
 1. **Never hardcode credentials** - Use config.csv
@@ -392,8 +542,58 @@ CREATE TABLE email_drafts (
 );
 ```
 
+## Database Schema
+
+```sql
+-- user_email_accounts
+CREATE TABLE user_email_accounts (
+    id UUID PRIMARY KEY,
+    user_id UUID REFERENCES users(id),
+    email TEXT NOT NULL,
+    imap_server TEXT,
+    smtp_server TEXT,
+    encrypted_password TEXT,
+    created_at TIMESTAMPTZ
+);
+
+-- email_drafts
+CREATE TABLE email_drafts (
+    id UUID PRIMARY KEY,
+    user_id UUID REFERENCES users(id),
+    recipients JSONB,
+    subject TEXT,
+    body TEXT,
+    attachments JSONB,
+    created_at TIMESTAMPTZ,
+    updated_at TIMESTAMPTZ
+);
+
+-- sent_email_tracking (for read receipts)
+CREATE TABLE sent_email_tracking (
+    id UUID PRIMARY KEY,
+    tracking_id UUID NOT NULL UNIQUE,
+    bot_id UUID NOT NULL,
+    account_id UUID NOT NULL,
+    from_email VARCHAR(255) NOT NULL,
+    to_email VARCHAR(255) NOT NULL,
+    cc TEXT,
+    bcc TEXT,
+    subject TEXT NOT NULL,
+    sent_at TIMESTAMPTZ NOT NULL,
+    is_read BOOLEAN NOT NULL DEFAULT FALSE,
+    read_at TIMESTAMPTZ,
+    read_count INTEGER NOT NULL DEFAULT 0,
+    first_read_ip VARCHAR(45),
+    last_read_ip VARCHAR(45),
+    user_agent TEXT,
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL
+);
+```
+
 ## See Also
 
 - [SEND MAIL Keyword](../chapter-06-gbdialog/keyword-send-mail.md) - BASIC email
 - [CREATE DRAFT Keyword](../chapter-06-gbdialog/keyword-create-draft.md) - Draft creation
 - [External Services](../appendix-external-services/README.md) - Service configuration
+- [Configuration Parameters](../chapter-08-config/parameters.md) - email-read-pixel setting

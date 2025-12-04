@@ -5,6 +5,72 @@
 
 ---
 
+## Official Icons - MANDATORY
+
+**NEVER generate icons with LLM. ALWAYS use official SVG icons from `src/assets/icons/`.**
+
+### Available Icons
+
+| Icon | File | Usage |
+|------|------|-------|
+| Logo | `gb-logo.svg` | Main GB branding |
+| Bot | `gb-bot.svg` | Bot/assistant representation |
+| Analytics | `gb-analytics.svg` | Charts, metrics, dashboards |
+| Calendar | `gb-calendar.svg` | Scheduling, events |
+| Chat | `gb-chat.svg` | Conversations, messaging |
+| Compliance | `gb-compliance.svg` | Security, auditing |
+| Designer | `gb-designer.svg` | Workflow automation |
+| Drive | `gb-drive.svg` | File storage, documents |
+| Mail | `gb-mail.svg` | Email functionality |
+| Meet | `gb-meet.svg` | Video conferencing |
+| Paper | `gb-paper.svg` | Document editing |
+| Research | `gb-research.svg` | Search, investigation |
+| Sources | `gb-sources.svg` | Knowledge bases |
+| Tasks | `gb-tasks.svg` | Task management |
+| Chart | `gb-chart.svg` | Data visualization |
+| Check | `gb-check.svg` | Success, completion |
+| Database | `gb-database.svg` | Data storage |
+| Folder | `gb-folder.svg` | File organization |
+| Gear | `gb-gear.svg` | Settings |
+| Globe | `gb-globe.svg` | Web, internet |
+| Lightbulb | `gb-lightbulb.svg` | Ideas, tips |
+| Lock | `gb-lock.svg` | Security |
+| Note | `gb-note.svg` | Notes, comments |
+| Package | `gb-package.svg` | Packages, modules |
+| Palette | `gb-palette.svg` | Themes, styling |
+| Rocket | `gb-rocket.svg` | Launch, deploy |
+| Search | `gb-search.svg` | Search functionality |
+| Signal | `gb-signal.svg` | Connectivity |
+| Target | `gb-target.svg` | Goals, objectives |
+| Tree | `gb-tree.svg` | Hierarchy, structure |
+| Warning | `gb-warning.svg` | Alerts, cautions |
+
+### Usage in Documentation
+
+```markdown
+<!-- Reference icons in docs -->
+![Chat](../assets/icons/gb-chat.svg)
+
+<!-- Or with HTML for sizing -->
+<img src="../assets/icons/gb-analytics.svg" alt="Analytics" width="24">
+```
+
+### Icon Guidelines
+
+- All icons use `stroke="currentColor"` for CSS theming
+- ViewBox: `0 0 24 24`
+- Stroke width: `1.5`
+- Rounded line caps and joins
+- Consistent with GB brand identity
+
+**DO NOT:**
+- Generate new icons with AI/LLM
+- Use emoji or unicode symbols as icons
+- Use external icon libraries (FontAwesome, etc.)
+- Create inline SVG diagrams when an official icon exists
+
+---
+
 ## Project Overview
 
 BotBook is the **mdBook-based documentation** for the General Bots platform. It provides comprehensive guides, tutorials, and API references for users and developers.

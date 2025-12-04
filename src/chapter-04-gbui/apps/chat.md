@@ -110,11 +110,18 @@ ws://your-server:8080/ws
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/sessions/current/message` | POST | Send a message |
-| `/api/sessions/current/history` | GET | Get chat history |
+| `/api/sessions` | GET | List sessions |
+| `/api/sessions/current/message` | POST | Send message (current session) |
+| `/api/sessions/current/history` | GET | Get chat history (current session) |
+| `/api/sessions/:id` | GET | Get session details |
+| `/api/sessions/:id/history` | GET | Get chat history by ID |
+| `/api/sessions/:id/start` | POST | Start session |
+| `/api/sessions/:id/end` | POST | End session |
 | `/api/voice/start` | POST | Start voice recording |
 | `/api/voice/stop` | POST | Stop voice recording |
-| `/api/suggestions` | GET | Get suggestion chips |
+| `/api/voice/status` | GET | Get voice status |
+
+> **Note:** The frontend uses `/api/sessions/current/*` endpoints which resolve to the active session automatically.
 
 ---
 

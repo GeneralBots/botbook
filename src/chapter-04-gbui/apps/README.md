@@ -42,6 +42,16 @@ Each application in the Suite has its own dedicated documentation with:
 | 📚 **Sources** | Prompts, templates, and models | [sources.md](./sources.md) |
 | 🛡️ **Compliance** | Security scanner | [compliance.md](./compliance.md) |
 
+## System Components
+
+| Component | Description | Location |
+|-----------|-------------|----------|
+| 🔐 **Auth** | Authentication views | `ui/suite/auth/` |
+| 👤 **Attendant** | Attendant interface | `ui/suite/attendant/` |
+| 🧩 **Partials** | Reusable HTML fragments | `ui/suite/partials/` |
+| 🔧 **Tools** | Developer utilities | `ui/suite/tools/` |
+| 📈 **Monitoring** | System monitoring dashboard | `ui/suite/monitoring/` |
+
 ---
 
 ## App Launcher

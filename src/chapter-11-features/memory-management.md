@@ -269,9 +269,12 @@ SET CONTEXT "previous_interactions" AS episodes
 ```csv
 name,value
 episodic-memory-enabled,true
-episodic-summary-model,fast
-episodic-max-episodes,100
-episodic-retention-days,365
+episodic-memory-threshold,4
+episodic-memory-history,2
+episodic-memory-model,fast
+episodic-memory-max-episodes,100
+episodic-memory-retention-days,365
+episodic-memory-auto-summarize,true
 ```
 
 ## Memory Patterns
