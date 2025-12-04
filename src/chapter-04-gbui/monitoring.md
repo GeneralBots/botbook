@@ -1,8 +1,8 @@
 # Monitoring Dashboard
 
-The Monitoring Dashboard provides real-time visibility into your General Bots deployment through an animated, interactive SVG visualization showing system health, active sessions, and resource utilization.
+The Monitoring Dashboard is the **live operations homepage** for your General Bots deployment. It provides real-time visibility into system health, active sessions, and resource utilization through an animated, interactive SVG visualization.
 
-## Live System Visualization
+## Live System Architecture
 
 <img src="../assets/suite/live-monitoring-organism.svg" alt="Live Monitoring Dashboard" style="max-width: 100%; height: auto;">
 
@@ -14,32 +14,73 @@ The dashboard displays BotServer at the center orchestrating all interactions, w
 - **Top**: Real-time metrics panels for sessions, messages, and response time
 - **Bottom**: Resource utilization bars and activity ticker
 
+---
+
 ## Accessing the Dashboard
 
-Access monitoring from the Suite interface:
+The monitoring dashboard is the **default homepage** when accessing Suite:
+
+```/dev/null/monitoring-url.txt#L1
+http://localhost:8080/monitoring
+```
+
+Or from within Suite:
 1. Click the apps menu (⋮⋮⋮)
 2. Select **Monitoring**
-3. Or navigate directly to `/monitoring`
 
-## Dashboard Features
+---
 
-### Animated System Architecture
+## Real-Time Metrics
 
-The SVG visualization shows real-time data flow:
+### Active Sessions Panel
 
-| Component | Color | Description |
-|-----------|-------|-------------|
-| **BotServer** | Blue/Purple | Central orchestrator with rotating ring |
-| **PostgreSQL** | Blue | Primary database with cylinder icon |
-| **Qdrant** | Purple | Vector database with triangle nodes |
-| **MinIO** | Amber | Object storage with disk icon |
-| **BotModels** | Pink | AI/ML service with neural network icon |
-| **Cache** | Cyan | In-memory cache with lightning icon |
-| **Vault** | Green | Secrets management with lock icon |
+Displays current conversation sessions:
+
+```/dev/null/sessions-example.txt#L1-4
+Active Sessions: 12
+Peak Today: 47
+Avg Duration: 8m 32s
+Trend: ↑ +3 in last hour
+```
+
+### Messages Panel
+
+Shows message throughput:
+
+```/dev/null/messages-example.txt#L1-4
+Today: 1,234 messages
+This Hour: 89
+Avg Response: 1.2s
+Rate: 14.8 msg/min
+```
+
+### Resource Utilization
+
+Real-time system resources:
+
+| Resource | Current | Threshold |
+|----------|---------|-----------|
+| **CPU** | 65% | Warning > 80% |
+| **Memory** | 72% | Warning > 85% |
+| **GPU** | 45% | Warning > 90% |
+| **Disk** | 28% | Warning > 90% |
+
+---
+
+## Service Health Status
+
+Each service has a status indicator:
+
+| Service | Status | Health Check |
+|---------|--------|--------------|
+| **PostgreSQL** | 🟢 Running | Connection pool, query latency |
+| **Qdrant** | 🟢 Running | Vector count, search time |
+| **MinIO** | 🟢 Running | Storage usage, object count |
+| **BotModels** | 🟢 Running | Token usage, response time |
+| **Cache** | 🟢 Running | Hit rate, memory usage |
+| **Vault** | 🟢 Running | Seal status, policy count |
 
 ### Status Indicators
-
-Each service has a status dot:
 
 | Status | Color | Animation |
 |--------|-------|-----------|
@@ -47,80 +88,35 @@ Each service has a status dot:
 | **Warning** | 🟡 Amber | Fast pulse |
 | **Stopped** | 🔴 Red | No animation |
 
-### Real-Time Metrics
+---
 
-Three metric panels at the top update automatically:
+## Live Data Endpoints
 
-| Panel | Update Interval | Description |
-|-------|-----------------|-------------|
-| **Active Sessions** | 5 seconds | Current open conversations with trend |
-| **Messages Today** | 10 seconds | Total messages with hourly rate |
-| **Avg Response** | 10 seconds | Average response time in milliseconds |
-
-### Resource Utilization
-
-Resource bars show system health:
-
-| Resource | Gradient | Warning Threshold |
-|----------|----------|-------------------|
-| **CPU** | Blue/Purple | > 80% |
-| **Memory** | Green | > 85% |
-| **GPU** | Purple | > 90% |
-| **Disk** | Amber | > 90% |
-
-### Activity Ticker
-
-A live ticker at the bottom shows the latest system events with a pulsing green indicator.
-
-## View Modes
-
-Toggle between two views using the grid button or press `V`:
-
-### Live View (Default)
-The animated SVG visualization showing the complete system topology with flowing data packets.
-
-### Grid View
-Traditional panel-based layout with detailed tree views for each metric category:
-- Sessions panel with active, peak, and duration
-- Messages panel with counts and rates
-- Resources panel with progress bars
-- Services panel with health status
-- Bots panel with active bot list
-
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `V` | Toggle between Live and Grid view |
-| `R` | Refresh all metrics |
-
-## HTMX Integration
-
-The dashboard uses HTMX for real-time updates without full page reloads:
+The dashboard pulls real data from these HTMX endpoints:
 
 | Endpoint | Interval | Data |
 |----------|----------|------|
-| `/api/monitoring/metric/sessions` | 5s | Session count |
-| `/api/monitoring/metric/messages` | 10s | Message count |
-| `/api/monitoring/metric/response_time` | 10s | Avg response |
-| `/api/monitoring/resources/bars` | 15s | Resource SVG bars |
+| `/api/monitoring/metric/sessions` | 5s | Session count, trend |
+| `/api/monitoring/metric/messages` | 10s | Message count, rate |
+| `/api/monitoring/metric/response_time` | 10s | Avg response time |
+| `/api/monitoring/resources/bars` | 15s | CPU, memory, GPU, disk |
 | `/api/monitoring/services/status` | 30s | Service health JSON |
-| `/api/monitoring/activity/latest` | 5s | Activity text |
-| `/api/monitoring/timestamp` | 5s | Last updated time |
+| `/api/monitoring/activity/latest` | 5s | Activity ticker text |
+| `/api/monitoring/bots/active` | 30s | Active bot list |
+
+---
 
 ## API Access
 
-Access monitoring data programmatically:
+### Full Status Endpoint
 
-### Get Full Status
-
-```/dev/null/monitoring-api.txt
+```/dev/null/api-call.txt#L1
 GET /api/monitoring/status
 ```
 
-**Response:**
+Returns complete system status:
 
-```/dev/null/monitoring-response.json
+```/dev/null/monitoring-response.json#L1-25
 {
   "sessions": {
     "active": 12,
@@ -149,31 +145,89 @@ GET /api/monitoring/status
 }
 ```
 
-### Service-Specific Endpoints
+### Active Bots Endpoint
 
-| Endpoint | Returns |
-|----------|---------|
-| `/api/monitoring/services` | All service details |
-| `/api/monitoring/bots` | Active bot list |
-| `/api/monitoring/history?period=24h` | Historical metrics |
-| `/api/monitoring/prometheus` | Prometheus format export |
+```/dev/null/bots-api.txt#L1
+GET /api/monitoring/bots
+```
 
-## Component Health Details
+Returns list of deployed bots with metrics:
 
-| Component | Health Check | Warning Signs |
-|-----------|--------------|---------------|
-| **PostgreSQL** | Connection count, query rate | > 80 connections, slow queries |
-| **Qdrant** | Vector count, search latency | > 50ms search time |
-| **MinIO** | Storage usage, object count | > 80% storage used |
-| **BotModels** | Token usage, response latency | > 2s response time |
-| **Vault** | Seal status, policy count | Unsealed without auth |
-| **Cache** | Hit rate, memory usage | < 80% hit rate |
+```/dev/null/bots-response.json#L1-18
+{
+  "bots": [
+    {
+      "name": "default",
+      "status": "active",
+      "sessions_today": 34,
+      "messages_today": 567,
+      "avg_response_ms": 980
+    },
+    {
+      "name": "support",
+      "status": "active",
+      "sessions_today": 12,
+      "messages_today": 234,
+      "avg_response_ms": 1100
+    }
+  ]
+}
+```
 
-## Alerts Configuration
+### Historical Data
+
+```/dev/null/history-api.txt#L1
+GET /api/monitoring/history?period=24h
+```
+
+Returns time-series data for charting.
+
+### Prometheus Export
+
+```/dev/null/prometheus-api.txt#L1
+GET /api/monitoring/prometheus
+```
+
+Returns metrics in Prometheus format for external monitoring systems.
+
+---
+
+## View Modes
+
+Toggle between two views using the grid button or press `V`:
+
+### Live View (Default)
+
+The animated SVG visualization showing the complete system topology with flowing data packets. This is the recommended view for operations dashboards.
+
+### Grid View
+
+Traditional panel-based layout with detailed metrics:
+
+- **Sessions Panel**: Active, peak, average duration
+- **Messages Panel**: Counts, rates, response times
+- **Resources Panel**: Progress bars with thresholds
+- **Services Panel**: Health status for each component
+- **Bots Panel**: List of active bots with metrics
+
+---
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `V` | Toggle between Live and Grid view |
+| `R` | Refresh all metrics immediately |
+| `F` | Toggle fullscreen mode |
+| `?` | Show keyboard shortcuts |
+
+---
+
+## Alert Configuration
 
 Configure alert thresholds in `config.csv`:
 
-```/dev/null/config-alerts.csv
+```/dev/null/config-alerts.csv#L1-6
 name,value
 alert-cpu-threshold,80
 alert-memory-threshold,85
@@ -182,78 +236,93 @@ alert-response-time-ms,5000
 alert-email,admin@example.com
 ```
 
-## Console Mode
+When thresholds are exceeded:
+1. Service status turns amber/red
+2. Alert notification sent to configured email
+3. Activity ticker shows alert message
 
-For terminal-based monitoring:
+---
 
-```/dev/null/console-command.bash
+## Console Mode Monitoring
+
+For terminal-based monitoring or headless servers:
+
+```/dev/null/console-command.sh#L1
 ./botserver --console --monitor
 ```
 
 Output:
-```/dev/null/console-output.txt
+
+```/dev/null/console-output.txt#L1-6
 [MONITOR] 2025-01-15 14:32:00
 Sessions: 12 active (peak: 47)
 Messages: 1,234 today (89/hour)
 CPU: 65% | MEM: 72% | GPU: 45%
 Services: 6/6 running
+Latest: User enrolled in Computer Science course
 ```
 
-## Tips & Best Practices
+---
 
-💡 **Watch the data packets** - Flowing animations indicate active communication between components
+## Component Health Details
 
-💡 **Monitor trends** - The session trend indicator (↑/↓) shows direction of change
+| Component | Metrics Monitored | Warning Signs |
+|-----------|-------------------|---------------|
+| **PostgreSQL** | Connection count, query rate, replication lag | > 80 connections, queries > 100ms |
+| **Qdrant** | Vector count, search latency, memory | > 50ms search, > 80% memory |
+| **MinIO** | Storage usage, object count, bandwidth | > 80% storage, high error rate |
+| **BotModels** | Token usage, response latency, queue depth | > 2s response, queue > 10 |
+| **Vault** | Seal status, policy count, auth failures | Sealed, repeated auth failures |
+| **Cache** | Hit rate, memory usage, evictions | < 80% hit rate, frequent evictions |
 
-💡 **Click services** - Click any service node in Live view to see detailed status
+---
 
-💡 **Set up alerts** - Configure thresholds before issues become critical
+## Best Practices
 
-💡 **Use keyboard shortcuts** - Press `R` for quick refresh, `V` to toggle views
+1. **Keep monitoring visible** — Use a dedicated screen or dashboard monitor for operations
+2. **Set appropriate thresholds** — Configure alerts before issues become critical
+3. **Watch data flow** — Animated packets indicate active communication between components
+4. **Monitor trends** — The session trend indicator (↑/↓) shows direction of change
+5. **Use historical data** — Query `/api/monitoring/history` for trend analysis
+6. **Enable Prometheus export** — Integrate with existing monitoring infrastructure
 
-💡 **Check historical data** - Query `/api/monitoring/history` for trend analysis
+---
 
 ## Troubleshooting
 
-### Dashboard not loading
+### Dashboard Not Loading
 
-**Possible causes:**
-1. WebSocket connection failed
-2. API endpoint unreachable
-3. Browser blocking HTMX
-
-**Solution:**
 1. Check browser console for errors
 2. Verify `/api/monitoring/status` returns data
-3. Refresh the page
+3. Ensure WebSocket connection is established
+4. Refresh the page
 
-### Metrics showing "--"
+### Metrics Showing "--"
 
-**Possible causes:**
-1. Initial load in progress
-2. API timeout
-3. Service unavailable
+1. Wait 5-10 seconds for initial data load
+2. Check network tab for failed API requests
+3. Verify all services are running
+4. Check BotServer logs for errors
 
-**Solution:**
-1. Wait 5-10 seconds for first update
-2. Check network tab for failed requests
-3. Verify services are running
+### Animations Stuttering
 
-### Animations stuttering
-
-**Possible causes:**
-1. High CPU usage
-2. Many browser tabs open
-3. Hardware acceleration disabled
-
-**Solution:**
-1. Close unused tabs
-2. Enable hardware acceleration in browser
+1. Close unused browser tabs
+2. Enable hardware acceleration in browser settings
 3. Use Grid view for lower resource usage
+4. Check if system CPU is overloaded
+
+### Service Showing Red
+
+1. Check service-specific logs in `botserver-stack/logs/`
+2. Verify Vault is unsealed
+3. Check database connection limits
+4. Restart the affected service
+
+---
 
 ## See Also
 
-- [Monitoring API Reference](../chapter-10-api/monitoring-api.md)
-- [Console Mode](./console-mode.md)
-- [Configuration Options](../chapter-08-config/README.md)
-- [Analytics App](./apps/analytics.md)
+- [Console Mode](./console-mode.md) — Terminal-based interface
+- [HTMX Architecture](./htmx-architecture.md) — How real-time updates work
+- [Suite Manual](./suite-manual.md) — Complete user guide
+- [Analytics App](./apps/analytics.md) — Business metrics and reporting
