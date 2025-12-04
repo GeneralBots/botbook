@@ -189,8 +189,40 @@ Pragmatismo develops General Bots as an open-source platform for enterprise AI a
 
 ---
 
+## QUICK START
+
+Ready to see it in action? Skip to the hands-on guide:
+
+**[⚡ Quick Start: Run Your First Bot in 5 Minutes →](./chapter-01/quick-start.md)**
+
+Or continue reading for the full journey:
+
+| Path | Time | Best For |
+|------|------|----------|
+| [Quick Start](./chapter-01/quick-start.md) | 5 min | Developers who want to dive in immediately |
+| [Introduction](./introduction.md) | 10 min | Understanding the "No Forms" philosophy |
+| [Chapter 01](./chapter-01/README.md) | 15 min | Complete installation and first conversation |
+
+---
+
 ## NEXT STEPS
 
-[Chapter 01: Run and Talk →](./chapter-01/README.md)
+<div class="wa-chat">
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>I want to try General Bots now</p>
+      <div class="wa-time">09:00</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>Great! Just run:</p>
+      <p><code>./botserver</code></p>
+      <p>Then open http://localhost:8080</p>
+      <p>That's it! 🚀</p>
+      <div class="wa-time">09:00</div>
+    </div>
+  </div>
+</div>
 
-Get started with your General Bots deployment in minutes.
+[Chapter 01: Run and Talk →](./chapter-01/README.md)

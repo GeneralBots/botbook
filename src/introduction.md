@@ -1,6 +1,15 @@
 # Introduction to General Bots
 
+> **⚡ Want to skip ahead?** [Quick Start →](./chapter-01/quick-start.md) gets you running in 5 minutes.
+
 **Build conversational AI bots in minutes, not months.** General Bots lets you create intelligent chatbots by writing simple [BASIC scripts](./chapter-06-gbdialog/basics.md) and dropping in your [documents](./chapter-02/gbkb.md). No complex frameworks, no cloud dependencies, no AI expertise required.
+
+| Your Goal | Go To |
+|-----------|-------|
+| Run a bot NOW | [Quick Start](./chapter-01/quick-start.md) |
+| Understand the vision | Keep reading below |
+| Write your first script | [Chapter 06: BASIC Dialogs](./chapter-06-gbdialog/README.md) |
+| Add documents to bot | [Chapter 02: Packages](./chapter-02/README.md) |
 
 ## The No Forms Movement
 
@@ -47,17 +56,57 @@ General Bots was born from this vision: **replace forms with conversations**.
 
 ### After: The Conversation Experience
 
-```
-User: I need help with my order
-Bot: I'd be happy to help! What's your order number?
-User: It's 12345
-Bot: Found it - your laptop order from last week. What's the issue?
-User: It arrived damaged
-Bot: I'm sorry to hear that. I'll create a return label for you. 
-     Should I send it to your email on file?
-User: Yes please
-Bot: Done! Check your inbox. Is there anything else?
-```
+<div class="wa-chat">
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>I need help with my order</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>I'd be happy to help! What's your order number?</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>It's 12345</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>Found it - your laptop order from last week. What's the issue?</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>It arrived damaged</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>I'm sorry to hear that. I'll create a return label for you.</p>
+      <p>Should I send it to your email on file?</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>Yes please</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>✅ Done! Check your inbox. Is there anything else?</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+</div>
 
 **Benefits:**
 - Natural and intuitive

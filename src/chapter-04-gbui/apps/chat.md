@@ -77,6 +77,8 @@ Bot responses support full Markdown rendering:
 - Links and images
 - Tables
 
+---
+
 ## Keyboard Shortcuts
 
 | Shortcut | Action |
@@ -86,6 +88,8 @@ Bot responses support full Markdown rendering:
 | `↑` (Up arrow) | Edit last message |
 | `/` | Open command menu |
 | `Escape` | Cancel current action |
+
+---
 
 ## API Endpoints
 
@@ -112,7 +116,7 @@ ws://your-server:8080/ws
 | `/api/voice/stop` | POST | Stop voice recording |
 | `/api/suggestions` | GET | Get suggestion chips |
 
-
+---
 
 ## Example Conversations
 
@@ -179,7 +183,7 @@ ws://your-server:8080/ws
   </div>
 </div>
 
-
+---
 
 ## Accessibility
 
@@ -189,19 +193,7 @@ ws://your-server:8080/ws
 - Adjustable font sizes
 - ARIA labels on all interactive elements
 
-```html
-<main id="messages" 
-      role="log" 
-      aria-live="polite"
-      aria-label="Chat messages">
-</main>
-
-<button type="submit" 
-        aria-label="Send message"
-        title="Send">
-    ↑
-</button>
-```
+---
 
 ## Troubleshooting
 
@@ -226,9 +218,11 @@ ws://your-server:8080/ws
 3. Clear browser cache
 4. Check for JavaScript errors
 
+---
+
 ## See Also
 
-- [HTMX Architecture](../htmx-architecture.md) - How Chat uses HTMX
-- [Suite Manual](../suite-manual.md) - Complete user guide
-- [Tasks App](./tasks.md) - Create tasks from chat
-- [Mail App](./mail.md) - Email integration
+- [HTMX Architecture](../htmx-architecture.md) — How Chat uses HTMX
+- [Suite Manual](../suite-manual.md) — Complete user guide
+- [Tasks App](./tasks.md) — Create tasks from chat
+- [Mail App](./mail.md) — Email integration

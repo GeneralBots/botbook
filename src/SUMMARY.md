@@ -112,7 +112,7 @@
     - [store.bas](./chapter-06-gbdialog/templates/store.md)
     - [talk-to-data.bas](./chapter-06-gbdialog/templates/talk-to-data.md)
     - [whatsapp.bas](./chapter-06-gbdialog/templates/whatsapp.md)
-  - [Consolidated Examples](./chapter-06-gbdialog/examples-consolidated.md)
+  - [Webhook Integrations and Jobs](./chapter-06-gbdialog/examples-consolidated.md)
   - [Data Sync Tools](./chapter-06-gbdialog/tools-data-sync.md)
   - [Keywords Reference](./chapter-06-gbdialog/keywords.md)
     - [TALK](./chapter-06-gbdialog/keyword-talk.md)
@@ -357,6 +357,7 @@
   - [Storage Services](./appendix-external-services/storage.md)
   - [Directory Services](./appendix-external-services/directory.md)
   - [Attendance Queue](./appendix-external-services/attendance-queue.md)
+  - [Hosting, DNS, and MDA](./appendix-external-services/hosting-dns.md)
   - [Time-Series Database](./appendix-external-services/timeseries.md)
   - [NVIDIA GPU](./appendix-external-services/nvidia.md)
   - [Multimodal](./appendix-external-services/multimodal.md)
@@ -365,6 +366,7 @@
 - [Appendix C: Environment Variables](./appendix-env-vars/README.md)
 
 - [Appendix D: Documentation Style](./appendix-docs-style/conversation-examples.md)
+  - [SVG and Conversation Standards](./appendix-docs-style/svg.md)
 
 [Glossary](./glossary.md)
 [Contact](./contact/README.md)
