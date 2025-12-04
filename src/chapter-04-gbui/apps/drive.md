@@ -179,14 +179,14 @@ Drive is your personal cloud storage within General Bots Suite. Upload, organize
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/drive/files` | GET | List files |
-| `/api/drive/files` | POST | Upload file |
-| `/api/drive/files/:path` | GET | Download file |
-| `/api/drive/files/:path` | DELETE | Delete file |
-| `/api/drive/files/:path` | PATCH | Rename/move file |
-| `/api/drive/folders` | POST | Create folder |
+| `/api/drive/list` | GET | List files |
+| `/api/drive/upload` | POST | Upload file |
+| `/api/drive/download/:path` | GET | Download file |
+| `/api/drive/delete/:path` | DELETE | Delete file |
+| `/api/drive/move` | POST | Move/rename file |
+| `/api/drive/copy` | POST | Copy file |
+| `/api/drive/mkdir` | POST | Create folder |
 | `/api/drive/share` | POST | Share file |
-| `/api/drive/search` | GET | Search files |
 
 ### Query Parameters
 

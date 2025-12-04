@@ -70,7 +70,7 @@ rag-top-k,10
 - [Vector Collections](./vector-collections.md) - Collection management
 - [Document Indexing](./indexing.md) - Processing pipeline
 - [Semantic Search](./semantic-search.md) - Search mechanics
-- [Context Compaction](./context-compaction.md) - Token management
+- [Episodic Memory](./episodic-memory.md) - Conversation history and context management
 - [Semantic Caching](./caching.md) - Performance optimization
 
 ## See Also

@@ -10,20 +10,45 @@ The BotServer UI system provides two interface implementations designed for diff
 ui/
 ├── suite/       # Full-featured interface
 │   ├── index.html
+│   ├── base.html
+│   ├── home.html
+│   ├── default.gbui
+│   ├── single.gbui
+│   ├── designer.html
+│   ├── editor.html
+│   ├── settings.html
 │   ├── js/
+│   │   ├── htmx-app.js
+│   │   ├── theme-manager.js
+│   │   └── vendor/
 │   ├── css/
+│   │   ├── app.css
+│   │   ├── apps-extended.css
+│   │   ├── components.css
+│   │   └── global.css
 │   ├── public/
-│   ├── drive/
+│   ├── partials/
+│   ├── auth/
+│   ├── attendant/
 │   ├── chat/
+│   │   ├── chat.html
+│   │   ├── chat.css
+│   │   └── projector.html
+│   ├── drive/
 │   ├── mail/
 │   ├── tasks/
-│   ├── default.gbui
-│   └── single.gbui
+│   ├── calendar/
+│   ├── meet/
+│   ├── paper/
+│   ├── research/
+│   ├── analytics/
+│   ├── sources/
+│   ├── tools/
+│   └── monitoring/
 │
 └── minimal/     # Lightweight interface
     ├── index.html
-    ├── styles.css
-    └── app.js
+    └── js/
 ```
 
 ## Suite Interface
@@ -55,7 +80,7 @@ UI paths are configured in several locations throughout the codebase.
 The main server configuration in `src/main.rs` sets the static path:
 
 ```rust
-let static_path = std::path::Path::new("./web/suite");
+let static_path = std::path::Path::new("./ui/suite");
 ```
 
 The UI server module at `src/core/ui_server/mod.rs` defines its own path:
@@ -96,11 +121,17 @@ The Minimal UI implements full compliance with the Bot Core API. Both interfaces
 | `/ws` | WebSocket | Real-time messaging |
 | `/api/auth` | GET | Authentication |
 | `/api/sessions` | GET/POST | Session management |
-| `/api/sessions/{id}` | GET | Session details |
-| `/api/sessions/{id}/history` | GET | Message history |
-| `/api/sessions/{id}/start` | POST | Start session |
+| `/api/sessions/current/message` | POST | Send message (current session) |
+| `/api/sessions/current/history` | GET | Message history (current session) |
+| `/api/sessions/:id` | GET | Session details |
+| `/api/sessions/:id/history` | GET | Message history by ID |
+| `/api/sessions/:id/start` | POST | Start session |
+| `/api/sessions/:id/end` | POST | End session |
 | `/api/voice/start` | POST | Voice input start |
 | `/api/voice/stop` | POST | Voice input stop |
+| `/api/voice/status` | GET | Voice status |
+
+> **Note:** The frontend uses `/api/sessions/current/*` endpoints which resolve to the active session automatically.
 
 Both interfaces use the same WebSocket message types for communication. TEXT (1) handles regular text messages, VOICE (2) handles voice messages, CONTINUE (3) continues interrupted responses, CONTEXT (4) manages context changes, and SYSTEM (5) delivers system messages.
 
@@ -169,7 +200,7 @@ curl http://localhost:8080/
 curl http://localhost:8080/suite/
 
 # Check static file serving
-curl http://localhost:8080/js/app.js
+curl http://localhost:8080/js/htmx-app.js
 ```
 
 ## Customization

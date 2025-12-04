@@ -103,13 +103,6 @@ llm-model,mixtral-8x7b-32768
 | `embedding-url` | Embedding service endpoint | `http://localhost:8082` | URL |
 | `embedding-model` | Embedding model path | Required for KB | Path |
 
-## Prompt Parameters
-
-| Parameter | Description | Default | Type |
-|-----------|-------------|---------|------|
-| `episodic-memory-threshold` | Context compaction level | `4` | Number |
-| `episodic-memory-history` | Messages in history | Not set | Number |
-
 ## Email Parameters
 
 | Parameter | Description | Default | Type |
@@ -119,6 +112,34 @@ llm-model,mixtral-8x7b-32768
 | `email-port` | SMTP port | `587` | Number |
 | `email-user` | SMTP username | Required for email | String |
 | `email-pass` | SMTP password | Required for email | String |
+| `email-read-pixel` | Enable read tracking pixel in HTML emails | `false` | Boolean |
+
+### Email Read Tracking
+
+When `email-read-pixel` is enabled, a 1x1 transparent tracking pixel is automatically injected into HTML emails sent via the API. This allows you to:
+
+- Track when emails are opened
+- See how many times an email was opened
+- Get the approximate location (IP) and device (user agent) of the reader
+
+**API Endpoints for tracking:**
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/email/tracking/pixel/{tracking_id}` | GET | Serves the tracking pixel (called by email client) |
+| `/api/email/tracking/status/{tracking_id}` | GET | Get read status for a specific email |
+| `/api/email/tracking/list` | GET | List all sent emails with tracking status |
+| `/api/email/tracking/stats` | GET | Get overall tracking statistics |
+
+**Example configuration:**
+```csv
+email-read-pixel,true
+server-url,https://yourdomain.com
+```
+
+**Note:** The `server-url` parameter is used to generate the tracking pixel URL. Make sure it's accessible from the recipient's email client.
+
+**Privacy considerations:** Email tracking should be used responsibly. Consider disclosing tracking in your email footer for transparency.
 
 ## Theme Parameters
 
@@ -128,6 +149,8 @@ llm-model,mixtral-8x7b-32768
 | `theme-color2` | Secondary color | Not set | Hex color |
 | `theme-logo` | Logo URL | Not set | URL |
 | `theme-title` | Bot display title | Not set | String |
+| `bot-name` | Bot display name | Not set | String |
+| `welcome-message` | Initial greeting message | Not set | String |
 
 ## Custom Database Parameters
 
@@ -136,10 +159,70 @@ These parameters configure external database connections for use with BASIC keyw
 | Parameter | Description | Default | Type |
 |-----------|-------------|---------|------|
 | `custom-server` | Database server hostname | `localhost` | Hostname |
-| `custom-port` | Database port | `3306` | Number |
+| `custom-port` | Database port | `5432` | Number |
 | `custom-database` | Database name | Not set | String |
 | `custom-username` | Database user | Not set | String |
 | `custom-password` | Database password | Not set | String |
+
+## Website Crawling Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `website-expires` | Cache expiration for crawled content | `1d` | Duration |
+| `website-max-depth` | Maximum crawl depth | `3` | Number |
+| `website-max-pages` | Maximum pages to crawl | `100` | Number |
+
+## Image Generator Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `image-generator-model` | Diffusion model path | Not set | Path |
+| `image-generator-steps` | Inference steps | `4` | Number |
+| `image-generator-width` | Output width | `512` | Pixels |
+| `image-generator-height` | Output height | `512` | Pixels |
+| `image-generator-gpu-layers` | GPU offload layers | `20` | Number |
+| `image-generator-batch-size` | Batch size | `1` | Number |
+
+## Video Generator Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `video-generator-model` | Video model path | Not set | Path |
+| `video-generator-frames` | Frames to generate | `24` | Number |
+| `video-generator-fps` | Frames per second | `8` | Number |
+| `video-generator-width` | Output width | `320` | Pixels |
+| `video-generator-height` | Output height | `576` | Pixels |
+| `video-generator-gpu-layers` | GPU offload layers | `15` | Number |
+| `video-generator-batch-size` | Batch size | `1` | Number |
+
+## BotModels Service Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `botmodels-enabled` | Enable BotModels service | `true` | Boolean |
+| `botmodels-host` | BotModels bind address | `0.0.0.0` | IP address |
+| `botmodels-port` | BotModels port | `8085` | Number |
+
+## Generator Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `default-generator` | Default content generator | `all` | String |
+
+## Teams Channel Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `teams-app-id` | Microsoft Teams App ID | Not set | String |
+| `teams-app-password` | Microsoft Teams App Password | Not set | String |
+| `teams-tenant-id` | Microsoft Teams Tenant ID | Not set | String |
+| `teams-bot-id` | Microsoft Teams Bot ID | Not set | String |
+
+## SMS Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `sms-provider` | SMS provider name | Not set | String |
 
 ### Example: MariaDB Connection
 ```csv
@@ -199,14 +282,18 @@ bot-improvement-threshold,7.0
 | `user-memory-max-keys` | Maximum keys per user | `1000` | Number |
 | `user-memory-default-ttl` | Default time-to-live (0=no expiry) | `0` | Seconds |
 
-### Episodic Memory
+### Episodic Memory (Context Compaction)
 | Parameter | Description | Default | Type |
 |-----------|-------------|---------|------|
-| `episodic-memory-enabled` | Enable conversation summaries | `true` | Boolean |
-| `episodic-summary-model` | Model for summarization | `fast` | String |
-| `episodic-max-episodes` | Maximum episodes per user | `100` | Number |
-| `episodic-retention-days` | Days to retain episodes | `365` | Number |
-| `episodic-auto-summarize` | Enable automatic summarization | `true` | Boolean |
+| `episodic-memory-enabled` | Enable episodic memory system | `true` | Boolean |
+| `episodic-memory-threshold` | Exchanges before compaction triggers | `4` | Number |
+| `episodic-memory-history` | Recent exchanges to keep in full | `2` | Number |
+| `episodic-memory-model` | Model for summarization | `fast` | String |
+| `episodic-memory-max-episodes` | Maximum episodes per user | `100` | Number |
+| `episodic-memory-retention-days` | Days to retain episodes | `365` | Number |
+| `episodic-memory-auto-summarize` | Enable automatic summarization | `true` | Boolean |
+
+Episodic memory automatically manages conversation context to stay within LLM token limits. When conversation exchanges exceed `episodic-memory-threshold`, older messages are summarized and only the last `episodic-memory-history` exchanges are kept in full. See [Chapter 03 - Episodic Memory](../chapter-03/episodic-memory.md) for details.
 
 ## Model Routing Parameters
 

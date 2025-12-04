@@ -77,44 +77,40 @@ HTMX extends HTML with attributes that define:
 ```
 ui/suite/
 ├── index.html          # Main entry point with navigation
+├── base.html           # Base template
+├── home.html           # Home page
 ├── default.gbui        # Full desktop layout
 ├── single.gbui         # Simple chat layout
 ├── designer.html       # Visual dialog designer
 ├── editor.html         # Code editor
 ├── settings.html       # User settings
 ├── css/
-│   └── app.css         # Global styles
+│   ├── app.css         # Application styles
+│   ├── apps-extended.css # Extended app styles
+│   ├── components.css  # UI components
+│   └── global.css      # Global styles
 ├── js/
-│   ├── layout.js       # Layout management
-│   └── theme-manager.js # Theme switching
+│   ├── htmx-app.js     # HTMX application logic
+│   ├── theme-manager.js # Theme switching
+│   └── vendor/         # Third-party libraries
+├── partials/           # Reusable HTML fragments
+├── auth/               # Authentication views
+├── attendant/          # Attendant interface
 ├── chat/
 │   ├── chat.html       # Chat component
-│   └── chat.css        # Chat styles
-├── drive/
-│   └── index.html      # File manager
-├── tasks/
-│   ├── tasks.html      # Task manager
-│   └── tasks.css       # Task styles
-├── mail/
-│   ├── mail.html       # Email client
-│   └── mail.css        # Email styles
-├── calendar/
-│   └── calendar.html   # Calendar view
-├── meet/
-│   ├── meet.html       # Video meetings
-│   └── meet.css        # Meeting styles
-├── paper/
-│   └── paper.html      # Document editor
-├── research/
-│   └── research.html   # AI search
-├── analytics/
-│   └── analytics.html  # Dashboards
-├── sources/
-│   └── index.html      # Prompts & templates
-├── tools/
-│   └── compliance.html # Security scanner
-└── monitoring/
-    └── ...             # System monitoring
+│   ├── chat.css        # Chat styles
+│   └── projector.html  # Projector view
+├── drive/              # File manager
+├── tasks/              # Task manager
+├── mail/               # Email client
+├── calendar/           # Calendar view
+├── meet/               # Video meetings
+├── paper/              # Document editor
+├── research/           # AI search
+├── analytics/          # Dashboards
+├── sources/            # Prompts & templates
+├── tools/              # Developer tools
+└── monitoring/         # System monitoring
 ```
 
 ### Loading Pattern
