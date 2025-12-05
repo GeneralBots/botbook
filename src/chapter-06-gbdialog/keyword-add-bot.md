@@ -52,5 +52,4 @@ TALK "I've set up our specialist team. Just ask about orders, support, or sales!
 
 ## See Also
 
-- [A2A Protocol](./keyword-a2a.md)
-- [DELEGATE TO BOT](./keyword-delegate-to-bot.md)
+- [DELEGATE TO BOT](./keyword-delegate-to-bot.md) - Includes A2A Protocol details

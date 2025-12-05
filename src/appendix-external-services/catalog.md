@@ -10,10 +10,10 @@ This catalog provides detailed information about every external service that Gen
 |----------|-------|
 | **Service URL** | `https://api.openai.com/v1` |
 | **Config Key** | `llm-provider=openai` |
-| **API Key Config** | `llm-api-key` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
 | **Documentation** | [platform.openai.com/docs](https://platform.openai.com/docs) |
 | **BASIC Keywords** | `LLM` |
-| **Supported Models** | `gpt-4o`, `gpt-4o-mini`, `gpt-4-turbo`, `gpt-3.5-turbo` |
+| **Supported Models** | `gpt-5`, `gpt-oss-120b`, `gpt-oss-20b` |
 
 ### Groq
 
@@ -21,10 +21,10 @@ This catalog provides detailed information about every external service that Gen
 |----------|-------|
 | **Service URL** | `https://api.groq.com/openai/v1` |
 | **Config Key** | `llm-provider=groq` |
-| **API Key Config** | `llm-api-key` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
 | **Documentation** | [console.groq.com/docs](https://console.groq.com/docs) |
 | **BASIC Keywords** | `LLM` |
-| **Supported Models** | `llama-3.1-70b-versatile`, `llama-3.1-8b-instant`, `mixtral-8x7b-32768` |
+| **Supported Models** | `llama-4-scout`, `llama-4-maverick`, `qwen3`, `mixtral-8x22b` |
 
 ### Anthropic
 
@@ -32,10 +32,10 @@ This catalog provides detailed information about every external service that Gen
 |----------|-------|
 | **Service URL** | `https://api.anthropic.com/v1` |
 | **Config Key** | `llm-provider=anthropic` |
-| **API Key Config** | `llm-api-key` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
 | **Documentation** | [docs.anthropic.com](https://docs.anthropic.com) |
 | **BASIC Keywords** | `LLM` |
-| **Supported Models** | `claude-3-5-sonnet`, `claude-3-opus`, `claude-3-haiku` |
+| **Supported Models** | `claude-opus-4.5`, `claude-sonnet-4.5` |
 
 ### Azure OpenAI
 
@@ -43,9 +43,53 @@ This catalog provides detailed information about every external service that Gen
 |----------|-------|
 | **Service URL** | `https://{resource}.openai.azure.com/` |
 | **Config Key** | `llm-provider=azure` |
-| **API Key Config** | `llm-api-key`, `azure-openai-endpoint` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
 | **Documentation** | [learn.microsoft.com/azure/ai-services/openai](https://learn.microsoft.com/azure/ai-services/openai) |
 | **BASIC Keywords** | `LLM` |
+
+### Google (Gemini)
+
+| Property | Value |
+|----------|-------|
+| **Service URL** | `https://generativelanguage.googleapis.com/v1` |
+| **Config Key** | `llm-provider=google` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
+| **Documentation** | [ai.google.dev/docs](https://ai.google.dev/docs) |
+| **BASIC Keywords** | `LLM` |
+| **Supported Models** | `gemini-3-pro`, `gemini-2.5-pro`, `gemini-2.5-flash` |
+
+### xAI (Grok)
+
+| Property | Value |
+|----------|-------|
+| **Service URL** | `https://api.x.ai/v1` |
+| **Config Key** | `llm-provider=xai` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
+| **Documentation** | [docs.x.ai](https://docs.x.ai) |
+| **BASIC Keywords** | `LLM` |
+| **Supported Models** | `grok-4` |
+
+### DeepSeek
+
+| Property | Value |
+|----------|-------|
+| **Service URL** | `https://api.deepseek.com/v1` |
+| **Config Key** | `llm-provider=deepseek` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
+| **Documentation** | [platform.deepseek.com/docs](https://platform.deepseek.com/docs) |
+| **BASIC Keywords** | `LLM` |
+| **Supported Models** | `deepseek-v3.1`, `deepseek-r1` |
+
+### Mistral AI
+
+| Property | Value |
+|----------|-------|
+| **Service URL** | `https://api.mistral.ai/v1` |
+| **Config Key** | `llm-provider=mistral` |
+| **API Key Config** | `llm-api-key` (stored in Vault) |
+| **Documentation** | [docs.mistral.ai](https://docs.mistral.ai) |
+| **BASIC Keywords** | `LLM` |
+| **Supported Models** | `mixtral-8x22b` |
 
 ---
 

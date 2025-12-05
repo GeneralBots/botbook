@@ -246,7 +246,8 @@ If you're currently using environment variables:
 # .env - TOO MANY SECRETS!
 DATABASE_URL=postgres://user:password@localhost/db
 DIRECTORY_URL=https://localhost:8080
-DIRECTORY_PROJECT_ID=12345
+DIRECTORY_CLIENT_ID=your-client-id
+DIRECTORY_CLIENT_SECRET=your-client-secret
 REDIS_PASSWORD=redis-secret
 OPENAI_API_KEY=sk-xxxxx
 ANTHROPIC_API_KEY=sk-ant-xxxxx
