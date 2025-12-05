@@ -300,6 +300,8 @@
   - [Multi-Agent Orchestration](./chapter-11-features/multi-agent-orchestration.md)
   - [Memory Management](./chapter-11-features/memory-management.md)
   - [Hybrid RAG Search](./chapter-11-features/hybrid-search.md)
+  - [Transfer to Human](./chapter-11-features/transfer-to-human.md)
+  - [LLM-Assisted Attendant](./chapter-11-features/attendant-llm-assist.md)
 
 # Part XI - Security
 

@@ -4,11 +4,28 @@
 
 General Bots 6.1 delivers enterprise-grade AI capabilities with full data sovereignty. Own your infrastructure, control your data, deploy anywhere.
 
+---
+
+## INVESTOR HIGHLIGHTS
+
+| **Differentiator** | **What Sets Us Apart** |
+|-------------------|------------------------|
+| **LLM Orchestrator** | Single PROMPT.md per project defines bot personality across all channels and features |
+| **Hybrid AI+Human** | Seamless bot-to-human handoff with AI-assisted attendants |
+| **True Omnichannel** | WhatsApp, Teams, Instagram, Telegram, Web - ONE codebase, ONE personality |
+| **No Vendor Lock-in** | Self-hosted, export anytime, migrate freely |
+| **Industry-Standard CRM** | Built-in collections, scheduling, follow-ups, sales automation |
+
+---
+
 ## FEATURE OVERVIEW
 
 | **CAPABILITY** | **WHAT IT DOES** | **BUSINESS IMPACT** | **TIME TO VALUE** |
 |----------------|------------------|---------------------|-------------------|
-| **AI-POWERED CONVERSATIONS** | Multi-channel bot orchestration with LLM integration (GPT-4, Claude, Llama, DeepSeek) | Significant reduction in customer service costs | < 1 hour |
+| **AI-POWERED CONVERSATIONS** | Multi-channel bot orchestration with any LLM (OpenAI, Anthropic, Groq, local models) | Significant reduction in customer service costs | < 1 hour |
+| **LLM-ASSISTED ATTENDANTS** | Real-time tips, smart replies, message polish, sentiment analysis for human agents | 50% faster response times | Immediate |
+| **TRANSFER TO HUMAN** | Seamless bot-to-human handoff with full context | Hybrid support workflows | 5 minutes |
+| **WHATSAPP ATTENDANT** | Human agents respond via WhatsApp with /commands | Mobile workforce support | Immediate |
 | **KNOWLEDGE BASES** | Vector-indexed document collections with semantic search (Qdrant/FAISS) | Faster information retrieval | 15 minutes |
 | **EMAIL AUTOMATION** | Full IMAP/SMTP integration with intelligent routing | Automated inbox management | 5 minutes |
 | **LLM-ASSISTED BASIC** | Plain English programming with LLM code generation | No programming skills needed | Immediate |
@@ -31,6 +48,32 @@ General Bots 6.1 delivers enterprise-grade AI capabilities with full data sovere
 | **API GATEWAY** | REST, GraphQL, Webhooks, WebSocket support | Integration ready | Ready |
 | **USER DIRECTORY** | LDAP/AD replacement, SSO, group management | Central authentication | 15 minutes |
 | **VOICE PROCESSING** | Speech-to-text, text-to-speech, voice commands | Voice interfaces | 5 minutes |
+| **CRM AUTOMATIONS** | Follow-ups, collections, scheduling, sales pipelines | Revenue operations | 10 minutes |
+
+---
+
+## LLM-ASSISTED ATTENDANT FEATURES
+
+When conversations transfer from bot to human, the LLM continues working as a copilot:
+
+| **Feature** | **Description** | **Investor Appeal** |
+|-------------|-----------------|---------------------|
+| **Real-time Tips** | AI analyzes customer message and provides actionable tips | "AI copilot for support" |
+| **Message Polish** | One-click grammar and tone improvement | Reduces training costs |
+| **Smart Replies** | 3 contextual reply suggestions | 50% faster responses |
+| **Auto Summary** | Instant conversation summary on handoff | Faster transfers |
+| **Sentiment Analysis** | Real-time emotional state + escalation warnings | Prevent churn |
+
+**WhatsApp Commands for Attendants:**
+```
+/queue    - View waiting customers
+/take     - Take next conversation
+/tips     - Get AI tips
+/polish   - Improve message
+/replies  - Get suggestions
+/summary  - Conversation summary
+/resolve  - Mark complete
+```
 
 ## DEPLOYMENT OPTIONS
 
@@ -51,6 +94,18 @@ General Bots 6.1 delivers enterprise-grade AI capabilities with full data sovere
 - Export everything as ZIP anytime
 - Move between hosting options freely
 - No vendor lock-in
+
+---
+
+## COMPETITIVE ADVANTAGE
+
+| **vs Competitors** | **General Bots Advantage** |
+|--------------------|---------------------------|
+| **Zendesk/Intercom** | Self-hosted, AI-first, no per-seat pricing |
+| **Dialogflow** | Native WhatsApp, human handoff, CRM built-in |
+| **Botpress** | LLM orchestration, multi-channel, enterprise features |
+| **n8n/Zapier** | Conversational AI, not just workflows |
+| **Custom Development** | 90% faster deployment, proven architecture |
 
 ## TECHNICAL ARCHITECTURE
 
@@ -92,12 +147,38 @@ General Bots 6.1 delivers enterprise-grade AI capabilities with full data sovere
 ### Enterprise Edition
 - All Standard features plus:
 - Compliance monitoring (LGPD/GDPR/HIPAA)
-- Attendance tracking
+- Attendance tracking with LLM assist
 - Vector database (Qdrant)
 - NVIDIA GPU acceleration
 - Advanced monitoring
 - gRPC support
 - Multi-channel messaging (WhatsApp, Teams, Instagram)
+- Human handoff with AI copilot
+- CRM automations (collections, scheduling, sales)
+
+---
+
+## QUICK START
+
+```csv
+# config.csv - Enable all features
+name,value
+crm-enabled,true
+attendant-llm-tips,true
+attendant-polish-message,true
+attendant-smart-replies,true
+attendant-auto-summary,true
+attendant-sentiment-analysis,true
+```
+
+```csv
+# attendant.csv - Configure your team
+id,name,channel,preferences,department,aliases
+att-001,John Smith,all,sales,commercial,john;johnny
+att-002,Maria Santos,whatsapp,support,customer-service,maria
+```
+
+**Result:** Full hybrid AI+Human support system in minutes.
 
 ### Full Edition
 - All features enabled

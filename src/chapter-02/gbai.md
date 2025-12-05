@@ -82,7 +82,7 @@ Each folder becomes a searchable collection. Drop files in, bot learns automatic
 Single `config.csv` file with key-value pairs:
 
 ```csv
-llm-model,gpt-3.5-turbo
+llm-model,your-preferred-model
 temperature,0.7
 max-tokens,2000
 welcome-message,Hello! How can I help?
@@ -147,7 +147,7 @@ TALK "Ticket #" + ticket_id + " created"
 
 `config.csv`:
 ```csv
-llm-model,gpt-3.5-turbo
+llm-model,your-preferred-model
 bot-name,TechSupport
 greeting,Welcome to support!
 ```
