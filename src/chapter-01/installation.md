@@ -28,24 +28,16 @@ The bootstrap process automatically:
 
 **First run takes 2-5 minutes.**
 
-## Environment Configuration
+## Using Existing Services
 
-The `.env` file is **auto-generated** with secure random credentials:
+If you have existing infrastructure, configure it in your bot's `config.csv`:
 
-```bash
-DATABASE_URL=postgres://gbuser:RANDOM@localhost:5432/botserver
-DRIVE_SERVER=http://localhost:9000
-DRIVE_ACCESSKEY=GENERATED_KEY
-DRIVE_SECRET=GENERATED_SECRET
-```
-
-### Using Existing Services
-
-Point to your own infrastructure in `.env`:
-
-```bash
-DATABASE_URL=postgres://myuser:mypass@myhost:5432/mydb
-DRIVE_SERVER=http://my-drive:9000
+```csv
+name,value
+database-url,postgres://myuser:mypass@myhost:5432/mydb
+drive-server,http://my-drive:9000
+drive-accesskey,my-access-key
+drive-secret,my-secret-key
 ```
 
 ## Default Ports

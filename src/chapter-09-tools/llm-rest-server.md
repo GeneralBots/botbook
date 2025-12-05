@@ -15,7 +15,7 @@ By defining PARAM declarations and a DESCRIPTION in your `.bas` file, General Bo
 
 Every LLM-callable tool follows this structure:
 
-```bas
+```basic
 PARAM parameter_name AS type LIKE "example" DESCRIPTION "What this parameter is for"
 
 DESCRIPTION "What this tool does. Called when user wants to [action]."
@@ -27,7 +27,7 @@ DESCRIPTION "What this tool does. Called when user wants to [action]."
 
 Here's how easy it is to create a chatbot for a store:
 
-```bas
+```basic
 PARAM operator AS number LIKE 12312312
 DESCRIPTION "Operator code."
 
@@ -75,7 +75,7 @@ This call acts like talking to the LLM, but it can be used for anything that Gen
 
 Creating a REST API server for any business process is equally straightforward:
 
-```bas
+```basic
 PARAM name AS string LIKE "João Silva"
 DESCRIPTION "Required full name of the individual."
 
@@ -175,7 +175,7 @@ Also generates OpenAI function calling format:
 
 You can combine LLM tools with external API calls:
 
-```bas
+```basic
 PARAM location AS string LIKE "Seattle"
 DESCRIPTION "City for weather lookup"
 
@@ -197,7 +197,7 @@ TALK weather
 
 3. **Validation**: Add validation logic to handle edge cases:
 
-```bas
+```basic
 PARAM email AS string LIKE "user@example.com"
 DESCRIPTION "Email address"
 
@@ -209,7 +209,7 @@ END IF
 
 4. **Error Handling**: Always handle potential errors gracefully:
 
-```bas
+```basic
 result = GET "https://api.example.com/data"
 IF result.error THEN
     TALK "Unable to fetch data. Please try again."
@@ -219,7 +219,7 @@ END IF
 
 5. **Secure Credentials**: Use BOT MEMORY for API keys:
 
-```bas
+```basic
 api_key = GET BOT MEMORY "my_api_key"
 ```
 

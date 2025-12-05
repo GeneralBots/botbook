@@ -193,22 +193,7 @@ Each bot:
 - Runs independently
 - Shares infrastructure
 
-## Template Inheritance
 
-Bots can share common resources:
-
-```
-templates/
-  _shared/
-    knowledge/      # Shared documents
-    tools/          # Shared functions
-  bot1.gbai/
-    bot1.gbot/
-      config.csv  # includes: _shared
-  bot2.gbai/
-    bot2.gbot/
-      config.csv  # includes: _shared
-```
 
 ## Naming Conventions
 
@@ -226,9 +211,7 @@ templates/
 
 When BotServer starts:
 
-```
 <img src="../assets/chapter-02/template-deployment-flow.svg" alt="Template Deployment Flow" style="max-height: 400px; width: 100%; object-fit: contain;">
-```
 
 Takes about 5-10 seconds per bot.
 
@@ -243,12 +226,23 @@ The web interface uses **HTMX with server-side rendering** - minimal client-side
 
 ## Package Size Limits
 
-Default limits (configurable):
-- Total package: 100MB
-- Single document: 10MB  
-- Number of files: 1000
-- Script size: 1MB
-- Collection count: 50
+Default limits (configurable in `config.csv`):
+
+| Setting | Default | config.csv key |
+|---------|---------|----------------|
+| Total package | 100MB | `package-max-size` |
+| Single document | 10MB | `user-file-limit` |
+| Number of files | 1000 | `user-file-count` |
+| Script size | 1MB | `script-max-size` |
+| Collection count | 50 | `kb-max-collections` |
+
+Example override in your bot's `config.csv`:
+
+```csv
+name,value
+package-max-size,209715200
+user-file-limit,52428800
+```
 
 ## Troubleshooting
 
@@ -270,16 +264,16 @@ Default limits (configurable):
 ## Best Practices
 
 ### Do's
-✅ Keep packages under 50MB  
-✅ Organize knowledge by topic  
-✅ Use clear folder names  
-✅ Test locally first  
+- Keep packages under 50MB  
+- Organize knowledge by topic  
+- Use clear folder names  
+- Test locally first  
 
 ### Don'ts
-❌ Don't nest `.gbai` folders  
-❌ Don't mix test/prod in same folder  
-❌ Don't hardcode absolute paths  
-❌ Don't store secrets in scripts  
+- Don't nest `.gbai` folders  
+- Don't mix test/prod in same folder  
+- Don't hardcode absolute paths  
+- Don't store secrets in scripts  
 
 ## Summary
 

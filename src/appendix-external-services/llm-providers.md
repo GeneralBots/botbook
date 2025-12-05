@@ -437,4 +437,4 @@ llm-log-timing,true
 
 - [LLM Configuration](../chapter-08-config/llm-config.md) - Detailed configuration guide
 - [Semantic Caching](../chapter-03/caching.md) - Cache configuration
-- [NVIDIA GPU Setup](../chapter-09-api/nvidia-gpu-setup.md) - GPU configuration for local models
+- [NVIDIA GPU Setup](../chapter-09-tools/nvidia-gpu-setup.md) - GPU configuration for local models

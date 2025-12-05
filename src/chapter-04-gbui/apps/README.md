@@ -174,4 +174,4 @@ To add a new app to the Suite:
 - [Suite Manual](../suite-manual.md) - Complete user guide
 - [HTMX Architecture](../htmx-architecture.md) - Technical details
 - [UI Structure](../ui-structure.md) - File organization
-- [Chapter 10: REST API](../../chapter-10-api/README.md) - API reference
+- [Chapter 10: REST API](../../chapter-10-rest/README.md) - API reference

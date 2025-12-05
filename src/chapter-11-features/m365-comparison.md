@@ -290,5 +290,5 @@ The choice between cloud and self-hosted depends on organizational priorities. F
 
 - [Quick Start](../chapter-01/quick-start.md) - Deploy in minutes
 - [Keywords Reference](../chapter-06-gbdialog/keywords.md) - Full BASIC reference
-- [REST API Reference](../chapter-10-api/README.md) - Complete API documentation
+- [REST API Reference](../chapter-10-rest/README.md) - Complete API documentation
 - [Migration Guide](../chapter-14-migration/README.md) - Detailed migration steps

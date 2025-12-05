@@ -66,5 +66,5 @@ auth-lockout-duration,900
 
 ## See Also
 
-- [REST API](../chapter-10-api/README.md) - API authentication
+- [REST API](../chapter-10-rest/README.md) - API authentication
 - [Configuration](../chapter-08-config/README.md) - Auth settings

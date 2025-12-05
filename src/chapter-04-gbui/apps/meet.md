@@ -313,4 +313,4 @@ Allow browser access to:
 - [Suite Manual](../suite-manual.md) - Complete user guide
 - [Calendar App](./calendar.md) - Schedule meetings
 - [Chat App](./chat.md) - Quick calls from chat
-- [Calls API](../../chapter-10-api/calls-api.md) - API reference
+- [Calls API](../../chapter-10-rest/calls-api.md) - API reference

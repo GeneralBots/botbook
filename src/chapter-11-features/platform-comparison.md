@@ -171,5 +171,5 @@ For organizations that need more than a simple chatbot—those requiring custom 
 
 - [Quick Start](../chapter-01/quick-start.md) - Get running in minutes
 - [Keywords Reference](../chapter-06-gbdialog/keywords.md) - Full BASIC reference
-- [REST API](../chapter-10-api/README.md) - API documentation
+- [REST API](../chapter-10-rest/README.md) - API documentation
 - [Projects](./projects.md) - Team collaboration features
