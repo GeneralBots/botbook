@@ -4,7 +4,7 @@ The `TABLE` keyword defines database tables directly in your `.bas` files. Table
 
 ## Syntax
 
-```bas
+```basic
 TABLE TableName ON connection
     FieldName dataType[(length[,precision])] [key] [references OtherTable]
     ...
@@ -69,7 +69,7 @@ conn-maria-Driver,mariadb
 
 ### Basic Table Definition
 
-```bas
+```basic
 TABLE Contacts ON maria
     Id number key
     Nome string(150)
@@ -81,7 +81,7 @@ END TABLE
 
 ### Table with Multiple Field Types
 
-```bas
+```basic
 TABLE Produtos ON maria
     Id number key
     Nome string(150)
@@ -97,7 +97,7 @@ END TABLE
 
 ### Table with Foreign Key References
 
-```bas
+```basic
 TABLE Pedidos ON maria
     Id number key
     Numero integer
@@ -120,7 +120,7 @@ END TABLE
 
 ### Complete CRM Tables Example
 
-```bas
+```basic
 ' Contact management tables
 TABLE Contatos ON maria
     Id number key
@@ -172,7 +172,7 @@ Once tables are defined, you can use standard BASIC keywords to work with the da
 
 ### Inserting Data
 
-```bas
+```basic
 data = NEW OBJECT
 data.Nome = "João Silva"
 data.Email = "joao@example.com"
@@ -182,7 +182,7 @@ INSERT "Contatos", data
 
 ### Finding Data
 
-```bas
+```basic
 contacts = FIND "Contatos", "Situacao='A'"
 FOR EACH contact IN contacts
     TALK "Name: " + contact.Nome
@@ -191,13 +191,13 @@ NEXT
 
 ### Updating Data
 
-```bas
+```basic
 UPDATE "Contatos", "Id=123", "Telefone='11988888888'"
 ```
 
 ### Deleting Data
 
-```bas
+```basic
 DELETE "Contatos", "Id=123"
 ```
 

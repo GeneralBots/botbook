@@ -76,7 +76,7 @@ In BotServer, a **tool** is simply a `.bas` file. That's it!
 
 Create `get-weather.bas`:
 
-```bas
+```basic
 ' This tool gets weather information
 ' The LLM will call this when users ask about weather
 
@@ -91,7 +91,7 @@ That's a tool! The LLM now knows it can call this when users ask about weather.
 
 Create `send-email.bas`:
 
-```bas
+```basic
 ' Send an email to someone
 PARAM to AS STRING
 PARAM subject AS STRING
@@ -122,7 +122,7 @@ mybot.gbai/
 
 In your `start.bas`, explicitly add tools:
 
-```bas
+```basic
 ' Register tools for this conversation
 USE TOOL "get-weather"
 USE TOOL "send-email"
@@ -135,7 +135,7 @@ TALK "Hello! I can help with weather, email, and tasks."
 
 Let the LLM decide which tools to use naturally:
 
-```bas
+```basic
 ' In start.bas
 ' Load all available tools - LLM decides when to use them
 USE TOOL "weather"
@@ -218,7 +218,7 @@ You never write these formats manually - just write `.bas` files!
 
 Here's a real tool from the codebase - `enrollment.bas`:
 
-```bas
+```basic
 PARAM name AS string          LIKE "Abreu Silva"                DESCRIPTION "Required full name of the individual."
 PARAM birthday AS date        LIKE "23/09/2001"                 DESCRIPTION "Required birth date of the individual in DD/MM/YYYY format."
 PARAM email AS string         LIKE "abreu.silva@example.com"    DESCRIPTION "Required email address for contact purposes."
@@ -260,7 +260,7 @@ No JSON schemas, no manual registration, no complex configuration. Just write BA
 
 The LLM reads your comments to understand the tool:
 
-```bas
+```basic
 ' This tool books a meeting room
 ' It checks availability and sends calendar invites
 PARAM room_name AS STRING
@@ -272,7 +272,7 @@ PARAM attendees AS ARRAY
 
 Always validate input:
 
-```bas
+```basic
 IF room_name IS NULL THEN
     TALK "Please specify which room you want to book."
     RETURN
@@ -283,7 +283,7 @@ ENDIF
 
 Let users know what's happening:
 
-```bas
+```basic
 TALK "Checking room availability..."
 available = GET "/calendar/check" WITH room_name, date
 
@@ -320,7 +320,7 @@ This is generated automatically from your `.bas` file!
 ## Removing Tools
 ### Dynamic Tool Management
 
-```bas
+```basic
 ' Remove a specific tool
 REMOVE TOOL "send-email"
 

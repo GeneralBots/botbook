@@ -15,21 +15,20 @@ That's it! No configuration needed.
 You'll see:
 
 ```
-🚀 BotServer starting...
-📦 Bootstrap: Detecting system...
-📦 Installing PostgreSQL...
-   ✓ Database created
-   ✓ Schema initialized
-   ✓ Credentials saved to .env
-📦 Installing Drive...
-   ✓ Object storage ready
-   ✓ Buckets created
-📦 Installing Cache...
-   ✓ Cache server running
-🤖 Creating bots from templates...
-   ✓ default.gbai → Default bot
-   ✓ announcements.gbai → Announcements bot
-✅ BotServer ready at http://localhost:8080
+BotServer starting...
+Bootstrap: Detecting system...
+Installing PostgreSQL...
+   Database created
+   Schema initialized
+Installing Drive...
+   Object storage ready
+   Buckets created
+Installing Cache...
+   Cache server running
+Creating bots from templates...
+   default.gbai deployed
+   announcements.gbai deployed
+BotServer ready at http://localhost:8080
 ```
 
 ### 3. Open Browser
@@ -50,27 +49,27 @@ Start chatting with your bot!
 
 The **automatic bootstrap** process:
 
-1. ✅ Detected your OS (Linux/macOS/Windows)
-2. ✅ Downloaded PostgreSQL database to botserver-stack/
-3. ✅ Downloaded drive (S3-compatible storage) to botserver-stack/
-4. ✅ Downloaded cache component to botserver-stack/
-5. ✅ Generated secure credentials → `.env` (from blank environment)
-6. ✅ Created database schema
-7. ✅ Deployed default bots to object storage
-8. ✅ Started UI server on port 8080
+1. Detected your OS (Linux/macOS/Windows)
+2. Downloaded PostgreSQL database to botserver-stack/
+3. Downloaded drive (S3-compatible storage) to botserver-stack/
+4. Downloaded cache component to botserver-stack/
+5. Generated secure credentials
+6. Created database schema
+7. Deployed default bots to object storage
+8. Started UI server on port 8080
 
 **Zero manual configuration required!**
 
 ### Using Existing Services
 
-If you already have PostgreSQL or drive storage running, update `.env`:
+If you already have PostgreSQL or drive storage running, configure them in `config.csv` of your bot:
 
-```bash
-# Point to your existing services
-DATABASE_URL=postgres://myuser:mypass@myhost:5432/mydb
-DRIVE_SERVER=http://my-drive:9000
-DRIVE_ACCESSKEY=my-access-key
-DRIVE_SECRET=my-secret-key
+```csv
+name,value
+database-url,postgres://myuser:mypass@myhost:5432/mydb
+drive-server,http://my-drive:9000
+drive-accesskey,my-access-key
+drive-secret,my-secret-key
 ```
 
 ---
@@ -83,7 +82,7 @@ DRIVE_SECRET=my-secret-key
 
 Tools are just `.bas` files. Create `enrollment.bas`:
 
-```bas
+```basic
 ' Student enrollment tool
 PARAM name, email, course
 DESCRIPTION "Processes student enrollment"
@@ -133,10 +132,10 @@ lxc-attach -n botserver
 ```
 
 **Benefits**: 
-- ✅ Process isolation
-- ✅ Resource control
-- ✅ Easy management
-- ✅ Lightweight virtualization
+- Process isolation
+- Resource control
+- Easy management
+- Lightweight virtualization
 
 ---
 
@@ -212,7 +211,7 @@ mybot.gbkb/
 ```
 
 ### 2. Create Tools (Optional)
-```bas
+```basic
 ' enrollment.bas - just define what it does
 PARAM name AS string
 PARAM course AS string
@@ -234,17 +233,7 @@ The LLM handles ALL conversation logic automatically!
 
 ## Configuration (Optional)
 
-Bootstrap automatically generates `.env` from a blank environment with secure random credentials:
-
-```env
-# Auto-generated during bootstrap
-DATABASE_URL=postgres://gbuser:RANDOM_PASS@localhost:5432/botserver
-DRIVE_SERVER=http://localhost:9000
-DRIVE_ACCESSKEY=GENERATED_KEY
-DRIVE_SECRET=GENERATED_SECRET
-```
-
-You can also configure per-bot settings in `config.csv`:
+Configure per-bot settings in `config.csv`:
 
 ```csv
 name,value
@@ -299,20 +288,20 @@ rm .env
 ## The Magic Formula
 
 ```
-📚 Documents + 🔧 Tools + 🤖 LLM = ✨ Intelligent Bot
+Documents + Tools + LLM = Intelligent Bot
 ```
 
 ### What You DON'T Need:
-- ❌ IF/THEN logic
-- ❌ Intent detection  
-- ❌ Dialog flow charts
-- ❌ State machines
-- ❌ Complex routing
+- IF/THEN logic
+- Intent detection  
+- Dialog flow charts
+- State machines
+- Complex routing
 
 ### What You DO:
-- ✅ Drop documents in `.gbkb/`
-- ✅ Create simple `.bas` tools (optional)
-- ✅ Start chatting!
+- Drop documents in `.gbkb/`
+- Create simple `.bas` tools (optional)
+- Start chatting!
 
 The LLM understands context, calls tools, searches documents, and maintains conversation naturally.
 
@@ -354,4 +343,4 @@ The LLM understands context, calls tools, searches documents, and maintains conv
    Bot: [Calls enrollment.bas] Let me help you enroll...
    ```
 
-**No programming logic needed - the LLM handles everything!** 🎉
+**No programming logic needed - the LLM handles everything!**

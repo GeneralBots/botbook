@@ -270,4 +270,4 @@ Player is fully responsive:
 
 - [Drive App](./drive.md) - File management
 - [Drive Integration](../../chapter-08-config/drive.md) - File storage configuration
-- [Storage API](../../chapter-10-api/storage-api.md) - File management API
+- [Storage API](../../chapter-10-rest/storage-api.md) - File management API

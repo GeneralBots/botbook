@@ -309,5 +309,5 @@ email-from,Your Name <you@gmail.com>
 
 - [Suite Manual](../suite-manual.md) - Complete user guide
 - [Chat App](./chat.md) - Send quick emails via chat
-- [Email API](../../chapter-10-api/email-api.md) - API reference
+- [Email API](../../chapter-10-rest/email-api.md) - API reference
 - [SEND MAIL Keyword](../../chapter-06-gbdialog/keyword-send-mail.md) - BASIC integration

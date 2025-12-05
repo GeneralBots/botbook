@@ -260,4 +260,4 @@ Tasks with due dates automatically appear on your calendar. When you complete a 
 - [Suite Manual](../suite-manual.md) - Complete user guide
 - [Tasks App](./tasks.md) - Task integration
 - [Meet App](./meet.md) - Video meetings
-- [Calendar API](../../chapter-10-api/calendar-api.md) - API reference
+- [Calendar API](../../chapter-10-rest/calendar-api.md) - API reference

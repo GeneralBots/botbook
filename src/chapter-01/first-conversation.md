@@ -41,7 +41,7 @@ The bot automatically indexes all documents, creates vector embeddings, searches
 
 Create `enrollment.bas`:
 
-```bas
+```basic
 PARAM name AS string          LIKE "John Smith"           DESCRIPTION "Student full name"
 PARAM email AS string         LIKE "john@example.com"     DESCRIPTION "Contact email"
 PARAM course AS string        LIKE "Computer Science"     DESCRIPTION "Course to enroll in"
@@ -113,7 +113,7 @@ mkdir -p mybot.gbai/mybot.gbot
 
 Example tool in `mybot.gbdialog/my-tool.bas`:
 
-```bas
+```basic
 PARAM user_name AS string
 PARAM request AS string
 
@@ -129,7 +129,7 @@ Traditional chatbots require complex logic with IF/THEN statements, intent detec
 
 Traditional approach (don't do this):
 
-```bas
+```basic
 ' Complex multi-step dialog
 IF intent = "enrollment" THEN
     TALK "Let me help you enroll. What's your name?"
@@ -142,7 +142,7 @@ ENDIF
 
 BotServer approach (just create the tool):
 
-```bas
+```basic
 ' In enrollment.bas - becomes a tool automatically
 PARAM name AS string
 PARAM email AS string

@@ -227,4 +227,4 @@ Tasks with due dates automatically appear in your Calendar view, helping you vis
 - [Suite Manual](../suite-manual.md) - Complete user guide
 - [Chat App](./chat.md) - Create tasks from chat
 - [Calendar App](./calendar.md) - View tasks in calendar
-- [Tasks API](../../chapter-10-api/tasks-api.md) - API reference
+- [Tasks API](../../chapter-10-rest/tasks-api.md) - API reference

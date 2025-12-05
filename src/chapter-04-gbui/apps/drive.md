@@ -61,6 +61,40 @@ Drive is your personal cloud storage within General Bots Suite. Upload, organize
 | Projects | 🟡 | Project-specific files |
 | Custom | 🟣 | Create your own |
 
+### File Sync (Desktop Only)
+
+The desktop app provides bidirectional file synchronization between your local machine and cloud Drive using [rclone](https://rclone.org/).
+
+**Requirements:**
+- General Bots desktop app (Tauri)
+- rclone installed on your system
+
+**Setup:**
+1. Install rclone: `https://rclone.org/install/`
+2. Open Drive in the desktop app
+3. Click **Settings** → **Sync**
+4. Configure your sync folder (default: `~/GeneralBots`)
+5. Click **Start Sync**
+
+**Sync Controls:**
+Located in the Drive sidebar under "Sync Status"
+
+| Control | Description |
+|---------|-------------|
+| **Start** | Begin synchronization |
+| **Stop** | Stop current sync |
+| **Status** | Shows idle, syncing, or error |
+
+**Sync Modes:**
+
+| Mode | Description |
+|------|-------------|
+| **Push** | Local → Cloud only |
+| **Pull** | Cloud → Local only |
+| **Bisync** | Bidirectional (default) |
+
+**Note:** Sync features are only available in the desktop app. Web users see an "unavailable" status as sync requires local filesystem access.
+
 ---
 
 ## Keyboard Shortcuts
@@ -291,6 +325,7 @@ drive-quota-gb,10
 ## See Also
 
 - [Suite Manual](../suite-manual.md) - Complete user guide
+- [Admin vs User Views](../admin-user-views.md) - Permission levels
 - [Chat App](./chat.md) - Upload files via chat
 - [Player App](./player.md) - View files in Player
-- [Storage API](../../chapter-10-api/storage-api.md) - API reference
+- [Storage API](../../chapter-10-rest/storage-api.md) - API reference

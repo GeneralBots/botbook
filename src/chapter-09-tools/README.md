@@ -1,4 +1,4 @@
-# Chapter 09: API and Tooling
+# Chapter 09: LLM Tools
 
 Define tools that LLMs can call from your BASIC scripts.
 
@@ -65,4 +65,4 @@ Tools compile to multiple formats:
 ## See Also
 
 - [BASIC Dialogs](../chapter-06-gbdialog/README.md) - Scripting reference
-- [REST API](../chapter-10-api/README.md) - HTTP endpoints
+- [REST Endpoints](../chapter-10-rest/README.md) - HTTP endpoints

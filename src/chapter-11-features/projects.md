@@ -342,7 +342,7 @@ CREATE TASK "Design review" IN PROJECT project_id
 
 ## See Also
 
-- [Tasks API](../chapter-10-api/tasks-api.md) - Task management endpoints
-- [Conversations API](../chapter-10-api/conversations-api.md) - Chat history
-- [Groups API](../chapter-10-api/groups-api.md) - User group management
+- [Tasks API](../chapter-10-rest/tasks-api.md) - Task management endpoints
+- [Conversations API](../chapter-10-rest/conversations-api.md) - Chat history
+- [Groups API](../chapter-10-rest/groups-api.md) - User group management
 - [SET CONTEXT](../chapter-06-gbdialog/keyword-set-context.md) - AI context configuration

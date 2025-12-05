@@ -230,29 +230,11 @@ llm-cache,false
 episodic-memory-threshold,2
 ```
 
-## Environment Variables
-
-System-level configuration uses environment variables:
-
-```bash
-# Database
-DATABASE_URL=postgres://gbuser:password@localhost:5432/botserver
-
-# Object Storage
-DRIVE_SERVER=http://localhost:9000
-DRIVE_ACCESSKEY=minioadmin
-DRIVE_SECRET=minioadmin
-
-# Optional
-LOG_LEVEL=debug
-```
-
 ## Configuration Priority
 
 Settings are applied in this order (later overrides earlier):
 1. Default values in code
 2. config.csv settings
-3. Environment variables (for system settings only)
 
 ## Best Practices
 

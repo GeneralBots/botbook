@@ -10,10 +10,10 @@ Get General Bots running and have your first conversation.
 
 By the end of this chapter, you will:
 
-- ✅ Have General Bots running on your machine
-- ✅ Understand what happens during bootstrap
-- ✅ Complete your first conversation with a bot
-- ✅ Know how sessions and channels work
+- Have General Bots running on your machine
+- Understand what happens during bootstrap
+- Complete your first conversation with a bot
+- Know how sessions and channels work
 
 ---
 
@@ -68,10 +68,10 @@ Everything installs automatically on first run—PostgreSQL, storage, cache, and
   </div>
   <div class="wa-message bot">
     <div class="wa-bubble">
-      <p>📦 PostgreSQL (database)</p>
-      <p>📦 MinIO (file storage)</p>
-      <p>📦 Cache (Redis-compatible)</p>
-      <p>📦 Default bot templates</p>
+      <p>PostgreSQL (database)</p>
+      <p>MinIO (file storage)</p>
+      <p>Cache (Redis-compatible)</p>
+      <p>Default bot templates</p>
       <p>All in <code>botserver-stack/</code> — no system-wide installation!</p>
       <div class="wa-time">09:01</div>
     </div>
