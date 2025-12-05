@@ -401,7 +401,8 @@ VAULT_TOKEN=hvs.your-token-here
 
 # Directory for user auth (Zitadel)
 DIRECTORY_URL=https://localhost:8080
-DIRECTORY_PROJECT_ID=your-project-id
+DIRECTORY_CLIENT_ID=your-client-id
+DIRECTORY_CLIENT_SECRET=your-client-secret
 
 # All other secrets fetched from Vault at runtime
 ```

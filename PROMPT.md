@@ -5,6 +5,55 @@
 
 ---
 
+## CRITICAL: Keyword Naming Rules
+
+**Keywords NEVER use underscores. Always use spaces.**
+
+### ✅ Correct Syntax
+```basic
+SEND MAIL to, subject, body, attachments
+GENERATE PDF template, data, output
+MERGE PDF files, output
+DELETE "url"
+DELETE "table", "filter"
+ON ERROR RESUME NEXT
+CLEAR ERROR
+SET BOT MEMORY key, value
+GET BOT MEMORY key
+KB STATISTICS
+KB DOCUMENTS COUNT
+```
+
+### ❌ WRONG - Never Use Underscores
+```basic
+SEND_MAIL          ' WRONG!
+GENERATE_PDF       ' WRONG!
+MERGE_PDF          ' WRONG!
+DELETE_HTTP        ' WRONG!
+SET_HEADER         ' WRONG!
+```
+
+### Keyword Mappings (Documentation to Implementation)
+| Write This | NOT This |
+|------------|----------|
+| `SEND MAIL` | `SEND_MAIL` |
+| `GENERATE PDF` | `GENERATE_PDF` |
+| `MERGE PDF` | `MERGE_PDF` |
+| `DELETE` | `DELETE_HTTP` |
+| `SET HEADER` | `SET_HEADER` |
+| `CLEAR HEADERS` | `CLEAR_HEADERS` |
+| `GROUP BY` | `GROUP_BY` |
+| `FOR EACH` | `FOR_EACH` |
+| `EXIT FOR` | `EXIT_FOR` |
+| `ON ERROR RESUME NEXT` | (no underscore version) |
+
+### Special Keywords
+- `GENERATE FROM TEMPLATE` = Use `FILL` keyword
+- `GENERATE WITH PROMPT` = Use `LLM` keyword
+- `DELETE` is unified - auto-detects HTTP URLs vs database tables vs files
+
+---
+
 ## Official Icons - MANDATORY
 
 **NEVER generate icons with LLM. ALWAYS use official SVG icons from `src/assets/icons/`.**
@@ -161,6 +210,25 @@ botbook/
 TALK "Hello, world!"
 name = HEAR
 TALK "Welcome, " + name
+
+' Error handling (VB-style)
+ON ERROR RESUME NEXT
+result = SOME_OPERATION()
+IF ERROR THEN
+    TALK "Error: " + ERROR MESSAGE
+END IF
+ON ERROR GOTO 0
+
+' Email - note: spaces not underscores
+SEND MAIL "user@example.com", "Subject", "Body", []
+
+' PDF generation - note: spaces not underscores  
+GENERATE PDF "template.html", data, "output.pdf"
+
+' Unified DELETE - auto-detects context
+DELETE "https://api.example.com/resource/123"  ' HTTP DELETE
+DELETE "customers", "status = 'inactive'"       ' Database DELETE
+DELETE "temp/file.txt"                          ' File DELETE
 ```
 
 <!-- For configuration -->
@@ -239,6 +307,19 @@ When documenting features, verify against actual source:
 | Configuration | `botserver/src/core/config/` |
 | Bootstrap | `botserver/src/core/bootstrap/` |
 | Templates | `botserver/templates/` |
+| Error Handling | `botserver/src/basic/keywords/errors/` |
+
+### Key Implementation Files
+| Keyword Category | File |
+|-----------------|------|
+| `SEND MAIL`, `SEND TEMPLATE` | `send_mail.rs` |
+| `GENERATE PDF`, `MERGE PDF` | `file_operations.rs` |
+| `DELETE`, `INSERT`, `UPDATE` | `data_operations.rs` |
+| `POST`, `PUT`, `GRAPHQL`, `SOAP` | `http_operations.rs` |
+| `ON ERROR RESUME NEXT` | `errors/on_error.rs` |
+| `KB STATISTICS`, `KB DOCUMENTS COUNT` | `kb_statistics.rs` |
+| `LLM` | `llm_keyword.rs` |
+| `FILL` (template filling) | `data_operations.rs` |
 
 ---
 
@@ -277,6 +358,9 @@ Before committing documentation:
 - [ ] SUMMARY.md is updated
 - [ ] mdbook build succeeds without errors
 - [ ] Content matches actual source code
+- [ ] **NO underscores in keyword names** (use spaces)
+- [ ] Model names are generic or current (no gpt-4o, claude-3, etc.)
+- [ ] Error handling uses `ON ERROR RESUME NEXT` pattern correctly
 
 ---
 
@@ -288,3 +372,89 @@ Before committing documentation:
 - **Version**: Always reference 6.1.0
 - **Examples**: Only working, tested code
 - **Structure**: Follow mdBook conventions
+- **Keywords**: NEVER use underscores - always spaces
+- **Models**: Use generic references or current model names
+- **Errors**: Document `ON ERROR RESUME NEXT` for error handling
+
+---
+
+## Quick Reference: Implemented Keywords
+
+### Error Handling
+```basic
+ON ERROR RESUME NEXT    ' Enable error trapping
+ON ERROR GOTO 0         ' Disable error trapping
+CLEAR ERROR             ' Clear error state
+IF ERROR THEN           ' Check if error occurred
+ERROR MESSAGE           ' Get last error message
+ERR                     ' Get error number
+THROW "message"         ' Raise an error
+```
+
+### HTTP Operations
+```basic
+POST "url", data
+PUT "url", data  
+PATCH "url", data
+DELETE "url"            ' Unified - works for HTTP, DB, files
+SET HEADER "name", "value"
+CLEAR HEADERS
+GRAPHQL "url", query, variables
+SOAP "wsdl", "operation", params
+```
+
+### File & PDF Operations
+```basic
+READ "path"
+WRITE "path", content
+COPY "source", "dest"
+MOVE "source", "dest"
+LIST "path"
+COMPRESS files, "archive.zip"
+EXTRACT "archive.zip", "dest"
+UPLOAD file
+DOWNLOAD "url"
+GENERATE PDF template, data, "output.pdf"
+MERGE PDF files, "output.pdf"
+```
+
+### Data Operations
+```basic
+FIND "table", "filter"
+SAVE "table", data
+INSERT "table", data
+UPDATE "table", data, "filter"
+DELETE "table", "filter"
+MERGE "table", data, "key"
+FILL data, template           ' Template filling (was GENERATE FROM TEMPLATE)
+MAP data, "mapping"
+FILTER data, "condition"
+AGGREGATE data, "operation"
+```
+
+### Knowledge Base
+```basic
+USE KB
+USE KB "collection"
+CLEAR KB
+KB STATISTICS
+KB COLLECTION STATS "name"
+KB DOCUMENTS COUNT
+KB DOCUMENTS ADDED SINCE days
+KB LIST COLLECTIONS
+KB STORAGE SIZE
+```
+
+### LLM Operations
+```basic
+result = LLM "prompt"         ' Generate with LLM (was GENERATE WITH PROMPT)
+USE MODEL "model-name"
+```
+
+### Communication
+```basic
+TALK "message"
+HEAR variable
+SEND MAIL to, subject, body, attachments
+SEND TEMPLATE recipients, template, variables
+```

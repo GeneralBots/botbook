@@ -6,37 +6,35 @@ General Bots supports multiple Large Language Model (LLM) providers, both cloud-
 
 LLMs are the intelligence behind General Bots' conversational capabilities. You can configure:
 
-- **Cloud Providers** - External APIs (OpenAI, Anthropic, Groq, etc.)
-- **Local Models** - Self-hosted models via llama.cpp
-- **Hybrid** - Use local for simple tasks, cloud for complex reasoning
+- **Cloud Providers** — External APIs (OpenAI, Anthropic, Google, etc.)
+- **Local Models** — Self-hosted models via llama.cpp
+- **Hybrid** — Use local for simple tasks, cloud for complex reasoning
 
 ## Cloud Providers
 
 ### OpenAI (GPT Series)
 
-The most widely known LLM provider, offering GPT-4 and GPT-4o models.
+The most widely known LLM provider, offering the GPT-5 flagship model.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| GPT-4o | 128K | General purpose, vision | Fast |
-| GPT-4o-mini | 128K | Cost-effective tasks | Very Fast |
-| GPT-4 Turbo | 128K | Complex reasoning | Medium |
-| o1-preview | 128K | Advanced reasoning, math | Slow |
-| o1-mini | 128K | Code, logic tasks | Medium |
+| GPT-5 | 1M | All-in-one advanced reasoning | Medium |
+| GPT-oss 120B | 128K | Open-weight, agent workflows | Medium |
+| GPT-oss 20B | 128K | Cost-effective open-weight | Fast |
 
-**Configuration:**
+**Configuration (config.csv):**
 
 ```csv
+name,value
 llm-provider,openai
-llm-api-key,sk-xxxxxxxxxxxxxxxxxxxxxxxx
-llm-model,gpt-4o
+llm-model,gpt-5
 ```
 
 **Strengths:**
+- Most advanced all-in-one model
 - Excellent general knowledge
 - Strong code generation
 - Good instruction following
-- Vision capabilities (GPT-4o)
 
 **Considerations:**
 - API costs can add up
@@ -45,62 +43,30 @@ llm-model,gpt-4o
 
 ### Anthropic (Claude Series)
 
-Known for safety, helpfulness, and large context windows.
+Known for safety, helpfulness, and extended thinking capabilities.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Claude 3.5 Sonnet | 200K | Best balance of capability/speed | Fast |
-| Claude 3.5 Haiku | 200K | Quick, everyday tasks | Very Fast |
-| Claude 3 Opus | 200K | Most capable, complex tasks | Slow |
+| Claude Opus 4.5 | 200K | Most capable, complex reasoning | Slow |
+| Claude Sonnet 4.5 | 200K | Best balance of capability/speed | Fast |
 
-**Configuration:**
+**Configuration (config.csv):**
 
 ```csv
+name,value
 llm-provider,anthropic
-llm-api-key,sk-ant-xxxxxxxxxxxxxxxx
-llm-model,claude-3-5-sonnet-20241022
+llm-model,claude-sonnet-4.5
 ```
 
 **Strengths:**
-- Largest context window (200K tokens)
+- Extended thinking mode for multi-step tasks
 - Excellent at following complex instructions
 - Strong coding abilities
 - Better at refusing harmful requests
 
 **Considerations:**
 - Premium pricing
-- No vision in all models
 - Newer provider, smaller ecosystem
-
-### Groq
-
-Ultra-fast inference using custom LPU hardware. Offers open-source models at high speed.
-
-| Model | Context | Best For | Speed |
-|-------|---------|----------|-------|
-| Llama 3.3 70B | 128K | Complex reasoning | Very Fast |
-| Llama 3.1 8B | 128K | Quick responses | Extremely Fast |
-| Mixtral 8x7B | 32K | Balanced performance | Very Fast |
-| Gemma 2 9B | 8K | Lightweight tasks | Extremely Fast |
-
-**Configuration:**
-
-```csv
-llm-provider,groq
-llm-api-key,gsk_xxxxxxxxxxxxxxxx
-llm-model,llama-3.3-70b-versatile
-```
-
-**Strengths:**
-- Fastest inference speeds (500+ tokens/sec)
-- Competitive pricing
-- Open-source models
-- Great for real-time applications
-
-**Considerations:**
-- Limited model selection
-- Rate limits on free tier
-- Models may be less capable than GPT-4/Claude
 
 ### Google (Gemini Series)
 
@@ -108,16 +74,16 @@ Google's multimodal AI models with strong reasoning capabilities.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Gemini 1.5 Pro | 2M | Extremely long documents | Medium |
-| Gemini 1.5 Flash | 1M | Fast multimodal | Fast |
-| Gemini 2.0 Flash | 1M | Latest capabilities | Fast |
+| Gemini 3 Pro | 2M | Complex reasoning, benchmarks | Medium |
+| Gemini 2.5 Pro | 2M | Extremely long documents | Medium |
+| Gemini 2.5 Flash | 1M | Fast multimodal | Fast |
 
-**Configuration:**
+**Configuration (config.csv):**
 
 ```csv
+name,value
 llm-provider,google
-llm-api-key,AIzaxxxxxxxxxxxxxxxx
-llm-model,gemini-1.5-pro
+llm-model,gemini-3-pro
 ```
 
 **Strengths:**
@@ -127,9 +93,61 @@ llm-model,gemini-1.5-pro
 - Good coding abilities
 
 **Considerations:**
-- Newer ecosystem
 - Some features region-limited
 - API changes more frequently
+
+### xAI (Grok Series)
+
+Integration with real-time data from X platform.
+
+| Model | Context | Best For | Speed |
+|-------|---------|----------|-------|
+| Grok 4 | 128K | Real-time research, analysis | Fast |
+
+**Configuration (config.csv):**
+
+```csv
+name,value
+llm-provider,xai
+llm-model,grok-4
+```
+
+**Strengths:**
+- Real-time data access from X
+- Strong research and analysis
+- Good for trend analysis
+
+**Considerations:**
+- Newer provider
+- X platform integration focus
+
+### Groq
+
+Ultra-fast inference using custom LPU hardware. Offers open-source models at high speed.
+
+| Model | Context | Best For | Speed |
+|-------|---------|----------|-------|
+| Llama 4 Scout | 10M | Long context, multimodal | Very Fast |
+| Llama 4 Maverick | 1M | Complex tasks | Very Fast |
+| Qwen3 | 128K | Efficient MoE architecture | Extremely Fast |
+
+**Configuration (config.csv):**
+
+```csv
+name,value
+llm-provider,groq
+llm-model,llama-4-scout
+```
+
+**Strengths:**
+- Fastest inference speeds (500+ tokens/sec)
+- Competitive pricing
+- Open-source models
+- Great for real-time applications
+
+**Considerations:**
+- Rate limits on free tier
+- Models may be less capable than GPT-5/Claude
 
 ### Mistral AI
 
@@ -137,59 +155,54 @@ European AI company offering efficient, open-weight models.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Mistral Large | 128K | Complex tasks | Medium |
-| Mistral Medium | 32K | Balanced performance | Fast |
-| Mistral Small | 32K | Cost-effective | Very Fast |
-| Codestral | 32K | Code generation | Fast |
+| Mixtral-8x22B | 64K | Multi-language, coding | Fast |
 
-**Configuration:**
+**Configuration (config.csv):**
 
 ```csv
+name,value
 llm-provider,mistral
-llm-api-key,xxxxxxxxxxxxxxxx
-llm-model,mistral-large-latest
+llm-model,mixtral-8x22b
 ```
 
 **Strengths:**
 - European data sovereignty (GDPR)
-- Excellent code generation (Codestral)
+- Excellent code generation
 - Open-weight models available
 - Competitive pricing
+- Proficient in multiple languages
 
 **Considerations:**
 - Smaller context than competitors
 - Less brand recognition
-- Fewer fine-tuning options
 
 ### DeepSeek
 
-Chinese AI company known for efficient, capable models.
+Known for efficient, capable models with exceptional reasoning.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| DeepSeek-V3 | 128K | General purpose | Fast |
-| DeepSeek-R1 | 128K | Reasoning, math | Medium |
-| DeepSeek-Coder | 128K | Programming | Fast |
+| DeepSeek-V3.1 | 128K | General purpose, optimized cost | Fast |
+| DeepSeek-R1 | 128K | Reasoning, math, science | Medium |
 
-**Configuration:**
+**Configuration (config.csv):**
 
 ```csv
+name,value
 llm-provider,deepseek
-llm-api-key,sk-xxxxxxxxxxxxxxxx
-llm-model,deepseek-chat
+llm-model,deepseek-r1
 llm-server-url,https://api.deepseek.com
 ```
 
 **Strengths:**
 - Extremely cost-effective
 - Strong reasoning (R1 model)
-- Excellent code generation
-- Open-weight versions available
+- Rivals proprietary leaders in performance
+- Open-weight versions available (MIT/Apache 2.0)
 
 **Considerations:**
 - Data processed in China
 - Newer provider
-- May have content restrictions
 
 ## Local Models
 
@@ -200,8 +213,9 @@ Run models on your own hardware for privacy, cost control, and offline operation
 General Bots uses **llama.cpp** server for local inference:
 
 ```csv
+name,value
 llm-provider,local
-llm-server-url,https://localhost:8081
+llm-server-url,http://localhost:8081
 llm-model,DeepSeek-R1-Distill-Qwen-1.5B
 ```
 
@@ -211,42 +225,43 @@ llm-model,DeepSeek-R1-Distill-Qwen-1.5B
 
 | Model | Size | VRAM | Quality |
 |-------|------|------|---------|
-| GPT-OSS 120B Q4 | 70GB | 48GB+ | Excellent |
-| Llama 3.1 70B Q4 | 40GB | 48GB+ | Excellent |
+| Llama 4 Scout 17B Q8 | 18GB | 24GB | Excellent |
+| Qwen3 72B Q4 | 42GB | 48GB+ | Excellent |
 | DeepSeek-R1 32B Q4 | 20GB | 24GB | Very Good |
-| Qwen 2.5 72B Q4 | 42GB | 48GB+ | Excellent |
 
 #### For Mid-Range GPU (12-16GB VRAM)
 
 | Model | Size | VRAM | Quality |
 |-------|------|------|---------|
-| GPT-OSS 20B F16 | 40GB | 16GB | Very Good |
-| Llama 3.1 8B Q8 | 9GB | 12GB | Good |
+| Qwen3 14B Q8 | 15GB | 16GB | Very Good |
+| GPT-oss 20B Q4 | 12GB | 16GB | Very Good |
 | DeepSeek-R1-Distill 14B Q4 | 8GB | 12GB | Good |
-| Mistral Nemo 12B Q4 | 7GB | 10GB | Good |
+| Gemma 3 27B Q4 | 16GB | 16GB | Good |
 
 #### For Small GPU or CPU (8GB VRAM or less)
 
 | Model | Size | VRAM | Quality |
 |-------|------|------|---------|
 | DeepSeek-R1-Distill 1.5B Q4 | 1GB | 4GB | Basic |
-| Phi-3 Mini 3.8B Q4 | 2.5GB | 6GB | Acceptable |
-| Gemma 2 2B Q8 | 3GB | 6GB | Acceptable |
-| Qwen 2.5 3B Q4 | 2GB | 4GB | Basic |
+| Gemma 2 9B Q4 | 5GB | 8GB | Acceptable |
+| Gemma 3 27B Q2 | 10GB | 8GB | Acceptable |
 
 ### Model Download URLs
 
 Add models to `installer.rs` data_download_list:
 
 ```rust
-// GPT-OSS 20B - Recommended for small GPU
-"https://huggingface.co/unsloth/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-F16.gguf"
+// Qwen3 14B - Recommended for mid-range GPU
+"https://huggingface.co/Qwen/Qwen3-14B-GGUF/resolve/main/qwen3-14b-q4_k_m.gguf"
 
 // DeepSeek R1 Distill - For CPU or minimal GPU
 "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M.gguf"
 
-// Llama 3.1 8B - Good balance
-"https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"
+// GPT-oss 20B - Good balance for agents
+"https://huggingface.co/openai/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-q4_k_m.gguf"
+
+// Gemma 3 27B - For quality local inference
+"https://huggingface.co/google/gemma-3-27b-it-GGUF/resolve/main/gemma-3-27b-it-q4_k_m.gguf"
 ```
 
 ### Embedding Models
@@ -254,8 +269,9 @@ Add models to `installer.rs` data_download_list:
 For vector search, you need an embedding model:
 
 ```csv
+name,value
 embedding-provider,local
-embedding-server-url,https://localhost:8082
+embedding-server-url,http://localhost:8082
 embedding-model,bge-small-en-v1.5
 ```
 
@@ -273,19 +289,13 @@ Recommended embedding models:
 Use different models for different tasks:
 
 ```csv
-# Primary model for complex conversations
+name,value
 llm-provider,anthropic
-llm-model,claude-3-5-sonnet-20241022
-
-# Fast model for simple tasks
+llm-model,claude-sonnet-4.5
 llm-fast-provider,groq
-llm-fast-model,llama-3.1-8b-instant
-
-# Local fallback for offline operation
+llm-fast-model,llama-4-scout
 llm-fallback-provider,local
 llm-fallback-model,DeepSeek-R1-Distill-Qwen-1.5B
-
-# Embeddings always local
 embedding-provider,local
 embedding-model,bge-small-en-v1.5
 ```
@@ -296,13 +306,15 @@ embedding-model,bge-small-en-v1.5
 
 | Use Case | Recommended | Why |
 |----------|-------------|-----|
-| Customer support | Claude 3.5 Sonnet | Best at following guidelines |
-| Code generation | DeepSeek-Coder, GPT-4o | Specialized for code |
-| Document analysis | Gemini 1.5 Pro | 2M context window |
-| Real-time chat | Groq Llama 3.1 8B | Fastest responses |
+| Customer support | Claude Sonnet 4.5 | Best at following guidelines |
+| Code generation | DeepSeek-R1, GPT-5 | Specialized for code |
+| Document analysis | Gemini 3 Pro | 2M context window |
+| Real-time chat | Groq Llama 4 Scout | Fastest responses |
 | Privacy-sensitive | Local DeepSeek-R1 | No external data transfer |
-| Cost-sensitive | DeepSeek-V3, Local | Lowest cost per token |
-| Complex reasoning | Claude 3 Opus, o1 | Best reasoning ability |
+| Cost-sensitive | DeepSeek-V3.1, Local | Lowest cost per token |
+| Complex reasoning | Claude Opus 4.5, Gemini 3 Pro | Best reasoning ability |
+| Real-time research | Grok 4 | Live data access |
+| Long context (10M) | Llama 4 Scout | Largest context window |
 
 ### By Budget
 
@@ -310,51 +322,53 @@ embedding-model,bge-small-en-v1.5
 |--------|-------------------|
 | Free | Local models only |
 | Low ($10-50/mo) | Groq + Local fallback |
-| Medium ($50-200/mo) | GPT-4o-mini + Claude Haiku |
-| High ($200+/mo) | GPT-4o + Claude Sonnet |
+| Medium ($50-200/mo) | DeepSeek-V3.1 + Claude Sonnet 4.5 |
+| High ($200+/mo) | GPT-5 + Claude Opus 4.5 |
 | Enterprise | Private deployment + premium APIs |
 
 ## Configuration Reference
 
-### Environment Variables
-
-```bash
-# Primary LLM
-LLM_PROVIDER=openai
-LLM_API_KEY=sk-xxx
-LLM_MODEL=gpt-4o
-LLM_SERVER_URL=https://api.openai.com
-
-# Local LLM Server
-LLM_LOCAL_URL=https://localhost:8081
-LLM_LOCAL_MODEL=DeepSeek-R1-Distill-Qwen-1.5B
-
-# Embedding
-EMBEDDING_PROVIDER=local
-EMBEDDING_URL=https://localhost:8082
-EMBEDDING_MODEL=bge-small-en-v1.5
-```
-
 ### config.csv Parameters
+
+All LLM configuration belongs in `config.csv`, not environment variables:
 
 | Parameter | Description | Example |
 |-----------|-------------|---------|
 | `llm-provider` | Provider name | `openai`, `anthropic`, `local` |
-| `llm-api-key` | API key for cloud providers | `sk-xxx` |
-| `llm-model` | Model identifier | `gpt-4o` |
-| `llm-server-url` | API endpoint | `https://api.openai.com` |
+| `llm-model` | Model identifier | `gpt-5` |
+| `llm-server-url` | API endpoint (local only) | `http://localhost:8081` |
 | `llm-server-ctx-size` | Context window size | `128000` |
 | `llm-temperature` | Response randomness (0-2) | `0.7` |
 | `llm-max-tokens` | Maximum response length | `4096` |
 | `llm-cache-enabled` | Enable semantic caching | `true` |
 | `llm-cache-ttl` | Cache time-to-live (seconds) | `3600` |
 
+### API Keys
+
+API keys are stored in **Vault**, not in config files or environment variables:
+
+```bash
+# Store API key in Vault
+vault kv put gbo/llm/openai api_key="sk-..."
+vault kv put gbo/llm/anthropic api_key="sk-ant-..."
+vault kv put gbo/llm/google api_key="AIza..."
+```
+
+Reference in config.csv:
+
+```csv
+name,value
+llm-provider,openai
+llm-model,gpt-5
+llm-api-key,vault:gbo/llm/openai/api_key
+```
+
 ## Security Considerations
 
 ### Cloud Providers
 
-- API keys should be stored in environment variables or secrets manager
-- Consider data residency requirements (EU: Mistral, US: OpenAI)
+- API keys stored in Vault, never in config files
+- Consider data residency requirements (EU: Mistral)
 - Review provider data retention policies
 - Use separate keys for production/development
 
@@ -372,6 +386,7 @@ EMBEDDING_MODEL=bge-small-en-v1.5
 Enable semantic caching to reduce API calls:
 
 ```csv
+name,value
 llm-cache-enabled,true
 llm-cache-ttl,3600
 llm-cache-similarity-threshold,0.92
@@ -382,6 +397,7 @@ llm-cache-similarity-threshold,0.92
 For bulk operations, use batch APIs when available:
 
 ```csv
+name,value
 llm-batch-enabled,true
 llm-batch-size,10
 ```
@@ -391,6 +407,7 @@ llm-batch-size,10
 Optimize context window usage with episodic memory:
 
 ```csv
+name,value
 episodic-memory-enabled,true
 episodic-memory-threshold,4
 episodic-memory-history,2
@@ -404,9 +421,9 @@ See [Episodic Memory](../chapter-03/episodic-memory.md) for details.
 ### Common Issues
 
 **API Key Invalid**
-- Verify key is correct and not expired
+- Verify key is stored correctly in Vault
 - Check if key has required permissions
-- Ensure billing is active
+- Ensure billing is active on provider account
 
 **Model Not Found**
 - Check model name spelling
@@ -428,13 +445,30 @@ See [Episodic Memory](../chapter-03/episodic-memory.md) for details.
 Enable LLM logging for debugging:
 
 ```csv
+name,value
 llm-log-requests,true
 llm-log-responses,false
 llm-log-timing,true
 ```
 
+## 2025 Model Comparison
+
+| Model | Creator | Type | Strengths |
+|-------|---------|------|-----------|
+| GPT-5 | OpenAI | Proprietary | Most advanced all-in-one |
+| Claude Opus/Sonnet 4.5 | Anthropic | Proprietary | Extended thinking, complex reasoning |
+| Gemini 3 Pro | Google | Proprietary | Benchmarks, reasoning |
+| Grok 4 | xAI | Proprietary | Real-time X data |
+| DeepSeek-V3.1/R1 | DeepSeek | Open (MIT/Apache) | Cost-optimized, reasoning |
+| Llama 4 | Meta | Open-weight | 10M context, multimodal |
+| Qwen3 | Alibaba | Open (Apache) | Efficient MoE |
+| Mixtral-8x22B | Mistral | Open (Apache) | Multi-language, coding |
+| GPT-oss | OpenAI | Open (Apache) | Agent workflows |
+| Gemma 2/3 | Google | Open-weight | Lightweight, efficient |
+
 ## Next Steps
 
-- [LLM Configuration](../chapter-08-config/llm-config.md) - Detailed configuration guide
-- [Semantic Caching](../chapter-03/caching.md) - Cache configuration
-- [NVIDIA GPU Setup](../chapter-09-tools/nvidia-gpu-setup.md) - GPU configuration for local models
+- [config.csv Reference](../chapter-08-config/config-csv.md) — Complete configuration guide
+- [Secrets Management](../chapter-08-config/secrets-management.md) — Vault integration
+- [Semantic Caching](../chapter-03/caching.md) — Cache configuration
+- [NVIDIA GPU Setup](../appendix-external-services/nvidia.md) — GPU configuration for local models

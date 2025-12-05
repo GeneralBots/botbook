@@ -197,6 +197,7 @@
     - [PLAY](./chapter-06-gbdialog/keyword-play.md)
     - [QR CODE](./chapter-06-gbdialog/keyword-qrcode.md)
     - [SEND SMS](./chapter-06-gbdialog/keyword-sms.md)
+    - [START MEET / JOIN MEET](./chapter-06-gbdialog/keyword-start-meet.md)
   - [File Operations](./chapter-06-gbdialog/keywords-file.md)
     - [READ](./chapter-06-gbdialog/keyword-read.md)
     - [WRITE](./chapter-06-gbdialog/keyword-write.md)
