@@ -61,10 +61,10 @@ Add to `config.csv`:
 ```csv
 llm-models,default;fast;quality;code
 model-routing-strategy,auto
-model-default,gpt-3.5-turbo
-model-fast,gpt-3.5-turbo
-model-quality,gpt-4o
-model-code,claude-sonnet
+model-default,claude-sonnet-4.5
+model-fast,gemini-flash
+model-quality,claude-opus-4.5
+model-code,claude-sonnet-4.5
 ```
 
 ## Example: Task-Based Routing

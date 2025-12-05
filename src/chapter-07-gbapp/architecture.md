@@ -56,7 +56,7 @@ The `web_server/` module implements the HTTP server and web interface. It serves
 
 The `llm/` module provides large language model integration. It handles model selection based on configuration and requirements, formats prompts according to model expectations, manages token counting and context limits, streams responses for real-time display, tracks API costs for budgeting, and implements model fallbacks when primary providers are unavailable.
 
-The `llm_models/` module contains specific implementations for different model providers. OpenAI integration supports GPT-3.5 and GPT-4 models. Anthropic integration provides access to Claude models. Google integration enables Gemini model usage. Meta integration supports Llama models for local deployment. Local model support allows self-hosted inference. Custom model implementations can be added for specialized providers.
+The `llm_models/` module contains specific implementations for different model providers. OpenAI integration supports GPT-5 and o3 models. Anthropic integration provides access to Claude Sonnet 4.5 and Opus 4.5 models. Google integration enables Gemini model usage. Meta integration supports Llama models for local deployment. Local model support allows self-hosted inference. Custom model implementations can be added for specialized providers.
 
 The `prompt_manager/` module provides centralized prompt management capabilities. It maintains prompt templates for consistent interactions, handles variable substitution in prompts, optimizes prompts for specific models, supports version control of prompt changes, enables A/B testing of different approaches, and tracks prompt performance metrics.
 

@@ -29,31 +29,34 @@
 
 ---
 
-## 🔴 CRITICAL: Model Name Updates Needed
+## ✅ COMPLETED: Model Name Updates
 
-Old model names found in documentation that should be updated:
+Model names updated to current versions (2025-01):
 
-| File | Current | Should Be |
-|------|---------|-----------|
-| `appendix-external-services/README.md` | `gpt-4o` | Generic or current |
-| `appendix-external-services/catalog.md` | `claude-opus-4.5` | Current Anthropic models |
-| `appendix-external-services/hosting-dns.md` | `GPT-4, Claude 3` | Generic reference |
-| `appendix-external-services/llm-providers.md` | `claude-sonnet-4.5`, `llama-4-scout` | Current models |
-| `chapter-02/gbot.md` | `GPT-4 or Claude 3` | Generic reference |
-| `chapter-02/template-llm-server.md` | `gpt-4` | Generic or current |
-| `chapter-02/template-llm-tools.md` | `gpt-4` | Generic or current |
-| `chapter-02/templates.md` | `gpt-4` | Generic or current |
-| `chapter-04-gbui/how-to/create-first-bot.md` | `gpt-4o` | Generic or current |
-| `chapter-04-gbui/how-to/monitor-sessions.md` | `gpt-4o active` | Generic reference |
-| `chapter-04-gbui/suite-manual.md` | `GPT-4o`, `Claude 3.5` | Current versions |
-| `chapter-06-gbdialog/keyword-model-route.md` | `gpt-3.5-turbo`, `gpt-4o` | Generic or current |
-| `chapter-06-gbdialog/keyword-use-model.md` | `gpt-4`, `codellama-7b` | Generic or current |
+| File | Updated To |
+|------|------------|
+| `appendix-external-services/README.md` | `claude-sonnet-4.5` |
+| `appendix-external-services/hosting-dns.md` | `GPT-5, o3`, `Claude Sonnet 4.5, Opus 4.5` |
+| `appendix-external-services/llm-providers.md` | `DeepSeek-R3, Claude Sonnet 4.5` |
+| `chapter-04-gbui/how-to/create-first-bot.md` | `claude-sonnet-4.5` |
+| `chapter-04-gbui/how-to/monitor-sessions.md` | `LLM active` (generic) |
+| `chapter-04-gbui/suite-manual.md` | `Claude Sonnet 4.5`, `Claude Opus 4.5`, `Gemini Pro`, `Llama 3.3` |
+| `chapter-06-gbdialog/keyword-model-route.md` | `claude-sonnet-4.5`, `gemini-flash`, `claude-opus-4.5` |
+| `chapter-06-gbdialog/basic-vs-automation-tools.md` | `GPT-5, o3`, `Claude Sonnet 4.5, Opus 4.5` |
+| `chapter-07-gbapp/architecture.md` | `GPT-5 and o3`, `Claude Sonnet 4.5 and Opus 4.5` |
+| `chapter-08-config/llm-config.md` | `claude-sonnet-4.5` |
+| `chapter-08-config/secrets-management.md` | `claude-sonnet-4.5` |
+| `chapter-11-features/ai-llm.md` | `GPT-5`, `o3`, `Claude Sonnet 4.5` |
+| `chapter-11-features/core-features.md` | `GPT-5, o3`, `Claude Sonnet 4.5, Opus 4.5` |
+| `executive-vision.md` | `GPT-5, o3`, `Claude Sonnet 4.5, Opus 4.5` |
 
-### Recommendation
-Replace with:
-- Generic: `your-model-name`, `{model}`, `local-model.gguf`
-- Current local: `DeepSeek-R1-Distill-Qwen-1.5B`, `Qwen2.5-7B`
-- Current cloud: Provider-agnostic examples
+### Naming Convention Applied
+- OpenAI: `GPT-5`, `GPT-5 mini`, `o3`
+- Anthropic: `Claude Sonnet 4.5`, `Claude Opus 4.5`
+- Google: `Gemini Pro`, `Gemini Flash`
+- Meta: `Llama 3.3`
+- DeepSeek: `DeepSeek-V3`, `DeepSeek-R3`
+- Local: `model.gguf`, `local-model`
 
 ---
 

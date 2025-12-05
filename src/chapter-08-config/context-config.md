@@ -41,7 +41,7 @@ For detailed LLM configuration, see the tables below. The basic settings are:
 ```csv
 llm-key,none
 llm-url,http://localhost:8081
-llm-model,../../../../data/llm/DeepSeek-R1-Distill-Qwen-1.5B-Q3_K_M.gguf
+llm-model,../../../../data/llm/DeepSeek-R3-Distill-Qwen-1.5B-Q3_K_M.gguf
 ```
 
 #### Core LLM Settings
@@ -223,7 +223,7 @@ llm-server,true
 llm-server-gpu-layers,35
 llm-server-ctx-size,8192
 llm-server-n-predict,2048
-llm-model,../../../../data/llm/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+llm-model,../../../../data/llm/DeepSeek-R3-Distill-Qwen-7B-Q4_K_M.gguf
 ,
 # Disable cache for development
 llm-cache,false
@@ -296,15 +296,15 @@ Others require restart:
 **24GB+ VRAM (RTX 3090, 4090)**
 - DeepSeek-V3 (with MoE enabled)
 - Qwen2.5-32B-Instruct-Q4_K_M
-- DeepSeek-R1-Distill-Qwen-14B (runs fast with room to spare)
+- DeepSeek-R3-Distill-Qwen-14B (runs fast with room to spare)
 
 **12-16GB VRAM (RTX 4070, 4070Ti)**  
-- DeepSeek-R1-Distill-Llama-8B
+- DeepSeek-R3-Distill-Llama-8B
 - Qwen2.5-14B-Q4_K_M
 - Mistral-7B-Instruct-Q5_K_M
 
 **8GB VRAM or CPU-Only**
-- DeepSeek-R1-Distill-Qwen-1.5B
+- DeepSeek-R3-Distill-Qwen-1.5B
 - Phi-3-mini-4k-instruct
 - Qwen2.5-3B-Instruct-Q5_K_M
 

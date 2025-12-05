@@ -373,7 +373,7 @@ Failover happens automatically within seconds, with clients redirected via the c
 # config.csv - Fallbacks
 fallback-llm-enabled,true
 fallback-llm-provider,local
-fallback-llm-model,DeepSeek-R1-Distill-Qwen-1.5B
+fallback-llm-model,DeepSeek-R3-Distill-Qwen-1.5B
 
 fallback-cache-enabled,true
 fallback-cache-mode,memory

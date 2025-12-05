@@ -275,8 +275,8 @@ If you have API keys for AI services, configure them:
 
 | Setting | Description | Example Value |
 |---------|-------------|---------------|
-| **LLM Provider** | AI service to use | `openai` |
-| **Model** | Specific model | `gpt-4o` |
+| **LLM Provider** | AI service to use | `anthropic` |
+| **Model** | Specific model | `claude-sonnet-4.5` |
 | **API Key** | Your API key | `sk-...` |
 
 ⚠️ **Warning**: Keep your API keys secret. Never share them.

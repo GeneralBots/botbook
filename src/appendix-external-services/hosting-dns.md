@@ -195,10 +195,10 @@ vault kv put secret/botserver/smtp password="your-api-key"
 
 | Provider | Models | Config Key |
 |----------|--------|------------|
-| OpenAI | GPT-4, GPT-3.5 | `llm-url=https://api.openai.com/v1` |
-| Anthropic | Claude 3 | `llm-url=https://api.anthropic.com` |
-| Groq | Llama, Mixtral | `llm-url=https://api.groq.com/openai/v1` |
-| DeepSeek | DeepSeek-V2 | `llm-url=https://api.deepseek.com` |
+| OpenAI | GPT-5, o3 | `llm-url=https://api.openai.com/v1` |
+| Anthropic | Claude Sonnet 4.5, Opus 4.5 | `llm-url=https://api.anthropic.com` |
+| Groq | Llama 3.3, Mixtral | `llm-url=https://api.groq.com/openai/v1` |
+| DeepSeek | DeepSeek-V3, R3 | `llm-url=https://api.deepseek.com` |
 | Local | Any GGUF | `llm-url=http://localhost:8081` |
 
 ### Local LLM Setup

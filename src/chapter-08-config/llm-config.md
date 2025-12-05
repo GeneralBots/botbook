@@ -9,7 +9,7 @@ BotServer is designed to work with local GGUF models by default. The minimal con
 ```csv
 llm-key,none
 llm-url,http://localhost:8081
-llm-model,../../../../data/llm/DeepSeek-R1-Distill-Qwen-1.5B-Q3_K_M.gguf
+llm-model,../../../../data/llm/DeepSeek-R3-Distill-Qwen-1.5B-Q3_K_M.gguf
 ```
 
 ### Model Path
@@ -156,7 +156,7 @@ Using a cloud provider for inference:
 name,value
 llm-key,sk-...
 llm-url,https://api.anthropic.com
-llm-model,claude-3
+llm-model,claude-sonnet-4.5
 llm-cache,true
 llm-cache-ttl,7200
 ```
@@ -179,7 +179,7 @@ Supporting concurrent users requires enabling `llm-server-cont-batching` and inc
 
 ### Small Models (1-3B parameters)
 
-Small models like DeepSeek-R1-Distill-Qwen-1.5B deliver fast responses with low memory usage. They work well for simple tasks, quick interactions, and resource-constrained environments.
+Small models like DeepSeek-R3-Distill-Qwen-1.5B deliver fast responses with low memory usage. They work well for simple tasks, quick interactions, and resource-constrained environments.
 
 ### Medium Models (7-13B parameters)
 

@@ -12,7 +12,7 @@ The LLM integration in BotServer enables sophisticated conversational experience
 
 ### OpenAI
 
-OpenAI serves as the primary LLM provider with support for multiple model tiers. GPT-3.5 Turbo provides fast, cost-effective responses for straightforward conversations. GPT-4 delivers more nuanced understanding for complex queries. GPT-4 Turbo offers an optimal balance of capability and speed. Custom fine-tuned models can be used when you have specialized requirements.
+OpenAI serves as the primary LLM provider with support for multiple model tiers. GPT-5 provides fast, cost-effective responses for straightforward conversations. GPT-5 mini delivers efficient processing for simpler queries. The o3 series offers superior reasoning for complex tasks. Custom fine-tuned models can be used when you have specialized requirements.
 
 Configuration requires setting your API key and selecting a model:
 
@@ -181,7 +181,7 @@ Choosing the right model involves balancing several factors. Capability requirem
 
 ### Model Comparison
 
-GPT-3.5 Turbo offers the fastest responses at the lowest cost, suitable for straightforward questions. GPT-4 provides superior reasoning for complex queries at higher cost and latency. Local models like Llama variants offer privacy and cost predictability with varying capability levels. Specialized models may excel at particular domains like code or medical content.
+GPT-5 mini offers the fastest responses at the lowest cost, suitable for straightforward questions. Claude Sonnet 4.5 and GPT-5 provide superior reasoning for complex queries with good balance of cost and capability. Local models like Llama variants offer privacy and cost predictability with varying capability levels. Specialized models may excel at particular domains like code or medical content.
 
 
 ## Integration with Tools

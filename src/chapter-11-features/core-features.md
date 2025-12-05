@@ -38,7 +38,8 @@ Scripts stored as `.gbdialog` files in bot packages.
 
 | Provider | Models | Features |
 |----------|--------|----------|
-| OpenAI | GPT-3.5, GPT-4 | Streaming, function calling |
+| OpenAI | GPT-5, o3 | Streaming, function calling |
+| Anthropic | Claude Sonnet 4.5, Opus 4.5 | Analysis, coding, guidelines |
 | Local | GGUF models | GPU acceleration, offline |
 
 Features: prompt templates, context injection, token management, cost optimization.

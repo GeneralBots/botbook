@@ -56,7 +56,7 @@ A complete working configuration:
 name,value
 server-port,8080
 llm-url,http://localhost:8081
-llm-model,../../../../data/llm/DeepSeek-R1-Distill-Qwen-1.5B-Q3_K_M.gguf
+llm-model,../../../../data/llm/DeepSeek-R3-Distill-Qwen-1.5B-Q3_K_M.gguf
 episodic-memory-threshold,4
 ```
 

@@ -55,7 +55,7 @@ Complete reference of all available parameters in `config.csv`.
 
 #### For RTX 3090 (24GB VRAM)
 You can run impressive models with proper configuration:
-- **DeepSeek-R1-Distill-Qwen-7B**: Set `llm-server-gpu-layers` to 35-40
+- **DeepSeek-R3-Distill-Qwen-7B**: Set `llm-server-gpu-layers` to 35-40
 - **Qwen2.5-32B-Instruct (Q4_K_M)**: Fits with `llm-server-gpu-layers` to 40-45
 - **DeepSeek-V3 (with MoE)**: Set `llm-server-n-moe` to 2-4 to run even 120B models! MoE only loads active experts
 - **Optimization**: Use `llm-server-ctx-size` of 8192 for longer contexts
@@ -63,20 +63,20 @@ You can run impressive models with proper configuration:
 #### For RTX 4070/4070Ti (12-16GB VRAM)  
 Mid-range cards work great with quantized models:
 - **Qwen2.5-14B (Q4_K_M)**: Set `llm-server-gpu-layers` to 25-30
-- **DeepSeek-R1-Distill-Llama-8B**: Fully fits with layers at 32
+- **DeepSeek-R3-Distill-Llama-8B**: Fully fits with layers at 32
 - **Tips**: Keep `llm-server-ctx-size` at 4096 to save VRAM
 
 #### For CPU-Only (No GPU)
 Modern CPUs can still run capable models:
-- **DeepSeek-R1-Distill-Qwen-1.5B**: Fast on CPU, great for testing
+- **DeepSeek-R3-Distill-Qwen-1.5B**: Fast on CPU, great for testing
 - **Phi-3-mini (3.8B)**: Excellent CPU performance
 - **Settings**: Set `llm-server-mlock` to `true` to prevent swapping
 - **Parallel**: Increase `llm-server-parallel` to CPU cores -2
 
 #### Recommended Models (GGUF Format)
-- **Best Overall**: DeepSeek-R1-Distill series (1.5B to 70B)
+- **Best Overall**: DeepSeek-R3-Distill series (1.5B to 70B)
 - **Best Small**: Qwen2.5-3B-Instruct-Q5_K_M
-- **Best Medium**: DeepSeek-R1-Distill-Qwen-14B-Q4_K_M  
+- **Best Medium**: DeepSeek-R3-Distill-Qwen-14B-Q4_K_M  
 - **Best Large**: DeepSeek-V3, Qwen2.5-32B, or GPT2-120B-GGUF (with MoE enabled)
 
 **Pro Tip**: The `llm-server-n-moe` parameter is magic for large models - it enables Mixture of Experts, letting you run 120B+ models on consumer hardware by only loading the experts needed for each token!
