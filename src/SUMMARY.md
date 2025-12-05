@@ -34,6 +34,7 @@
   - [Template: Reminders](./chapter-02/template-reminder.md)
   - [Template: Sales CRM](./chapter-02/template-crm.md)
   - [Template: CRM Contacts](./chapter-02/template-crm-contacts.md)
+  - [Template: Attendance CRM](./chapter-02/template-attendance-crm.md)
   - [Template: Marketing](./chapter-02/template-marketing.md)
   - [Template: Creating Templates](./chapter-02/template-template.md)
 

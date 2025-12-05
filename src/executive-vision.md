@@ -232,8 +232,8 @@ botserver --start
 ## INTEGRATION CAPABILITIES
 
 ### LLM Providers
-- OpenAI (GPT-4, GPT-3.5)
-- Anthropic (Claude)
+- OpenAI (GPT-5, o3)
+- Anthropic (Claude Sonnet 4.5, Opus 4.5)
 - Meta (Llama)
 - DeepSeek
 - Local models via Ollama

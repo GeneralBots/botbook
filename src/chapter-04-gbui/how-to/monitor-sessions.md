@@ -211,7 +211,7 @@ The dashboard shows the health of all components:
 │  ● PostgreSQL      Running    v16.2       24/100 connections           │
 │  ● Qdrant          Running    v1.9.2      1.2M vectors                 │
 │  ● MinIO           Running    v2024.01    45.2 GB stored               │
-│  ● BotModels       Running    v2.1.0      gpt-4o active                │
+│  ● BotModels       Running    v2.1.0      LLM active                   │
 │  ● Vault           Sealed     v1.15.0     156 secrets                  │
 │  ● Cache           Running    v7.2.4      94.2% hit rate               │
 │  ● InfluxDB        Running    v2.7.3      2,450 pts/sec                │

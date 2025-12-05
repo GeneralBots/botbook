@@ -99,8 +99,8 @@ This message reaches users on WhatsApp, Telegram, Web, or any configured channel
 
 BASIC supports any LLM provider:
 
-- OpenAI (GPT-4, GPT-3.5)
-- Anthropic (Claude)
+- OpenAI (GPT-5, o3)
+- Anthropic (Claude Sonnet 4.5, Opus 4.5)
 - Local models (Llama, Mistral via llama.cpp)
 - Groq, DeepSeek, and others
 - Any OpenAI-compatible API

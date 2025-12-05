@@ -699,10 +699,10 @@ Sources is your library of prompts, templates, tools, and AI models. Find and us
 
 | Model | Provider | Best For |
 |-------|----------|----------|
-| GPT-4o | OpenAI | General tasks, vision |
-| Claude 3.5 | Anthropic | Analysis, coding |
-| Gemini 1.5 | Google | Long documents |
-| Llama 3.1 | Meta | Open source, privacy |
+| Claude Sonnet 4.5 | Anthropic | General tasks, coding |
+| Claude Opus 4.5 | Anthropic | Complex analysis |
+| Gemini Pro | Google | Long documents |
+| Llama 3.3 | Meta | Open source, privacy |
 
 ---
 

@@ -128,7 +128,7 @@ The system supports several routing strategies configured in `config.csv`:
 name,value
 model-routing-strategy,auto
 model-default,fast
-model-fast,DeepSeek-R1-Distill-Qwen-1.5B-Q3_K_M.gguf
+model-fast,DeepSeek-R3-Distill-Qwen-1.5B-Q3_K_M.gguf
 model-quality,gpt-4
 model-code,codellama-7b.gguf
 model-fallback-enabled,true

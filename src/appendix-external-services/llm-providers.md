@@ -47,15 +47,15 @@ Known for safety, helpfulness, and extended thinking capabilities.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Claude Opus | 200K | Most capable, complex reasoning | Slow |
-| Claude Sonnet | 200K | Best balance of capability/speed | Fast |
+| Claude Opus 4.5 | 200K | Most capable, complex reasoning | Slow |
+| Claude Sonnet 4.5 | 200K | Best balance of capability/speed | Fast |
 
 **Configuration (config.csv):**
 
 ```csv
 name,value
 llm-provider,anthropic
-llm-model,claude-sonnet
+llm-model,claude-sonnet-4.5
 ```
 
 **Strengths:**
@@ -182,14 +182,14 @@ Known for efficient, capable models with exceptional reasoning.
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
 | DeepSeek-V3.1 | 128K | General purpose, optimized cost | Fast |
-| DeepSeek-R1 | 128K | Reasoning, math, science | Medium |
+| DeepSeek-R3 | 128K | Reasoning, math, science | Medium |
 
 **Configuration (config.csv):**
 
 ```csv
 name,value
 llm-provider,deepseek
-llm-model,deepseek-r1
+llm-model,deepseek-r3
 llm-server-url,https://api.deepseek.com
 ```
 
@@ -215,7 +215,7 @@ General Bots uses **llama.cpp** server for local inference:
 name,value
 llm-provider,local
 llm-server-url,http://localhost:8081
-llm-model,DeepSeek-R1-Distill-Qwen-1.5B
+llm-model,DeepSeek-R3-Distill-Qwen-1.5B
 ```
 
 ### Recommended Local Models
@@ -226,7 +226,7 @@ llm-model,DeepSeek-R1-Distill-Qwen-1.5B
 |-------|------|------|---------|
 | Llama 4 Scout 17B Q8 | 18GB | 24GB | Excellent |
 | Qwen3 72B Q4 | 42GB | 48GB+ | Excellent |
-| DeepSeek-R1 32B Q4 | 20GB | 24GB | Very Good |
+| DeepSeek-R3 32B Q4 | 20GB | 24GB | Very Good |
 
 #### For Mid-Range GPU (12-16GB VRAM)
 
@@ -234,14 +234,14 @@ llm-model,DeepSeek-R1-Distill-Qwen-1.5B
 |-------|------|------|---------|
 | Qwen3 14B Q8 | 15GB | 16GB | Very Good |
 | GPT-oss 20B Q4 | 12GB | 16GB | Very Good |
-| DeepSeek-R1-Distill 14B Q4 | 8GB | 12GB | Good |
+| DeepSeek-R3-Distill 14B Q4 | 8GB | 12GB | Good |
 | Gemma 3 27B Q4 | 16GB | 16GB | Good |
 
 #### For Small GPU or CPU (8GB VRAM or less)
 
 | Model | Size | VRAM | Quality |
 |-------|------|------|---------|
-| DeepSeek-R1-Distill 1.5B Q4 | 1GB | 4GB | Basic |
+| DeepSeek-R3-Distill 1.5B Q4 | 1GB | 4GB | Basic |
 | Gemma 2 9B Q4 | 5GB | 8GB | Acceptable |
 | Gemma 3 27B Q2 | 10GB | 8GB | Acceptable |
 
@@ -254,7 +254,7 @@ Add models to `installer.rs` data_download_list:
 "https://huggingface.co/Qwen/Qwen3-14B-GGUF/resolve/main/qwen3-14b-q4_k_m.gguf"
 
 // DeepSeek R1 Distill - For CPU or minimal GPU
-"https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M.gguf"
+"https://huggingface.co/unsloth/DeepSeek-R3-Distill-Qwen-1.5B-GGUF/resolve/main/DeepSeek-R3-Distill-Qwen-1.5B-Q4_K_M.gguf"
 
 // GPT-oss 20B - Good balance for agents
 "https://huggingface.co/openai/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-q4_k_m.gguf"
@@ -290,11 +290,11 @@ Use different models for different tasks:
 ```csv
 name,value
 llm-provider,anthropic
-llm-model,claude-sonnet
+llm-model,claude-sonnet-4.5
 llm-fast-provider,groq
 llm-fast-model,llama-3.3-70b
 llm-fallback-provider,local
-llm-fallback-model,DeepSeek-R1-Distill-Qwen-1.5B
+llm-fallback-model,DeepSeek-R3-Distill-Qwen-1.5B
 embedding-provider,local
 embedding-model,bge-small-en-v1.5
 ```
@@ -305,11 +305,11 @@ embedding-model,bge-small-en-v1.5
 
 | Use Case | Recommended | Why |
 |----------|-------------|-----|
-| Customer support | Claude Sonnet | Best at following guidelines |
-| Code generation | DeepSeek-R1, GPT-4o | Specialized for code |
+| Customer support | Claude Sonnet 4.5 | Best at following guidelines |
+| Code generation | DeepSeek-R3, Claude Sonnet 4.5 | Specialized for code |
 | Document analysis | Gemini Pro | 2M context window |
 | Real-time chat | Groq Llama 3.3 | Fastest responses |
-| Privacy-sensitive | Local DeepSeek-R1 | No external data transfer |
+| Privacy-sensitive | Local DeepSeek-R3 | No external data transfer |
 | Cost-sensitive | DeepSeek, Local models | Lowest cost per token |
 | Complex reasoning | Claude Opus, Gemini Pro | Best reasoning ability |
 | Real-time research | Grok | Live data access |

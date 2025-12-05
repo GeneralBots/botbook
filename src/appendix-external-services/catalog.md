@@ -78,7 +78,7 @@ This catalog provides detailed information about every external service that Gen
 | **API Key Config** | `llm-api-key` (stored in Vault) |
 | **Documentation** | [platform.deepseek.com/docs](https://platform.deepseek.com/docs) |
 | **BASIC Keywords** | `LLM` |
-| **Supported Models** | `deepseek-v3.1`, `deepseek-r1` |
+| **Supported Models** | `deepseek-v3.1`, `deepseek-r3` |
 
 ### Mistral AI
 

@@ -88,8 +88,8 @@ The bot's `config.csv` contains **non-sensitive** configuration:
 
 ```csv
 # Bot behavior - NOT secrets
-llm-provider,openai
-llm-model,gpt-4o
+llm-provider,anthropic
+llm-model,claude-sonnet-4.5
 llm-temperature,0.7
 llm-max-tokens,4096
 
@@ -369,8 +369,8 @@ Reference Vault secrets in your bot's config.csv:
 
 ```csv
 # Direct value (non-sensitive)
-llm-provider,openai
-llm-model,gpt-4o
+llm-provider,anthropic
+llm-model,claude-sonnet-4.5
 llm-temperature,0.7
 
 # Vault reference (sensitive)

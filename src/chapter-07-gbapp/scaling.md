@@ -584,7 +584,7 @@ Configure fallback behavior:
 # Fallback configuration
 fallback-llm-enabled,true
 fallback-llm-provider,local
-fallback-llm-model,DeepSeek-R1-Distill-Qwen-1.5B
+fallback-llm-model,DeepSeek-R3-Distill-Qwen-1.5B
 
 fallback-cache-enabled,true
 fallback-cache-mode,memory

@@ -50,7 +50,7 @@ Add these to your `config.csv`:
 key,value
 llm-provider,openai
 llm-api-key,YOUR_API_KEY
-llm-model,gpt-4o
+llm-model,claude-sonnet-4.5
 weather-api-key,YOUR_OPENWEATHERMAP_KEY
 whatsapp-api-key,YOUR_WHATSAPP_KEY
 whatsapp-phone-number-id,YOUR_PHONE_ID
