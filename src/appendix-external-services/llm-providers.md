@@ -47,15 +47,15 @@ Known for safety, helpfulness, and extended thinking capabilities.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Claude Opus 4.5 | 200K | Most capable, complex reasoning | Slow |
-| Claude Sonnet 4.5 | 200K | Best balance of capability/speed | Fast |
+| Claude Opus | 200K | Most capable, complex reasoning | Slow |
+| Claude Sonnet | 200K | Best balance of capability/speed | Fast |
 
 **Configuration (config.csv):**
 
 ```csv
 name,value
 llm-provider,anthropic
-llm-model,claude-sonnet-4.5
+llm-model,claude-sonnet
 ```
 
 **Strengths:**
@@ -74,16 +74,15 @@ Google's multimodal AI models with strong reasoning capabilities.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Gemini 3 Pro | 2M | Complex reasoning, benchmarks | Medium |
-| Gemini 2.5 Pro | 2M | Extremely long documents | Medium |
-| Gemini 2.5 Flash | 1M | Fast multimodal | Fast |
+| Gemini Pro | 2M | Complex reasoning, benchmarks | Medium |
+| Gemini Flash | 1M | Fast multimodal tasks | Fast |
 
 **Configuration (config.csv):**
 
 ```csv
 name,value
 llm-provider,google
-llm-model,gemini-3-pro
+llm-model,gemini-pro
 ```
 
 **Strengths:**
@@ -291,9 +290,9 @@ Use different models for different tasks:
 ```csv
 name,value
 llm-provider,anthropic
-llm-model,claude-sonnet-4.5
+llm-model,claude-sonnet
 llm-fast-provider,groq
-llm-fast-model,llama-4-scout
+llm-fast-model,llama-3.3-70b
 llm-fallback-provider,local
 llm-fallback-model,DeepSeek-R1-Distill-Qwen-1.5B
 embedding-provider,local
@@ -306,15 +305,15 @@ embedding-model,bge-small-en-v1.5
 
 | Use Case | Recommended | Why |
 |----------|-------------|-----|
-| Customer support | Claude Sonnet 4.5 | Best at following guidelines |
-| Code generation | DeepSeek-R1, GPT-5 | Specialized for code |
-| Document analysis | Gemini 3 Pro | 2M context window |
-| Real-time chat | Groq Llama 4 Scout | Fastest responses |
+| Customer support | Claude Sonnet | Best at following guidelines |
+| Code generation | DeepSeek-R1, GPT-4o | Specialized for code |
+| Document analysis | Gemini Pro | 2M context window |
+| Real-time chat | Groq Llama 3.3 | Fastest responses |
 | Privacy-sensitive | Local DeepSeek-R1 | No external data transfer |
-| Cost-sensitive | DeepSeek-V3.1, Local | Lowest cost per token |
-| Complex reasoning | Claude Opus 4.5, Gemini 3 Pro | Best reasoning ability |
-| Real-time research | Grok 4 | Live data access |
-| Long context (10M) | Llama 4 Scout | Largest context window |
+| Cost-sensitive | DeepSeek, Local models | Lowest cost per token |
+| Complex reasoning | Claude Opus, Gemini Pro | Best reasoning ability |
+| Real-time research | Grok | Live data access |
+| Long context | Gemini Pro, Claude | Largest context windows |
 
 ### By Budget
 

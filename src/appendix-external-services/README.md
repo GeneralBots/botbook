@@ -54,12 +54,21 @@ llm-model,gpt-4o
 weather-api-key,YOUR_OPENWEATHERMAP_KEY
 whatsapp-api-key,YOUR_WHATSAPP_KEY
 whatsapp-phone-number-id,YOUR_PHONE_ID
+whatsapp-verify-token,YOUR_WEBHOOK_VERIFY_TOKEN
 teams-app-id,YOUR_TEAMS_APP_ID
 teams-app-password,YOUR_TEAMS_PASSWORD
 instagram-access-token,YOUR_INSTAGRAM_TOKEN
 instagram-page-id,YOUR_PAGE_ID
 botmodels-enabled,true
 botmodels-url,http://localhost:5000
+
+# Human Handoff / CRM Features
+crm-enabled,true
+attendant-llm-tips,true
+attendant-polish-message,true
+attendant-smart-replies,true
+attendant-auto-summary,true
+attendant-sentiment-analysis,true
 ```
 
 ## Auto-Managed Services
