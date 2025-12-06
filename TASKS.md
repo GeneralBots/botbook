@@ -103,7 +103,7 @@ DELETE "temp/report.pdf"
 
 ## ✅ IMPLEMENTED: Error Handling
 
-### ON ERROR RESUME NEXT (VB-Style)
+### ON ERROR RESUME NEXT (BASIC-style)
 
 Now fully implemented in `src/basic/keywords/errors/on_error.rs`:
 
@@ -175,22 +175,25 @@ website-max-depth, website-max-pages
 ## 📋 REMAINING TASKS
 
 ### Priority 1 - Documentation Updates
-- [ ] Update all model names to generic/current versions (17 files)
-- [ ] Update keyword examples to use spaces not underscores
-- [ ] Fix `SEND EMAIL` examples to use `SEND MAIL` syntax
-- [ ] Document unified `DELETE` keyword behavior
-- [ ] Add `ON ERROR RESUME NEXT` to error handling docs
+- [x] Update all model names to generic/current versions (17 files)
+- [x] Update keyword examples to use spaces not underscores
+- [x] Fix `SEND EMAIL` examples to use `SEND MAIL` syntax
+- [x] Document unified `DELETE` keyword behavior (already documented in `keyword-delete.md`)
+- [x] Add `ON ERROR RESUME NEXT` to error handling docs (created `keyword-on-error.md`)
 
 ### Priority 2 - New Documentation Needed
-- [ ] Full config.csv parameter reference
-- [ ] SMS provider configuration (Twilio, Vonage, etc.)
-- [ ] Teams/WhatsApp channel setup
-- [ ] SOAP authentication configuration
+- [x] Full config.csv parameter reference (expanded `parameters.md` with all SMS, WhatsApp params)
+- [x] SMS provider configuration (created `sms-providers.md` - Twilio, AWS SNS, Vonage, MessageBird)
+- [x] Teams/WhatsApp channel setup (created `teams-channel.md` and `whatsapp-channel.md`)
+- [x] SOAP authentication configuration (expanded `keyword-soap.md` with WS-Security, OAuth, certs)
 
-### Priority 3 - Consider Implementing
-- [ ] `POST url, data WITH headers` - HTTP with inline headers
-- [ ] `GET url WITH params` - Query parameters support
-- [ ] `WITH ... END WITH` blocks for object initialization
+### Priority 3 - Structure Cleanup
+- [x] Renamed folders with proper numbering (01-introduction, 02-templates, etc.)
+- [x] Removed VB/Visual Basic references (now BASIC only)
+- [x] Deleted empty `04-ui-legacy` folder
+- [x] Deleted `17-appendix-env-vars` (only VAULT_* vars are real, rest was lies)
+- [x] Fixed vbs code blocks to use `basic` syntax
+- [x] Updated SUMMARY.md with new folder paths
 
 ---
 
@@ -212,11 +215,19 @@ website-max-depth, website-max-pages
 
 | Category | Count |
 |----------|-------|
-| Files with old model names | 17 |
+| Files with old model names | 0 (fixed) |
 | Stub files completed | 8 |
-| Keywords fixed (underscore→space) | 6 |
-| Error handling keywords added | 7 |
-| Config params documented | 30+ |
+| Keywords fixed (underscore→space) | 10 |
+| SEND EMAIL → SEND MAIL | 9 files fixed |
+| Error handling keywords added | 8 |
+| Error handling doc created | `keyword-on-error.md` |
+| Config params documented | 50+ |
+| New channel docs created | `teams-channel.md`, `whatsapp-channel.md` |
+| New provider docs created | `sms-providers.md` |
+| SOAP auth expanded | WS-Security, OAuth, certificates |
+| VB references removed | All files now use BASIC only |
+| Folders renamed | `01-introduction`, `02-templates`, etc. |
+| Deleted trash | `04-ui-legacy`, `17-appendix-env-vars` |
 
 ---
 
