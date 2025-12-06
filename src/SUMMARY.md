@@ -347,6 +347,15 @@
   - [Automation Migration](./14-migration/automation.md)
   - [Validation and Testing](./14-migration/validation.md)
 
+# Part XIV - Testing
+
+- [Chapter 17: Testing](./17-testing/README.md)
+  - [End-to-End Testing](./17-testing/e2e-testing.md)
+  - [Testing Architecture](./17-testing/architecture.md)
+  - [Performance Testing](./17-testing/performance.md)
+  - [Best Practices](./17-testing/best-practices.md)
+  - [CI/CD Integration](./17-testing/ci-cd.md)
+
 # Appendices
 
 - [Appendix A: Database Model](./15-appendix/README.md)
