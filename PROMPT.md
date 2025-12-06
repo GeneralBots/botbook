@@ -211,7 +211,7 @@ TALK "Hello, world!"
 name = HEAR
 TALK "Welcome, " + name
 
-' Error handling (VB-style)
+' Error handling
 ON ERROR RESUME NEXT
 result = SOME_OPERATION()
 IF ERROR THEN
