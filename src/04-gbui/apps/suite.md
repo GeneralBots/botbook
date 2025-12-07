@@ -79,11 +79,21 @@ Click the grid icon (⋮⋮⋮) to access all applications in a dropdown menu.
 
 ### As Desktop App
 
-Used automatically when running with `--desktop`:
+Use the `botui` Tauri application for native desktop experience:
 
 ```bash
-./botserver --desktop
+# From the botui directory
+cd botui
+cargo tauri dev
 # Opens Suite in native window
+```
+
+Or build the standalone app:
+
+```bash
+cd botui
+cargo tauri build
+# Creates distributable app in target/release
 ```
 
 ### As Web Interface
