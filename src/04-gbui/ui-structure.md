@@ -59,7 +59,7 @@ The Suite interface provides multi-application integration with seamless navigat
 
 The Suite interface is best suited for enterprise deployments requiring full functionality, power users working with multiple services simultaneously, desktop application distribution via Tauri builds, and multi-service integrations where context switching between modules matters.
 
-You can access the Suite interface via web at `http://localhost:8080/suite` or as a desktop application through the Tauri build using the `--desktop` flag.
+You can access the Suite interface via web at `http://localhost:8080/suite` or as a native desktop application using the `botui` Tauri app (see [BotUI Desktop](../botui/README.md)).
 
 ## Minimal Interface
 
