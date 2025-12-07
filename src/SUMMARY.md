@@ -8,6 +8,7 @@
 - [Chapter 01: Run and Talk](./01-introduction/README.md)
   - [Overview](./01-introduction/overview.md)
   - [Quick Start](./01-introduction/quick-start.md)
+  - [Configuring .local Domains](./01-introduction/local-domains.md)
   - [Installation](./01-introduction/installation.md)
   - [First Conversation](./01-introduction/first-conversation.md)
   - [Sessions and Channels](./01-introduction/sessions.md)
