@@ -218,6 +218,7 @@
 - [Chapter 07: gbapp Architecture Reference](./07-gbapp/README.md)
   - [Architecture Overview](./07-gbapp/architecture.md)
   - [Building from Source](./07-gbapp/building.md)
+  - [Cargo Tools Reference](./07-gbapp/cargo-tools.md)
   - [Container Deployment (LXC)](./07-gbapp/containers.md)
   - [Docker Deployment](./07-gbapp/docker-deployment.md)
   - [Scaling and Load Balancing](./07-gbapp/scaling.md)
