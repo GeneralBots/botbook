@@ -379,6 +379,12 @@
   - [Multimodal](./18-appendix-external-services/multimodal.md)
   - [Console (XtreeUI)](./18-appendix-external-services/console.md)
 
+- [Appendix C: Maintenance](./19-maintenance/README.md)
+  - [Updating Components](./19-maintenance/updating-components.md)
+  - [Component Reference](./19-maintenance/component-reference.md)
+  - [Security Auditing](./19-maintenance/security-auditing.md)
+  - [Backup and Recovery](./19-maintenance/backup-recovery.md)
+  - [Troubleshooting](./19-maintenance/troubleshooting.md)
 
 - [Appendix D: Documentation Style](./16-appendix-docs-style/conversation-examples.md)
   - [SVG and Conversation Standards](./16-appendix-docs-style/svg.md)
