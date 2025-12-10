@@ -8,6 +8,8 @@ This guide covers configuration for SMS messaging in General Bots, supporting mu
 
 General Bots supports sending SMS messages through the `SEND SMS` keyword, with automatic provider detection based on your configuration. Multiple providers can be configured, with fallback support for reliability.
 
+The SMS system supports **priority levels** (`low`, `normal`, `high`, `urgent`) that affect delivery routing and message handling based on the provider.
+
 ---
 
 ## Quick Start
@@ -17,28 +19,67 @@ General Bots supports sending SMS messages through the `SEND SMS` keyword, with 
 ```csv
 name,value
 sms-provider,twilio
+sms-default-priority,normal
 twilio-account-sid,ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 twilio-auth-token,your_auth_token
-twilio-phone-number,+15551234567
+twilio-from-number,+15551234567
 ```
 
 ### Usage in BASIC
 
 ```basic
+' Basic SMS (uses default priority)
 SEND SMS "+15559876543", "Hello from General Bots!"
+
+' SMS with priority
+SEND SMS "+15559876543", "Urgent notification!", "urgent"
+
+' SMS with provider and priority
+SEND SMS "+15559876543", "Important message", "twilio", "high"
 ```
 
 ---
 
 ## Supported Providers
 
-| Provider | Key | Best For |
-|----------|-----|----------|
-| Twilio | `twilio` | General purpose, global reach |
-| AWS SNS | `aws` or `aws_sns` | AWS ecosystem, high volume |
-| Vonage (Nexmo) | `vonage` or `nexmo` | Europe, competitive pricing |
-| MessageBird | `messagebird` | Europe, omnichannel |
-| Custom | `custom` | Self-hosted or other providers |
+| Provider | Key | Best For | Priority Support |
+|----------|-----|----------|------------------|
+| Twilio | `twilio` | General purpose, global reach | Prefix tags |
+| AWS SNS | `aws` or `aws_sns` | AWS ecosystem, high volume | SMSType routing |
+| Vonage (Nexmo) | `vonage` or `nexmo` | Europe, competitive pricing | Flash messages |
+| MessageBird | `messagebird` | Europe, omnichannel | Message class |
+| Custom | `custom` | Self-hosted or other providers | Via payload |
+
+---
+
+## Priority Levels
+
+General Bots supports four priority levels for SMS messages:
+
+| Priority | Description | Use Case |
+|----------|-------------|----------|
+| `low` | Non-urgent, promotional | Marketing, newsletters |
+| `normal` | Standard delivery (default) | General notifications |
+| `high` | Important, faster routing | Order confirmations, alerts |
+| `urgent` | Critical, immediate delivery | Security codes, emergencies |
+
+### Priority Behavior by Provider
+
+| Provider | Low/Normal | High | Urgent |
+|----------|------------|------|--------|
+| **Twilio** | Standard delivery | `[HIGH]` prefix added | `[URGENT]` prefix added |
+| **AWS SNS** | Promotional routing | Transactional routing | Transactional routing |
+| **Vonage** | Standard delivery | Standard delivery | Flash message (class 0) |
+| **MessageBird** | Standard delivery | Message class 1 | Flash message (class 0) |
+
+### Default Priority Configuration
+
+```csv
+name,value
+sms-default-priority,normal
+```
+
+Set the default priority for all SMS messages when not explicitly specified.
 
 ---
 
@@ -53,7 +94,13 @@ Twilio is the default provider, offering reliable global SMS delivery.
 | `sms-provider` | Set to `twilio` | `twilio` |
 | `twilio-account-sid` | Your Twilio Account SID | `ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | `twilio-auth-token` | Your Twilio Auth Token | `your_auth_token` |
-| `twilio-phone-number` | Your Twilio phone number | `+15551234567` |
+| `twilio-from-number` | Your Twilio phone number | `+15551234567` |
+
+### Priority Handling
+
+Twilio doesn't have native priority routing, so General Bots adds prefixes to high-priority messages:
+- **High**: Message prefixed with `[HIGH]`
+- **Urgent**: Message prefixed with `[URGENT]`
 
 ### Optional Parameters
 
@@ -67,9 +114,10 @@ Twilio is the default provider, offering reliable global SMS delivery.
 ```csv
 name,value
 sms-provider,twilio
+sms-default-priority,normal
 twilio-account-sid,ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 twilio-auth-token,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-twilio-phone-number,+15551234567
+twilio-from-number,+15551234567
 twilio-messaging-service-sid,MGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 twilio-status-callback,https://yourbot.example.com/webhooks/sms-status
 ```
@@ -92,9 +140,17 @@ Amazon SNS provides high-volume SMS delivery integrated with the AWS ecosystem.
 | Parameter | Description | Example |
 |-----------|-------------|---------|
 | `sms-provider` | Set to `aws` or `aws_sns` | `aws` |
-| `aws-access-key-id` | AWS Access Key ID | `AKIAIOSFODNN7EXAMPLE` |
-| `aws-secret-access-key` | AWS Secret Access Key | `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` |
+| `aws-access-key` | AWS Access Key ID | `AKIAIOSFODNN7EXAMPLE` |
+| `aws-secret-key` | AWS Secret Access Key | `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` |
 | `aws-region` | AWS Region | `us-east-1` |
+
+### Priority Handling
+
+AWS SNS supports native priority routing via SMSType:
+- **Low/Normal**: Uses `Promotional` SMSType (cost-optimized)
+- **High/Urgent**: Uses `Transactional` SMSType (delivery-optimized)
+
+Transactional messages have higher delivery rates and are prioritized by carriers.
 
 ### Optional Parameters
 
@@ -108,11 +164,11 @@ Amazon SNS provides high-volume SMS delivery integrated with the AWS ecosystem.
 ```csv
 name,value
 sms-provider,aws
-aws-access-key-id,AKIAIOSFODNN7EXAMPLE
-aws-secret-access-key,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+sms-default-priority,normal
+aws-access-key,AKIAIOSFODNN7EXAMPLE
+aws-secret-key,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 aws-region,us-east-1
 aws-sns-sender-id,MyBot
-aws-sns-message-type,Transactional
 ```
 
 ### AWS IAM Policy
@@ -154,7 +210,13 @@ Vonage offers competitive pricing and strong European coverage.
 | `sms-provider` | Set to `vonage` or `nexmo` | `vonage` |
 | `vonage-api-key` | Vonage API Key | `abcd1234` |
 | `vonage-api-secret` | Vonage API Secret | `AbCdEf123456` |
-| `vonage-from` | Sender number or name | `+15551234567` or `MyBot` |
+| `vonage-from-number` | Sender number or name | `+15551234567` or `MyBot` |
+
+### Priority Handling
+
+Vonage supports message classes for priority:
+- **Low/Normal/High**: Standard SMS delivery
+- **Urgent**: Flash message (class 0) - displays immediately on screen without user interaction
 
 ### Optional Parameters
 
@@ -168,9 +230,10 @@ Vonage offers competitive pricing and strong European coverage.
 ```csv
 name,value
 sms-provider,vonage
+sms-default-priority,normal
 vonage-api-key,abcd1234
 vonage-api-secret,AbCdEf123456789
-vonage-from,+15551234567
+vonage-from-number,+15551234567
 vonage-callback-url,https://yourbot.example.com/webhooks/vonage
 ```
 
@@ -194,6 +257,13 @@ MessageBird provides omnichannel messaging with strong European presence.
 | `messagebird-access-key` | MessageBird Access Key | `live_xxxxxxxxxxxxx` |
 | `messagebird-originator` | Sender number or name | `+15551234567` |
 
+### Priority Handling
+
+MessageBird supports message classes via typeDetails:
+- **Low/Normal**: Standard SMS delivery
+- **High**: Message class 1
+- **Urgent**: Flash message (class 0) - displays immediately on screen
+
 ### Optional Parameters
 
 | Parameter | Description | Default |
@@ -207,6 +277,7 @@ MessageBird provides omnichannel messaging with strong European presence.
 ```csv
 name,value
 sms-provider,messagebird
+sms-default-priority,normal
 messagebird-access-key,live_AbCdEfGhIjKlMnOpQrSt
 messagebird-originator,+15551234567
 messagebird-report-url,https://yourbot.example.com/webhooks/messagebird
@@ -243,17 +314,27 @@ Use placeholders for dynamic values:
 | `{{to}}` | Recipient phone number |
 | `{{message}}` | Message content |
 | `{{from}}` | Sender number (if configured) |
+| `{{priority}}` | Priority level (low, normal, high, urgent) |
 
 ### Complete Example
 
 ```csv
 name,value
 sms-provider,custom
-sms-custom-url,https://sms.example.com/api/v1/send
-sms-custom-method,POST
-sms-custom-auth-header,Bearer abc123xyz
-sms-custom-body-template,{"recipient":"{{to}}","text":"{{message}}","sender":"{{from}}"}
-sms-custom-from,+15551234567
+sms-default-priority,normal
+custom-webhook-url,https://sms.example.com/api/v1/send
+custom-api-key,abc123xyz
+```
+
+The custom webhook receives a JSON payload:
+
+```json
+{
+    "to": "+15551234567",
+    "message": "Your message content",
+    "provider": "custom",
+    "priority": "high"
+}
 ```
 
 ---
@@ -287,59 +368,89 @@ When Twilio fails, General Bots automatically retries with Vonage.
 ### Basic SMS
 
 ```basic
-' Send SMS using default provider
+' Send SMS using default provider and priority
 SEND SMS "+15559876543", "Your order has shipped!"
+```
+
+### SMS with Priority
+
+```basic
+' Send urgent notification
+SEND SMS "+15559876543", "Security alert: New login detected!", "urgent"
+
+' Send low-priority promotional message
+SEND SMS "+15559876543", "Check out our weekend sale!", "low"
 ```
 
 ### SMS with Specific Provider
 
 ```basic
-' Use a specific provider
-SEND SMS "+15559876543", "Important alert!", "aws"
+' Use AWS for transactional messages with high priority
+SEND SMS "+15559876543", "Your verification code is 123456", "aws", "high"
 ```
 
 ### SMS with Error Handling
 
 ```basic
-ON ERROR RESUME NEXT
+result = SEND SMS customer_phone, "Your appointment is tomorrow at " + appointment_time, "high"
 
-SEND SMS customer_phone, "Your appointment is tomorrow at " + appointment_time
-
-IF ERROR THEN
-    PRINT "SMS failed: " + ERROR MESSAGE
+IF NOT result.success THEN
+    PRINT "SMS failed: " + result.error
     ' Fallback to email
     SEND MAIL customer_email, "Appointment Reminder", 
         "Your appointment is tomorrow at " + appointment_time, []
 ELSE
-    TALK "Reminder sent!"
+    TALK "Reminder sent! ID: " + result.message_id
 END IF
 ```
 
-### Bulk SMS
+### Bulk SMS with Priority
 
 ```basic
-ON ERROR RESUME NEXT
-
 customers = FIND "customers.csv", "notify_sms = true"
 
 sent = 0
 failed = 0
 
 FOR EACH customer IN customers
-    SEND SMS customer.phone, "Flash sale! 20% off today only."
+    ' Use low priority for promotional bulk messages
+    result = SEND SMS customer.phone, "Flash sale! 20% off today only.", "low"
     
-    IF ERROR THEN
-        PRINT "Failed to send to " + customer.phone + ": " + ERROR MESSAGE
-        failed = failed + 1
-        CLEAR ERROR
-    ELSE
+    IF result.success THEN
         sent = sent + 1
+    ELSE
+        PRINT "Failed to send to " + customer.phone + ": " + result.error
+        failed = failed + 1
     END IF
     
     WAIT 0.5  ' Rate limiting
 NEXT
 
 TALK "Sent " + sent + " messages, " + failed + " failed"
+```
+
+### Priority-Based Routing Example
+
+```basic
+' Route based on message urgency
+SUB send_with_priority(phone, message, urgency)
+    SELECT CASE urgency
+        CASE "critical"
+            result = SEND SMS phone, message, "urgent"
+        CASE "important"
+            result = SEND SMS phone, message, "high"
+        CASE "promotional"
+            result = SEND SMS phone, message, "low"
+        CASE ELSE
+            result = SEND SMS phone, message, "normal"
+    END SELECT
+    
+    RETURN result
+END SUB
+
+' Usage
+send_with_priority(customer.phone, "Your 2FA code: 123456", "critical")
+send_with_priority(customer.phone, "Check out our sale!", "promotional")
 ```
 
 ---
@@ -458,8 +569,8 @@ If webhooks are configured, delivery status is received automatically. Otherwise
 
 ## Related Documentation
 
-- [SEND SMS Keyword](../chapter-06-gbdialog/keyword-sms.md) — BASIC keyword reference
-- [Universal Messaging](../chapter-06-gbdialog/universal-messaging.md) — Multi-channel messaging
+- [SEND SMS Keyword](../06-gbdialog/keyword-sms.md) — BASIC keyword reference
+- [Universal Messaging](../06-gbdialog/universal-messaging.md) — Multi-channel messaging
 - [Secrets Management](./secrets-management.md) — Secure credential storage
 - [WhatsApp Configuration](./whatsapp-channel.md) — WhatsApp setup guide
 - [Teams Configuration](./teams-channel.md) — Microsoft Teams setup guide
@@ -468,4 +579,12 @@ If webhooks are configured, delivery status is received automatically. Otherwise
 
 ## Summary
 
-SMS messaging in General Bots supports multiple providers with a unified interface. Configure your preferred provider in `config.csv`, then use the `SEND SMS` keyword in your BASIC scripts. For production, configure fallback providers and implement proper error handling to ensure message delivery.
+SMS messaging in General Bots supports multiple providers with a unified interface and priority levels. Configure your preferred provider in `config.csv`, set a default priority with `sms-default-priority`, then use the `SEND SMS` keyword in your BASIC scripts. 
+
+Priority levels allow you to:
+- Use `low` for cost-effective promotional messages
+- Use `normal` for standard notifications
+- Use `high` for important transactional messages
+- Use `urgent` for critical time-sensitive alerts
+
+For production, configure fallback providers and implement proper error handling to ensure message delivery.
