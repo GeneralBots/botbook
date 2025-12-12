@@ -6,27 +6,7 @@ Deploy General Bots as the primary interface on Android and HarmonyOS devices, t
 
 BotDevice transforms any Android or HarmonyOS device into a dedicated General Bots system, removing manufacturer bloatware and installing GB as the default launcher.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       BotDevice Architecture                                 │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│    ┌──────────────────────────────────────────────────────────────────┐    │
-│    │                    BotDevice App (Tauri)                          │    │
-│    ├──────────────────────────────────────────────────────────────────┤    │
-│    │  botui/ui/suite   │  Tauri Android   │  src/lib.rs (Rust)        │    │
-│    │  (Web Interface)  │  (WebView + NDK) │  (Backend + Hardware)     │    │
-│    └──────────────────────────────────────────────────────────────────┘    │
-│                              │                                              │
-│    ┌─────────────────────────┴────────────────────────────┐                │
-│    │              Android/HarmonyOS System                 │                │
-│    │  ┌─────────┐  ┌──────────┐  ┌────────┐  ┌─────────┐ │                │
-│    │  │ Camera  │  │   GPS    │  │  WiFi  │  │ Storage │ │                │
-│    │  └─────────┘  └──────────┘  └────────┘  └─────────┘ │                │
-│    └───────────────────────────────────────────────────────┘                │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+<img src="../assets/chapter-13/botdevice-architecture.svg" alt="BotDevice Architecture" style="max-width: 100%; height: auto;">
 
 ## Supported Platforms
 
@@ -226,38 +206,23 @@ adb reboot
 
 ## Project Structure
 
-```
-botdevice/
-├── Cargo.toml              # Rust/Tauri dependencies
-├── tauri.conf.json         # Tauri config → botui/ui/suite
-├── build.rs                # Build script
-├── src/lib.rs              # Android entry point
-│
-├── icons/
-│   ├── gb-bot.svg          # Source icon
-│   ├── icon.png            # Main icon (512x512)
-│   └── */ic_launcher.png   # Icons by density
-│
-├── scripts/
-│   ├── generate-icons.sh   # Generate PNGs from SVG
-│   └── create-bootanimation.sh
-│
-├── capabilities/
-│   └── default.json        # Tauri permissions
-│
-├── gen/android/            # Generated Android project
-│   └── app/src/main/
-│       ├── AndroidManifest.xml
-│       └── res/values/themes.xml
-│
-└── rom/                    # Installation tools
-    ├── install.sh          # Interactive installer
-    ├── scripts/
-    │   ├── debloat.sh      # Remove bloatware
-    │   └── build-magisk-module.sh
-    └── gsi/
-        └── README.md       # GSI instructions
-```
+| Path | Description |
+|------|-------------|
+| `Cargo.toml` | Rust/Tauri dependencies |
+| `tauri.conf.json` | Tauri config → botui/ui/suite |
+| `build.rs` | Build script |
+| `src/lib.rs` | Android entry point |
+| `icons/gb-bot.svg` | Source icon |
+| `icons/icon.png` | Main icon (512x512) |
+| `icons/*/ic_launcher.png` | Icons by density |
+| `scripts/generate-icons.sh` | Generate PNGs from SVG |
+| `scripts/create-bootanimation.sh` | Boot animation generator |
+| `capabilities/default.json` | Tauri permissions |
+| `gen/android/` | Generated Android project |
+| `rom/install.sh` | Interactive installer |
+| `rom/scripts/debloat.sh` | Remove bloatware |
+| `rom/scripts/build-magisk-module.sh` | Magisk module builder |
+| `rom/gsi/README.md` | GSI instructions |
 
 ## Offline Mode
 

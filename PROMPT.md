@@ -328,17 +328,134 @@ When documenting features, verify against actual source:
 
 ---
 
-## Diagram Guidelines
+## NO ASCII DIAGRAMS — MANDATORY
 
-For SVG diagrams in `src/assets/`:
+**NEVER use ASCII art diagrams in documentation. ALL diagrams must be SVG.**
+
+### Prohibited ASCII Patterns
 
 ```
-- Transparent background
-- Dual-theme support (light/dark CSS)
-- Width: 1040-1400px
-- Font: Arial, sans-serif
-- Colors: Blue #4A90E2, Orange #F5A623, Purple #BD10E0, Green #7ED321
+❌ NEVER USE:
+┌─────────┐    ╔═══════╗    +-------+
+│  Box    │    ║ Box   ║    | Box   |
+└─────────┘    ╚═══════╝    +-------+
+
+├── folder/    │           →    ▶    ──►
+│   └── file   ▼           ←    ◀    ◄──
 ```
+
+### What to Use Instead
+
+| Instead of... | Use... |
+|---------------|--------|
+| ASCII box diagrams | SVG diagrams in `assets/` |
+| ASCII flow charts | SVG with arrows and boxes |
+| ASCII directory trees | Markdown tables or SVG |
+| ASCII tables with borders | Markdown tables |
+| ASCII progress indicators | SVG or text description |
+
+### Directory Trees → Tables
+
+```markdown
+❌ WRONG:
+mybot.gbai/
+├── mybot.gbdialog/
+│   └── start.bas
+└── mybot.gbot/
+    └── config.csv
+
+✅ CORRECT:
+| Path | Description |
+|------|-------------|
+| `mybot.gbai/` | Root package |
+| `mybot.gbdialog/` | BASIC scripts |
+| `mybot.gbdialog/start.bas` | Entry point |
+| `mybot.gbot/` | Configuration |
+| `mybot.gbot/config.csv` | Bot settings |
+```
+
+### Rationale
+
+- ASCII breaks in different fonts/editors
+- Not accessible for screen readers
+- Cannot adapt to dark/light themes
+- Looks unprofessional in modern docs
+- SVGs scale perfectly at any size
+
+---
+
+## SVG Diagram Guidelines — Theme Transparency
+
+All SVG diagrams MUST be theme-agnostic and work with light/dark modes.
+
+### Required Structure
+
+Every SVG must include:
+
+1. **CSS classes for text** (not hardcoded colors)
+2. **Dark mode media query** in `<style>` block
+3. **Standard gradient definitions** in `<defs>`
+
+### Required CSS Block
+
+```xml
+<style>
+  .title-text { fill: #1E1B4B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .main-text { fill: #334155; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .secondary-text { fill: #64748B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .white-text { fill: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .mono-text { fill: #475569; font-family: 'SF Mono', 'Fira Code', Consolas, monospace; }
+
+  @media (prefers-color-scheme: dark) {
+    .title-text { fill: #F1F5F9; }
+    .main-text { fill: #E2E8F0; }
+    .secondary-text { fill: #94A3B8; }
+    .mono-text { fill: #CBD5E1; }
+  }
+</style>
+```
+
+### Standard Gradients (use these IDs)
+
+| Gradient ID | Colors | Purpose |
+|-------------|--------|---------|
+| `primaryGrad` | `#6366F1` → `#8B5CF6` | Primary/purple elements |
+| `cyanGrad` | `#06B6D4` → `#0EA5E9` | Cyan/info elements |
+| `greenGrad` | `#10B981` → `#34D399` | Success/green elements |
+| `orangeGrad` | `#F59E0B` → `#FBBF24` | Warning/orange elements |
+
+### Background Rules
+
+- Use `fill="#FAFBFC"` for main background (not pure white)
+- Add dot pattern overlay: `fill="url(#dots)"` with `opacity="0.08"`
+- Cards use `fill="#FFFFFF"` with `stroke="#E2E8F0"` for definition
+- Use `filter="url(#cardShadow)"` for card depth
+
+### DO NOT
+
+- ❌ Hardcode text colors without CSS class
+- ❌ Use pure black (`#000000`) for text
+- ❌ Forget the `@media (prefers-color-scheme: dark)` block
+- ❌ Create new gradient IDs when standard ones exist
+- ❌ Use ASCII art diagrams when SVG is appropriate
+
+### DO
+
+- ✅ Use CSS classes for ALL text elements
+- ✅ Include dark mode media query in every SVG
+- ✅ Use standard gradient IDs consistently
+- ✅ Test SVGs in both light and dark browser modes
+- ✅ Convert ASCII diagrams to proper SVGs
+- ✅ Place SVGs in `src/assets/chapter-XX/` directories
+
+### Dimensions
+
+- Width: 600-1200px (responsive)
+- Use `style="max-width: 100%; height: auto;"` when embedding
+
+### Reference
+
+See `src/16-appendix-docs-style/svg.md` for complete guidelines.
 
 ---
 
