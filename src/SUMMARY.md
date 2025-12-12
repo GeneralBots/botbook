@@ -37,6 +37,7 @@
   - [Template: CRM Contacts](./02-templates/template-crm-contacts.md)
   - [Template: Attendance CRM](./02-templates/template-attendance-crm.md)
   - [Template: Marketing](./02-templates/template-marketing.md)
+  - [Template: Embedded Devices](./02-templates/template-embedded.md)
   - [Template: Creating Templates](./02-templates/template-template.md)
 
 # Part III - Knowledge Base
@@ -201,6 +202,7 @@
     - [QR CODE](./06-gbdialog/keyword-qrcode.md)
     - [SEND SMS](./06-gbdialog/keyword-sms.md)
     - [START MEET / JOIN MEET](./06-gbdialog/keyword-start-meet.md)
+  - [GPIO & IoT Keywords](./06-gbdialog/keywords-gpio.md)
   - [File Operations](./06-gbdialog/keywords-file.md)
     - [READ](./06-gbdialog/keyword-read.md)
     - [WRITE](./06-gbdialog/keyword-write.md)
@@ -323,6 +325,7 @@
 # Part XII - Device & Offline Deployment
 
 - [Chapter 13: Device Deployment](./13-devices/README.md)
+  - [Buying Guide for Beginners](./13-devices/buying-guide.md)
   - [Mobile (Android & HarmonyOS)](./13-devices/mobile.md)
   - [Supported Hardware (SBCs)](./13-devices/hardware.md)
   - [Quick Start](./13-devices/quick-start.md)

@@ -4,15 +4,15 @@ Deploy General Bots as the primary interface on Android and HarmonyOS devices, t
 
 ## Overview
 
-BotOS transforms any Android or HarmonyOS device into a dedicated General Bots system, removing manufacturer bloatware and installing GB as the default launcher.
+BotDevice transforms any Android or HarmonyOS device into a dedicated General Bots system, removing manufacturer bloatware and installing GB as the default launcher.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         BotOS Architecture                                   │
+│                       BotDevice Architecture                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │    ┌──────────────────────────────────────────────────────────────────┐    │
-│    │                      BotOS App (Tauri)                            │    │
+│    │                    BotDevice App (Tauri)                          │    │
 │    ├──────────────────────────────────────────────────────────────────┤    │
 │    │  botui/ui/suite   │  Tauri Android   │  src/lib.rs (Rust)        │    │
 │    │  (Web Interface)  │  (WebView + NDK) │  (Backend + Hardware)     │    │
@@ -46,18 +46,18 @@ BotOS transforms any Android or HarmonyOS device into a dedicated General Bots s
 
 | Level | Requirements | What It Does |
 |-------|-------------|--------------|
-| **Level 1** | ADB only | Removes bloatware, installs BotOS as app |
-| **Level 2** | Root + Magisk | GB boot animation, BotOS as system app |
-| **Level 3** | Unlocked bootloader | Full Android replacement with BotOS |
+| **Level 1** | ADB only | Removes bloatware, installs BotDevice as app |
+| **Level 2** | Root + Magisk | GB boot animation, BotDevice as system app |
+| **Level 3** | Unlocked bootloader | Full Android replacement with BotDevice |
 
 ## Quick Installation
 
 ### Level 1: Debloat + App (No Root)
 
 ```bash
-# Clone botos repository
-git clone https://github.com/GeneralBots/botos.git
-cd botos/rom
+# Clone botdevice repository
+git clone https://github.com/GeneralBots/botdevice.git
+cd botdevice/rom
 
 # Connect device via USB (enable USB debugging first)
 ./install.sh
@@ -66,18 +66,18 @@ cd botos/rom
 The interactive installer will:
 1. Detect your device and manufacturer
 2. Remove bloatware automatically
-3. Install BotOS APK
+3. Install BotDevice APK
 4. Optionally set as default launcher
 
 ### Level 2: Magisk Module (Root Required)
 
 ```bash
 # Generate Magisk module
-cd botos/rom/scripts
+cd botdevice/rom/scripts
 ./build-magisk-module.sh
 
 # Copy to device
-adb push botos-magisk-v1.0.zip /sdcard/
+adb push botdevice-magisk-v1.0.zip /sdcard/
 
 # Install via Magisk app
 # Magisk → Modules → + → Select ZIP → Reboot
@@ -85,12 +85,12 @@ adb push botos-magisk-v1.0.zip /sdcard/
 
 This adds:
 - Custom boot animation
-- BotOS as system app (privileged permissions)
+- BotDevice as system app (privileged permissions)
 - Debloat via overlay
 
 ### Level 3: GSI (Full Replacement)
 
-For advanced users with unlocked bootloader. See `botos/rom/gsi/README.md`.
+For advanced users with unlocked bootloader. See `botdevice/rom/gsi/README.md`.
 
 ## Bloatware Removed
 
@@ -143,7 +143,7 @@ sudo apt install librsvg2-bin imagemagick
 ### Build APK
 
 ```bash
-cd botos
+cd botdevice
 
 # Generate icons from SVG
 ./scripts/generate-icons.sh
@@ -164,14 +164,14 @@ Output: `gen/android/app/build/outputs/apk/release/app-release.apk`
 cargo tauri android dev
 
 # Watch logs
-adb logcat -s BotOS:*
+adb logcat -s BotDevice:*
 ```
 
 ## Configuration
 
 ### AndroidManifest.xml
 
-BotOS is configured as a launcher:
+BotDevice is configured as a launcher:
 
 ```xml
 <intent-filter>
@@ -214,7 +214,7 @@ Create custom boot animation with GB branding:
 
 ```bash
 # Generate animation
-cd botos/scripts
+cd botdevice/scripts
 ./create-bootanimation.sh
 
 # Install (requires root)
@@ -227,7 +227,7 @@ adb reboot
 ## Project Structure
 
 ```
-botos/
+botdevice/
 ├── Cargo.toml              # Rust/Tauri dependencies
 ├── tauri.conf.json         # Tauri config → botui/ui/suite
 ├── build.rs                # Build script
@@ -261,7 +261,7 @@ botos/
 
 ## Offline Mode
 
-BotOS can work offline with local LLM:
+BotDevice can work offline with local LLM:
 
 1. Install botserver on the device (see [Local LLM](./local-llm.md))
 2. Configure to use localhost:
@@ -298,7 +298,7 @@ BotOS can work offline with local LLM:
 # Settings → Security → Unknown Sources
 
 # Or use ADB
-adb install -r botos.apk
+adb install -r botdevice.apk
 ```
 
 ### Debloat Not Working
