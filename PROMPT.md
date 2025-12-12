@@ -154,26 +154,31 @@ botbook/
 ├── src/
 │   ├── SUMMARY.md     # Table of contents
 │   ├── README.md      # Introduction
-│   ├── chapter-01/    # Run and Talk (Quick Start)
-│   ├── chapter-02/    # Package System
-│   ├── chapter-03/    # Knowledge Base
-│   ├── chapter-04-gbui/   # UI System
-│   ├── chapter-05-gbtheme/ # Theming
-│   ├── chapter-06-gbdialog/ # BASIC Dialogs
-│   ├── chapter-07-gbapp/   # Applications
-│   ├── chapter-08-config/  # Configuration
-│   ├── chapter-09-api/     # REST API
-│   ├── chapter-10-api/     # WebSocket API
-│   ├── chapter-11-features/ # Feature Modules
-│   ├── chapter-12-auth/    # Authentication
-│   ├── chapter-13-community/ # Contributing
-│   ├── chapter-14-migration/ # Migration Guide
-│   ├── appendix-*/         # Reference materials
-│   └── assets/             # Images, diagrams
+│   ├── 01-introduction/   # Run and Talk (Quick Start)
+│   ├── 02-templates/      # Package System
+│   ├── 03-knowledge-base/ # Knowledge Base
+│   ├── 04-gbui/           # UI System
+│   ├── 05-gbtheme/        # Theming
+│   ├── 06-gbdialog/       # BASIC Dialogs
+│   ├── 07-gbapp/          # Applications
+│   ├── 08-config/         # Configuration
+│   ├── 09-tools/          # Tools
+│   ├── 10-rest/           # REST API
+│   ├── 11-features/       # Feature Modules
+│   ├── 12-auth/           # Authentication
+│   ├── 13-community/      # Contributing
+│   ├── 14-migration/      # Migration Guide
+│   ├── 15-appendix/       # Reference materials
+│   ├── 16-appendix-docs-style/
+│   ├── 17-testing/        # Testing guide
+│   ├── 18-appendix-external-services/
+│   ├── 19-maintenance/    # Maintenance
+│   └── assets/            # Images, diagrams
 ├── i18n/              # Translations
-│   ├── src-cn/        # Chinese
-│   ├── src-ja/        # Japanese
-│   └── src-pt/        # Portuguese
+│   ├── cn/            # Chinese
+│   ├── en/            # English
+│   ├── ja/            # Japanese
+│   └── pt/            # Portuguese
 └── book/              # Generated output
 ```
 
