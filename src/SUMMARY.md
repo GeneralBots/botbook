@@ -320,9 +320,17 @@
   - [Permissions Matrix](./12-auth/permissions-matrix.md)
   - [User Context vs System Context](./12-auth/user-system-context.md)
 
-# Part XII - Community
+# Part XII - Device & Offline Deployment
 
-- [Chapter 13: Contributing](./13-community/README.md)
+- [Chapter 13: Device Deployment](./13-devices/README.md)
+  - [Mobile (Android & HarmonyOS)](./13-devices/mobile.md)
+  - [Supported Hardware (SBCs)](./13-devices/hardware.md)
+  - [Quick Start](./13-devices/quick-start.md)
+  - [Local LLM with llama.cpp](./13-devices/local-llm.md)
+
+# Part XIII - Community
+
+- [Chapter 14: Contributing](./13-community/README.md)
   - [Development Setup](./13-community/setup.md)
   - [Testing Guide](./13-community/testing.md)
   - [Documentation](./13-community/documentation.md)
@@ -330,9 +338,9 @@
   - [Community Guidelines](./13-community/community.md)
   - [IDEs](./13-community/ide-extensions.md)
 
-# Part XIII - Migration
+# Part XIV - Migration
 
-- [Chapter 14: Migration Guide](./14-migration/README.md)
+- [Chapter 15: Migration Guide](./14-migration/README.md)
   - [Migration Overview](./14-migration/overview.md)
   - [Platform Comparison Matrix](./14-migration/comparison-matrix.md)
   - [Migration Resources](./14-migration/resources.md)
@@ -350,9 +358,9 @@
   - [Automation Migration](./14-migration/automation.md)
   - [Validation and Testing](./14-migration/validation.md)
 
-# Part XIV - Testing
+# Part XV - Testing
 
-- [Chapter 17: Testing](./17-testing/README.md)
+- [Chapter 16: Testing](./17-testing/README.md)
   - [End-to-End Testing](./17-testing/e2e-testing.md)
   - [Testing Architecture](./17-testing/architecture.md)
   - [Performance Testing](./17-testing/performance.md)
@@ -389,13 +397,6 @@
 
 - [Appendix D: Documentation Style](./16-appendix-docs-style/conversation-examples.md)
   - [SVG and Conversation Standards](./16-appendix-docs-style/svg.md)
-
-# Part XV - Embedded & Offline
-
-- [Chapter 20: Embedded Deployment](./20-embedding/README.md)
-  - [Supported Hardware](./20-embedding/hardware.md)
-  - [Quick Start](./20-embedding/quick-start.md)
-  - [Local LLM with llama.cpp](./20-embedding/local-llm.md)
 
 [Glossary](./glossary.md)
 [Contact](./contact/README.md)
