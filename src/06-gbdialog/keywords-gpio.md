@@ -2,6 +2,78 @@
 
 Control hardware directly from BASIC dialogs. These keywords work on Raspberry Pi, Orange Pi, and other SBCs running botserver.
 
+## Hardware ↔ Keyword Compatibility
+
+| Hardware Component | BASIC Keywords | Interface | Typical Address/Pin |
+|-------------------|----------------|-----------|---------------------|
+| **Displays** |
+| OLED 0.96" SSD1306 | `OLED INIT`, `OLED PRINT`, `OLED DRAW`, `OLED CLEAR` | I2C | 0x3C |
+| OLED 1.3" SH1106 | `OLED INIT`, `OLED PRINT`, `OLED DRAW`, `OLED CLEAR` | I2C | 0x3C |
+| LCD 16x2 HD44780 | `LCD INIT`, `LCD PRINT`, `LCD CLEAR` | I2C | 0x27 or 0x3F |
+| LCD 20x4 HD44780 | `LCD INIT`, `LCD PRINT`, `LCD CLEAR` | I2C | 0x27 or 0x3F |
+| TFT ILI9341 | `SPI OPEN`, `SPI TRANSFER` | SPI | CE0 |
+| E-Ink Waveshare | `SPI OPEN`, `SPI TRANSFER` | SPI | CE0 |
+| **Temperature Sensors** |
+| DHT11 | `READ TEMPERATURE`, `READ HUMIDITY` | GPIO | Any GPIO |
+| DHT22/AM2302 | `READ TEMPERATURE`, `READ HUMIDITY` | GPIO | Any GPIO |
+| DS18B20 | `READ TEMPERATURE` | 1-Wire | GPIO 4 (default) |
+| BME280 | `I2C READ`, `READ TEMPERATURE`, `READ HUMIDITY` | I2C | 0x76 or 0x77 |
+| BMP280 | `I2C READ`, `READ TEMPERATURE` | I2C | 0x76 or 0x77 |
+| **Motion/Distance Sensors** |
+| HC-SR04 Ultrasonic | `READ DISTANCE` | GPIO | Trigger + Echo pins |
+| PIR HC-SR501 | `READ MOTION`, `GPIO GET` | GPIO | Any GPIO |
+| PIR AM312 | `READ MOTION`, `GPIO GET` | GPIO | Any GPIO |
+| **Light Sensors** |
+| Photoresistor (LDR) | `READ LIGHT` | ADC | MCP3008 CH0-7 |
+| BH1750 | `I2C READ`, `READ LIGHT` | I2C | 0x23 or 0x5C |
+| TSL2561 | `I2C READ` | I2C | 0x29, 0x39, 0x49 |
+| **Actuators** |
+| Relay Module | `RELAY SET`, `GPIO SET` | GPIO | Any GPIO |
+| LED | `GPIO SET`, `GPIO PWM` | GPIO | Any GPIO |
+| Buzzer (Active) | `BUZZER`, `GPIO SET` | GPIO | Any GPIO |
+| Buzzer (Passive) | `BUZZER`, `GPIO PWM` | GPIO | PWM pin |
+| Servo Motor | `GPIO SERVO` | PWM | GPIO 12, 13, 18, 19 |
+| DC Motor (via L298N) | `GPIO SET`, `GPIO PWM` | GPIO | 2 GPIO + PWM |
+| Stepper (via ULN2003) | `GPIO SET` | GPIO | 4 GPIO pins |
+| **Input Devices** |
+| Push Button | `GPIO GET` | GPIO | Any GPIO |
+| Rotary Encoder | `GPIO GET` | GPIO | CLK + DT + SW |
+| Keypad 4x4 | `GPIO GET` | GPIO | 8 GPIO pins |
+| **ADC/DAC** |
+| MCP3008 (ADC) | `SPI TRANSFER`, `READ LIGHT` | SPI | CE0 |
+| ADS1115 (ADC) | `I2C READ` | I2C | 0x48 |
+| MCP4725 (DAC) | `I2C WRITE` | I2C | 0x60 |
+| **Expansion** |
+| PCF8574 I/O Expander | `I2C READ`, `I2C WRITE` | I2C | 0x20-0x27 |
+| MCP23017 I/O Expander | `I2C READ`, `I2C WRITE` | I2C | 0x20-0x27 |
+
+### Quick Reference by Keyword
+
+| Keyword | Works With | Notes |
+|---------|-----------|-------|
+| `GPIO MODE` | All GPIO devices | Set pin as INPUT/OUTPUT |
+| `GPIO SET` | LEDs, Relays, Buzzers | Digital HIGH/LOW |
+| `GPIO GET` | Buttons, PIR, Digital sensors | Read digital state |
+| `GPIO PWM` | LEDs, Motors, Passive buzzers | PWM output (0-100%) |
+| `GPIO SERVO` | Servo motors | Angle 0-180° |
+| `I2C SCAN` | All I2C devices | Find connected devices |
+| `I2C READ` | I2C sensors/displays | Read bytes from register |
+| `I2C WRITE` | I2C devices | Write bytes to register |
+| `SPI OPEN` | SPI devices | Initialize SPI bus |
+| `SPI TRANSFER` | TFT displays, ADC | Send/receive data |
+| `READ TEMPERATURE` | DHT11/22, DS18B20, BME280 | Auto-detects sensor |
+| `READ HUMIDITY` | DHT11/22, BME280 | Requires humidity sensor |
+| `READ DISTANCE` | HC-SR04 | Ultrasonic sensor |
+| `READ MOTION` | PIR sensors | Returns TRUE/FALSE |
+| `READ LIGHT` | Photoresistor + ADC | Analog light level |
+| `LCD INIT` | HD44780 I2C displays | Initialize 16x2 or 20x4 |
+| `LCD PRINT` | HD44780 displays | Print text |
+| `OLED INIT` | SSD1306, SH1106 | Initialize OLED |
+| `OLED PRINT` | OLED displays | Print text with size |
+| `OLED DRAW` | OLED displays | Draw shapes |
+| `RELAY SET` | Relay modules | ON/OFF control |
+| `BUZZER` | Active/Passive buzzers | Beep or tone |
+
 ## Overview
 
 ```
