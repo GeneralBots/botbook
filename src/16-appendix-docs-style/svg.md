@@ -38,6 +38,104 @@ Use standard HTML image syntax with responsive styling:
 
 ---
 
+## SVG Theme Transparency Guidelines
+
+All SVGs MUST be theme-agnostic and work with light/dark modes. Follow these requirements:
+
+### Required CSS Media Query
+
+Every SVG must include a `<style>` block with `prefers-color-scheme` support:
+
+```xml
+<style>
+  .title-text { fill: #1E1B4B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .main-text { fill: #334155; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .secondary-text { fill: #64748B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .white-text { fill: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .mono-text { fill: #475569; font-family: 'SF Mono', 'Fira Code', Consolas, monospace; }
+
+  @media (prefers-color-scheme: dark) {
+    .title-text { fill: #F1F5F9; }
+    .main-text { fill: #E2E8F0; }
+    .secondary-text { fill: #94A3B8; }
+    .mono-text { fill: #CBD5E1; }
+  }
+</style>
+```
+
+### Background Transparency
+
+- Use `fill="#FAFBFC"` for light backgrounds (subtle, not pure white)
+- Add dot pattern overlay for texture: `fill="url(#dots)"` with low opacity
+- Cards use `fill="#FFFFFF"` with border strokes for definition
+- **NEVER** use pure black (`#000000`) backgrounds
+
+### Color Palette (Theme-Safe)
+
+| Purpose | Light Mode | Dark Mode Adaptation |
+|---------|------------|---------------------|
+| Title text | `#1E1B4B` | `#F1F5F9` (via CSS) |
+| Main text | `#334155` | `#E2E8F0` (via CSS) |
+| Secondary text | `#64748B` | `#94A3B8` (via CSS) |
+| Mono/code text | `#475569` | `#CBD5E1` (via CSS) |
+| Card backgrounds | `#FFFFFF` | Keep white (contrast) |
+| Borders | `#E2E8F0` | Keep (works both) |
+
+### Standard Gradients
+
+Use these gradient IDs consistently across all SVGs:
+
+```xml
+<defs>
+  <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+  </linearGradient>
+
+  <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#0EA5E9;stop-opacity:1" />
+  </linearGradient>
+
+  <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#34D399;stop-opacity:1" />
+  </linearGradient>
+
+  <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+  </linearGradient>
+
+  <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="130%">
+    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#6366F1" flood-opacity="0.15"/>
+  </filter>
+
+  <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+    <circle cx="10" cy="10" r="1" fill="#6366F1" opacity="0.08"/>
+  </pattern>
+</defs>
+```
+
+### DO NOT
+
+- ❌ Hardcode text colors without CSS class
+- ❌ Use pure black (`#000000`) or pure white (`#FFFFFF`) for text
+- ❌ Forget the `@media (prefers-color-scheme: dark)` block
+- ❌ Use opaque backgrounds that don't adapt
+- ❌ Create new gradient IDs when standard ones exist
+
+### DO
+
+- ✅ Use CSS classes for all text elements
+- ✅ Include dark mode media query in every SVG
+- ✅ Use standard gradient IDs from the palette
+- ✅ Test SVGs in both light and dark browser modes
+- ✅ Use subtle shadows with low opacity (`0.15`)
+- ✅ Keep white cards for contrast in both modes
+
+---
+
 ## Conversation Examples (WhatsApp Style)
 
 All conversation examples throughout the book use the WhatsApp-style HTML format. This provides a familiar, visually consistent representation of bot interactions.

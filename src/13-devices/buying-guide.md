@@ -16,24 +16,7 @@ A Single Board Computer (SBC) is a complete computer on a single circuit board. 
 
 ### Decision Flowchart
 
-```
-                    ┌─────────────────────────┐
-                    │   What's your budget?   │
-                    └───────────┬─────────────┘
-                                │
-            ┌───────────────────┼───────────────────┐
-            ▼                   ▼                   ▼
-       Under $30            $30-80              $80-150
-            │                   │                   │
-            ▼                   ▼                   ▼
-    ┌───────────────┐  ┌───────────────┐  ┌───────────────┐
-    │  Orange Pi    │  │ Raspberry Pi  │  │  Orange Pi 5  │
-    │   Zero 3      │  │    4 / 5      │  │  (with NPU)   │
-    │               │  │               │  │               │
-    │ Basic display │  │ Full desktop  │  │ Local AI/LLM  │
-    │ Simple tasks  │  │ Most projects │  │ Edge AI       │
-    └───────────────┘  └───────────────┘  └───────────────┘
-```
+<img src="../assets/chapter-13/budget-decision-tree.svg" alt="Hardware Budget Decision Tree" style="max-width: 100%; height: auto;">
 
 ### Recommended Starter Kits
 
@@ -107,65 +90,61 @@ This board has a 6 TOPS NPU for accelerated AI inference!
 
 Perfect first project - monitor and log temperature!
 
-```
-□ Orange Pi Zero 3 (1GB)           $20
-□ 16GB microSD card                $5
-□ 5V 2A power supply               $5
-□ DHT22 temperature sensor         $6
-□ 0.96" OLED display (I2C)         $6
-□ Jumper wires (female-female)     $3
-                          ─────────────
-                          Total: $45
-```
+| Item | Price |
+|------|-------|
+| Orange Pi Zero 3 (1GB) | $20 |
+| 16GB microSD card | $5 |
+| 5V 2A power supply | $5 |
+| DHT22 temperature sensor | $6 |
+| 0.96" OLED display (I2C) | $6 |
+| Jumper wires (female-female) | $3 |
+| **Total** | **$45** |
 
 ### Smart Doorbell ($70)
 
 AI-powered doorbell with notifications!
 
-```
-□ Raspberry Pi Zero 2 W            $15
-□ Pi Camera Module                 $25
-□ Push button                      $1
-□ Piezo buzzer                     $2
-□ LED (with resistor)              $1
-□ 16GB microSD card                $5
-□ 5V 2.5A power supply             $8
-□ Case                             $5
-□ Jumper wires                     $3
-                          ─────────────
-                          Total: $70
-```
+| Item | Price |
+|------|-------|
+| Raspberry Pi Zero 2 W | $15 |
+| Pi Camera Module | $25 |
+| Push button | $1 |
+| Piezo buzzer | $2 |
+| LED (with resistor) | $1 |
+| 16GB microSD card | $5 |
+| 5V 2.5A power supply | $8 |
+| Case | $5 |
+| Jumper wires | $3 |
+| **Total** | **$70** |
 
 ### Offline AI Assistant ($150)
 
 Run AI completely offline - no internet needed!
 
-```
-□ Orange Pi 5 (8GB RAM)            $89
-□ 128GB NVMe SSD                   $20
-□ 12V 3A power supply              $12
-□ 7" HDMI touchscreen              $45
-□ USB microphone                   $10
-□ Case with fan                    $15
-□ Jumper wires                     $3
-                          ─────────────
-                          Total: ~$195
-```
+| Item | Price |
+|------|-------|
+| Orange Pi 5 (8GB RAM) | $89 |
+| 128GB NVMe SSD | $20 |
+| 12V 3A power supply | $12 |
+| 7" HDMI touchscreen | $45 |
+| USB microphone | $10 |
+| Case with fan | $15 |
+| Jumper wires | $3 |
+| **Total** | **~$195** |
 
 ### Voice-Controlled Lights ($55)
 
 Control your lights by talking!
 
-```
-□ Raspberry Pi 4 (2GB)             $35
-□ 4-channel relay module           $6
-□ USB microphone                   $8
-□ 16GB microSD card                $5
-□ 5V 3A power supply               $8
-□ Jumper wires                     $3
-                          ─────────────
-                          Total: ~$65
-```
+| Item | Price |
+|------|-------|
+| Raspberry Pi 4 (2GB) | $35 |
+| 4-channel relay module | $6 |
+| USB microphone | $8 |
+| 16GB microSD card | $5 |
+| 5V 3A power supply | $8 |
+| Jumper wires | $3 |
+| **Total** | **~$65** |
 
 ## Where to Buy (By Region)
 

@@ -39,22 +39,7 @@
 
 The Orange Pi 5 with RK3588S is ideal for embedded LLM:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Orange Pi 5 - Best for Offline AI                          │
-├─────────────────────────────────────────────────────────────┤
-│  CPU: Rockchip RK3588S (4x A76 + 4x A55)                   │
-│  NPU: 6 TOPS (Neural Processing Unit)                       │
-│  GPU: Mali-G610 MP4                                         │
-│  RAM: 4GB / 8GB / 16GB LPDDR4X                             │
-│  Storage: M.2 NVMe + eMMC + microSD                        │
-│                                                             │
-│  LLM Performance:                                           │
-│  ├─ TinyLlama 1.1B Q4: ~8-12 tokens/sec                    │
-│  ├─ Phi-2 2.7B Q4: ~4-6 tokens/sec                         │
-│  └─ With NPU (rkllm): ~20-30 tokens/sec                    │
-└─────────────────────────────────────────────────────────────┘
-```
+<img src="../assets/chapter-13/orange-pi-5-specs.svg" alt="Orange Pi 5 Specifications" style="max-width: 100%; height: auto;">
 
 ## Displays
 
@@ -68,13 +53,7 @@ For text-only interfaces:
 | HD44780 20x4 | 20 chars × 4 lines | I2C/GPIO | More context |
 | LCD2004 | 20 chars × 4 lines | I2C | Industrial |
 
-**Example output on 16x2:**
-```
-┌────────────────┐
-│> How can I help│
-│< Processing... │
-└────────────────┘
-```
+**Example output on 16x2:** Simple text display showing user prompt and bot status.
 
 ### OLED Displays
 
@@ -138,17 +117,7 @@ For low-power, readable in sunlight:
 
 ### Buttons & GPIO
 
-```
-┌─────────────────────────────────────────────┐
-│  Simple 4-Button Interface                   │
-├─────────────────────────────────────────────┤
-│                                              │
-│   [◄ PREV]  [▲ UP]  [▼ DOWN]  [► SELECT]   │
-│                                              │
-│   GPIO 17   GPIO 27  GPIO 22   GPIO 23      │
-│                                              │
-└─────────────────────────────────────────────┘
-```
+<img src="../assets/chapter-13/gpio-button-interface.svg" alt="GPIO Button Interface" style="max-width: 100%; height: auto;">
 
 ## Enclosures
 

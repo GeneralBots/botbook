@@ -13,26 +13,7 @@ General Bots can run on any device, from mobile phones to minimal embedded hardw
 - **Education** - Classroom assistants, lab equipment interfaces
 - **Healthcare** - Patient check-in, medication reminders
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         Embedded GB Architecture                             │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│    ┌──────────────┐     ┌──────────────┐     ┌──────────────┐              │
-│    │   Display    │     │  botserver   │     │  llama.cpp   │              │
-│    │  LCD/OLED    │────▶│   (Rust)     │────▶│   (Local)    │              │
-│    │   TFT/HDMI   │     │  Port 8088   │     │  Port 8080   │              │
-│    └──────────────┘     └──────────────┘     └──────────────┘              │
-│           │                    │                    │                       │
-│           │                    │                    │                       │
-│    ┌──────▼──────┐     ┌──────▼──────┐     ┌──────▼──────┐              │
-│    │  Keyboard   │     │   SQLite    │     │  TinyLlama  │              │
-│    │  Buttons    │     │   (Data)    │     │    GGUF     │              │
-│    │  Touch      │     │             │     │   (~700MB)  │              │
-│    └─────────────┘     └─────────────┘     └─────────────┘              │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+<img src="../assets/chapter-13/embedded-architecture.svg" alt="Embedded GB Architecture" style="max-width: 100%; height: auto;">
 
 ## What's in This Chapter
 
@@ -43,6 +24,10 @@ General Bots can run on any device, from mobile phones to minimal embedded hardw
 - [Supported Hardware](./hardware.md) - SBCs, displays, and peripherals
 - [Quick Start](./quick-start.md) - Deploy in 5 minutes
 - [Local LLM](./local-llm.md) - Offline AI with llama.cpp
+- [Buying Guide](./buying-guide.md) - Choose your first SBC
+
+### Robotics
+- [Humanoid Robots](./humanoid.md) - Build intelligent humanoids with CV, LLM, and movement control
 
 ### Deployment Options
 
@@ -52,3 +37,4 @@ General Bots can run on any device, from mobile phones to minimal embedded hardw
 | **Raspberry Pi** | IoT, displays, terminals | 1GB+ RAM |
 | **Orange Pi** | Full offline AI | 4GB+ RAM for LLM |
 | **Industrial** | Factory, retail, healthcare | Any ARM/x86 SBC |
+| **Humanoid Robots** | Service, reception, research | Servo kit + compute board |

@@ -4,24 +4,7 @@ Run AI inference completely offline on embedded devices. No internet, no API cos
 
 ## Overview
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        Local LLM Architecture                                │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│   User Input ──▶ botserver ──▶ llama.cpp ──▶ Response                       │
-│                      │              │                                        │
-│                      │         ┌────┴────┐                                   │
-│                      │         │  Model  │                                   │
-│                      │         │  GGUF   │                                   │
-│                      │         │ (Q4_K)  │                                   │
-│                      │         └─────────┘                                   │
-│                      │                                                       │
-│                 SQLite DB                                                    │
-│                (sessions)                                                    │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+<img src="../assets/chapter-13/local-llm-architecture.svg" alt="Local LLM Architecture" style="max-width: 100%; height: auto;">
 
 ## Recommended Models
 
