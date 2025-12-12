@@ -1,177 +1,77 @@
-# Suite Applications
+# Suite Apps
 
-> **Individual app documentation for General Bots Suite**
-
-Each application in the Suite has its own dedicated documentation with:
-- Flow diagrams (SVG with light/dark theme support)
-- Interface layouts
-- HTMX integration patterns
-- API endpoints
-- CSS classes
-- JavaScript handlers
-- Keyboard shortcuts
+> **Everything you need, all in one place**
 
 ---
 
-## Core Applications
+## Your Apps
 
-| App | Description | Documentation |
-|-----|-------------|---------------|
-| 🖥️ **Suite** | Full desktop interface | [suite.md](./suite.md) |
-| 💬 **Chat** | AI-powered conversation assistant | [chat.md](./chat.md) |
-| 📁 **Drive** | Cloud file storage and management | [drive.md](./drive.md) |
-| ✓ **Tasks** | To-do lists with priorities | [tasks.md](./tasks.md) |
-| ✉ **Mail** | Email client | [mail.md](./mail.md) |
-| 📅 **Calendar** | Scheduling and events | [calendar.md](./calendar.md) |
-| 🎥 **Meet** | Video conferencing | [meet.md](./meet.md) |
-| 🎬 **Player** | Media viewer | [player.md](./player.md) |
+Click any app icon in the top-right menu (⋮⋮⋮) to open it.
 
-## Productivity Applications
-
-| App | Description | Documentation |
-|-----|-------------|---------------|
-| 📝 **Paper** | AI-assisted document writing | [paper.md](./paper.md) |
-| 🔍 **Research** | AI-powered search and discovery | [research.md](./research.md) |
-| 📊 **Analytics** | Reports and dashboards | [analytics.md](./analytics.md) |
-
-## Developer Tools
-
-| App | Description | Documentation |
-|-----|-------------|---------------|
-| 🎨 **Designer** | Visual dialog builder | [designer.md](./designer.md) |
-| 📚 **Sources** | Prompts, templates, and models | [sources.md](./sources.md) |
-| 🛡️ **Compliance** | Security scanner | [compliance.md](./compliance.md) |
-
-## System Components
-
-| Component | Description | Location |
-|-----------|-------------|----------|
-| 🔐 **Auth** | Authentication views | `ui/suite/auth/` |
-| 👤 **Attendant** | Attendant interface | `ui/suite/attendant/` |
-| 🧩 **Partials** | Reusable HTML fragments | `ui/suite/partials/` |
-| 🔧 **Tools** | Developer utilities | `ui/suite/tools/` |
-| 📈 **Monitoring** | System monitoring dashboard | `ui/suite/monitoring/` |
+| App | What It Does |
+|-----|--------------|
+| 💬 **Chat** | Talk to your AI assistant |
+| 📁 **Drive** | Store and organize your files |
+| ✓ **Tasks** | Keep track of your to-do list |
+| ✉ **Mail** | Send and receive emails |
+| 📅 **Calendar** | Schedule meetings and events |
+| 🎥 **Meet** | Video calls with your team |
+| 🎬 **Player** | Watch videos and listen to audio |
 
 ---
 
-## App Launcher
+## Productivity Apps
 
-The Suite features a Google-style app launcher accessible from the header:
-
-<img src="../../assets/suite/app-launcher.svg" alt="App Launcher" style="max-width: 100%; height: auto;">
-
-### Accessing Apps
-
-1. **Click the grid icon** (⋮⋮⋮) in the top-right corner
-2. **Select an app** from the dropdown menu
-3. App loads in the main content area
-
-### Keyboard Shortcuts
-
-| Shortcut | App |
-|----------|-----|
-| `Alt+1` | Chat |
-| `Alt+2` | Drive |
-| `Alt+3` | Tasks |
-| `Alt+4` | Mail |
-| `Alt+5` | Calendar |
-| `Alt+6` | Meet |
+| App | What It Does |
+|-----|--------------|
+| 📝 **Paper** | Write documents with AI help |
+| 🔍 **Research** | Search and discover information |
+| 📊 **Analytics** | View reports and dashboards |
 
 ---
 
-## Architecture Overview
+## Quick Access
 
-All Suite apps follow the same patterns:
+**Keyboard shortcuts** to open apps fast:
 
-### HTMX Loading
-
-Apps are loaded lazily when selected:
-
-```html
-<a href="#chat" 
-   data-section="chat"
-   hx-get="/ui/suite/chat/chat.html" 
-   hx-target="#main-content"
-   hx-swap="innerHTML">
-    Chat
-</a>
-```
-
-### Component Structure
-
-Each app is a self-contained HTML fragment:
-
-```
-app-name/
-├── app-name.html    # Main component
-├── app-name.css     # Styles (optional)
-└── app-name.js      # JavaScript (optional)
-```
-
-### API Integration
-
-Apps communicate with the backend via REST APIs:
-
-```html
-<div hx-get="/api/v1/app/data"
-     hx-trigger="load"
-     hx-swap="innerHTML">
-    Loading...
-</div>
-```
-
-### Real-Time Updates
-
-WebSocket support for live data:
-
-```html
-<div hx-ext="ws" ws-connect="/ws">
-    <!-- Real-time content -->
-</div>
-```
+| Press | Opens |
+|-------|-------|
+| `Alt + 1` | Chat |
+| `Alt + 2` | Drive |
+| `Alt + 3` | Tasks |
+| `Alt + 4` | Mail |
+| `Alt + 5` | Calendar |
+| `Alt + 6` | Meet |
 
 ---
 
-## Creating Custom Apps
+## Tips
 
-To add a new app to the Suite:
-
-1. **Create the component** in `ui/suite/your-app/`
-2. **Add navigation entry** in `index.html`
-3. **Define API endpoints** in your Rust backend
-4. **Document the app** in this folder
-
-### Template
-
-```html
-<!-- ui/suite/your-app/your-app.html -->
-<div class="your-app-container" id="your-app">
-    <header class="your-app-header">
-        <h2>Your App</h2>
-    </header>
-    
-    <main class="your-app-content"
-          hx-get="/api/v1/your-app/data"
-          hx-trigger="load"
-          hx-swap="innerHTML">
-        <div class="htmx-indicator">Loading...</div>
-    </main>
-</div>
-
-<style>
-.your-app-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-</style>
-```
+- **Switch apps quickly** - Use the app menu or keyboard shortcuts
+- **Stay in one place** - All your work is saved automatically
+- **Ask for help** - The Chat app can help you with any app
 
 ---
 
-## See Also
+## App Guides
 
-- [Suite Manual](../suite-manual.md) - Complete user guide
-- [HTMX Architecture](../htmx-architecture.md) - Technical details
-- [UI Structure](../ui-structure.md) - File organization
-- [Chapter 10: REST API](../../chapter-10-rest/README.md) - API reference
+Learn more about each app:
+
+- [Chat](./chat.md) - Talk to your AI assistant
+- [Drive](./drive.md) - Manage your files
+- [Tasks](./tasks.md) - Track your to-dos
+- [Mail](./mail.md) - Handle your email
+- [Calendar](./calendar.md) - Manage your schedule
+- [Meet](./meet.md) - Join video calls
+- [Player](./player.md) - Play media files
+- [Paper](./paper.md) - Write with AI
+- [Research](./research.md) - Search smarter
+- [Analytics](./analytics.md) - See your data
+
+---
+
+## Need Help?
+
+Just ask in **Chat**: "How do I use [app name]?"
+
+Your AI assistant knows all the apps and can guide you step by step.

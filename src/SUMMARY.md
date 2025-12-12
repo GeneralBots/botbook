@@ -92,6 +92,7 @@
 
 - [Chapter 06: gbdialog Reference](./06-gbdialog/README.md)
   - [Dialog Basics](./06-gbdialog/basics.md)
+  - [API Possibilities](./06-gbdialog/api-possibilities.md)
   - [Universal Messaging & Multi-Channel](./06-gbdialog/universal-messaging.md)
   - [BASIC vs n8n/Zapier/Make](./06-gbdialog/basic-vs-automation-tools.md)
   - [Template Variables](./06-gbdialog/template-variables.md)

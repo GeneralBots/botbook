@@ -1,230 +1,126 @@
-# Tasks - To-Do Management
+# Tasks
 
-> **Track what needs to be done**
-
-<img src="../../assets/suite/tasks-screen.svg" alt="Tasks Interface Screen" style="max-width: 100%; height: auto;">
+> **Your personal to-do list**
 
 ---
 
-## Overview
+## What is Tasks?
 
-Tasks is your to-do list manager within General Bots Suite. Create tasks, set priorities, organize by category, and track your progress. Built with HTMX for instant updates without page reloads.
+Tasks helps you keep track of what you need to do. Add tasks, check them off when done, and stay organized.
 
 ---
 
-## Features
+## Adding a Task
 
-### Adding Tasks
+1. Type what you need to do in the text box
+2. Click **+ Add Task** or press **Enter**
 
-**Quick Add:**
-1. Type task description in the input box
-2. Press **Enter** or click **+ Add**
+That's it! Your task appears in the list.
 
-**With Details:**
-1. Type task description
-2. Select a category (optional)
-3. Pick a due date (optional)
-4. Click **+ Add**
+### Optional: Add More Details
 
-### Priority Levels
+Before clicking Add, you can:
 
-| Priority | Icon | When to Use |
-|----------|------|-------------|
-| **High** | 🔴 | Must do today |
-| **Medium** | 🟡 | Important but not urgent |
-| **Low** | 🟢 | Can wait |
-| **None** | ⚪ | No deadline |
+- **Pick a category** - Work, Personal, Shopping, or Health
+- **Set a due date** - Click the calendar icon
 
-### Categories
+---
 
-| Category | Icon |
-|----------|------|
-| Work | 💼 |
-| Personal | 🏠 |
-| Shopping | 🛒 |
-| Health | ❤️ |
-| Custom | 🏷️ |
+## Completing Tasks
 
-### Filter Tabs
+Click the **checkbox** next to any task to mark it done.
 
-| Tab | Shows |
-|-----|-------|
-| **All** | All tasks |
-| **Active** | Uncompleted tasks |
-| **Completed** | Done tasks |
-| **Priority** | High priority only |
+Done tasks get a strikethrough and move to the Completed tab.
+
+**Changed your mind?** Click the checkbox again to un-complete it.
+
+---
+
+## Task Priority
+
+Click the **star** ⭐ on any task to mark it as important.
+
+Starred tasks appear in the **Priority** tab for quick access.
+
+---
+
+## Filtering Your Tasks
+
+Use the tabs at the top to see different views:
+
+| Tab | What You See |
+|-----|--------------|
+| **All** | Everything |
+| **Active** | Tasks not done yet |
+| **Completed** | Tasks you finished |
+| **Priority** | Starred tasks only |
+
+---
+
+## Editing a Task
+
+1. Click on the task text
+2. Type your changes
+3. Press **Enter** to save or **Escape** to cancel
+
+---
+
+## Deleting a Task
+
+Click the **trash icon** 🗑️ on the right side of any task.
+
+**Note:** This cannot be undone!
 
 ---
 
 ## Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Enter` | Add task (when in input) |
-| `Space` | Toggle task completion |
-| `Delete` | Remove selected task |
-| `Tab` | Move to next field |
+| Press | What Happens |
+|-------|--------------|
+| `Enter` | Add task (when typing) |
 | `Escape` | Cancel editing |
-| `↑` / `↓` | Navigate tasks |
 
 ---
 
 ## Creating Tasks from Chat
 
-<div class="wa-chat">
-  <div class="wa-message user">
-    <div class="wa-bubble">
-      <p>Create a task to review the budget by Friday</p>
-      <div class="wa-time">10:30</div>
-    </div>
-  </div>
-  <div class="wa-message bot">
-    <div class="wa-bubble">
-      <p>✅ Task created:</p>
-      <p>📋 Review the budget</p>
-      <p>📅 Due: Friday, March 22</p>
-      <p>🏷️ Category: Work</p>
-      <div class="wa-time">10:30</div>
-    </div>
-  </div>
-</div>
+You can also create tasks by talking to your bot:
 
-### Managing Tasks via Chat
+**You:** "Remind me to call John tomorrow"
 
-<div class="wa-chat">
-  <div class="wa-message user">
-    <div class="wa-bubble">
-      <p>What tasks do I have today?</p>
-      <div class="wa-time">09:00</div>
-    </div>
-  </div>
-  <div class="wa-message bot">
-    <div class="wa-bubble">
-      <p>📋 Today's Tasks (3 active):</p>
-      <p>🔴 Review quarterly report</p>
-      <p>🟡 Call client about proposal</p>
-      <p>🟢 Update project documentation</p>
-      <div class="wa-time">09:00</div>
-    </div>
-  </div>
-  <div class="wa-message user">
-    <div class="wa-bubble">
-      <p>Mark the quarterly report as done</p>
-      <div class="wa-time">11:45</div>
-    </div>
-  </div>
-  <div class="wa-message bot">
-    <div class="wa-bubble">
-      <p>✅ Task completed:</p>
-      <p>📋 Review quarterly report</p>
-      <p>You have 2 tasks remaining today.</p>
-      <div class="wa-time">11:45</div>
-    </div>
-  </div>
-</div>
+**Bot:** "✅ Task created: Call John - Due: Tomorrow"
 
-### Setting Reminders
+**You:** "What tasks do I have today?"
 
-<div class="wa-chat">
-  <div class="wa-message user">
-    <div class="wa-bubble">
-      <p>Remind me to call John tomorrow at 3pm</p>
-      <div class="wa-time">14:20</div>
-    </div>
-  </div>
-  <div class="wa-message bot">
-    <div class="wa-bubble">
-      <p>✅ Task created with reminder:</p>
-      <p>📋 Call John</p>
-      <p>📅 Tomorrow at 3:00 PM</p>
-      <p>🔔 Reminder set for 2:55 PM</p>
-      <div class="wa-time">14:20</div>
-    </div>
-  </div>
-</div>
+**Bot:** "You have 3 tasks for today..."
 
 ---
 
-## API Endpoints
+## Tips
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/tasks` | GET | List all tasks |
-| `/api/tasks` | POST | Create new task |
-| `/api/tasks/:id` | GET | Get single task |
-| `/api/tasks/:id` | PATCH | Update task |
-| `/api/tasks/:id` | DELETE | Delete task |
-| `/api/tasks/stats` | GET | Get task statistics |
-
-### Query Parameters
-
-| Parameter | Values | Default |
-|-----------|--------|---------|
-| `filter` | `all`, `active`, `completed`, `priority` | `all` |
-| `category` | `work`, `personal`, `shopping`, `health` | none |
-| `sort` | `created`, `dueDate`, `priority`, `text` | `created` |
-| `order` | `asc`, `desc` | `desc` |
-
-### Request Body (Create/Update)
-
-```json
-{
-    "text": "Review quarterly report",
-    "category": "work",
-    "dueDate": "2024-03-20",
-    "priority": "high",
-    "completed": false
-}
-```
-
-### Response Format
-
-```json
-{
-    "id": 123,
-    "text": "Review quarterly report",
-    "category": "work",
-    "dueDate": "2024-03-20",
-    "priority": "high",
-    "completed": false,
-    "createdAt": "2024-03-18T10:30:00Z",
-    "updatedAt": "2024-03-18T10:30:00Z"
-}
-```
-
----
-
-## Integration with Calendar
-
-Tasks with due dates automatically appear in your Calendar view, helping you visualize your workload across days and weeks.
+- **Keep it simple** - Short task names are easier to scan
+- **Use categories** - Helps you focus on one area at a time
+- **Check daily** - Review your Active tasks each morning
+- **Celebrate wins** - Look at Completed to see your progress!
 
 ---
 
 ## Troubleshooting
 
-### Tasks Not Saving
+### My task didn't save
+- Check your internet connection
+- Refresh the page and try again
 
-1. Check network connection
-2. Verify API endpoint is accessible
-3. Check browser console for errors
-4. Try refreshing the page
+### I can't find my task
+- Check the **All** tab (not just Active)
+- Try scrolling down if you have many tasks
 
-### Filters Not Working
-
-1. Click the filter tab again
-2. Check if tasks exist for that filter
-3. Clear browser cache
-
-### Stats Not Updating
-
-1. Reload the page
-2. Check for JavaScript errors in console
+### Stats show wrong numbers
+- Refresh the page
 
 ---
 
 ## See Also
 
-- [Suite Manual](../suite-manual.md) - Complete user guide
-- [Chat App](./chat.md) - Create tasks from chat
-- [Calendar App](./calendar.md) - View tasks in calendar
-- [Tasks API](../../chapter-10-rest/tasks-api.md) - API reference
+- [Calendar](./calendar.md) - Tasks with due dates show here too
+- [Chat](./chat.md) - Create tasks by talking to your bot
