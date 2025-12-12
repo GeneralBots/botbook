@@ -84,6 +84,7 @@ See [Script Execution Flow](./script-execution-flow.md) for complete details.
 | `FORMAT` | Data | Format strings and dates |
 | `GENERATE PDF` | Files | Generate PDF from template |
 | `GET` | Variables | Get variable or API data |
+| `GOTO` | Control | Jump to label (⚠️ use ON instead) |
 | `GET BOT MEMORY` | Memory | Retrieve bot-level persisted data |
 | `GET USER MEMORY` | Memory | Retrieve user-level persisted data (cross-bot) |
 | `GRAPHQL` | HTTP | Execute GraphQL query |
