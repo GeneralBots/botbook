@@ -330,6 +330,7 @@
   - [Supported Hardware (SBCs)](./13-devices/hardware.md)
   - [Quick Start](./13-devices/quick-start.md)
   - [Local LLM with llama.cpp](./13-devices/local-llm.md)
+  - [Humanoid Robotics](./13-devices/humanoid.md)
 
 # Part XIII - Community
 
