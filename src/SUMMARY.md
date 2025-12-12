@@ -390,5 +390,12 @@
 - [Appendix D: Documentation Style](./16-appendix-docs-style/conversation-examples.md)
   - [SVG and Conversation Standards](./16-appendix-docs-style/svg.md)
 
+# Part XV - Embedded & Offline
+
+- [Chapter 20: Embedded Deployment](./20-embedding/README.md)
+  - [Supported Hardware](./20-embedding/hardware.md)
+  - [Quick Start](./20-embedding/quick-start.md)
+  - [Local LLM with llama.cpp](./20-embedding/local-llm.md)
+
 [Glossary](./glossary.md)
 [Contact](./contact/README.md)
