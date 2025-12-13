@@ -1,7 +1,7 @@
-# BotBook Development Prompt Guide
+# botbook Development Prompt Guide
 
 **Version:** 6.1.0  
-**Purpose:** LLM context for BotBook documentation development
+**Purpose:** LLM context for botbook documentation development
 
 ---
 
@@ -122,7 +122,7 @@ SET_HEADER         ' WRONG!
 
 ## Project Overview
 
-BotBook is the **mdBook-based documentation** for the General Bots platform. It provides comprehensive guides, tutorials, and API references for users and developers.
+botbook is the **mdBook-based documentation** for the General Bots platform. It provides comprehensive guides, tutorials, and API references for users and developers.
 
 ### Workspace Position
 
@@ -136,7 +136,7 @@ botmodels/     # Data models visualization
 botplugin/     # Browser extension
 ```
 
-### What BotBook Provides
+### What botbook Provides
 
 - **User Guides**: Getting started, installation, quick start
 - **BASIC Reference**: Keywords, syntax, examples

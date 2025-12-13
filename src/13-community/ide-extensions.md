@@ -87,13 +87,13 @@ syn match basicComment "^REM.*$"
 syn match basicComment "'.*$"
 ```
 
-The plugin provides several commands for interacting with BotServer. Use `:BotDeploy` to deploy the current bot, `:BotRun` to run the current script, `:BotLogs` to view server logs, and `:BotConnect` to connect to the server.
+The plugin provides several commands for interacting with botserver. Use `:BotDeploy` to deploy the current bot, `:BotRun` to run the current script, `:BotLogs` to view server logs, and `:BotConnect` to connect to the server.
 
 ## Emacs Mode
 
 ### Installation
 
-Add the BotServer mode to your Emacs configuration:
+Add the botserver mode to your Emacs configuration:
 
 ```elisp
 ;; ~/.emacs.d/init.el
@@ -107,8 +107,8 @@ Add the BotServer mode to your Emacs configuration:
 The major mode definition provides BASIC script editing support:
 
 ```elisp
-(define-derived-mode botserver-mode prog-mode "BotServer"
-  "Major mode for editing BotServer BASIC scripts."
+(define-derived-mode botserver-mode prog-mode "botserver"
+  "Major mode for editing botserver BASIC scripts."
   (setq-local comment-start "REM ")
   (setq-local comment-end "")
   (setq-local indent-line-function 'botserver-indent-line))
@@ -120,11 +120,11 @@ The mode includes convenient key bindings: `C-c C-c` runs the current script, `C
 
 ### Installation
 
-The package can be installed via Package Control by opening the command palette with `Cmd+Shift+P`, selecting "Package Control: Install Package", and searching for "BotServer". For manual installation, clone the repository directly:
+The package can be installed via Package Control by opening the command palette with `Cmd+Shift+P`, selecting "Package Control: Install Package", and searching for "botserver". For manual installation, clone the repository directly:
 
 ```bash
 cd ~/Library/Application\ Support/Sublime\ Text/Packages
-git clone https://github.com/botserver/sublime-botserver BotServer
+git clone https://github.com/botserver/sublime-botserver botserver
 ```
 
 The package provides BASIC syntax highlighting, a build system for running scripts, snippets for common patterns, and project templates.
@@ -144,7 +144,7 @@ The bundle includes a language grammar for BASIC, commands for deployment, and t
 
 ## Language Server Protocol (LSP)
 
-BotServer includes an LSP server that works with any LSP-compatible editor. This enables a consistent development experience across different editors and platforms.
+botserver includes an LSP server that works with any LSP-compatible editor. This enables a consistent development experience across different editors and platforms.
 
 ### Starting the LSP Server
 

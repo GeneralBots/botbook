@@ -10,7 +10,7 @@ A complete General Bots deployment typically includes:
 
 | Component | Purpose | Providers Supported |
 |-----------|---------|---------------------|
-| **Hosting** | Run BotServer | Any VPS, LXC, bare metal |
+| **Hosting** | Run botserver | Any VPS, LXC, bare metal |
 | **DNS** | Domain management | Namecheap, Cloudflare, Route53 |
 | **MDA** | Email delivery | Stalwart, Postfix, external SMTP |
 | **AI/LLM** | Language models | OpenAI, Anthropic, local models |
@@ -261,7 +261,7 @@ DNS SET domain, "TXT", "v=spf1 mx a ip4:" + server_ip + " -all"
 PRINT "DNS configured for " + domain
 ```
 
-### 3. Start BotServer
+### 3. Start botserver
 
 ```bash
 ./botserver
@@ -312,7 +312,7 @@ PRINT "Email sent successfully"
 1. Verify `llm-url` in config.csv
 2. Check API key in Vault
 3. Test endpoint with curl
-4. Review BotServer logs
+4. Review botserver logs
 
 ---
 

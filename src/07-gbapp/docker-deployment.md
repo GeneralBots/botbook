@@ -181,7 +181,7 @@ spec:
 
 | Service | Endpoint |
 |---------|----------|
-| BotServer | `GET /health` |
+| botserver | `GET /health` |
 | PostgreSQL | `pg_isready` |
 | MinIO | `GET /minio/health/live` |
 | Qdrant | `GET /health` |

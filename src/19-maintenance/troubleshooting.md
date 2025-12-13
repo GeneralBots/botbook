@@ -1,6 +1,6 @@
 # Troubleshooting
 
-This guide covers common issues you may encounter with BotServer and their solutions.
+This guide covers common issues you may encounter with botserver and their solutions.
 
 ---
 
@@ -546,7 +546,7 @@ ss -tlnp | grep LISTEN
 ./botserver diagnose > diagnostics-$(date +%Y%m%d).txt
 
 # Include in bug reports:
-# - BotServer version
+# - botserver version
 # - OS and architecture
 # - Error messages
 # - Relevant logs
@@ -564,7 +564,7 @@ RUST_LOG=trace ./botserver
 
 ### Community Support
 
-- GitHub Issues: [github.com/GeneralBots/BotServer/issues](https://github.com/GeneralBots/BotServer/issues)
+- GitHub Issues: [github.com/GeneralBots/botserver/issues](https://github.com/GeneralBots/botserver/issues)
 - Documentation: [docs.generalbots.ai](https://docs.generalbots.ai)
 
 ---

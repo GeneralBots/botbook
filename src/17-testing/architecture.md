@@ -31,7 +31,7 @@ The General Bots testing framework is designed with a multi-layered, isolated ap
         │            │            │
         ▼            ▼            ▼
    ┌─────────┐  ┌─────────┐  ┌──────────┐
-   │BotServer│  │  Browser│  │ Services │
+   │botserver│  │  Browser│  │ Services │
    │(Testing)│  │ (WebDrv)│  │(Mock/Iso)│
    └─────────┘  └─────────┘  └──────────┘
         │            │            │
@@ -109,7 +109,7 @@ async fn test_message_storage_and_retrieval() {
 
 **Phases**:
 1. Platform Loading
-2. BotServer Initialization
+2. botserver Initialization
 3. User Authentication
 4. Chat Interaction
 5. Logout & Session Management
@@ -160,7 +160,7 @@ Provides complete environment for E2E testing:
 ```rust
 pub struct E2ETestContext {
     pub ctx: TestContext,
-    pub server: BotServerInstance,
+    pub server: botserverInstance,
     pub browser: Option<Browser>,
 }
 
@@ -211,7 +211,7 @@ Each test gets dedicated service instances:
 - **Database**: Separate PostgreSQL cluster on port 5433
 - **Cache**: Separate Redis instance on port 6380
 - **Storage**: Separate MinIO instance on port 9001
-- **API**: Separate BotServer on port 8000
+- **API**: Separate botserver on port 8000
 
 ### Network Isolation
 

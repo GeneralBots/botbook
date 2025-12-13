@@ -1,6 +1,6 @@
 # Container Deployment (LXC)
 
-BotServer uses LXC (Linux Containers) for isolated component deployment with system-level containerization.
+botserver uses LXC (Linux Containers) for isolated component deployment with system-level containerization.
 
 ## What is LXC?
 

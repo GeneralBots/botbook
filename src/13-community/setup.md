@@ -29,7 +29,7 @@ This guide covers setting up a development environment for contributing to Gener
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/GeneralBots/BotServer.git
+git clone https://github.com/GeneralBots/botserver.git
 cd botserver
 ```
 
@@ -214,7 +214,7 @@ This configuration:
 ### Remote Monitoring Tips
 
 ```bash
-# Monitor BotServer logs in real-time
+# Monitor botserver logs in real-time
 ssh user@server 'tail -f botserver.log'
 
 # Watch compilation progress
@@ -246,7 +246,7 @@ Check logs in the console output for debugging information.
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Debug BotServer",
+      "name": "Debug botserver",
       "cargo": {
         "args": ["build"],
         "filter": {
@@ -392,4 +392,4 @@ See [Contributing Guidelines](./contributing-guidelines.md) for:
 - Read the [Architecture Overview](../chapter-06/architecture.md)
 - Explore the [BASIC Language Reference](../chapter-05/README.md)
 - Review [Code Standards](./standards.md)
-- Start with a [good first issue](https://github.com/GeneralBots/BotServer/labels/good%20first%20issue)
+- Start with a [good first issue](https://github.com/GeneralBots/botserver/labels/good%20first%20issue)

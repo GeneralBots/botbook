@@ -22,7 +22,7 @@ cd botserver
 ```
 
 That's it! After ~10-15 minutes:
-- BotServer runs on port 8088
+- botserver runs on port 8088
 - llama.cpp runs on port 8080 with TinyLlama
 - Embedded UI available at `http://your-device:8088/embedded/`
 

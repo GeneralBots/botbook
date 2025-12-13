@@ -64,7 +64,7 @@
     - [Suite - Full Desktop](./04-gbui/apps/suite.md)
     - [Chat - AI Assistant](./04-gbui/apps/chat.md)
     - [Drive - File Management](./04-gbui/apps/drive.md)
-    - [Tasks - To-Do Lists](./04-gbui/apps/tasks.md)
+    - [Auto Tasks - LLM Execution](./04-gbui/apps/tasks.md)
     - [Mail - Email Client](./04-gbui/apps/mail.md)
     - [Calendar - Scheduling](./04-gbui/apps/calendar.md)
     - [Meet - Video Calls](./04-gbui/apps/meet.md)
@@ -228,6 +228,7 @@
   - [Scaling and Load Balancing](./07-gbapp/scaling.md)
   - [Infrastructure Design](./07-gbapp/infrastructure.md)
   - [Observability](./07-gbapp/observability.md)
+  - [Autonomous Task AI](./07-gbapp/autonomous-tasks.md)
   - [Philosophy](./07-gbapp/philosophy.md)
   - [Example gbapp](./07-gbapp/example-gbapp.md)
   - [Module Structure](./07-gbapp/crates.md)
@@ -330,7 +331,6 @@
   - [Supported Hardware (SBCs)](./13-devices/hardware.md)
   - [Quick Start](./13-devices/quick-start.md)
   - [Local LLM with llama.cpp](./13-devices/local-llm.md)
-  - [Humanoid Robotics](./13-devices/humanoid.md)
 
 # Part XIII - Community
 

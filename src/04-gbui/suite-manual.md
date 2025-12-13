@@ -40,7 +40,7 @@ Click the **nine-dot grid** (⋮⋮⋮) in the top right to see all applications
 |------|-----|--------------|
 | 💬 | **Chat** | Talk with your AI assistant |
 | 📁 | **Drive** | Store and manage your files |
-| ✓ | **Tasks** | Manage your to-do lists |
+| ⚡ | **Auto Tasks** | LLM-powered intelligent task execution |
 | ✉ | **Mail** | Send and receive emails |
 | 📅 | **Calendar** | Schedule meetings and events |
 | 🎥 | **Meet** | Video calls and meetings |
@@ -179,54 +179,78 @@ Drive is your file storage - like Google Drive or OneDrive. Store documents, ima
 
 ---
 
-## Part IV: Tasks - To-Do Management
+## Part IV: Auto Tasks - LLM-Powered Execution
 
-### What Tasks Does
+### What Auto Tasks Does
 
-Tasks helps you track what needs to be done. Create to-do lists, set due dates, and mark items complete.
+Auto Tasks revolutionizes how you work. Instead of manually tracking to-do items, you describe what you want to accomplish in natural language, and the LLM compiles your intent into an executable plan with automatic step-by-step execution.
 
-### The Tasks Interface
+### The Auto Tasks Interface
 
-<img src="../assets/chapter-04/tasks-interface.svg" alt="Tasks Interface" style="max-width: 100%; height: auto;">
+<img src="../assets/chapter-04/autotask-interface.svg" alt="Auto Tasks Interface" style="max-width: 100%; height: auto;">
 
-### Adding a Task
+### Creating an Auto Task
 
-1. Type your task in the input box
-2. *(Optional)* Select a category: Work, Personal, Shopping, Health
-3. *(Optional)* Set a due date
-4. Click **+ Add** or press Enter
+1. **Describe your intent** in the text area (e.g., "Build a CRM for Deloitte with client management")
+2. **Choose execution mode:**
+   - **Semi-Automatic** (recommended) - Runs automatically, pauses for high-risk steps
+   - **Supervised** - Pauses before each step for your approval
+   - **Fully Automatic** - Runs everything without stopping
+   - **Dry Run** - Simulates execution without making changes
+3. **Set priority:** Critical, High, Medium, Low, or Background
+4. Click **🚀 Compile & Plan**
 
-**Pro tip:** Be specific! Instead of "Work on project", write "Draft introduction section for project proposal"
+**Pro tip:** Be specific about outcomes! Instead of "make something", write "Create a sales dashboard with revenue charts by region and export to PDF"
 
-### Task Priorities
+### Understanding the Plan
 
-| Color | Priority | When to Use |
-|-------|----------|-------------|
-| 🔴 Red | High | Must do today |
-| 🟡 Yellow | Medium | Important but not urgent |
-| 🟢 Green | Low | Can wait |
+After compilation, you'll see:
 
-### Completing Tasks
+| Element | What It Shows |
+|---------|---------------|
+| **Confidence** | How confident the LLM is (aim for 80%+) |
+| **Risk Level** | None / Low / Medium / High / Critical |
+| **Duration** | Estimated execution time |
+| **Cost** | API and compute costs |
+| **Steps** | Ordered execution plan with keywords |
 
-- **Click the checkbox** to mark a task done
-- Completed tasks move to the "Completed" tab
-- Feel the satisfaction! ✓
+### Execution Modes
 
-### Filter Tabs
+| Mode | Best For |
+|------|----------|
+| **Semi-Automatic** | Most tasks - automatic with safety pauses |
+| **Supervised** | Learning or sensitive operations |
+| **Fully Automatic** | Trusted, tested workflows |
+| **Dry Run** | Testing before real execution |
 
-| Tab | Shows |
-|-----|-------|
-| **All** | Everything |
-| **Active** | Tasks not yet done |
-| **Completed** | Finished tasks |
-| **Priority** | High-priority tasks only |
+### Monitoring Tasks
 
-### Creating Tasks from Chat
+- **Running** - Currently executing (shows progress bar)
+- **Pending Approval** - Waiting for you to approve a high-risk step
+- **Waiting Decision** - Needs your input to continue
+- **Completed** - Successfully finished
+
+### Approvals & Decisions
+
+High-impact actions pause for your approval:
+- Sending mass emails
+- Modifying databases
+- Deploying to production
+- Actions exceeding cost thresholds
+
+Click **✅ Review & Approve** to see details and continue.
+
+### Creating Auto Tasks from Chat
 
 In Chat, just say:
 ```
-You: Create a task to review the budget by Friday
-Bot: Task created: "Review the budget" - Due: Friday
+You: I need to build a customer portal for Acme Corp
+Bot: I'll create an Auto Task for that. Here's the plan:
+     - 5 steps, estimated 3 hours
+     - Risk: Low
+     Should I execute this plan?
+You: Yes, go ahead
+Bot: 🚀 Auto Task started!
 ```
 
 ---

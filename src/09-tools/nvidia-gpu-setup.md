@@ -1,6 +1,6 @@
 # NVIDIA GPU Setup for LXC Containers
 
-This guide covers setting up NVIDIA GPU passthrough for BotServer running in LXC containers, enabling hardware acceleration for local LLM inference.
+This guide covers setting up NVIDIA GPU passthrough for botserver running in LXC containers, enabling hardware acceleration for local LLM inference.
 
 ## Prerequisites
 
@@ -111,7 +111,7 @@ nvidia-smi
 # Should show your GPU with driver version 560.35.05
 ```
 
-## Configure BotServer for GPU
+## Configure botserver for GPU
 
 Update your bot's `config.csv` to use GPU acceleration:
 
@@ -232,7 +232,7 @@ cmake .. -DLLAMA_F16C=ON
 ### After Compilation
 
 ```bash
-# Copy compiled binary to BotServer
+# Copy compiled binary to botserver
 cp bin/llama-server /path/to/botserver-stack/bin/llm/
 
 # Update config.csv to use custom build
@@ -282,6 +282,6 @@ With GPU acceleration enabled:
 
 ## Next Steps
 
-- [Installation Guide](./installation.md) - Complete BotServer setup
+- [Installation Guide](./installation.md) - Complete botserver setup
 - [Quick Start](./quick-start.md) - Create your first bot
 - [Configuration Reference](../chapter-02/gbot.md) - All GPU-related parameters

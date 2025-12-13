@@ -1,6 +1,6 @@
 # General Bots
 
-![General Bots Logo](https://github.com/GeneralBots/BotServer/blob/main/logo.png?raw=true)
+![General Bots Logo](https://github.com/GeneralBots/botserver/blob/main/logo.png?raw=true)
 
 **Enterprise-Grade LLM Orchestrator & AI Automation Platform**
 
@@ -18,11 +18,12 @@ A strongly-typed, self-hosted conversational platform focused on convention over
 
 | Repository | Description | Status |
 |------------|-------------|--------|
-| [**botserver**](https://github.com/GeneralBots/BotServer) | Core API server - LLM orchestration, automation, integrations | ✅ Production |
+| [**botserver**](https://github.com/GeneralBots/botserver) | Core API server - LLM orchestration, automation, integrations | ✅ Production |
 | [**botui**](https://github.com/GeneralBots/botui) | Pure web UI - HTMX-based interface (suite & minimal) | ✅ Production |
 | [**botapp**](https://github.com/GeneralBots/botapp) | Tauri desktop wrapper - native file access, system tray | ✅ Production |
 | [**botlib**](https://github.com/GeneralBots/botlib) | Shared Rust library - common types, HTTP client, utilities | ✅ Production |
-| [**botbook**](https://github.com/GeneralBots/BotBook) | Documentation - mdBook format, multi-language | ✅ Production |
+| [**bottemplates**](https://github.com/GeneralBots/bottemplates) | Templates - bots, apps, prompts, UI components | ✅ Production |
+| [**botbook**](https://github.com/GeneralBots/botbook) | Documentation - mdBook format, multi-language | ✅ Production |
 
 ---
 
@@ -37,12 +38,12 @@ A strongly-typed, self-hosted conversational platform focused on convention over
 
 ```bash
 # Clone and run
-git clone https://github.com/GeneralBots/BotServer
-cd BotServer
+git clone https://github.com/GeneralBots/botserver
+cd botserver
 cargo run
 ```
 
-On first run, BotServer automatically:
+On first run, botserver automatically:
 - Installs required components (PostgreSQL, S3 storage, Cache, LLM)
 - Sets up database with migrations
 - Downloads AI models
@@ -125,7 +126,7 @@ Tauri wrapper adding native capabilities:
 
 ### botlib (Shared Library)
 Common Rust code shared across projects:
-- HTTP client for BotServer communication
+- HTTP client for botserver communication
 - Shared types and models
 - Branding and configuration utilities
 - Error handling
@@ -136,11 +137,11 @@ Common Rust code shared across projects:
 
 ```bash
 # Clone all repositories
-git clone https://github.com/GeneralBots/BotServer botserver
+git clone https://github.com/GeneralBots/botserver botserver
 git clone https://github.com/GeneralBots/botui
 git clone https://github.com/GeneralBots/botapp
 git clone https://github.com/GeneralBots/botlib
-git clone https://github.com/GeneralBots/BotBook botbook
+git clone https://github.com/GeneralBots/botbook botbook
 
 # Build all (from each directory)
 cd botlib && cargo build
@@ -153,10 +154,10 @@ cd ../botapp && cargo build
 
 ## 📖 Documentation
 
-- **[Complete Documentation](https://github.com/GeneralBots/BotBook)** - Full mdBook documentation
-- **[Quick Start Guide](https://github.com/GeneralBots/BotServer/blob/main/docs/QUICK_START.md)** - Get started in minutes
-- **[API Reference](https://github.com/GeneralBots/BotServer/blob/main/docs/src/chapter-10-api/README.md)** - REST API documentation
-- **[Architecture Guide](https://github.com/GeneralBots/BotServer/blob/main/docs/src/chapter-07-gbapp/README.md)** - System architecture
+- **[Complete Documentation](https://github.com/GeneralBots/botbook)** - Full mdBook documentation
+- **[Quick Start Guide](https://github.com/GeneralBots/botserver/blob/main/docs/QUICK_START.md)** - Get started in minutes
+- **[API Reference](https://github.com/GeneralBots/botserver/blob/main/docs/src/chapter-10-api/README.md)** - REST API documentation
+- **[Architecture Guide](https://github.com/GeneralBots/botserver/blob/main/docs/src/chapter-07-gbapp/README.md)** - System architecture
 
 ---
 
@@ -184,7 +185,7 @@ Report security issues to: **security@pragmatismo.com.br**
 
 ## 🤝 Contributing
 
-We welcome contributions! See our [Contributing Guidelines](https://github.com/GeneralBots/BotServer/blob/main/docs/src/chapter-13-community/README.md).
+We welcome contributions! See our [Contributing Guidelines](https://github.com/GeneralBots/botserver/blob/main/docs/src/chapter-13-community/README.md).
 
 ### Contributors
 

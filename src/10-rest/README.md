@@ -1,10 +1,10 @@
 # Chapter 10: REST Endpoints
 
-HTTP API endpoints for integrating with BotServer.
+HTTP API endpoints for integrating with botserver.
 
 ## Overview
 
-BotServer exposes REST endpoints organized by functional area. All endpoints follow consistent patterns for authentication, pagination, and error handling.
+botserver exposes REST endpoints organized by functional area. All endpoints follow consistent patterns for authentication, pagination, and error handling.
 
 ## Base URL
 

@@ -4,7 +4,7 @@ The Groups API provides endpoints for managing groups and organizations through 
 
 ## Overview
 
-Groups in BotServer represent organizations in Zitadel. They provide multi-tenant support and user grouping capabilities.
+Groups in botserver represent organizations in Zitadel. They provide multi-tenant support and user grouping capabilities.
 
 ## Endpoints
 
@@ -170,7 +170,7 @@ All group operations are proxied to Zitadel:
 
 ### Data Model
 
-Groups are not stored in BotServer's database. All data comes from Zitadel:
+Groups are not stored in botserver's database. All data comes from Zitadel:
 - Group metadata from Zitadel orgs
 - Membership from Zitadel org members
 - Permissions from Zitadel policies

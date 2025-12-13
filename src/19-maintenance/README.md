@@ -1,10 +1,10 @@
 # Chapter 19: Maintenance and Updates
 
-BotServer includes a complete stack of self-hosted services that power your bots. This chapter covers how to maintain, update, and troubleshoot these components.
+botserver includes a complete stack of self-hosted services that power your bots. This chapter covers how to maintain, update, and troubleshoot these components.
 
 ## Stack Components Overview
 
-BotServer automatically installs and manages these services:
+botserver automatically installs and manages these services:
 
 | Component | Service | Default Port | Purpose |
 |-----------|---------|--------------|---------|

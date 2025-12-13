@@ -1,6 +1,6 @@
 # Tasks API
 
-BotServer provides RESTful endpoints for creating, managing, and tracking tasks and workflows within bot conversations.
+botserver provides RESTful endpoints for creating, managing, and tracking tasks and workflows within bot conversations.
 
 ## Overview
 

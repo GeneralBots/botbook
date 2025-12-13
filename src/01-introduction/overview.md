@@ -1,16 +1,16 @@
 # Overview
 
-BotServer is an open-source conversational AI platform built in Rust that enables developers to create, deploy, and manage intelligent bots with minimal configuration. This chapter provides a comprehensive introduction to the platform's architecture, capabilities, and design philosophy.
+botserver is an open-source conversational AI platform built in Rust that enables developers to create, deploy, and manage intelligent bots with minimal configuration. This chapter provides a comprehensive introduction to the platform's architecture, capabilities, and design philosophy.
 
 
 ## Core Philosophy
 
-BotServer was designed around five guiding principles that shape every aspect of the platform. Zero Configuration means the system works out of the box with sensible defaults, eliminating lengthy setup processes. The Package-Based approach ensures bots are self-contained in `.gbai` folders that can be copied and deployed anywhere. BASIC Scripting provides simple, accessible programming for conversation flows that non-programmers can understand and modify. Multi-Channel support means you deploy once and run everywhere across Web, WhatsApp, Teams, and other platforms. Knowledge-First design provides built-in document management and semantic search as core capabilities rather than afterthoughts.
+botserver was designed around five guiding principles that shape every aspect of the platform. Zero Configuration means the system works out of the box with sensible defaults, eliminating lengthy setup processes. The Package-Based approach ensures bots are self-contained in `.gbai` folders that can be copied and deployed anywhere. BASIC Scripting provides simple, accessible programming for conversation flows that non-programmers can understand and modify. Multi-Channel support means you deploy once and run everywhere across Web, WhatsApp, Teams, and other platforms. Knowledge-First design provides built-in document management and semantic search as core capabilities rather than afterthoughts.
 
 
 ## Architecture Overview
 
-BotServer uses a modular architecture organized into three distinct layers that work together to provide a complete conversational AI platform.
+botserver uses a modular architecture organized into three distinct layers that work together to provide a complete conversational AI platform.
 
 ### Storage Layer
 
@@ -29,7 +29,7 @@ The service layer provides the infrastructure that supports bot operations. The 
 
 ### Conversation Management
 
-BotServer provides comprehensive conversation management capabilities. Sessions persist across interactions, maintaining context and state throughout multi-turn dialogs. The context management system tracks conversation history and user information across interactions. Parallel conversation handling allows a single bot instance to manage thousands of simultaneous conversations efficiently.
+botserver provides comprehensive conversation management capabilities. Sessions persist across interactions, maintaining context and state throughout multi-turn dialogs. The context management system tracks conversation history and user information across interactions. Parallel conversation handling allows a single bot instance to manage thousands of simultaneous conversations efficiently.
 
 ### Knowledge Base System
 
@@ -45,14 +45,14 @@ Deploy your bot once and reach users across multiple channels. The web chat inte
 
 ### Enterprise Features
 
-BotServer includes capabilities required for enterprise deployments. Multi-tenancy support allows a single installation to serve multiple organizations with complete isolation. Role-based access control restricts actions based on user roles and permissions. Comprehensive audit logging tracks all actions for compliance and debugging. Horizontal scaling distributes load across multiple instances. High availability configurations ensure continuous operation even during failures.
+botserver includes capabilities required for enterprise deployments. Multi-tenancy support allows a single installation to serve multiple organizations with complete isolation. Role-based access control restricts actions based on user roles and permissions. Comprehensive audit logging tracks all actions for compliance and debugging. Horizontal scaling distributes load across multiple instances. High availability configurations ensure continuous operation even during failures.
 
 
 ## System Requirements
 
 ### Minimum Requirements
 
-For development and testing purposes, BotServer runs comfortably on modest hardware. You need at least 4GB of RAM to run all components. A single CPU core is sufficient for light workloads. Reserve at least 10GB of disk space for the application, databases, and documents. The platform runs on Linux, macOS, or Windows operating systems.
+For development and testing purposes, botserver runs comfortably on modest hardware. You need at least 4GB of RAM to run all components. A single CPU core is sufficient for light workloads. Reserve at least 10GB of disk space for the application, databases, and documents. The platform runs on Linux, macOS, or Windows operating systems.
 
 ### Recommended for Production
 
@@ -88,7 +88,7 @@ The `.gbot` subfolder contains configuration files including the main `config.cs
 
 ### Standalone Server
 
-The standalone deployment model runs a single BotServer instance serving multiple bots. This approach provides the simplest setup with shared resources across bots. Standalone deployment works best for small to medium deployments where isolation between bots is not critical.
+The standalone deployment model runs a single botserver instance serving multiple bots. This approach provides the simplest setup with shared resources across bots. Standalone deployment works best for small to medium deployments where isolation between bots is not critical.
 
 ### LXC Containers
 
@@ -96,12 +96,12 @@ Linux containers provide lightweight virtualization for bot isolation. Each bot 
 
 ### Embedded Mode
 
-Embedded deployment integrates BotServer into existing applications as a library. This mode provides programmatic control over bot behavior and direct integration with application logic. Custom integrations can use the embedded mode to add conversational capabilities to any Rust application.
+Embedded deployment integrates botserver into existing applications as a library. This mode provides programmatic control over bot behavior and direct integration with application logic. Custom integrations can use the embedded mode to add conversational capabilities to any Rust application.
 
 
 ## Getting Started
 
-Installation begins by downloading and running the BotServer binary. The bootstrap process automatically downloads all required components to the `botserver-stack/` directory, including database binaries, the object storage server, cache server, LLM runtime, and other dependencies.
+Installation begins by downloading and running the botserver binary. The bootstrap process automatically downloads all required components to the `botserver-stack/` directory, including database binaries, the object storage server, cache server, LLM runtime, and other dependencies.
 
 Bot deployment uses object storage buckets. Each bot receives its own bucket for file storage. Bots are deployed to the drive rather than the work folder, which is reserved for internal operations as documented in the gbapp chapter.
 
@@ -129,7 +129,7 @@ Healthcare bots assist with patient engagement while maintaining compliance. App
 
 ## Security Features
 
-BotServer implements comprehensive security at every layer. Authentication integrates with directory services for centralized user management. SSL/TLS encryption protects all network communications. Session tokens use cryptographically secure generation and validation. Input sanitization prevents injection attacks across all user inputs. SQL injection prevention uses parameterized queries throughout. XSS protection sanitizes output displayed to users. Rate limiting prevents abuse and denial of service attacks. Audit logging records all significant actions for compliance and forensics.
+botserver implements comprehensive security at every layer. Authentication integrates with directory services for centralized user management. SSL/TLS encryption protects all network communications. Session tokens use cryptographically secure generation and validation. Input sanitization prevents injection attacks across all user inputs. SQL injection prevention uses parameterized queries throughout. XSS protection sanitizes output displayed to users. Rate limiting prevents abuse and denial of service attacks. Audit logging records all significant actions for compliance and forensics.
 
 
 ## Monitoring and Operations
@@ -175,4 +175,4 @@ General Bots is open source under the AGPL (GNU Affero General Public License). 
 
 ## Summary
 
-BotServer provides a complete platform for building conversational AI applications. The combination of simple BASIC scripting, automatic setup, and enterprise features bridges the gap between simple chatbots and complex AI systems. The focus on packages, minimal configuration, and multi-channel support makes BotServer suitable for both rapid prototyping and production deployments serving millions of users.
+botserver provides a complete platform for building conversational AI applications. The combination of simple BASIC scripting, automatic setup, and enterprise features bridges the gap between simple chatbots and complex AI systems. The focus on packages, minimal configuration, and multi-channel support makes botserver suitable for both rapid prototyping and production deployments serving millions of users.

@@ -1,21 +1,21 @@
 # Console Mode
 
-The BotServer console mode provides a text-based interface for monitoring your bot's operation directly in the terminal.
+The botserver console mode provides a text-based interface for monitoring your bot's operation directly in the terminal.
 
 ## Starting Console Mode
 
 ```bash
-# Start BotServer with console UI
+# Start botserver with console UI
 ./botserver --console
 ```
 
 ## Console Interface
 
-The console displays real-time information about your running BotServer instance:
+The console displays real-time information about your running botserver instance:
 
 ```
 ╔════════════════════════════════════════════════════════════╗
-║                    BotServer Console                       ║
+║                    botserver Console                       ║
 ╠════════════════════════════════════════════════════════════╣
 ║ Status: Running                                            ║
 ║ Uptime: 2h 34m 12s                                         ║
@@ -104,4 +104,4 @@ Display problems can often be resolved by trying a different terminal emulator. 
 
 ## Summary
 
-Console mode provides a simple, lightweight way to monitor BotServer status without needing a web browser. It's ideal for quick checks and basic monitoring, but for full functionality including interactive bot testing and detailed analytics, use the web interface.
+Console mode provides a simple, lightweight way to monitor botserver status without needing a web browser. It's ideal for quick checks and basic monitoring, but for full functionality including interactive bot testing and detailed analytics, use the web interface.

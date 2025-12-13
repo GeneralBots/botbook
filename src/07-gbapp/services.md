@@ -1,6 +1,6 @@
 # Service Layer
 
-BotServer's service layer is organized into functional modules that handle specific aspects of the platform. Each module encapsulates related functionality and provides a clear API for interaction with other parts of the system. This chapter describes each service module and its responsibilities within the overall architecture.
+botserver's service layer is organized into functional modules that handle specific aspects of the platform. Each module encapsulates related functionality and provides a clear API for interaction with other parts of the system. This chapter describes each service module and its responsibilities within the overall architecture.
 
 
 ## Core Service Modules

@@ -1,6 +1,6 @@
 # Component Reference
 
-This reference provides detailed information about each component in the BotServer stack, including current versions, alternatives, and configuration options.
+This reference provides detailed information about each component in the botserver stack, including current versions, alternatives, and configuration options.
 
 ---
 

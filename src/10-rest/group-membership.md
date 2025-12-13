@@ -1,6 +1,6 @@
 # Group Membership API
 
-BotServer provides RESTful endpoints for managing user groups, team memberships, and collaborative workspaces.
+botserver provides RESTful endpoints for managing user groups, team memberships, and collaborative workspaces.
 
 ## Overview
 

@@ -142,7 +142,7 @@ name,value
 Start Dialog,start
 ```
 
-This tells BotServer to run `start.bas` when a conversation begins.
+This tells botserver to run `start.bas` when a conversation begins.
 
 ## Common Patterns
 

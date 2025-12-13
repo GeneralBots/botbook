@@ -1,10 +1,10 @@
 # Storage and Data
 
-This chapter explains how BotServer organizes and manages data across its multiple storage layers. Understanding this architecture helps you make informed decisions about where to store different types of information and how to optimize storage performance for your deployment.
+This chapter explains how botserver organizes and manages data across its multiple storage layers. Understanding this architecture helps you make informed decisions about where to store different types of information and how to optimize storage performance for your deployment.
 
 ## Understanding the Storage Architecture
 
-BotServer employs a multi-layered storage architecture where each layer serves specific purposes and data types. Rather than forcing all data into a single storage system, this design allows each component to use the storage technology best suited to its access patterns and requirements.
+botserver employs a multi-layered storage architecture where each layer serves specific purposes and data types. Rather than forcing all data into a single storage system, this design allows each component to use the storage technology best suited to its access patterns and requirements.
 
 PostgreSQL serves as the primary database for all structured data, including user accounts, session information, bot configurations, and message history. Its relational model excels at maintaining data integrity and supporting complex queries across related entities.
 
@@ -66,7 +66,7 @@ Automatic cleanup processes remove files that no longer serve purposes. Old temp
 
 ## Data Persistence and Backup
 
-Reliable data storage requires comprehensive backup strategies that protect against various failure modes. BotServer's multi-layer architecture requires coordinating backups across storage systems.
+Reliable data storage requires comprehensive backup strategies that protect against various failure modes. botserver's multi-layer architecture requires coordinating backups across storage systems.
 
 PostgreSQL backups capture the authoritative state of all structured data. Daily dumps create recovery points. Point-in-time recovery capabilities protect against accidental data modifications. Backup verification ensures that recovery would actually work when needed.
 
@@ -88,7 +88,7 @@ Data security spans all storage layers with appropriate protections for each. En
 
 Access control ensures users and processes only reach data they're authorized to access. Role-based permissions govern database operations. Bucket policies control object storage access. Bot isolation prevents cross-bot data leakage. Audit logging creates accountability trails for sensitive operations.
 
-Sensitive data receives additional protection. Passwords never store in BotServer systems since Zitadel handles authentication. API keys and secrets encrypt with AES-GCM before storage. Personally identifiable information follows data protection regulations applicable to the deployment jurisdiction.
+Sensitive data receives additional protection. Passwords never store in botserver systems since Zitadel handles authentication. API keys and secrets encrypt with AES-GCM before storage. Personally identifiable information follows data protection regulations applicable to the deployment jurisdiction.
 
 ## Monitoring and Maintenance
 
@@ -108,4 +108,4 @@ Connection failures require systematic investigation. Service status checks conf
 
 ## Summary
 
-BotServer's storage architecture distributes data across specialized systems optimized for different access patterns. PostgreSQL handles structured data with transactional integrity. Drive provides scalable object storage for files and documents. Valkey accelerates access to frequently used information. Qdrant enables semantic search through vector storage. Understanding this architecture helps you configure storage appropriately, implement effective backup strategies, and troubleshoot issues when they arise. The result is a storage foundation that supports the diverse requirements of conversational AI applications while maintaining performance and reliability.
+botserver's storage architecture distributes data across specialized systems optimized for different access patterns. PostgreSQL handles structured data with transactional integrity. Drive provides scalable object storage for files and documents. Valkey accelerates access to frequently used information. Qdrant enables semantic search through vector storage. Understanding this architecture helps you configure storage appropriately, implement effective backup strategies, and troubleshoot issues when they arise. The result is a storage foundation that supports the diverse requirements of conversational AI applications while maintaining performance and reliability.

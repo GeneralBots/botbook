@@ -1,10 +1,10 @@
 # Chapter 12: Authentication & Security
 
-User authentication and permission management for BotServer.
+User authentication and permission management for botserver.
 
 ## Overview
 
-BotServer provides enterprise-grade security with flexible authentication options and granular permissions.
+botserver provides enterprise-grade security with flexible authentication options and granular permissions.
 
 ## Authentication Methods
 

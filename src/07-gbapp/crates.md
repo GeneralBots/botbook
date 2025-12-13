@@ -1,6 +1,6 @@
 # Module Structure
 
-BotServer is a single Rust crate (not a workspace) with multiple modules. The application is defined in `Cargo.toml` as the `botserver` crate, version 6.0.8.
+botserver is a single Rust crate (not a workspace) with multiple modules. The application is defined in `Cargo.toml` as the `botserver` crate, version 6.0.8.
 
 ## Main Entry Points
 

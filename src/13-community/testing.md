@@ -1,10 +1,10 @@
 # Testing
 
-BotServer follows comprehensive testing practices to ensure reliability, performance, and maintainability of the codebase.
+botserver follows comprehensive testing practices to ensure reliability, performance, and maintainability of the codebase.
 
 ## Overview
 
-Testing in BotServer covers:
+Testing in botserver covers:
 - Unit tests for individual functions
 - Integration tests for components
 - End-to-end tests for workflows
@@ -420,4 +420,4 @@ fn test_user_story() {
 
 ## Summary
 
-Comprehensive testing ensures BotServer's reliability and makes refactoring safe. Focus on writing clear, independent tests that cover both success and failure cases, and maintain good test coverage across the codebase.
+Comprehensive testing ensures botserver's reliability and makes refactoring safe. Focus on writing clear, independent tests that cover both success and failure cases, and maintain good test coverage across the codebase.

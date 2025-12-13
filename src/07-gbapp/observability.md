@@ -10,7 +10,7 @@ This automated approach means administrators don't need to instrument code or co
 
 ## Log Directory Organization
 
-The logging system organizes output by component within the `./botserver-stack/logs/` directory. System logs from the main BotServer application appear in the system subdirectory. Storage service operations are captured in the drive subdirectory. Database activity from PostgreSQL goes to the tables subdirectory. The cache subdirectory contains logs from the caching layer. LLM server interactions are recorded in the llm subdirectory.
+The logging system organizes output by component within the `./botserver-stack/logs/` directory. System logs from the main botserver application appear in the system subdirectory. Storage service operations are captured in the drive subdirectory. Database activity from PostgreSQL goes to the tables subdirectory. The cache subdirectory contains logs from the caching layer. LLM server interactions are recorded in the llm subdirectory.
 
 Additional services have their own logging locations. Email service logs appear in the email subdirectory. Identity and authentication events are captured in the directory subdirectory. Vector database operations go to the vectordb subdirectory. Video meeting activities are logged in the meet subdirectory.
 
@@ -24,7 +24,7 @@ Configuration for the observability pipeline resides in the monitoring configura
 
 ## Log Format Conventions
 
-BotServer generates logs in a standard format that includes the timestamp in ISO 8601 format with millisecond precision, the log level indicating severity, the module path identifying the code location, and the message describing what occurred. This structured format enables automated parsing while remaining human-readable for direct inspection.
+botserver generates logs in a standard format that includes the timestamp in ISO 8601 format with millisecond precision, the log level indicating severity, the module path identifying the code location, and the message describing what occurred. This structured format enables automated parsing while remaining human-readable for direct inspection.
 
 The pipeline parses these logs automatically, extracting fields for indexing and routing. Errors are identified by level and routed to alerting systems while informational messages flow to long-term storage for historical analysis.
 

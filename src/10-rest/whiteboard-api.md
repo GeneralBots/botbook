@@ -1,16 +1,16 @@
 # Whiteboard API
 
-The Whiteboard API provides endpoints for collaborative drawing, diagramming, and visual collaboration within BotServer.
+The Whiteboard API provides endpoints for collaborative drawing, diagramming, and visual collaboration within botserver.
 
 ## Status
 
 **⚠️ NOT IMPLEMENTED**
 
-This API is planned for future development but is not currently available in BotServer.
+This API is planned for future development but is not currently available in botserver.
 
 ## Planned Features
 
-The Whiteboard API will enable collaborative real-time drawing, shape and diagram creation, text annotations, image uploads, multi-user cursors, version history, and export capabilities. These features will provide teams with a complete visual collaboration environment integrated directly into the BotServer platform.
+The Whiteboard API will enable collaborative real-time drawing, shape and diagram creation, text annotations, image uploads, multi-user cursors, version history, and export capabilities. These features will provide teams with a complete visual collaboration environment integrated directly into the botserver platform.
 
 ## Planned Endpoints
 

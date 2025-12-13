@@ -1,6 +1,6 @@
 # Bot Templates
 
-BotServer includes pre-built bot templates for various use cases. Each template is a complete `.gbai` package ready to deploy.
+botserver includes pre-built bot templates for various use cases. Each template is a complete `.gbai` package ready to deploy.
 
 ---
 

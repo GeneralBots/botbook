@@ -23,7 +23,7 @@ http://localhost:8080/api/v1/security
 
 ## Authentication
 
-Will use the standard BotServer authentication mechanism with elevated security permissions required.
+Will use the standard botserver authentication mechanism with elevated security permissions required.
 
 ## Endpoints (Planned)
 

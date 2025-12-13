@@ -1,6 +1,6 @@
 # Adding Dependencies
 
-BotServer is a single-crate Rust application, so all dependencies are managed through the root `Cargo.toml` file. This guide covers how to add, update, and manage dependencies effectively.
+botserver is a single-crate Rust application, so all dependencies are managed through the root `Cargo.toml` file. This guide covers how to add, update, and manage dependencies effectively.
 
 ## Adding a Dependency
 
@@ -106,7 +106,7 @@ core-foundation = "0.9"
 
 ## Existing Dependencies
 
-BotServer relies on a comprehensive set of dependencies organized by functionality.
+botserver relies on a comprehensive set of dependencies organized by functionality.
 
 ### Web Framework
 
@@ -279,7 +279,7 @@ cargo tree --duplicates
 
 ## Feature Management
 
-BotServer uses feature flags to enable optional functionality, allowing users to compile only what they need.
+botserver uses feature flags to enable optional functionality, allowing users to compile only what they need.
 
 ### Current Features
 

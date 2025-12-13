@@ -1,6 +1,6 @@
 # Document Processing API
 
-BotServer provides RESTful endpoints for processing, extracting, and analyzing various document formats including PDFs, Office documents, and images.
+botserver provides RESTful endpoints for processing, extracting, and analyzing various document formats including PDFs, Office documents, and images.
 
 ## Overview
 

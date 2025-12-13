@@ -1,6 +1,6 @@
 # Core Features
 
-Technical overview of BotServer capabilities. For the complete feature matrix, see [Feature Reference](./README.md).
+Technical overview of botserver capabilities. For the complete feature matrix, see [Feature Reference](./README.md).
 
 ## Multi-Channel Communication
 
