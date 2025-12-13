@@ -1,6 +1,6 @@
 # Tool Format
 
-BotServer generates OpenAI-compatible function definitions from BASIC scripts, enabling integration with OpenAI's function calling API.
+botserver generates OpenAI-compatible function definitions from BASIC scripts, enabling integration with OpenAI's function calling API.
 
 ## Overview
 
@@ -111,7 +111,7 @@ When using OpenAI's API, the functions are passed in the request:
 2. **Function Discovery**: GPT identifies relevant function
 3. **Parameter Extraction**: GPT extracts parameters from context
 4. **Function Call**: GPT generates structured function call
-5. **Execution**: BotServer executes the BASIC script
+5. **Execution**: botserver executes the BASIC script
 6. **Result Processing**: Output returned to GPT for response
 
 ## Example Function Calls
@@ -202,7 +202,7 @@ Function errors are handled gracefully:
 
 ## Limitations
 
-Current OpenAI format limitations in BotServer:
+Current OpenAI format limitations in botserver:
 - No nested objects in parameters
 - No array parameters
 - No enum constraints
@@ -249,4 +249,4 @@ To debug OpenAI function calls:
 
 ## Summary
 
-The OpenAI function format enables seamless integration between BASIC scripts and OpenAI's GPT models. By automatically generating compatible function definitions, BotServer allows natural language interactions to trigger complex business logic implementations.
+The OpenAI function format enables seamless integration between BASIC scripts and OpenAI's GPT models. By automatically generating compatible function definitions, botserver allows natural language interactions to trigger complex business logic implementations.

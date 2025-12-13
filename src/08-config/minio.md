@@ -1,14 +1,14 @@
 # Drive Integration
 
-The drive component provides S3-compatible object storage for BotServer, storing bot packages, documents, and user files.
+The drive component provides S3-compatible object storage for botserver, storing bot packages, documents, and user files.
 
 ## Overview
 
-BotServer uses the drive component as its primary storage backend for bot packages in `.gbai` directories, knowledge base documents in `.gbkb` files, configuration files like `config.csv`, media and attachments, and user-uploaded content.
+botserver uses the drive component as its primary storage backend for bot packages in `.gbai` directories, knowledge base documents in `.gbkb` files, configuration files like `config.csv`, media and attachments, and user-uploaded content.
 
 ## Configuration
 
-Storage configuration is automatically managed by the Directory service (Zitadel), so you do not need to configure storage credentials manually. During bootstrap, the Directory service provisions storage credentials, distributes them securely to BotServer, and handles credential rotation automatically.
+Storage configuration is automatically managed by the Directory service (Zitadel), so you do not need to configure storage credentials manually. During bootstrap, the Directory service provisions storage credentials, distributes them securely to botserver, and handles credential rotation automatically.
 
 ## Storage Structure
 
@@ -22,7 +22,7 @@ Each bot gets its own bucket named after the bot package. The bucket naming conv
 
 ### Automatic Upload
 
-When deploying a bot package, BotServer automatically creates a bucket if it doesn't exist, uploads all package files, maintains the directory structure, and preserves file permissions.
+When deploying a bot package, botserver automatically creates a bucket if it doesn't exist, uploads all package files, maintains the directory structure, and preserves file permissions.
 
 ### Real-time Synchronization
 
@@ -34,7 +34,7 @@ The `DriveMonitor` service watches for changes in drive storage. It detects conf
 
 ## Bootstrap Integration
 
-During bootstrap, BotServer handles installation by downloading and installing the drive binary if not present, receiving credentials from the Directory service, creating data directories, and uploading template files to drive storage.
+During bootstrap, botserver handles installation by downloading and installing the drive binary if not present, receiving credentials from the Directory service, creating data directories, and uploading template files to drive storage.
 
 Knowledge base files are uploaded to drive buckets, indexed for vector search, and cached locally for improved performance.
 
@@ -56,7 +56,7 @@ The built-in console provides a file browser for drive with paths like `/media/`
 
 ## S3-Compatible Client Configuration
 
-BotServer uses an S3-compatible client configured for the drive:
+botserver uses an S3-compatible client configured for the drive:
 
 ```rust
 let config = S3Config::builder()
@@ -85,7 +85,7 @@ lxc config device add default-drive data disk \
 
 ### External S3-Compatible Storage
 
-BotServer can use existing S3-compatible infrastructure. The Directory service manages the connection and supports providers including MinIO (the default local installation), Backblaze B2, Wasabi, DigitalOcean Spaces, Cloudflare R2, and any other S3-compatible service.
+botserver can use existing S3-compatible infrastructure. The Directory service manages the connection and supports providers including MinIO (the default local installation), Backblaze B2, Wasabi, DigitalOcean Spaces, Cloudflare R2, and any other S3-compatible service.
 
 To use external storage, configure it through the Directory service admin console.
 

@@ -1,10 +1,10 @@
 # Creating Custom Keywords
 
-BotServer's BASIC scripting language can be extended with custom keywords. All keywords are implemented as Rust functions in the `src/basic/keywords/` directory.
+botserver's BASIC scripting language can be extended with custom keywords. All keywords are implemented as Rust functions in the `src/basic/keywords/` directory.
 
 ## Overview
 
-Keywords in BotServer are Rust functions that get registered with the Rhai scripting engine. They provide the core functionality that BASIC scripts can use to interact with the system.
+Keywords in botserver are Rust functions that get registered with the Rhai scripting engine. They provide the core functionality that BASIC scripts can use to interact with the system.
 
 ## Keyword Implementation Structure
 
@@ -315,4 +315,4 @@ pub fn save_data_keyword(
 
 ## Summary
 
-Creating custom keywords extends BotServer's BASIC language capabilities. Keywords are Rust functions registered with the Rhai engine that provide access to system features, databases, external APIs, and more. Follow the patterns shown above to create robust, thread-safe keywords that integrate seamlessly with the BotServer ecosystem.
+Creating custom keywords extends botserver's BASIC language capabilities. Keywords are Rust functions registered with the Rhai engine that provide access to system features, databases, external APIs, and more. Follow the patterns shown above to create robust, thread-safe keywords that integrate seamlessly with the botserver ecosystem.

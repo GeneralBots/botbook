@@ -1,6 +1,6 @@
 # Cargo Tools Reference
 
-This chapter documents essential Cargo tools for BotServer development, including code coverage, security auditing, performance profiling, and code quality tools.
+This chapter documents essential Cargo tools for botserver development, including code coverage, security auditing, performance profiling, and code quality tools.
 
 ## Overview
 

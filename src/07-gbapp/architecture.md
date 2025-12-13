@@ -1,6 +1,6 @@
 # Architecture Overview
 
-BotServer follows a modular architecture designed for scalability, maintainability, and extensibility. Each module handles specific responsibilities and communicates through well-defined interfaces. This chapter provides a comprehensive tour of the system architecture and how components work together.
+botserver follows a modular architecture designed for scalability, maintainability, and extensibility. Each module handles specific responsibilities and communicates through well-defined interfaces. This chapter provides a comprehensive tour of the system architecture and how components work together.
 
 
 ## Core Architecture
@@ -9,11 +9,11 @@ The architecture diagrams below illustrate the major components and their relati
 
 ### Data Flow Architecture
 
-<img src="../assets/chapter-07/data-flow.svg" alt="BotServer Data Flow Architecture" style="max-height: 400px; width: 100%; object-fit: contain;">
+<img src="../assets/chapter-07/data-flow.svg" alt="botserver Data Flow Architecture" style="max-height: 400px; width: 100%; object-fit: contain;">
 
 ### System Architecture
 
-<img src="../assets/chapter-07/system-architecture.svg" alt="BotServer System Architecture" style="max-height: 400px; width: 100%; object-fit: contain;">
+<img src="../assets/chapter-07/system-architecture.svg" alt="botserver System Architecture" style="max-height: 400px; width: 100%; object-fit: contain;">
 
 
 ## Module Dependency Graph
@@ -136,7 +136,7 @@ Access control mechanisms ensure appropriate authorization. Role-based permissio
 
 ### Container Structure
 
-Production deployments typically use containers for isolation and portability. The main application container runs the BotServer binary. PostgreSQL runs in a separate database container. Drive storage uses an S3-compatible container like MinIO. The cache layer uses Valkey in its own container. Qdrant provides vector database functionality in another container. Nginx serves as a reverse proxy for external traffic.
+Production deployments typically use containers for isolation and portability. The main application container runs the botserver binary. PostgreSQL runs in a separate database container. Drive storage uses an S3-compatible container like MinIO. The cache layer uses Valkey in its own container. Qdrant provides vector database functionality in another container. Nginx serves as a reverse proxy for external traffic.
 
 ### Scaling Strategy
 

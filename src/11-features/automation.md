@@ -1,10 +1,10 @@
 # Automation
 
-This chapter explains how BotServer enables bots to perform scheduled and event-driven tasks without requiring direct user interaction. Through automation capabilities, bots can proactively maintain content, process data, and respond to system events, transforming them from reactive assistants into active participants in organizational workflows.
+This chapter explains how botserver enables bots to perform scheduled and event-driven tasks without requiring direct user interaction. Through automation capabilities, bots can proactively maintain content, process data, and respond to system events, transforming them from reactive assistants into active participants in organizational workflows.
 
 ## Automation Fundamentals
 
-BotServer implements automation through two complementary mechanisms. The SET SCHEDULE keyword enables cron-based task scheduling, allowing scripts to execute at predetermined times. Event triggers through the ON keyword enable scripts to respond to database changes and system events. Together, these mechanisms support a wide range of automation scenarios from simple periodic tasks to complex event-driven workflows.
+botserver implements automation through two complementary mechanisms. The SET SCHEDULE keyword enables cron-based task scheduling, allowing scripts to execute at predetermined times. Event triggers through the ON keyword enable scripts to respond to database changes and system events. Together, these mechanisms support a wide range of automation scenarios from simple periodic tasks to complex event-driven workflows.
 
 Understanding when to use automation is as important as understanding how. Automated tasks run without an active user session, which means they cannot directly communicate with users through TALK statements. Instead, automated scripts typically gather and process information, storing results in bot memory where users can access it during their next interaction.
 
@@ -108,4 +108,4 @@ Monitoring for runaway automation helps catch scripts that behave differently th
 
 ## Summary
 
-BotServer's automation capabilities transform bots from reactive assistants into proactive system participants. Through SET SCHEDULE and event triggers, bots can maintain fresh content, process data regularly, and respond to system events without user interaction. Understanding the automation lifecycle, limitations, and best practices enables effective use of these powerful capabilities while avoiding common pitfalls. Automation extends bot value by handling routine tasks automatically, freeing users to focus on work that requires human judgment.
+botserver's automation capabilities transform bots from reactive assistants into proactive system participants. Through SET SCHEDULE and event triggers, bots can maintain fresh content, process data regularly, and respond to system events without user interaction. Understanding the automation lifecycle, limitations, and best practices enables effective use of these powerful capabilities while avoiding common pitfalls. Automation extends bot value by handling routine tasks automatically, freeing users to focus on work that requires human judgment.

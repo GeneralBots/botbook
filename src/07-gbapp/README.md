@@ -4,7 +4,7 @@ Architecture and deployment reference for developers.
 
 ## Overview
 
-BotServer is built in Rust with a modular architecture. Extend it by creating custom keywords, services, or entire applications.
+botserver is built in Rust with a modular architecture. Extend it by creating custom keywords, services, or entire applications.
 
 ## Architecture
 
@@ -51,6 +51,22 @@ pub fn my_keyword(context: &mut EvalContext) -> Result<Dynamic, Box<EvalError>> 
 
 Register in `keywords/mod.rs` and rebuild.
 
+## Autonomous Task AI
+
+General Bots enables **autonomous task execution** where the machine does the work:
+
+```
+Human describes intent → AI plans → AI generates → AI deploys → AI monitors
+```
+
+Key concepts:
+- **Intent Compilation** - LLM translates natural language to execution plans
+- **CREATE SITE** - Generates HTMX apps bound to botserver API
+- **.gbdrive** - Cloud-synced workspace for all task files
+- **Autonomous Execution** - System runs plans with approval gates
+
+See [Autonomous Task AI](./autonomous-tasks.md) for complete documentation.
+
 ## Chapter Contents
 
 - [Architecture Overview](./architecture.md) - System design
@@ -60,6 +76,7 @@ Register in `keywords/mod.rs` and rebuild.
 - [Scaling](./scaling.md) - Load balancing
 - [Infrastructure](./infrastructure.md) - Hardware planning
 - [Observability](./observability.md) - Monitoring
+- [Autonomous Task AI](./autonomous-tasks.md) - Machine does the work
 - [Custom Keywords](./custom-keywords.md) - Extending BASIC
 - [Services](./services.md) - Service layer
 

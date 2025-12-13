@@ -1,6 +1,6 @@
 # First Conversation
 
-After BotServer starts, you can immediately start chatting with your bot. No programming required!
+After botserver starts, you can immediately start chatting with your bot. No programming required!
 
 ## Just Start Talking
 
@@ -103,7 +103,7 @@ Documents in `.gbkb/` combined with tools in `.bas` files and the LLM create an 
 
 ## Creating Your First Bot
 
-Start by creating the directory structure for your bot with folders for dialog scripts, knowledge base documents, and bot configuration. Add your documents to the `.gbkb/` directory including PDFs, Word documents, text files, and Markdown files. Optionally create tools as `.bas` files to handle specific actions like processing forms or calling APIs. Then restart BotServer and start chatting. The LLM will answer questions from your documents, call your tools when appropriate, and handle the entire conversation naturally.
+Start by creating the directory structure for your bot with folders for dialog scripts, knowledge base documents, and bot configuration. Add your documents to the `.gbkb/` directory including PDFs, Word documents, text files, and Markdown files. Optionally create tools as `.bas` files to handle specific actions like processing forms or calling APIs. Then restart botserver and start chatting. The LLM will answer questions from your documents, call your tools when appropriate, and handle the entire conversation naturally.
 
 ```bash
 mkdir -p mybot.gbai/mybot.gbdialog
@@ -125,7 +125,7 @@ TALK "Done! " + result
 
 ## No Programming Required
 
-Traditional chatbots require complex logic with IF/THEN statements, intent detection, and multi-step dialog management. With BotServer, you simply create the tool with parameters and a description, and the LLM handles all the conversation logic automatically.
+Traditional chatbots require complex logic with IF/THEN statements, intent detection, and multi-step dialog management. With botserver, you simply create the tool with parameters and a description, and the LLM handles all the conversation logic automatically.
 
 Traditional approach (don't do this):
 
@@ -140,7 +140,7 @@ IF intent = "enrollment" THEN
 ENDIF
 ```
 
-BotServer approach (just create the tool):
+botserver approach (just create the tool):
 
 ```basic
 ' In enrollment.bas - becomes a tool automatically

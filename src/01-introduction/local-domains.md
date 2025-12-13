@@ -1,16 +1,16 @@
 # Configuring Local Development Access
 
-After bootstrap, BotServer services are immediately accessible via **IP addresses** - no configuration required. For those who prefer friendly hostnames, optional DNS setup is also available.
+After bootstrap, botserver services are immediately accessible via **IP addresses** - no configuration required. For those who prefer friendly hostnames, optional DNS setup is also available.
 
 ## Zero Configuration: IP Access (Default)
 
-BotServer certificates include `127.0.0.1` as a Subject Alternative Name (SAN), so **mTLS works immediately** via IP address without any system changes.
+botserver certificates include `127.0.0.1` as a Subject Alternative Name (SAN), so **mTLS works immediately** via IP address without any system changes.
 
 ### Service Ports
 
 | Component | Description | IP:Port |
 |-----------|-------------|---------|
-| api | Main BotServer API | `127.0.0.1:8443` (HTTPS) / `127.0.0.1:8080` (HTTP) |
+| api | Main botserver API | `127.0.0.1:8443` (HTTPS) / `127.0.0.1:8080` (HTTP) |
 | tables | PostgreSQL database | `127.0.0.1:5432` |
 | drive | Object storage (S3-compatible) | `127.0.0.1:9000` |
 | cache | Redis cache | `127.0.0.1:6379` |
@@ -101,7 +101,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ### Remote Server Access
 
-If BotServer runs on a different machine (e.g., `192.168.1.100`), regenerate certificates with additional IP SANs:
+If botserver runs on a different machine (e.g., `192.168.1.100`), regenerate certificates with additional IP SANs:
 
 ```bash
 ./botserver regenerate-certs --san-ip 192.168.1.100 --san-ip 10.0.0.50
@@ -218,9 +218,9 @@ sudo dscacheutil -flushcache
 sudo killall -HUP mDNSResponder
 ```
 
-### Option 2: Use BotServer's CoreDNS
+### Option 2: Use botserver's CoreDNS
 
-BotServer runs CoreDNS on port 53. Point your system to use it as DNS server.
+botserver runs CoreDNS on port 53. Point your system to use it as DNS server.
 
 #### Windows
 
@@ -254,7 +254,7 @@ nameserver 127.0.0.1
 EOF
 ```
 
-This routes only `*.botserver.local` queries to BotServer's DNS.
+This routes only `*.botserver.local` queries to botserver's DNS.
 
 ---
 

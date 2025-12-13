@@ -211,7 +211,7 @@ BASIC provides built-in capabilities for common office tasks:
 
 ### Quick Start
 
-1. Download and run BotServer
+1. Download and run botserver
 2. Edit your bot's `.bas` files
 3. Configure settings in `config.csv`
 4. Deploy to any channel

@@ -1,6 +1,6 @@
 # Sessions and Channels
 
-Every conversation has memory. Sessions are the beating heart of BotServer because they remember who you are, what you have said, and where you left off. Even if you close your browser and come back tomorrow, your conversation continues right where it paused.
+Every conversation has memory. Sessions are the beating heart of botserver because they remember who you are, what you have said, and where you left off. Even if you close your browser and come back tomorrow, your conversation continues right where it paused.
 
 <img src="../assets/chapter-01/session-manager.svg" alt="Session Manager" style="max-height: 400px; width: 100%; object-fit: contain;">
 
@@ -216,4 +216,4 @@ TALK "I understand you need help with: " + answer
 
 ## Summary
 
-Sessions and channels work together seamlessly in BotServer. Sessions handle state management automatically across any channel, persist data reliably through cache and database layers, and scale efficiently to thousands of concurrent conversations. You focus on writing the conversation flow while the system handles memory management and multi-channel delivery transparently.
+Sessions and channels work together seamlessly in botserver. Sessions handle state management automatically across any channel, persist data reliably through cache and database layers, and scale efficiently to thousands of concurrent conversations. You focus on writing the conversation flow while the system handles memory management and multi-channel delivery transparently.

@@ -108,7 +108,7 @@ Note: Most service credentials (database, drive, cache) are fetched automaticall
 ### At Startup
 
 ```
-1. BotServer starts
+1. botserver starts
 2. Reads .env for VAULT_ADDR and VAULT_TOKEN (only 2 variables)
 3. Connects to Vault
 4. Fetches ALL service credentials:
@@ -437,7 +437,7 @@ vault kv put gbo/llm \
   openai_key=sk-new-key \
   anthropic_key=sk-ant-new-key
 
-# BotServer will pick up new keys automatically (cache TTL)
+# botserver will pick up new keys automatically (cache TTL)
 ```
 
 ### 5. Backup Vault Data
@@ -491,7 +491,7 @@ tar -czf vault-backup.tar.gz botserver-stack/data/vault/
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                       BotServer                                 │
+│                       botserver                                 │
 │         Connects to all services using Vault secrets            │
 └─────────────────────────────┬───────────────────────────────────┘
                               │

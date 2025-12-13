@@ -7,7 +7,7 @@ End-to-end (E2E) testing validates complete user workflows from platform loading
 E2E tests simulate real user interactions:
 
 1. **Platform Loading** - UI and API infrastructure operational
-2. **BotServer Initialization** - Backend service running and ready
+2. **botserver Initialization** - Backend service running and ready
 3. **User Authentication** - Login workflow functional
 4. **Chat Interaction** - Message sending and receiving
 5. **Logout** - Session management and access control
@@ -26,7 +26,7 @@ async fn test_complete_platform_flow_login_chat_logout() {
     // Phase 1: Platform Loading
     verify_platform_loading(&ctx).await?;
 
-    // Phase 2: BotServer Running
+    // Phase 2: botserver Running
     verify_botserver_running(&ctx).await?;
 
     // Phase 3: User Login
@@ -58,7 +58,7 @@ Checks:
 - Database migrations completed
 - Services are initialized
 
-### Phase 2: BotServer Initialization
+### Phase 2: botserver Initialization
 
 Verifies the backend service is operational:
 
@@ -129,7 +129,7 @@ cd gb/bottest
 # Platform loading verification
 cargo test --test e2e test_platform_loading_http_only -- --nocapture
 
-# BotServer startup verification
+# botserver startup verification
 cargo test --test e2e test_botserver_startup -- --nocapture
 ```
 
@@ -210,7 +210,7 @@ Reusable helper functions for custom tests:
 // Verify platform is operational
 verify_platform_loading(&ctx) -> Result<()>
 
-// Verify BotServer is running
+// Verify botserver is running
 verify_botserver_running(&ctx) -> Result<()>
 
 // Perform login with credentials
@@ -331,7 +331,7 @@ Typical execution times:
 | Test | Time | Resources |
 |------|------|-----------|
 | Platform loading (HTTP-only) | ~2s | Minimal |
-| BotServer startup (HTTP-only) | ~5s | Minimal |
+| botserver startup (HTTP-only) | ~5s | Minimal |
 | Login and chat flow | ~20s | Browser + Memory |
 | Complete flow with all phases | ~45s | Browser + Memory |
 | Full E2E test suite | ~2-3 min | High |
@@ -366,7 +366,7 @@ jobs:
 
 ## Temporary Stack Architecture (Future)
 
-When BotServer implements `--temp-stack`, E2E tests will run in isolated environments:
+When botserver implements `--temp-stack`, E2E tests will run in isolated environments:
 
 ```bash
 botserver --temp-stack
@@ -431,7 +431,7 @@ mod my_feature;
 ## Test Success Criteria
 
 ✓ Platform fully loads without errors
-✓ BotServer starts and becomes ready
+✓ botserver starts and becomes ready
 ✓ User can login with credentials
 ✓ Chat messages are sent and responses received
 ✓ User can logout and session is invalidated

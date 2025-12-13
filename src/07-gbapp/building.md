@@ -1,6 +1,6 @@
 # Building from Source
 
-This guide covers building BotServer from source, including dependencies, feature flags, and platform-specific considerations.
+This guide covers building botserver from source, including dependencies, feature flags, and platform-specific considerations.
 
 ## Prerequisites
 
@@ -72,8 +72,8 @@ choco install postgresql
 ## Clone Repository
 
 ```bash
-git clone https://github.com/GeneralBots/BotServer.git
-cd BotServer
+git clone https://github.com/GeneralBots/botserver.git
+cd botserver
 ```
 
 ## Build Configurations
@@ -137,7 +137,7 @@ cargo build --release --all-features
 
 ## Feature Flags
 
-BotServer supports the following features defined in `Cargo.toml`:
+botserver supports the following features defined in `Cargo.toml`:
 
 ```toml
 [features]
@@ -493,9 +493,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source \$HOME/.cargo/env
 "
 
-# Build BotServer
+# Build botserver
 lxc-attach -n botserver-build -- bash -c "
-git clone https://github.com/GeneralBots/BotServer /build
+git clone https://github.com/GeneralBots/botserver /build
 cd /build
 source \$HOME/.cargo/env
 cargo build --release --no-default-features
@@ -526,7 +526,7 @@ After building:
 
 1. Run the bootstrap process to install dependencies
 2. Configure `.env` file with database credentials
-3. Start BotServer and access web interface
+3. Start botserver and access web interface
 4. Create your first bot from templates
 
 See [Chapter 01: Run and Talk](../chapter-01/README.md) for next steps.

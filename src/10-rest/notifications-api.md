@@ -1,6 +1,6 @@
 # Notifications API
 
-BotServer provides RESTful endpoints for managing notifications across multiple channels including push notifications, in-app alerts, and message broadcasting.
+botserver provides RESTful endpoints for managing notifications across multiple channels including push notifications, in-app alerts, and message broadcasting.
 
 ## Overview
 
@@ -274,7 +274,7 @@ Send notification using a template.
   "template": "welcome_message",
   "recipients": ["user789"],
   "variables": {
-    "app_name": "BotServer",
+    "app_name": "botserver",
     "user_name": "John"
   }
 }

@@ -1,13 +1,13 @@
 # Users API
 
-The Users API provides endpoints for user management operations. User authentication is handled through Zitadel, with BotServer maintaining session associations and user preferences.
+The Users API provides endpoints for user management operations. User authentication is handled through Zitadel, with botserver maintaining session associations and user preferences.
 
 ## Overview
 
 User management in General Bots follows a federated model:
 
 - **Zitadel**: Primary identity provider (authentication, SSO, user creation)
-- **BotServer**: Session management, preferences, bot-specific user data
+- **botserver**: Session management, preferences, bot-specific user data
 
 ## Endpoints
 
@@ -367,7 +367,7 @@ For full user management, access Zitadel admin console:
 
 ## Database Schema
 
-BotServer maintains minimal user data:
+botserver maintains minimal user data:
 
 ```sql
 -- users table (synced from Zitadel)

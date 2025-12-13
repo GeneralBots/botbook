@@ -1,6 +1,6 @@
 # Tool Definition
 
-In BotServer, a **tool** is simply a `.bas` file. That's it!
+In botserver, a **tool** is simply a `.bas` file. That's it!
 
 ## How It Works
 
@@ -148,7 +148,7 @@ TALK "I can help with various tasks. What do you need?"
 
 ## Tool Format Conversion
 
-BotServer automatically converts your `.bas` tools to:
+botserver automatically converts your `.bas` tools to:
 
 - **MCP (Model Context Protocol)** format
 - **Groq/OpenAI-compatible function calling** format

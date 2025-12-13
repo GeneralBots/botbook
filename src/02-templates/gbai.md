@@ -1,6 +1,6 @@
 # .gbai Architecture
 
-**A bot is just a folder.** The `.gbai` extension marks a directory as a BotServer package containing everything needed to run a conversational AI bot - scripts, documents, configuration, and themes.
+**A bot is just a folder.** The `.gbai` extension marks a directory as a botserver package containing everything needed to run a conversational AI bot - scripts, documents, configuration, and themes.
 
 ## The Dead Simple Structure
 
@@ -21,7 +21,7 @@ That's it. No manifests, no build files, no dependencies. Copy the folder to dep
 
 ## How Bootstrap Finds Bots
 
-At startup, BotServer scans `templates/` for any folder ending in `.gbai`:
+At startup, botserver scans `templates/` for any folder ending in `.gbai`:
 
 ```
 templates/
@@ -177,7 +177,7 @@ No build step. No compilation. Just copy files.
 
 ## Multi-Bot Hosting
 
-One BotServer runs multiple bots:
+One botserver runs multiple bots:
 
 ```
 templates/
@@ -209,7 +209,7 @@ Each bot:
 
 ## Bootstrap Process
 
-When BotServer starts:
+When botserver starts:
 
 <img src="../assets/chapter-02/template-deployment-flow.svg" alt="Template Deployment Flow" style="max-height: 400px; width: 100%; object-fit: contain;">
 
@@ -277,6 +277,6 @@ user-file-limit,52428800
 
 ## Summary
 
-The `.gbai` architecture keeps bot development simple. No complex frameworks, no build systems, no deployment pipelines. Just organize your files in folders, and BotServer handles the rest. Focus on content and conversation, not configuration.
+The `.gbai` architecture keeps bot development simple. No complex frameworks, no build systems, no deployment pipelines. Just organize your files in folders, and botserver handles the rest. Focus on content and conversation, not configuration.
 
 Next: Learn about [.gbdialog Dialogs](./gbdialog.md) for writing conversation scripts.

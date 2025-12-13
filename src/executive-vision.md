@@ -207,7 +207,7 @@ General Bots includes built-in compliance templates:
 ## QUICK START
 
 ```bash
-# Install BotServer
+# Install botserver
 cargo install botserver
 
 # Initialize your deployment
@@ -264,7 +264,7 @@ botserver --start
 
 Pragmatismo develops General Bots as an open-source platform for enterprise AI and automation. Our focus is on delivering practical, production-ready solutions that organizations can deploy and customize to meet their specific needs.
 
-**Repository:** [github.com/GeneralBots/BotServer](https://github.com/GeneralBots/BotServer)
+**Repository:** [github.com/GeneralBots/botserver](https://github.com/GeneralBots/botserver)
 
 **License:** AGPL-3.0
 

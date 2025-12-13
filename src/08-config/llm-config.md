@@ -1,10 +1,10 @@
 # LLM Configuration
 
-Configuration for Language Model integration in BotServer, supporting both local GGUF models and external API services.
+Configuration for Language Model integration in botserver, supporting both local GGUF models and external API services.
 
 ## Local Model Configuration
 
-BotServer is designed to work with local GGUF models by default. The minimal configuration requires only a few settings in your `config.csv`:
+botserver is designed to work with local GGUF models by default. The minimal configuration requires only a few settings in your `config.csv`:
 
 ```csv
 llm-key,none
@@ -18,13 +18,13 @@ The `llm-model` parameter accepts relative paths like `../../../../data/llm/mode
 
 ### Supported Model Formats
 
-BotServer supports GGUF quantized models for CPU and GPU inference. Quantization levels include Q3_K_M, Q4_K_M, and Q5_K_M for reduced memory usage with acceptable quality trade-offs, while F16 and F32 provide full precision for maximum quality.
+botserver supports GGUF quantized models for CPU and GPU inference. Quantization levels include Q3_K_M, Q4_K_M, and Q5_K_M for reduced memory usage with acceptable quality trade-offs, while F16 and F32 provide full precision for maximum quality.
 
 ## LLM Server Configuration
 
 ### Running Embedded Server
 
-BotServer can run its own LLM server for local inference:
+botserver can run its own LLM server for local inference:
 
 ```csv
 llm-server,true
@@ -205,7 +205,7 @@ Memory errors require reducing resource consumption. Lower `llm-server-ctx-size`
 
 ### Connection Refused
 
-Connection errors usually indicate server configuration issues. Verify `llm-server` is set to true if expecting BotServer to run the server. Check that the configured port is not already in use by another process. Ensure firewall rules allow connections on the specified port.
+Connection errors usually indicate server configuration issues. Verify `llm-server` is set to true if expecting botserver to run the server. Check that the configured port is not already in use by another process. Ensure firewall rules allow connections on the specified port.
 
 ## Best Practices
 

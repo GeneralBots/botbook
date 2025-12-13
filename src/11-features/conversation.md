@@ -1,10 +1,10 @@
 # Conversation Management
 
-This chapter explores how BotServer manages conversations through sessions, message history, and context tracking. Understanding these mechanisms helps you build bots that maintain coherent, contextual interactions across multiple turns and sessions.
+This chapter explores how botserver manages conversations through sessions, message history, and context tracking. Understanding these mechanisms helps you build bots that maintain coherent, contextual interactions across multiple turns and sessions.
 
 ## The Conversation Lifecycle
 
-Every conversation in BotServer follows a well-defined lifecycle that begins when a user first connects and continues until the session expires or ends explicitly. When a user interacts with a bot, the system creates a session that serves as the container for all conversation state, including message history, user preferences, and any variables set during the interaction.
+Every conversation in botserver follows a well-defined lifecycle that begins when a user first connects and continues until the session expires or ends explicitly. When a user interacts with a bot, the system creates a session that serves as the container for all conversation state, including message history, user preferences, and any variables set during the interaction.
 
 Sessions persist across individual messages, allowing conversations to span multiple interactions. A user might ask a question, receive a response, and return hours later to continue the same conversation thread. The system maintains this continuity by storing session data in PostgreSQL for durability while caching active sessions in the cache layer for fast access.
 
@@ -30,7 +30,7 @@ Scripts can manipulate context directly through dedicated keywords. Setting cont
 
 ## Multi-Turn Interaction Patterns
 
-Conversations rarely consist of single isolated exchanges. Users ask follow-up questions, refine requests, and reference earlier parts of the conversation. BotServer's architecture specifically supports these multi-turn patterns through careful context management and entity tracking.
+Conversations rarely consist of single isolated exchanges. Users ask follow-up questions, refine requests, and reference earlier parts of the conversation. botserver's architecture specifically supports these multi-turn patterns through careful context management and entity tracking.
 
 When a user says "Book a meeting for tomorrow" followed by "Make it at 2 PM," the system must understand that "it" refers to the meeting mentioned in the previous turn. This reference resolution happens automatically through the included conversation history, which gives the model the context needed to interpret pronouns and implicit references correctly.
 
@@ -40,7 +40,7 @@ Guided conversations implement multi-step flows where the bot collects informati
 
 ## Session Recovery and Continuity
 
-Network interruptions, browser refreshes, and other disruptions shouldn't break conversation flow. BotServer implements robust session recovery that allows users to seamlessly continue where they left off.
+Network interruptions, browser refreshes, and other disruptions shouldn't break conversation flow. botserver implements robust session recovery that allows users to seamlessly continue where they left off.
 
 When a user reconnects, the session identifier validates their return. The system retrieves stored history and reconstructs the conversation context. The user can then continue as if no interruption occurred, with full access to previous exchanges and accumulated state.
 
@@ -48,7 +48,7 @@ Error recovery extends beyond simple disconnections. If a response generation fa
 
 ## Anonymous and Authenticated Conversations
 
-BotServer supports both authenticated users and anonymous visitors, with different handling for each case. Understanding these distinctions helps design appropriate conversation experiences.
+botserver supports both authenticated users and anonymous visitors, with different handling for each case. Understanding these distinctions helps design appropriate conversation experiences.
 
 Anonymous sessions receive temporary identifiers that exist only for the duration of the session. Permissions are limited compared to authenticated users. Storage is typically short-term, with sessions expiring quickly after inactivity. These constraints reflect the reduced trust level for unidentified users.
 
@@ -64,7 +64,7 @@ Messages follow a structured format with type identifiers, content payloads, and
 
 ## Conversation Analytics
 
-Understanding how conversations perform helps improve bot effectiveness. BotServer tracks numerous metrics that reveal conversation patterns and quality indicators.
+Understanding how conversations perform helps improve bot effectiveness. botserver tracks numerous metrics that reveal conversation patterns and quality indicators.
 
 Quantitative metrics include message counts, conversation lengths, response times, and tool usage frequency. These numbers identify basic patterns like peak usage times and average conversation depth.
 
@@ -82,7 +82,7 @@ These settings balance resource usage against conversation quality and complianc
 
 ## Privacy and Compliance
 
-Conversation data represents sensitive information that requires careful handling. BotServer implements multiple safeguards to protect user privacy while meeting compliance requirements.
+Conversation data represents sensitive information that requires careful handling. botserver implements multiple safeguards to protect user privacy while meeting compliance requirements.
 
 Data retention policies ensure information doesn't persist longer than necessary. Compression and archival reduce storage costs while maintaining accessibility for compliance purposes. Clear deletion procedures support user rights to have their data removed.
 
@@ -90,4 +90,4 @@ Access controls limit who can view conversation history. Users see their own con
 
 ## Summary
 
-Conversation management in BotServer provides the foundation for meaningful bot interactions. Through careful session handling, comprehensive message history, sophisticated context assembly, and robust recovery mechanisms, the system enables conversations that feel natural and maintain coherence across multiple turns, sessions, and circumstances. Understanding these capabilities helps developers build bots that engage users effectively while respecting privacy and compliance requirements.
+Conversation management in botserver provides the foundation for meaningful bot interactions. Through careful session handling, comprehensive message history, sophisticated context assembly, and robust recovery mechanisms, the system enables conversations that feel natural and maintain coherence across multiple turns, sessions, and circumstances. Understanding these capabilities helps developers build bots that engage users effectively while respecting privacy and compliance requirements.

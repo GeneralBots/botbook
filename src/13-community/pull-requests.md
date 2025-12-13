@@ -1,11 +1,11 @@
 # Pull Requests
 
-This guide covers the pull request process for contributing to BotServer, from creation to merge. Understanding this process helps ensure your contributions are reviewed efficiently and merged successfully.
+This guide covers the pull request process for contributing to botserver, from creation to merge. Understanding this process helps ensure your contributions are reviewed efficiently and merged successfully.
 
 
 ## Overview
 
-Pull requests are the primary method for contributing code to BotServer. They provide a structured way to propose changes, enabling code review, discussion, and automated testing before changes are merged into the main codebase. Every contribution, whether a bug fix, new feature, or documentation update, follows this process.
+Pull requests are the primary method for contributing code to botserver. They provide a structured way to propose changes, enabling code review, discussion, and automated testing before changes are merged into the main codebase. Every contribution, whether a bug fix, new feature, or documentation update, follows this process.
 
 
 ## Before Creating a PR

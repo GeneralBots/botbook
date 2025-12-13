@@ -20,7 +20,7 @@ http://localhost:8080/api/v1/backup
 
 ## Authentication
 
-Will use the standard BotServer authentication mechanism with appropriate role-based permissions.
+Will use the standard botserver authentication mechanism with appropriate role-based permissions.
 
 ## Endpoints (Planned)
 

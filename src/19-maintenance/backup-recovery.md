@@ -1,6 +1,6 @@
 # Backup and Recovery
 
-Protecting your BotServer data requires regular backups of databases, configurations, and file storage. This guide covers backup strategies, procedures, and disaster recovery.
+Protecting your botserver data requires regular backups of databases, configurations, and file storage. This guide covers backup strategies, procedures, and disaster recovery.
 
 ---
 
@@ -259,7 +259,7 @@ fi
 # Create manifest
 echo "Creating manifest..."
 cat > "$BACKUP_DIR/manifest.txt" << EOF
-BotServer Backup
+botserver Backup
 Date: $(date)
 Host: $(hostname)
 
@@ -295,7 +295,7 @@ Add to crontab:
 
 ### Recovery Procedure
 
-1. **Install fresh BotServer**
+1. **Install fresh botserver**
    ```bash
    ./botserver --skip-bootstrap
    ```

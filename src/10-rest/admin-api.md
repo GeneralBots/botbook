@@ -21,7 +21,7 @@ http://localhost:8080/api/v1/admin
 
 ## Authentication
 
-Will use the standard BotServer authentication mechanism with administrator-level permissions required.
+Will use the standard botserver authentication mechanism with administrator-level permissions required.
 
 ## Endpoints (Planned)
 

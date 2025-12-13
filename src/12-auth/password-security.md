@@ -16,7 +16,7 @@ Password security is handled entirely by Zitadel, which provides:
 ### What General Bots Does NOT Do
 
 - **No password storage**: No password or hash columns in database
-- **No hashing implementation**: No Argon2/bcrypt code in BotServer
+- **No hashing implementation**: No Argon2/bcrypt code in botserver
 - **No password validation**: All validation done by Zitadel
 - **No password reset logic**: Handled through Zitadel workflows
 - **No password policies**: Configured in Zitadel admin console
@@ -246,7 +246,7 @@ Zitadel's password handling helps meet:
 - **Professional Implementation**: Security experts maintain Zitadel
 - **Regular Updates**: Security patches applied by Zitadel team
 - **Compliance**: Certifications maintained by Zitadel
-- **No Liability**: Password breaches not BotServer's responsibility
+- **No Liability**: Password breaches not botserver's responsibility
 
 ### Reduced Attack Surface
 

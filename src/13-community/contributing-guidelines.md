@@ -2,7 +2,7 @@
 
 ## 1. Search for Duplicates
 
-[Search the existing issues](https://github.com/pragmatismo-io/BotServer/issues) before logging a new one.
+[Search the existing issues](https://github.com/pragmatismo-io/botserver/issues) before logging a new one.
 
 ## 2. Do you have a question?
 

@@ -1,10 +1,10 @@
 # Email Integration
 
-BotServer provides email integration capabilities through IMAP/SMTP protocols, allowing bots to read, send, and manage emails.
+botserver provides email integration capabilities through IMAP/SMTP protocols, allowing bots to read, send, and manage emails.
 
 ## Overview
 
-Email integration in BotServer enables reading emails via IMAP, sending emails via SMTP, email account management, draft creation and management, folder organization, and email-based automation workflows.
+Email integration in botserver enables reading emails via IMAP, sending emails via SMTP, email account management, draft creation and management, folder organization, and email-based automation workflows.
 
 ## Configuration
 
@@ -176,7 +176,7 @@ Provider-specific rate limits apply to all email operations. Implement delays be
 
 ### Gmail Configuration
 
-To configure Gmail, first enable 2-factor authentication on your Google account. Then generate an app-specific password for BotServer to use. Enable IMAP access in Gmail settings. Use `imap.gmail.com` on port 993 for IMAP and `smtp.gmail.com` on port 587 for SMTP.
+To configure Gmail, first enable 2-factor authentication on your Google account. Then generate an app-specific password for botserver to use. Enable IMAP access in Gmail settings. Use `imap.gmail.com` on port 993 for IMAP and `smtp.gmail.com` on port 587 for SMTP.
 
 ### Outlook/Office 365
 
@@ -221,4 +221,4 @@ Regular health checks should verify IMAP connectivity, SMTP availability, accoun
 
 ## Summary
 
-Email integration in BotServer enables powerful email-based automation and communication. Through IMAP/SMTP protocols and BASIC script integration, bots can manage email workflows, automate responses, and integrate email with other bot features for comprehensive communication automation.
+Email integration in botserver enables powerful email-based automation and communication. Through IMAP/SMTP protocols and BASIC script integration, bots can manage email workflows, automate responses, and integrate email with other bot features for comprehensive communication automation.

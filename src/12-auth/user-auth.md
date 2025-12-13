@@ -160,7 +160,7 @@ General Bots integrates with the directory service through:
 
 1. User registration request sent to directory service
 2. Directory service creates user account
-3. User ID returned to BotServer
+3. User ID returned to botserver
 4. General Bots creates local user reference
 5. Session established with General Bots
 

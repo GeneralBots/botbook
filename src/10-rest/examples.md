@@ -1,6 +1,6 @@
 # API Examples
 
-This section provides practical examples of using the BotServer REST API in various programming languages and scenarios.
+This section provides practical examples of using the botserver REST API in various programming languages and scenarios.
 
 ## Authentication Examples
 
@@ -406,7 +406,7 @@ describe('Groups API', () => {
 
 ## Summary
 
-These examples demonstrate common patterns for interacting with the BotServer API. Remember to:
+These examples demonstrate common patterns for interacting with the botserver API. Remember to:
 - Handle authentication properly through Zitadel
 - Check response status codes
 - Parse error responses

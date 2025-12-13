@@ -1,10 +1,10 @@
 # Updating Components
 
-BotServer's stack components are regularly updated by their respective maintainers. This guide explains how to check for updates, apply them safely, and verify everything works correctly.
+botserver's stack components are regularly updated by their respective maintainers. This guide explains how to check for updates, apply them safely, and verify everything works correctly.
 
 ## Update Philosophy
 
-BotServer uses a **conservative update strategy**:
+botserver uses a **conservative update strategy**:
 
 1. **Pinned Versions** - Each component has a tested version in `3rdparty.toml`
 2. **Checksum Verification** - Downloads are verified with SHA256 hashes
@@ -23,7 +23,7 @@ Check installed versions:
 
 Example output:
 ```
-BotServer Stack Versions:
+botserver Stack Versions:
   vault:     1.15.4
   tables:    17.2.0 (PostgreSQL)
   directory: 2.70.4 (Zitadel)
@@ -293,7 +293,7 @@ filename = "vault_1.15.4_linux_amd64.zip"
 
 ### Automatic Detection
 
-BotServer automatically detects your platform and downloads the appropriate build:
+botserver automatically detects your platform and downloads the appropriate build:
 
 1. **Operating System** - Linux, macOS, Windows
 2. **Architecture** - x64, ARM64, s390x

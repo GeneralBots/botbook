@@ -1,10 +1,10 @@
 # External APIs
 
-BotServer enables integration with external APIs through BASIC scripts, allowing bots to connect with third-party services and extend functionality beyond built-in capabilities.
+botserver enables integration with external APIs through BASIC scripts, allowing bots to connect with third-party services and extend functionality beyond built-in capabilities.
 
 ## Overview
 
-External API integration in BotServer is achieved through:
+External API integration in botserver is achieved through:
 - The `GET` keyword for HTTP/HTTPS requests
 - LLM function calling for API interactions
 - BASIC script logic for response processing
@@ -63,7 +63,7 @@ let data = GET url
 
 ### Bearer Token (via Headers)
 
-Currently, BotServer's GET keyword doesn't support custom headers directly. For APIs requiring Bearer tokens or custom headers, you need to:
+Currently, botserver's GET keyword doesn't support custom headers directly. For APIs requiring Bearer tokens or custom headers, you need to:
 1. Use proxy endpoints that add authentication
 2. Or use APIs that support key-in-URL authentication
 
@@ -255,4 +255,4 @@ TALK "Latest news: " + news
 
 ## Summary
 
-While BotServer's external API capabilities are currently limited to GET requests, creative use of response processing and bot memory for state management enables integration with many third-party services. For more complex API interactions, consider using proxy services or custom integrations.
+While botserver's external API capabilities are currently limited to GET requests, creative use of response processing and bot memory for state management enables integration with many third-party services. For more complex API interactions, consider using proxy services or custom integrations.

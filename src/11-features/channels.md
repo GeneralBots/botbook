@@ -1,10 +1,10 @@
 # Multi-Channel Support
 
-This chapter describes how BotServer enables bots to communicate with users across different platforms through its flexible multi-channel architecture. The design ensures that conversation logic remains consistent regardless of how users choose to interact, while still taking advantage of each channel's unique capabilities.
+This chapter describes how botserver enables bots to communicate with users across different platforms through its flexible multi-channel architecture. The design ensures that conversation logic remains consistent regardless of how users choose to interact, while still taking advantage of each channel's unique capabilities.
 
 ## Architectural Foundation
 
-BotServer abstracts communication methods through a channel adapter pattern that separates bot logic from platform-specific details. When a user sends a message, it flows from their chosen platform through a channel adapter that converts the platform-specific format into a common message structure. The bot processes this message, generates a response, and the adapter converts it back to the appropriate format for delivery.
+botserver abstracts communication methods through a channel adapter pattern that separates bot logic from platform-specific details. When a user sends a message, it flows from their chosen platform through a channel adapter that converts the platform-specific format into a common message structure. The bot processes this message, generates a response, and the adapter converts it back to the appropriate format for delivery.
 
 This abstraction provides significant benefits for bot development. The same BASIC scripts work across all supported channels without modification. Conversation state persists even when users switch between platforms. New channels can be added without changing existing bot logic.
 
@@ -20,7 +20,7 @@ The implementation handles WebSocket connection management, maintaining long-liv
 
 ## Voice Interaction
 
-When the voice feature is enabled, BotServer supports spoken interaction through speech-to-text and text-to-speech processing. Voice conversations follow a continuous flow where the system listens for user speech, converts it to text, processes it through the same BASIC scripts used for text channels, and converts the response back to speech for playback.
+When the voice feature is enabled, botserver supports spoken interaction through speech-to-text and text-to-speech processing. Voice conversations follow a continuous flow where the system listens for user speech, converts it to text, processes it through the same BASIC scripts used for text channels, and converts the response back to speech for playback.
 
 This channel requires integration with speech services and is optional due to its additional infrastructure requirements. Organizations that enable voice interaction can serve users who prefer speaking to typing or who are in situations where hands-free operation is beneficial.
 
@@ -86,4 +86,4 @@ Monitoring channel metrics helps identify performance issues or user experience 
 
 ## Summary
 
-BotServer's multi-channel architecture enables bots to reach users wherever they prefer to communicate while maintaining consistent conversation logic and state. The channel adapter pattern isolates platform-specific concerns from bot development, allowing the same scripts to work across current channels and future integrations. This design philosophy prioritizes developer productivity and user experience across an expanding communication landscape.
+botserver's multi-channel architecture enables bots to reach users wherever they prefer to communicate while maintaining consistent conversation logic and state. The channel adapter pattern isolates platform-specific concerns from bot development, allowing the same scripts to work across current channels and future integrations. This design philosophy prioritizes developer productivity and user experience across an expanding communication landscape.

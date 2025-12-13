@@ -1,12 +1,12 @@
 # Calls API
 
-The Calls API provides endpoints for managing voice and video calls, conference rooms, and real-time communication within BotServer.
+The Calls API provides endpoints for managing voice and video calls, conference rooms, and real-time communication within botserver.
 
 ## Status
 
 **⚠️ NOT IMPLEMENTED**
 
-This API is planned for future development but is not currently available in BotServer.
+This API is planned for future development but is not currently available in botserver.
 
 ## Planned Features
 

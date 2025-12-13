@@ -1,6 +1,6 @@
 # GET Keyword Integration
 
-The `GET` keyword in BotServer provides file retrieval capabilities from both local filesystem and drive (S3-compatible) storage, enabling tools to access documents, data files, and other resources.
+The `GET` keyword in botserver provides file retrieval capabilities from both local filesystem and drive (S3-compatible) storage, enabling tools to access documents, data files, and other resources.
 
 ## Overview
 

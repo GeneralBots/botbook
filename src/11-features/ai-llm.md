@@ -1,11 +1,11 @@
 # AI and LLM
 
-BotServer integrates with Large Language Models to provide intelligent conversational capabilities and natural language understanding. This integration forms the core of what makes General Bots conversations feel natural and contextually aware.
+botserver integrates with Large Language Models to provide intelligent conversational capabilities and natural language understanding. This integration forms the core of what makes General Bots conversations feel natural and contextually aware.
 
 
 ## Overview
 
-The LLM integration in BotServer enables sophisticated conversational experiences. Natural language conversations flow smoothly without rigid command structures. Responses are context-aware, drawing on conversation history and loaded knowledge bases. The system automatically discovers and invokes tools when they would help answer user questions. Document understanding allows bots to read and reason about uploaded files. Text generation and summarization capabilities support content creation and information distillation.
+The LLM integration in botserver enables sophisticated conversational experiences. Natural language conversations flow smoothly without rigid command structures. Responses are context-aware, drawing on conversation history and loaded knowledge bases. The system automatically discovers and invokes tools when they would help answer user questions. Document understanding allows bots to read and reason about uploaded files. Text generation and summarization capabilities support content creation and information distillation.
 
 
 ## LLM Providers
@@ -23,7 +23,7 @@ LLM_MODEL=gpt-5
 
 ### Local Models
 
-For privacy-sensitive deployments or cost control, BotServer supports self-hosted models. Llama.cpp compatible servers provide open-source model hosting. Custom inference endpoints allow integration with any API-compatible service. Privacy-preserving deployments keep all data on-premises without external API calls.
+For privacy-sensitive deployments or cost control, botserver supports self-hosted models. Llama.cpp compatible servers provide open-source model hosting. Custom inference endpoints allow integration with any API-compatible service. Privacy-preserving deployments keep all data on-premises without external API calls.
 
 Configuration for local models specifies the provider type and endpoint:
 
@@ -186,7 +186,7 @@ GPT-5 mini offers the fastest responses at the lowest cost, suitable for straigh
 
 ## Integration with Tools
 
-LLMs in BotServer work closely with the tool system. The model receives tool definitions describing available functions. When a user request would benefit from tool use, the model generates a tool call. BotServer executes the tool and returns results to the model. The model incorporates tool results into its final response.
+LLMs in botserver work closely with the tool system. The model receives tool definitions describing available functions. When a user request would benefit from tool use, the model generates a tool call. botserver executes the tool and returns results to the model. The model incorporates tool results into its final response.
 
 This integration enables bots to take actions beyond conversation, such as querying databases, sending emails, or calling external APIs, all orchestrated naturally through conversation.
 

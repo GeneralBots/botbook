@@ -1,12 +1,12 @@
 # Calendar API
 
-The Calendar API provides endpoints for managing events, schedules, and time-based activities within BotServer.
+The Calendar API provides endpoints for managing events, schedules, and time-based activities within botserver.
 
 ## Status
 
 **⚠️ NOT IMPLEMENTED**
 
-This API is planned for future development but is not currently available in BotServer.
+This API is planned for future development but is not currently available in botserver.
 
 ## Planned Features
 

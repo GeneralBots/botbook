@@ -26,9 +26,6 @@ General Bots can run on any device, from mobile phones to minimal embedded hardw
 - [Local LLM](./local-llm.md) - Offline AI with llama.cpp
 - [Buying Guide](./buying-guide.md) - Choose your first SBC
 
-### Robotics
-- [Humanoid Robots](./humanoid.md) - Build intelligent humanoids with CV, LLM, and movement control
-
 ### Deployment Options
 
 | Platform | Use Case | Requirements |
@@ -37,4 +34,3 @@ General Bots can run on any device, from mobile phones to minimal embedded hardw
 | **Raspberry Pi** | IoT, displays, terminals | 1GB+ RAM |
 | **Orange Pi** | Full offline AI | 4GB+ RAM for LLM |
 | **Industrial** | Factory, retail, healthcare | Any ARM/x86 SBC |
-| **Humanoid Robots** | Service, reception, research | Servo kit + compute board |

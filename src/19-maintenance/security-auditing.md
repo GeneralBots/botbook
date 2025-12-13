@@ -1,6 +1,6 @@
 # Security Auditing
 
-Regular security audits ensure your BotServer installation remains protected against known vulnerabilities. This guide covers automated scanning, manual reviews, and best practices.
+Regular security audits ensure your botserver installation remains protected against known vulnerabilities. This guide covers automated scanning, manual reviews, and best practices.
 
 ---
 
@@ -8,7 +8,7 @@ Regular security audits ensure your BotServer installation remains protected aga
 
 ### cargo-audit
 
-BotServer uses `cargo-audit` to scan Rust dependencies for known vulnerabilities.
+botserver uses `cargo-audit` to scan Rust dependencies for known vulnerabilities.
 
 **Install cargo-audit:**
 
@@ -366,7 +366,7 @@ Create `security-audit.sh`:
 #!/bin/bash
 set -e
 
-echo "=== BotServer Security Audit ==="
+echo "=== botserver Security Audit ==="
 echo "Date: $(date)"
 echo
 
@@ -411,7 +411,7 @@ chmod +x security-audit.sh
 
 ## Reporting Vulnerabilities
 
-If you discover a security vulnerability in BotServer:
+If you discover a security vulnerability in botserver:
 
 1. **Do NOT** create a public GitHub issue
 2. Email security@generalbots.ai with details

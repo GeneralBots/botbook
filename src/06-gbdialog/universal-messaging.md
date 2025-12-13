@@ -1,6 +1,6 @@
 # Universal Messaging & Multi-Channel
 
-BotServer automatically handles conversations across different channels (Web, WhatsApp, Email, etc.) using the same BASIC scripts. Write once, deploy everywhere.
+botserver automatically handles conversations across different channels (Web, WhatsApp, Email, etc.) using the same BASIC scripts. Write once, deploy everywhere.
 
 ## How It Works
 
@@ -34,7 +34,7 @@ Deploy bots directly to Teams channels and direct messages.
 
 ## Channel Detection
 
-BotServer automatically detects the channel based on the session context. No special code needed:
+botserver automatically detects the channel based on the session context. No special code needed:
 
 ```basic
 ' This works on ALL channels
@@ -46,7 +46,7 @@ TALK "Nice to meet you, " + name
 
 ## Channel-Specific Formatting
 
-While your code stays the same, BotServer automatically handles channel-specific formatting:
+While your code stays the same, botserver automatically handles channel-specific formatting:
 
 ### Web
 - Full HTML support
@@ -128,4 +128,4 @@ channel-teams,disabled
 
 ## Summary
 
-Universal messaging means your BASIC scripts work across all channels without modification. BotServer handles the complexity of channel-specific formatting and delivery, letting you focus on the conversation logic.
+Universal messaging means your BASIC scripts work across all channels without modification. botserver handles the complexity of channel-specific formatting and delivery, letting you focus on the conversation logic.

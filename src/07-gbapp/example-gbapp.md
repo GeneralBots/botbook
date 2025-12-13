@@ -1,6 +1,6 @@
 # Example: Creating a New gbapp Virtual Crate
 
-This guide walks through creating a new gbapp virtual crate called `analytics` that adds analytics capabilities to BotServer.
+This guide walks through creating a new gbapp virtual crate called `analytics` that adds analytics capabilities to botserver.
 
 ## Step 1: Create the Module Structure
 
@@ -351,4 +351,4 @@ Creating a gbapp virtual crate is straightforward:
 4. Register with core
 5. Use in BASIC scripts
 
-Your gbapp becomes part of BotServer's compiled binary, providing native performance while maintaining the conceptual clarity of the package system. Most importantly, remember that the implementation should be minimal - let BASIC + LLM handle the complexity!
+Your gbapp becomes part of botserver's compiled binary, providing native performance while maintaining the conceptual clarity of the package system. Most importantly, remember that the implementation should be minimal - let BASIC + LLM handle the complexity!

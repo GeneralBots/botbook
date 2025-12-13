@@ -4,7 +4,7 @@ This chapter covers bot configuration through the `config.csv` file system. Each
 
 ## Configuration System
 
-BotServer uses a straightforward name-value CSV format for configuration:
+botserver uses a straightforward name-value CSV format for configuration:
 
 ```csv
 name,value

@@ -1,6 +1,6 @@
 # Caching
 
-BotServer includes automatic caching to improve response times and reduce redundant processing, including semantic caching for LLM responses using an in-memory cache component.
+botserver includes automatic caching to improve response times and reduce redundant processing, including semantic caching for LLM responses using an in-memory cache component.
 
 <img src="../assets/chapter-03/caching-architecture.svg" alt="Caching Architecture" style="max-height: 400px; width: 100%; object-fit: contain;">
 
@@ -10,7 +10,7 @@ The caching system provides exact match caching for identical prompts and semant
 
 ## How Caching Works
 
-Caching in BotServer is controlled by configuration parameters in `config.csv`. The system automatically caches LLM responses and manages conversation history.
+Caching in botserver is controlled by configuration parameters in `config.csv`. The system automatically caches LLM responses and manages conversation history.
 
 When enabled, the semantic cache operates through a straightforward process. When a user asks a question, the system checks if a semantically similar question was asked before. If the similarity exceeds the threshold (typically 0.95), it returns the cached response. Otherwise, it generates a new response and caches it for future queries.
 
@@ -143,4 +143,4 @@ Cache is managed automatically through TTL expiration and eviction policies. To 
 
 ## Summary
 
-The semantic caching system in BotServer provides intelligent response caching that reduces response latency by 10-100x and cuts API costs by 90% or more. Response quality is maintained through semantic matching that understands query intent rather than requiring exact matches. The system scales automatically with the cache component to handle increasing load. Configure caching based on your bot's needs, monitor performance metrics, and tune parameters for optimal results.
+The semantic caching system in botserver provides intelligent response caching that reduces response latency by 10-100x and cuts API costs by 90% or more. Response quality is maintained through semantic matching that understands query intent rather than requiring exact matches. The system scales automatically with the cache component to handle increasing load. Configure caching based on your bot's needs, monitor performance metrics, and tune parameters for optimal results.

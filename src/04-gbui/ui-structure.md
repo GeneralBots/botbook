@@ -1,6 +1,6 @@
 # UI Structure
 
-The BotServer UI system provides two interface implementations designed for different deployment scenarios. Choose the right interface based on your use case and performance requirements.
+The botserver UI system provides two interface implementations designed for different deployment scenarios. Choose the right interface based on your use case and performance requirements.
 
 <img src="../assets/gb-decorative-header.svg" alt="General Bots" style="max-height: 100px; width: 100%; object-fit: contain;">
 

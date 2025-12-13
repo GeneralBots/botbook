@@ -266,9 +266,9 @@ WantedBy=multi-user.target
 
 ## Container Lifecycle
 
-The startup flow begins with creating the LXC container from a template, then configuring resources for CPU, memory, and storage, then starting the BotServer binary, and finally marking the container as ready and adding it to the load balancer pool.
+The startup flow begins with creating the LXC container from a template, then configuring resources for CPU, memory, and storage, then starting the botserver binary, and finally marking the container as ready and adding it to the load balancer pool.
 
-The shutdown flow begins with an active container serving requests, then draining to stop accepting new connections, then stopping with a graceful BotServer shutdown, and finally deleting or returning the container to the pool.
+The shutdown flow begins with an active container serving requests, then draining to stop accepting new connections, then stopping with a graceful botserver shutdown, and finally deleting or returning the container to the pool.
 
 ## Load Balancing
 
@@ -423,7 +423,7 @@ observability-bucket,metrics
 
 ### Option 2: Vector + InfluxDB (Recommended)
 
-Vector serves as a log and metric aggregator. BotServer logs flow to Vector which pipelines them to InfluxDB for metrics storage and Grafana for dashboards.
+Vector serves as a log and metric aggregator. botserver logs flow to Vector which pipelines them to InfluxDB for metrics storage and Grafana for dashboards.
 
 Vector configuration:
 

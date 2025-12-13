@@ -2,7 +2,7 @@
 
 ## Installation in 3 Steps
 
-### 1. Run BotServer
+### 1. Run botserver
 
 ```bash
 ./botserver
@@ -15,7 +15,7 @@ That's it! No configuration needed.
 You'll see:
 
 ```
-BotServer starting...
+botserver starting...
 Bootstrap: Detecting system...
 Installing PostgreSQL...
    Database created
@@ -28,7 +28,7 @@ Installing Cache...
 Creating bots from templates...
    default.gbai deployed
    announcements.gbai deployed
-BotServer ready at http://localhost:8080
+botserver ready at http://localhost:8080
 ```
 
 ### 3. Open Browser
@@ -117,7 +117,7 @@ The bot automatically:
 
 ## Container Deployment (LXC)
 
-For production isolation, BotServer supports **LXC** (Linux Containers):
+For production isolation, botserver supports **LXC** (Linux Containers):
 
 ```bash
 # Create container
@@ -127,7 +127,7 @@ lxc-create -n botserver -t download -- -d ubuntu -r jammy -a amd64
 lxc-start -n botserver
 lxc-attach -n botserver
 
-# Install BotServer inside container
+# Install botserver inside container
 ./botserver
 ```
 

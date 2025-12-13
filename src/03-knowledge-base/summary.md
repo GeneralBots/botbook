@@ -1,6 +1,6 @@
 # Chapter 03 – Knowledge Base System Overview
 
-This chapter explains how BotServer manages knowledge base collections, indexing, caching, semantic search, and conversation memory. The implementation uses vector databases for semantic search and intelligent memory management for context optimization.
+This chapter explains how botserver manages knowledge base collections, indexing, caching, semantic search, and conversation memory. The implementation uses vector databases for semantic search and intelligent memory management for context optimization.
 
 | Document | File | Description |
 |----------|------|-------------|

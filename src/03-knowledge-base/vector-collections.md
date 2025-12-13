@@ -1,6 +1,6 @@
 # Vector Collections
 
-This chapter explains how BotServer organizes knowledge into vector collections, the searchable units that power semantic retrieval. Understanding how collections work helps you structure documents effectively and optimize the knowledge your bots can access.
+This chapter explains how botserver organizes knowledge into vector collections, the searchable units that power semantic retrieval. Understanding how collections work helps you structure documents effectively and optimize the knowledge your bots can access.
 
 <img src="../assets/chapter-03/storage-breakdown.svg" alt="Storage Breakdown" style="max-height: 400px; width: 100%; object-fit: contain;">
 
@@ -8,7 +8,7 @@ This chapter explains how BotServer organizes knowledge into vector collections,
 
 Vector collections emerge automatically from the folder structure within your .gbkb directory. Each folder you create becomes a distinct collection, indexed separately and activated independently. This direct mapping between physical organization and logical collections makes knowledge management intuitive—organize files into folders by topic, and those folders become the collections you reference in your scripts.
 
-When BotServer encounters a .gbkb folder, it scans for documents in supported formats including PDF, DOCX, TXT, HTML, and Markdown. Each file's content is extracted, split into manageable chunks, converted to vector embeddings, and stored in the vector database. The folder name becomes the collection identifier you use with the USE KB keyword.
+When botserver encounters a .gbkb folder, it scans for documents in supported formats including PDF, DOCX, TXT, HTML, and Markdown. Each file's content is extracted, split into manageable chunks, converted to vector embeddings, and stored in the vector database. The folder name becomes the collection identifier you use with the USE KB keyword.
 
 This automatic process means no manual indexing configuration is required. Add files to a folder, and they become searchable. Remove files, and they disappear from search results. The system tracks file changes through hash comparisons, triggering reindexing only when content actually changes.
 
@@ -20,7 +20,7 @@ For each file requiring processing, text extraction pulls readable content from 
 
 The chunking phase splits long documents into smaller pieces suitable for embedding and retrieval. Each chunk contains approximately 500 tokens with overlap between adjacent chunks to preserve context across boundaries. This sizing balances granularity—enabling precise matches—against coherence—keeping related information together.
 
-Embedding generation converts each text chunk into a numerical vector representation. BotServer uses the BGE embedding model by default, producing 384-dimensional vectors that capture semantic meaning. These embeddings enable the similarity comparisons that power semantic search.
+Embedding generation converts each text chunk into a numerical vector representation. botserver uses the BGE embedding model by default, producing 384-dimensional vectors that capture semantic meaning. These embeddings enable the similarity comparisons that power semantic search.
 
 Finally, the vectors and their associated metadata are stored in the vector database, organized by collection. Each entry includes the embedding vector, the original text chunk, the source file path, and position information enabling reconstruction of context.
 
@@ -54,7 +54,7 @@ This entire process happens transparently. Developers don't write search queries
 
 ## Embedding Configuration
 
-The embedding model determines how meaning is captured in vectors and significantly influences search quality. BotServer uses a locally-running BGE model by default, configured through the embedding URL and model path settings in config.csv.
+The embedding model determines how meaning is captured in vectors and significantly influences search quality. botserver uses a locally-running BGE model by default, configured through the embedding URL and model path settings in config.csv.
 
 The default model provides good general-purpose performance for English content. Organizations with specialized vocabulary or multilingual requirements might benefit from alternative models. The embedding infrastructure supports any compatible model, allowing customization for specific domains.
 

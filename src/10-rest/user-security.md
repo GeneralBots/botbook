@@ -1,6 +1,6 @@
 # User Security API
 
-BotServer provides RESTful endpoints for user management, authentication, authorization, and security features.
+botserver provides RESTful endpoints for user management, authentication, authorization, and security features.
 
 ## Overview
 

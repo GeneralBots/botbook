@@ -1,6 +1,6 @@
 # Installation
 
-BotServer installs itself automatically through the bootstrap process. Just run the binary.
+botserver installs itself automatically through the bootstrap process. Just run the binary.
 
 ## System Requirements
 

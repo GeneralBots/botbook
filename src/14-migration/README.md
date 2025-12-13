@@ -45,7 +45,7 @@ USE WEBSITE "https://sharepoint.company.com/docs"
 | Phase | Duration | Activities |
 |-------|----------|------------|
 | **Assessment** | Week 1-2 | Inventory services, identify dependencies |
-| **Infrastructure** | Week 2-3 | Deploy BotServer, configure auth/storage |
+| **Infrastructure** | Week 2-3 | Deploy botserver, configure auth/storage |
 | **Data Migration** | Week 3-6 | Users, email, files, documents |
 | **Process Migration** | Week 6-8 | Convert workflows to .gbdialog |
 | **Validation** | Week 8-10 | Testing, training, documentation |

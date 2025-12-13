@@ -6,11 +6,11 @@ The Monitoring Dashboard is the **live operations homepage** for your General Bo
 
 <img src="../assets/suite/live-monitoring-organism.svg" alt="Live Monitoring Dashboard" style="max-width: 100%; height: auto;">
 
-The dashboard displays BotServer at the center orchestrating all interactions, with animated data packets flowing between components:
+The dashboard displays botserver at the center orchestrating all interactions, with animated data packets flowing between components:
 
 - **Left Side (Data Layer)**: PostgreSQL, Qdrant vector database, and MinIO storage
 - **Right Side (Services)**: BotModels AI, Cache, and Vault security
-- **Center**: BotServer core with pulsing rings indicating activity
+- **Center**: botserver core with pulsing rings indicating activity
 - **Top**: Real-time metrics panels for sessions, messages, and response time
 - **Bottom**: Resource utilization bars and activity ticker
 
@@ -302,7 +302,7 @@ Latest: User enrolled in Computer Science course
 1. Wait 5-10 seconds for initial data load
 2. Check network tab for failed API requests
 3. Verify all services are running
-4. Check BotServer logs for errors
+4. Check botserver logs for errors
 
 ### Animations Stuttering
 

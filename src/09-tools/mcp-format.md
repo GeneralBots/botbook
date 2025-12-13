@@ -1,6 +1,6 @@
 # MCP Format
 
-Model Context Protocol (MCP) is a standardized format for defining tools that language models can discover and invoke. BotServer generates MCP-compatible tool definitions from BASIC scripts.
+Model Context Protocol (MCP) is a standardized format for defining tools that language models can discover and invoke. botserver generates MCP-compatible tool definitions from BASIC scripts.
 
 ## Overview
 
@@ -83,7 +83,7 @@ TALK "Processing order for " + customer_name
 
 ## Parameter Types
 
-MCP supports these parameter types in BotServer:
+MCP supports these parameter types in botserver:
 
 | BASIC Type | MCP Type | JSON Schema Type |
 |------------|----------|------------------|
@@ -190,7 +190,7 @@ MCP definitions are stored in the `basic_tools` table:
 4. **Discoverable**: LLMs can understand tool capabilities
 5. **Extensible**: Can add custom properties as needed
 
-## Limitations in BotServer
+## Limitations in botserver
 
 Current MCP implementation limitations:
 - No nested object parameters
@@ -217,4 +217,4 @@ MCP tools are validated during compilation:
 
 ## Summary
 
-The MCP format provides a structured way to expose BASIC scripts as callable tools for LLMs. By generating MCP-compatible definitions, BotServer enables seamless tool discovery and invocation within conversational flows.
+The MCP format provides a structured way to expose BASIC scripts as callable tools for LLMs. By generating MCP-compatible definitions, botserver enables seamless tool discovery and invocation within conversational flows.

@@ -1,10 +1,10 @@
 # Documentation
 
-Good documentation is essential for maintaining and growing BotServer. This guide covers documentation standards and practices for contributors.
+Good documentation is essential for maintaining and growing botserver. This guide covers documentation standards and practices for contributors.
 
 ## Overview
 
-BotServer documentation includes code documentation through inline comments and doc comments, API documentation, user guides, the BASIC language reference, architecture documentation, and README files throughout the repository.
+botserver documentation includes code documentation through inline comments and doc comments, API documentation, user guides, the BASIC language reference, architecture documentation, and README files throughout the repository.
 
 ## Documentation Structure
 
@@ -216,7 +216,7 @@ Use relative links for internal documentation to ensure links work regardless of
 
 ### Be Clear and Concise
 
-Write directly and avoid unnecessary words. Instead of "The system employs a sophisticated relational database management system, specifically PostgreSQL, for the purpose of persisting structured information," simply write "BotServer uses PostgreSQL for structured data storage."
+Write directly and avoid unnecessary words. Instead of "The system employs a sophisticated relational database management system, specifically PostgreSQL, for the purpose of persisting structured information," simply write "botserver uses PostgreSQL for structured data storage."
 
 ### Use Active Voice
 
@@ -286,4 +286,4 @@ Documentation-only pull requests are welcome and valuable. They can be merged qu
 
 ## Summary
 
-Good documentation makes BotServer accessible to users and maintainable for developers. Always consider documentation as part of the development process, not an afterthought. Clear, accurate, and up-to-date documentation is as valuable as the code itself.
+Good documentation makes botserver accessible to users and maintainable for developers. Always consider documentation as part of the development process, not an afterthought. Clear, accurate, and up-to-date documentation is as valuable as the code itself.

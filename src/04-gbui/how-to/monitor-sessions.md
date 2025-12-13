@@ -64,7 +64,7 @@ Your General Bots deployment is a **living system** of interconnected components
 
 | Component | Purpose | Status Indicators |
 |-----------|---------|-------------------|
-| **BotServer** | Core application, handles all requests | Response time, active sessions |
+| **botserver** | Core application, handles all requests | Response time, active sessions |
 | **PostgreSQL** | Primary database, stores users & config | Connections, query rate |
 | **Qdrant** | Vector database, powers semantic search | Vector count, search latency |
 | **MinIO** | File storage, manages documents | Storage used, object count |

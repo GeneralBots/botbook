@@ -1,6 +1,6 @@
 # Tool Compilation
 
-BotServer compiles BASIC scripts (`.bas` files) into tool definitions that can be called by the LLM. The compilation process extracts parameters, descriptions, and generates metadata for tool discovery.
+botserver compiles BASIC scripts (`.bas` files) into tool definitions that can be called by the LLM. The compilation process extracts parameters, descriptions, and generates metadata for tool discovery.
 
 ## Overview
 
