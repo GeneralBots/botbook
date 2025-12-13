@@ -1,265 +1,159 @@
-<svg width="1000" height="750" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .bg { fill: #f5f5f5; }
-    .frame { fill: none; stroke: #333; stroke-width: 2; }
-    .header-bg { fill: #1a1a2e; }
-    .section-bg { fill: #ffffff; }
-    .main-text { fill: #1a1a1a; font-family: Arial, sans-serif; }
-    .white-text { fill: #ffffff; font-family: Arial, sans-serif; }
-    .secondary-text { fill: #666; font-family: Arial, sans-serif; }
-    .accent-text { fill: #00D4FF; font-family: Arial, sans-serif; }
-    .divider { stroke: #e0e0e0; stroke-width: 1; }
-    .button-primary { fill: #00D4FF; }
-    .button-secondary { fill: #2a2a3e; }
-    .input-field { fill: #f8f9fa; stroke: #ddd; stroke-width: 1; }
-    .card { fill: #ffffff; stroke: #e0e0e0; stroke-width: 1; }
-    .badge-premium { fill: #FFD700; }
-    .badge-running { fill: #00D4FF; }
-    .badge-approval { fill: #FF6B35; }
-    .badge-completed { fill: #4CAF50; }
-    .badge-pending { fill: #9E9E9E; }
-    .progress-bg { fill: #e0e0e0; }
-    .progress-fill { fill: #00D4FF; }
-    .risk-low { fill: #4CAF50; }
-    .risk-medium { fill: #FF9800; }
-    .risk-high { fill: #F44336; }
-    .stat-card { fill: #2a2a3e; }
-    .step-badge { fill: #e8f4fd; stroke: #00D4FF; stroke-width: 1; }
-    .code-bg { fill: #1e1e1e; }
-    .code-text { fill: #d4d4d4; font-family: 'Courier New', monospace; }
-    .keyword { fill: #569cd6; }
-    .string { fill: #ce9178; }
-    .comment { fill: #6a9955; }
+    .title-text { fill: #1E1B4B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .main-text { fill: #334155; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .secondary-text { fill: #64748B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .white-text { fill: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .mono-text { fill: #475569; font-family: 'SF Mono', 'Fira Code', Consolas, monospace; }
 
     @media (prefers-color-scheme: dark) {
-      .bg { fill: #0d0d1a; }
-      .frame { stroke: #333; }
-      .header-bg { fill: #1a1a2e; }
-      .section-bg { fill: #1a1a2e; }
-      .main-text { fill: #ffffff; }
-      .secondary-text { fill: #aaa; }
-      .divider { stroke: #333; }
-      .input-field { fill: #2a2a3e; stroke: #444; }
-      .card { fill: #1a1a2e; stroke: #333; }
-      .step-badge { fill: #1a2a3e; stroke: #00D4FF; }
+      .title-text { fill: #F1F5F9; }
+      .main-text { fill: #E2E8F0; }
+      .secondary-text { fill: #94A3B8; }
+      .mono-text { fill: #CBD5E1; }
     }
   </style>
 
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4"/>
+      <stop offset="100%" style="stop-color:#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#34D399"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#FBBF24"/>
+    </linearGradient>
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="2" cy="2" r="1" fill="#94A3B8"/>
+    </pattern>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#FAFBFC"/>
+  <rect width="1000" height="700" fill="url(#dots)" opacity="0.08"/>
+
   <!-- Title -->
-  <text x="500" y="30" text-anchor="middle" font-size="20" font-weight="600" class="main-text">Auto Tasks - LLM-Powered Intelligent Task Execution</text>
+  <text x="500" y="40" text-anchor="middle" font-size="24" font-weight="700" class="title-text">Tasks — The Machine Does the Work</text>
+  <text x="500" y="65" text-anchor="middle" font-size="14" class="secondary-text">Describe your goal, the system executes it</text>
 
-  <!-- Main Frame -->
-  <rect x="20" y="50" width="960" height="680" rx="8" class="frame bg"/>
-
-  <!-- Header Section -->
-  <rect x="20" y="50" width="960" height="70" rx="8" class="header-bg"/>
-  <rect x="20" y="112" width="960" height="8" class="bg"/>
-
-  <!-- Header Title -->
-  <text x="50" y="85" font-size="22" font-weight="600" class="white-text">⚡ Auto Tasks</text>
-  <rect x="175" y="70" width="70" height="22" rx="4" class="badge-premium"/>
-  <text x="210" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">PREMIUM</text>
-  <text x="50" y="105" font-size="12" class="secondary-text">Intelligent self-executing tasks powered by AI</text>
-
-  <!-- Header Stats -->
-  <g transform="translate(550, 60)">
-    <rect x="0" y="0" width="100" height="50" rx="6" class="stat-card"/>
-    <text x="50" y="22" text-anchor="middle" font-size="18" font-weight="600" class="accent-text">3</text>
-    <text x="50" y="40" text-anchor="middle" font-size="11" class="secondary-text">Running</text>
-
-    <rect x="110" y="0" width="100" height="50" rx="6" class="stat-card"/>
-    <text x="160" y="22" text-anchor="middle" font-size="18" font-weight="600" class="white-text">5</text>
-    <text x="160" y="40" text-anchor="middle" font-size="11" class="secondary-text">Pending</text>
-
-    <rect x="220" y="0" width="100" height="50" rx="6" class="stat-card"/>
-    <text x="270" y="22" text-anchor="middle" font-size="18" font-weight="600" class="white-text">12</text>
-    <text x="270" y="40" text-anchor="middle" font-size="11" class="secondary-text">Completed</text>
-
-    <rect x="330" y="0" width="100" height="50" rx="6" class="stat-card" style="stroke: #FF6B35; stroke-width: 2;"/>
-    <text x="380" y="22" text-anchor="middle" font-size="18" font-weight="600" style="fill: #FF6B35;">2</text>
-    <text x="380" y="40" text-anchor="middle" font-size="11" class="secondary-text">Need Approval</text>
-  </g>
+  <!-- Header Stats Bar -->
+  <rect x="50" y="90" width="900" height="60" rx="10" fill="url(#primaryGrad)" filter="url(#cardShadow)"/>
+  <text x="120" y="125" font-size="13" class="white-text">Running</text>
+  <text x="120" y="145" font-size="20" font-weight="700" class="white-text">3</text>
+  <text x="270" y="125" font-size="13" class="white-text">Pending</text>
+  <text x="270" y="145" font-size="20" font-weight="700" class="white-text">5</text>
+  <text x="420" y="125" font-size="13" class="white-text">Completed</text>
+  <text x="420" y="145" font-size="20" font-weight="700" class="white-text">12</text>
+  <rect x="550" y="105" width="130" height="35" rx="6" fill="#FFFFFF" opacity="0.2"/>
+  <text x="615" y="127" text-anchor="middle" font-size="13" font-weight="600" class="white-text">Need Approval: 2</text>
 
   <!-- Intent Input Section -->
-  <g transform="translate(40, 135)">
-    <text x="0" y="20" font-size="14" font-weight="500" class="main-text">💡 What would you like to accomplish?</text>
+  <rect x="50" y="170" width="900" height="130" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#cardShadow)"/>
+  <text x="75" y="200" font-size="14" font-weight="600" class="main-text">What would you like to accomplish?</text>
 
-    <!-- Intent Textarea -->
-    <rect x="0" y="30" width="700" height="80" rx="8" class="input-field"/>
-    <text x="15" y="55" font-size="13" class="main-text">Make a financial CRM for Deloitte with client management</text>
-    <text x="15" y="75" font-size="13" class="main-text">and automated reporting dashboards</text>
-    <text x="15" y="98" font-size="11" class="secondary-text">Examples: • Create a website • Build an email campaign • Analyze sales data</text>
+  <!-- Input Field -->
+  <rect x="75" y="215" width="650" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="90" y="240" font-size="13" class="main-text">Make a financial CRM for Deloitte with client management</text>
+  <text x="90" y="260" font-size="13" class="main-text">and automated reporting dashboards</text>
 
-    <!-- Controls Row -->
-    <rect x="720" y="30" width="200" height="35" rx="6" class="input-field"/>
-    <text x="735" y="53" font-size="12" class="main-text">Semi-Automatic ▼</text>
-    <text x="730" y="78" font-size="10" class="secondary-text">Execution Mode</text>
+  <!-- Controls -->
+  <rect x="745" y="215" width="180" height="28" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="760" y="234" font-size="12" class="main-text">Semi-Automatic</text>
+  <text x="910" y="234" font-size="12" class="secondary-text">▼</text>
 
-    <rect x="720" y="75" width="200" height="35" rx="6" class="button-primary"/>
-    <text x="820" y="98" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1a1a">🚀 Compile & Plan</text>
-  </g>
+  <rect x="745" y="250" width="180" height="32" rx="6" fill="url(#cyanGrad)"/>
+  <text x="835" y="272" text-anchor="middle" font-size="13" font-weight="600" class="white-text">Compile &amp; Plan</text>
 
-  <!-- Compilation Result Section -->
-  <g transform="translate(40, 255)">
-    <rect x="0" y="0" width="920" height="200" rx="8" class="card"/>
+  <!-- Execution Plan Card -->
+  <rect x="50" y="320" width="900" height="180" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#cardShadow)"/>
+  <text x="75" y="350" font-size="16" font-weight="700" class="main-text">Financial CRM for Deloitte</text>
+  <text x="75" y="372" font-size="12" class="secondary-text">Client management and automated reporting system</text>
 
-    <!-- Plan Header -->
-    <text x="20" y="30" font-size="16" font-weight="600" class="main-text">Financial CRM for Deloitte</text>
-    <text x="20" y="50" font-size="12" class="secondary-text">Client management and automated reporting system</text>
+  <!-- Badges -->
+  <rect x="75" y="385" width="100" height="24" rx="12" fill="url(#greenGrad)"/>
+  <text x="125" y="402" text-anchor="middle" font-size="11" font-weight="500" class="white-text">Confidence: 94%</text>
 
-    <!-- Badges Row -->
-    <g transform="translate(20, 60)">
-      <rect x="0" y="0" width="110" height="24" rx="4" class="risk-low"/>
-      <text x="55" y="16" text-anchor="middle" font-size="11" class="white-text">✓ Confidence: 94%</text>
+  <rect x="185" y="385" width="80" height="24" rx="12" fill="url(#greenGrad)"/>
+  <text x="225" y="402" text-anchor="middle" font-size="11" font-weight="500" class="white-text">Risk: Low</text>
 
-      <rect x="120" y="0" width="90" height="24" rx="4" class="risk-low"/>
-      <text x="165" y="16" text-anchor="middle" font-size="11" class="white-text">Risk: Low</text>
+  <rect x="275" y="385" width="100" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <text x="325" y="402" text-anchor="middle" font-size="11" class="main-text">Est: 2.5 hours</text>
 
-      <rect x="220" y="0" width="120" height="24" rx="4" class="button-secondary"/>
-      <text x="280" y="16" text-anchor="middle" font-size="11" class="white-text">⏱️ Est: 2.5 hours</text>
+  <rect x="385" y="385" width="90" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <text x="430" y="402" text-anchor="middle" font-size="11" class="main-text">Cost: $0.45</text>
 
-      <rect x="350" y="0" width="100" height="24" rx="4" class="button-secondary"/>
-      <text x="400" y="16" text-anchor="middle" font-size="11" class="white-text">💰 Cost: $0.45</text>
-    </g>
+  <!-- Steps -->
+  <text x="75" y="435" font-size="13" font-weight="600" class="main-text">Execution Plan (6 steps)</text>
 
-    <!-- Execution Plan Steps -->
-    <text x="20" y="110" font-size="13" font-weight="500" class="main-text">📋 Execution Plan (6 steps)</text>
+  <!-- Step boxes -->
+  <rect x="75" y="445" width="130" height="45" rx="6" fill="#EEF2FF" stroke="#6366F1"/>
+  <text x="85" y="462" font-size="9" font-weight="600" fill="#6366F1">STEP 1 • CRITICAL</text>
+  <text x="85" y="478" font-size="11" class="main-text">Create database</text>
 
-    <g transform="translate(20, 120)">
-      <!-- Step 1 -->
-      <rect x="0" y="0" width="140" height="55" rx="6" class="step-badge"/>
-      <text x="10" y="18" font-size="10" font-weight="600" class="accent-text">STEP 1 • CRITICAL</text>
-      <text x="10" y="35" font-size="11" class="main-text">Create database</text>
-      <text x="10" y="48" font-size="10" class="secondary-text">NEW_TABLE, COLUMN</text>
+  <rect x="215" y="445" width="130" height="45" rx="6" fill="#EEF2FF" stroke="#6366F1"/>
+  <text x="225" y="462" font-size="9" font-weight="600" fill="#6366F1">STEP 2 • HIGH</text>
+  <text x="225" y="478" font-size="11" class="main-text">Setup auth</text>
 
-      <!-- Step 2 -->
-      <rect x="150" y="0" width="140" height="55" rx="6" class="step-badge"/>
-      <text x="160" y="18" font-size="10" font-weight="600" class="accent-text">STEP 2 • HIGH</text>
-      <text x="160" y="35" font-size="11" class="main-text">Setup auth</text>
-      <text x="160" y="48" font-size="10" class="secondary-text">OAUTH, JWT</text>
+  <rect x="355" y="445" width="130" height="45" rx="6" fill="#EEF2FF" stroke="#6366F1"/>
+  <text x="365" y="462" font-size="9" font-weight="600" fill="#6366F1">STEP 3 • HIGH</text>
+  <text x="365" y="478" font-size="11" class="main-text">Client module</text>
 
-      <!-- Step 3 -->
-      <rect x="300" y="0" width="140" height="55" rx="6" class="step-badge"/>
-      <text x="310" y="18" font-size="10" font-weight="600" class="accent-text">STEP 3 • HIGH</text>
-      <text x="310" y="35" font-size="11" class="main-text">Client module</text>
-      <text x="310" y="48" font-size="10" class="secondary-text">FORM, DIALOG</text>
+  <rect x="495" y="445" width="130" height="45" rx="6" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="505" y="462" font-size="9" font-weight="600" fill="#D97706">STEP 4 • MEDIUM</text>
+  <text x="505" y="478" font-size="11" class="main-text">Financial tracking</text>
 
-      <!-- Step 4 -->
-      <rect x="450" y="0" width="140" height="55" rx="6" class="step-badge"/>
-      <text x="460" y="18" font-size="10" font-weight="600" style="fill: #FF9800;">STEP 4 • MEDIUM</text>
-      <text x="460" y="35" font-size="11" class="main-text">Financial tracking</text>
-      <text x="460" y="48" font-size="10" class="secondary-text">CHART, CALC</text>
+  <rect x="635" y="445" width="130" height="45" rx="6" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="645" y="462" font-size="9" font-weight="600" fill="#D97706">STEP 5 • MEDIUM</text>
+  <text x="645" y="478" font-size="11" class="main-text">Reports dashboard</text>
 
-      <!-- Step 5 -->
-      <rect x="600" y="0" width="140" height="55" rx="6" class="step-badge"/>
-      <text x="610" y="18" font-size="10" font-weight="600" style="fill: #FF9800;">STEP 5 • MEDIUM</text>
-      <text x="610" y="35" font-size="11" class="main-text">Reports dashboard</text>
-      <text x="610" y="48" font-size="10" class="secondary-text">REPORT, PDF</text>
-
-      <!-- Step 6 -->
-      <rect x="750" y="0" width="140" height="55" rx="6" class="step-badge"/>
-      <text x="760" y="18" font-size="10" font-weight="600" style="fill: #4CAF50;">STEP 6 • LOW</text>
-      <text x="760" y="35" font-size="11" class="main-text">Deploy & test</text>
-      <text x="760" y="48" font-size="10" class="secondary-text">DEPLOY, TEST</text>
-    </g>
-
-    <!-- Action Buttons -->
-    <g transform="translate(550, 185)">
-      <rect x="0" y="0" width="90" height="32" rx="6" class="button-secondary"/>
-      <text x="45" y="21" text-anchor="middle" font-size="12" class="white-text">🗑️ Discard</text>
-
-      <rect x="100" y="0" width="100" height="32" rx="6" class="button-secondary"/>
-      <text x="150" y="21" text-anchor="middle" font-size="12" class="white-text">🔮 Simulate</text>
-
-      <rect x="210" y="0" width="120" height="32" rx="6" class="button-primary"/>
-      <text x="270" y="21" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1a1a">🚀 Execute Plan</text>
-    </g>
-  </g>
+  <rect x="775" y="445" width="130" height="45" rx="6" fill="#DCFCE7" stroke="#10B981"/>
+  <text x="785" y="462" font-size="9" font-weight="600" fill="#059669">STEP 6 • LOW</text>
+  <text x="785" y="478" font-size="11" class="main-text">Deploy &amp; test</text>
 
   <!-- Active Tasks Section -->
-  <g transform="translate(40, 470)">
-    <text x="0" y="20" font-size="14" font-weight="500" class="main-text">📋 Active Tasks</text>
+  <text x="75" y="535" font-size="16" font-weight="700" class="main-text">Active Tasks</text>
 
-    <!-- Filter Tabs -->
-    <g transform="translate(150, 5)">
-      <rect x="0" y="0" width="70" height="28" rx="4" class="button-primary"/>
-      <text x="35" y="19" text-anchor="middle" font-size="11" fill="#1a1a1a">All (8)</text>
+  <!-- Filter tabs -->
+  <rect x="200" y="518" width="60" height="26" rx="4" fill="url(#cyanGrad)"/>
+  <text x="230" y="536" text-anchor="middle" font-size="11" font-weight="500" class="white-text">All (8)</text>
 
-      <rect x="80" y="0" width="80" height="28" rx="4" class="input-field"/>
-      <text x="120" y="19" text-anchor="middle" font-size="11" class="main-text">Running (3)</text>
+  <rect x="268" y="518" width="80" height="26" rx="4" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <text x="308" y="536" text-anchor="middle" font-size="11" class="main-text">Running (3)</text>
 
-      <rect x="170" y="0" width="100" height="28" rx="4" class="input-field"/>
-      <text x="220" y="19" text-anchor="middle" font-size="11" class="main-text">Approval (2)</text>
+  <rect x="356" y="518" width="90" height="26" rx="4" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <text x="401" y="536" text-anchor="middle" font-size="11" class="main-text">Approval (2)</text>
 
-      <rect x="280" y="0" width="90" height="28" rx="4" class="input-field"/>
-      <text x="325" y="19" text-anchor="middle" font-size="11" class="main-text">Decisions (1)</text>
-    </g>
+  <!-- Task Item 1 - Running -->
+  <rect x="50" y="555" width="900" height="60" rx="8" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#cardShadow)"/>
+  <rect x="70" y="570" width="70" height="22" rx="4" fill="url(#cyanGrad)"/>
+  <text x="105" y="586" text-anchor="middle" font-size="10" font-weight="500" class="white-text">RUNNING</text>
+  <text x="155" y="586" font-size="14" font-weight="500" class="main-text">E-commerce Website for TechCorp</text>
 
-    <!-- Task Item 1 - Running -->
-    <rect x="0" y="40" width="920" height="70" rx="8" class="card"/>
-    <rect x="15" y="52" width="70" height="20" rx="4" class="badge-running"/>
-    <text x="50" y="66" text-anchor="middle" font-size="10" fill="#1a1a1a">RUNNING</text>
-    <text x="100" y="66" font-size="14" font-weight="500" class="main-text">E-commerce Website for TechCorp</text>
-    <rect x="380" y="52" width="55" height="20" rx="4" class="risk-medium"/>
-    <text x="407" y="66" text-anchor="middle" font-size="10" class="white-text">HIGH</text>
+  <!-- Progress bar -->
+  <rect x="70" y="598" width="400" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="70" y="598" width="284" height="6" rx="3" fill="url(#cyanGrad)"/>
+  <text x="480" y="605" font-size="11" class="secondary-text">Step 5/7 (71%)</text>
 
-    <!-- Progress Bar -->
-    <rect x="15" y="78" width="400" height="8" rx="4" class="progress-bg"/>
-    <rect x="15" y="78" width="280" height="8" rx="4" class="progress-fill"/>
-    <text x="425" y="86" font-size="11" class="secondary-text">Step 5/7 (71%)</text>
+  <!-- Task Item 2 - Needs Approval -->
+  <rect x="50" y="625" width="900" height="60" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+  <rect x="70" y="640" width="110" height="22" rx="4" fill="url(#orangeGrad)"/>
+  <text x="125" y="656" text-anchor="middle" font-size="10" font-weight="500" class="white-text">NEEDS APPROVAL</text>
+  <text x="195" y="656" font-size="14" font-weight="500" class="main-text">Automated Email Campaign - Product Launch</text>
 
-    <text x="15" y="102" font-size="11" class="secondary-text">▶️ Current: Building product catalog with search functionality</text>
+  <rect x="70" y="665" width="650" height="16" rx="3" fill="#FEF3C7"/>
+  <text x="80" y="677" font-size="10" fill="#92400E">Approval required: Send 50,000 emails to customer list</text>
 
-    <!-- Task Actions -->
-    <g transform="translate(750, 55)">
-      <rect x="0" y="0" width="70" height="26" rx="4" class="button-secondary"/>
-      <text x="35" y="17" text-anchor="middle" font-size="10" class="white-text">⏸️ Pause</text>
-      <rect x="80" y="0" width="70" height="26" rx="4" class="button-secondary"/>
-      <text x="115" y="17" text-anchor="middle" font-size="10" class="white-text">👁️ Details</text>
-    </g>
-
-    <!-- Task Item 2 - Needs Approval -->
-    <rect x="0" y="120" width="920" height="70" rx="8" class="card" style="stroke: #FF6B35; stroke-width: 2;"/>
-    <rect x="15" y="132" width="110" height="20" rx="4" class="badge-approval"/>
-    <text x="70" y="146" text-anchor="middle" font-size="10" class="white-text">NEEDS APPROVAL</text>
-    <text x="140" y="146" font-size="14" font-weight="500" class="main-text">Automated Email Campaign - Product Launch</text>
-    <rect x="440" y="132" width="65" height="20" rx="4" class="risk-high"/>
-    <text x="472" y="146" text-anchor="middle" font-size="10" class="white-text">CRITICAL</text>
-
-    <rect x="15" y="158" width="750" height="24" rx="4" style="fill: #fff3e0;"/>
-    <text x="25" y="175" font-size="11" style="fill: #E65100;">⚠️ Approval required: Send 50,000 emails to customer list (High impact action)</text>
-
-    <g transform="translate(750, 135)">
-      <rect x="0" y="0" width="150" height="26" rx="4" class="button-primary"/>
-      <text x="75" y="17" text-anchor="middle" font-size="10" font-weight="500" fill="#1a1a1a">✅ Review & Approve</text>
-    </g>
-
-    <!-- Task Item 3 - Completed -->
-    <rect x="0" y="200" width="920" height="50" rx="8" class="card" style="opacity: 0.7;"/>
-    <rect x="15" y="212" width="80" height="20" rx="4" class="badge-completed"/>
-    <text x="55" y="226" text-anchor="middle" font-size="10" class="white-text">COMPLETED</text>
-    <text x="110" y="226" font-size="14" class="main-text" style="opacity: 0.7;">Sales Data Analysis Q4 Report</text>
-
-    <rect x="15" y="238" width="300" height="6" rx="3" class="badge-completed"/>
-    <text x="325" y="244" font-size="10" class="secondary-text">✓ All 4 steps completed • Duration: 45 min</text>
-  </g>
-
-  <!-- Footer Legend -->
-  <g transform="translate(40, 715)">
-    <text x="0" y="0" font-size="11" class="secondary-text">Execution Modes:</text>
-    <text x="100" y="0" font-size="10" class="main-text">Semi-Auto (recommended)</text>
-    <text x="240" y="0" font-size="10" class="main-text">• Supervised</text>
-    <text x="320" y="0" font-size="10" class="main-text">• Fully Auto</text>
-    <text x="410" y="0" font-size="10" class="main-text">• Dry Run</text>
-
-    <text x="550" y="0" font-size="11" class="secondary-text">Priority:</text>
-    <circle cx="600" cy="-3" r="5" class="risk-high"/>
-    <text x="610" y="0" font-size="10" class="secondary-text">Critical</text>
-    <circle cx="665" cy="-3" r="5" class="risk-medium"/>
-    <text x="675" y="0" font-size="10" class="secondary-text">High</text>
-    <circle cx="710" cy="-3" r="5" class="badge-running"/>
-    <text x="720" y="0" font-size="10" class="secondary-text">Medium</text>
-    <circle cx="770" cy="-3" r="5" class="badge-pending"/>
-    <text x="780" y="0" font-size="10" class="secondary-text">Low</text>
-  </g>
+  <rect x="780" y="645" width="140" height="28" rx="6" fill="url(#greenGrad)"/>
+  <text x="850" y="664" text-anchor="middle" font-size="11" font-weight="500" class="white-text">Review &amp; Approve</text>
 </svg>

@@ -64,7 +64,7 @@
     - [Suite - Full Desktop](./04-gbui/apps/suite.md)
     - [Chat - AI Assistant](./04-gbui/apps/chat.md)
     - [Drive - File Management](./04-gbui/apps/drive.md)
-    - [Auto Tasks - LLM Execution](./04-gbui/apps/tasks.md)
+    - [Tasks](./04-gbui/apps/tasks.md)
     - [Mail - Email Client](./04-gbui/apps/mail.md)
     - [Calendar - Scheduling](./04-gbui/apps/calendar.md)
     - [Meet - Video Calls](./04-gbui/apps/meet.md)
