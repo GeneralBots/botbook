@@ -40,7 +40,7 @@ Click the **nine-dot grid** (⋮⋮⋮) in the top right to see all applications
 |------|-----|--------------|
 | 💬 | **Chat** | Talk with your AI assistant |
 | 📁 | **Drive** | Store and manage your files |
-| ⚡ | **Auto Tasks** | LLM-powered intelligent task execution |
+| ⚡ | **Tasks** | LLM-powered intelligent task execution |
 | ✉ | **Mail** | Send and receive emails |
 | 📅 | **Calendar** | Schedule meetings and events |
 | 🎥 | **Meet** | Video calls and meetings |
@@ -179,17 +179,17 @@ Drive is your file storage - like Google Drive or OneDrive. Store documents, ima
 
 ---
 
-## Part IV: Auto Tasks - LLM-Powered Execution
+## Part IV: Tasks - LLM-Powered Execution
 
-### What Auto Tasks Does
+### What Tasks Does
 
-Auto Tasks revolutionizes how you work. Instead of manually tracking to-do items, you describe what you want to accomplish in natural language, and the LLM compiles your intent into an executable plan with automatic step-by-step execution.
+Tasks revolutionizes how you work. Instead of manually tracking to-do items, you describe what you want to accomplish in natural language, and the LLM compiles your intent into an executable plan with automatic step-by-step execution.
 
-### The Auto Tasks Interface
+### The Tasks Interface
 
-<img src="../assets/chapter-04/autotask-interface.svg" alt="Auto Tasks Interface" style="max-width: 100%; height: auto;">
+<img src="../assets/chapter-04/autotask-interface.svg" alt="Tasks Interface" style="max-width: 100%; height: auto;">
 
-### Creating an Auto Task
+### Creating an Task
 
 1. **Describe your intent** in the text area (e.g., "Build a CRM for Deloitte with client management")
 2. **Choose execution mode:**
@@ -240,17 +240,17 @@ High-impact actions pause for your approval:
 
 Click **✅ Review & Approve** to see details and continue.
 
-### Creating Auto Tasks from Chat
+### Creating Tasks from Chat
 
 In Chat, just say:
 ```
 You: I need to build a customer portal for Acme Corp
-Bot: I'll create an Auto Task for that. Here's the plan:
+Bot: I'll create an Task for that. Here's the plan:
      - 5 steps, estimated 3 hours
      - Risk: Low
      Should I execute this plan?
 You: Yes, go ahead
-Bot: 🚀 Auto Task started!
+Bot: 🚀 Task started!
 ```
 
 ---

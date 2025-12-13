@@ -1,18 +1,21 @@
-# Auto Tasks
+# Tasks
 
-> **LLM-Powered Intelligent Task Execution**
+> **The machine does the work**
 
 ---
 
-<img src="../../assets/chapter-04/autotask-interface.svg" alt="Auto Tasks Interface" style="max-width: 100%; height: auto;">
+<img src="../../assets/chapter-04/autotask-interface.svg" alt="Tasks Interface" style="max-width: 100%; height: auto;">
 
-## What is Auto Tasks?
+## What is Tasks?
 
-Auto Tasks is a revolutionary approach to task automation. Instead of manually creating to-do items, you describe what you want to accomplish in natural language, and the LLM compiles your intent into an executable plan with automatic step-by-step execution.
+Tasks is where the machine does the work for you. Instead of manually tracking to-do items, you describe what you want to accomplish in natural language, and the system compiles your intent into an executable plan with automatic step-by-step execution.
 
-**The old way:** Create a task → Do it yourself → Mark complete
-
-**The Auto Tasks way:** Describe your goal → LLM plans it → System executes it → You approve critical steps
+| Old Way | Tasks Way |
+|---------|-----------|
+| Create a task | Describe your goal |
+| Do it yourself | Machine plans it |
+| Mark complete | Machine executes it |
+| Repeat | You approve critical steps |
 
 ---
 
@@ -20,33 +23,35 @@ Auto Tasks is a revolutionary approach to task automation. Instead of manually c
 
 | Step | What Happens |
 |------|--------------|
-| **1. Describe Intent** | Write what you want in plain English |
-| **2. Compile & Plan** | LLM analyzes intent, generates execution plan |
-| **3. Review Plan** | See steps, estimates, risks before execution |
+| **1. Describe** | Write what you want in plain English |
+| **2. Compile** | LLM analyzes intent, generates execution plan |
+| **3. Review** | See steps, estimates, risks before execution |
 | **4. Execute** | System runs the plan, pausing for approvals |
 | **5. Monitor** | Watch progress, make decisions when needed |
 
 ---
 
-## Creating an Auto Task
+## Creating a Task
 
-### 1. Write Your Intent
+### Write Your Intent
 
 In the intent box, describe what you want to accomplish:
 
-**Good examples:**
-- "Make a financial CRM for Deloitte with client management and reporting"
-- "Create a website that collects leads and sends them to Salesforce"
-- "Build an automated email campaign for our product launch"
-- "Analyze Q4 sales data and generate a PDF report with charts"
+| Good Examples |
+|---------------|
+| "Make a financial CRM for Deloitte with client management and reporting" |
+| "Create a website that collects leads and sends them to Salesforce" |
+| "Build an automated email campaign for our product launch" |
+| "Analyze Q4 sales data and generate a PDF report with charts" |
 
 **Tips for better results:**
+
 - Be specific about the outcome you want
 - Mention the client or project name
 - Include key features or requirements
 - Specify integrations if needed
 
-### 2. Choose Execution Mode
+### Choose Execution Mode
 
 | Mode | Best For | How It Works |
 |------|----------|--------------|
@@ -55,7 +60,7 @@ In the intent box, describe what you want to accomplish:
 | **Fully Automatic** | Trusted workflows | Runs everything without stopping |
 | **Dry Run** | Testing | Simulates execution without making changes |
 
-### 3. Set Priority
+### Set Priority
 
 | Priority | Meaning |
 |----------|---------|
@@ -65,9 +70,10 @@ In the intent box, describe what you want to accomplish:
 | **Low** | Run when resources available |
 | **Background** | Run during idle time |
 
-### 4. Click "Compile & Plan"
+### Click Compile & Plan
 
 The LLM will:
+
 1. Extract entities (action, target, domain, client)
 2. Generate an execution plan with ordered steps
 3. Assess risks and estimate resources
@@ -77,44 +83,43 @@ The LLM will:
 
 ## Understanding the Execution Plan
 
-After compilation, you'll see a detailed plan:
+After compilation, you see a detailed plan:
 
 ### Plan Header
 
-- **Plan Name** - Auto-generated title for your task
-- **Description** - Summary of what will be accomplished
-- **Confidence** - How confident the LLM is in the plan (aim for 80%+)
-- **Risk Level** - Overall risk assessment (None/Low/Medium/High/Critical)
-- **Estimated Duration** - How long execution should take
-- **Estimated Cost** - API and compute costs
+| Field | Description |
+|-------|-------------|
+| **Plan Name** | Auto-generated title for your task |
+| **Description** | Summary of what will be accomplished |
+| **Confidence** | How confident the LLM is in the plan (aim for 80%+) |
+| **Risk Level** | Overall risk assessment (None/Low/Medium/High/Critical) |
+| **Estimated Duration** | How long execution should take |
+| **Estimated Cost** | API and compute costs |
 
 ### Execution Steps
 
 Each step shows:
-- **Step Number & Priority** - Order and importance
-- **Step Name** - What this step does
-- **Keywords** - BASIC keywords that will be used
-- **Risk Level** - Risk for this specific step
 
-### Resource Estimates
-
-- **Compute** - Processing hours needed
-- **Storage** - Disk space required
-- **API Calls** - External API requests
-- **LLM Tokens** - Token consumption estimate
+| Field | Description |
+|-------|-------------|
+| **Step Number** | Order of execution |
+| **Priority** | CRITICAL, HIGH, MEDIUM, LOW |
+| **Step Name** | What this step does |
+| **Keywords** | BASIC keywords that will be used |
+| **Risk Level** | Risk for this specific step |
 
 ### Plan Actions
 
 | Button | Action |
 |--------|--------|
-| **🗑️ Discard** | Delete the plan, start over |
-| **✏️ Edit Plan** | Modify steps before execution |
-| **🔮 Simulate** | Preview impact without executing |
-| **🚀 Execute** | Start running the plan |
+| **Discard** | Delete the plan, start over |
+| **Edit Plan** | Modify steps before execution |
+| **Simulate** | Preview impact without executing |
+| **Execute** | Start running the plan |
 
 ---
 
-## Monitoring Active Tasks
+## Monitoring Tasks
 
 ### Task States
 
@@ -133,14 +138,17 @@ Each step shows:
 
 ### Filter Tabs
 
-- **All** - Every task regardless of status
-- **Running** - Currently executing tasks
-- **Need Approval** - Tasks waiting for your approval
-- **Decisions** - Tasks needing your input
+| Tab | Shows |
+|-----|-------|
+| **All** | Every task regardless of status |
+| **Running** | Currently executing tasks |
+| **Need Approval** | Tasks waiting for your approval |
+| **Decisions** | Tasks needing your input |
 
 ### Progress Tracking
 
 Each task shows:
+
 - Current step number and name
 - Progress bar with percentage
 - Time elapsed and estimated remaining
@@ -152,6 +160,7 @@ Each task shows:
 ### When Approvals Are Required
 
 High-impact actions require your approval:
+
 - Sending emails to many recipients
 - Modifying production databases
 - Making external API calls with side effects
@@ -160,20 +169,27 @@ High-impact actions require your approval:
 
 ### Approval Dialog
 
-When approval is needed, you'll see:
-- **Action description** - What will happen
-- **Impact summary** - What could be affected
-- **Risk level** - How risky this step is
-- **Simulation result** - Preview of the outcome
+When approval is needed, you see:
+
+| Field | Description |
+|-------|-------------|
+| **Action description** | What will happen |
+| **Impact summary** | What could be affected |
+| **Risk level** | How risky this step is |
+| **Simulation result** | Preview of the outcome |
 
 **Options:**
-- ✅ **Approve** - Continue execution
-- ⏸️ **Defer** - Decide later
-- ❌ **Reject** - Skip this step or stop execution
+
+| Action | Result |
+|--------|--------|
+| **Approve** | Continue execution |
+| **Defer** | Decide later |
+| **Reject** | Skip this step or stop execution |
 
 ### Making Decisions
 
 Sometimes the system needs your input:
+
 - Choosing between alternative approaches
 - Selecting from multiple options
 - Providing missing information
@@ -186,47 +202,36 @@ Each option shows pros, cons, and impact estimates.
 
 | Action | When Available | What It Does |
 |--------|----------------|--------------|
-| **👁️ Details** | Always | View full task information |
-| **🔮 Simulate** | Before execution | Preview impact |
-| **⏸️ Pause** | While running | Temporarily stop execution |
-| **▶️ Resume** | When paused | Continue execution |
-| **❌ Cancel** | Anytime | Stop and discard task |
-
----
-
-## Execution Log
-
-Expand any task to see its execution log:
-- Timestamp for each action
-- Step transitions
-- Approval/decision records
-- Error messages if any
-- Output from each step
+| **Details** | Always | View full task information |
+| **Simulate** | Before execution | Preview impact |
+| **Pause** | While running | Temporarily stop execution |
+| **Resume** | When paused | Continue execution |
+| **Cancel** | Anytime | Stop and discard task |
 
 ---
 
 ## Creating Tasks from Chat
 
-You can also create Auto Tasks by talking to your bot:
+You can also create tasks by talking to your bot:
 
 **You:** "I need to build a customer portal for Acme Corp"
 
-**Bot:** "I'll create an Auto Task for that. Here's the plan:
+**Bot:** "I'll create a task for that. Here's the plan:
 - 5 steps, estimated 3 hours
 - Includes: database setup, authentication, dashboard, API integration
 - Risk: Low
-- 
+
 Should I execute this plan?"
 
 **You:** "Yes, go ahead"
 
-**Bot:** "🚀 Auto Task started. I'll notify you when approvals are needed."
+**Bot:** "Task started. I'll notify you when approvals are needed."
 
 ---
 
 ## Generated BASIC Code
 
-Every Auto Task generates a BASIC program behind the scenes. You can view and copy this code:
+Every task generates a BASIC program behind the scenes. You can view and copy this code:
 
 ```bas
 ' AUTO-GENERATED BASIC PROGRAM
@@ -246,6 +251,7 @@ SAVE_TABLE
 ```
 
 This code can be:
+
 - Copied for manual execution
 - Modified and saved as a template
 - Reused for similar projects
@@ -256,22 +262,20 @@ This code can be:
 
 ### Writing Good Intents
 
-✅ **Do:**
-- "Create a sales dashboard for Q4 data with charts showing revenue by region"
-- "Build an email drip campaign: welcome email, 3-day follow-up, 7-day offer"
-- "Analyze customer feedback CSV and generate sentiment report"
-
-❌ **Don't:**
-- "Make something" (too vague)
-- "Do the thing we discussed" (no context)
-- "Fix it" (what needs fixing?)
+| Do | Don't |
+|----|-------|
+| "Create a sales dashboard for Q4 data with charts showing revenue by region" | "Make something" |
+| "Build an email drip campaign: welcome email, 3-day follow-up, 7-day offer" | "Do the thing we discussed" |
+| "Analyze customer feedback CSV and generate sentiment report" | "Fix it" |
 
 ### Choosing Execution Mode
 
-- **New to Auto Tasks?** Start with Supervised mode
-- **Routine tasks?** Use Semi-Automatic
-- **Trusted, tested workflows?** Fully Automatic is fine
-- **Experimenting?** Always use Dry Run first
+| Situation | Recommended Mode |
+|-----------|------------------|
+| New to Tasks | Supervised |
+| Routine tasks | Semi-Automatic |
+| Trusted, tested workflows | Fully Automatic |
+| Experimenting | Dry Run |
 
 ### Managing Risk
 
@@ -290,7 +294,7 @@ This code can be:
 - Avoid ambiguous language
 - Include necessary context (client name, data sources)
 
-### Task Stuck on "Running"
+### Task Stuck on Running
 
 - Check if an approval is pending
 - Look for decision requests
@@ -302,30 +306,25 @@ This code can be:
 - Use Dry Run to test first
 - Check the BASIC code for issues
 
-### High Risk Warning
-
-- Consider using Supervised mode
-- Review each step carefully
-- Use Simulate before Execute
-
 ---
 
 ## Settings
 
-Configure Auto Tasks behavior in Settings:
+Configure Tasks behavior in Settings:
 
-- **Default execution mode** - Your preferred mode
-- **Approval thresholds** - When to require approval
-- **Cost limits** - Maximum spend per task
-- **Notification preferences** - How to alert you
-- **Auto-cleanup** - Remove completed tasks after X days
+| Setting | Description |
+|---------|-------------|
+| **Default execution mode** | Your preferred mode |
+| **Approval thresholds** | When to require approval |
+| **Cost limits** | Maximum spend per task |
+| **Notification preferences** | How to alert you |
+| **Auto-cleanup** | Remove completed tasks after X days |
 
 ---
 
 ## See Also
 
-- [Autonomous Task AI](../../07-gbapp/autonomous-tasks.md) - How the machine does the work
-- [CREATE SITE Keyword](../../06-gbdialog/keyword-create-site.md) - App generation details
-- [Calendar](./calendar.md) - Scheduled Auto Tasks appear here
+- [Autonomous Task AI](../../07-gbapp/autonomous-tasks.md) - Architecture details
+- [CREATE SITE](../../06-gbdialog/keyword-create-site.md) - App generation
+- [Calendar](./calendar.md) - Scheduled tasks
 - [Chat](./chat.md) - Create tasks through conversation
-- [Analytics](./analytics.md) - Task execution metrics

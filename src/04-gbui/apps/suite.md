@@ -22,7 +22,7 @@ The Suite includes integrated applications:
 |-----|---------|
 | 💬 Chat | AI assistant conversations |
 | 📁 Drive | File management |
-| ⚡ Auto Tasks | LLM-powered intelligent execution |
+| ⚡ Tasks | LLM-powered intelligent execution |
 | ✉ Mail | Email client |
 | 📅 Calendar | Scheduling |
 | 🎥 Meet | Video calls |

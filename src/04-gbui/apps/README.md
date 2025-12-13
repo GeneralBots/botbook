@@ -12,7 +12,7 @@ Click any app icon in the top-right menu (⋮⋮⋮) to open it.
 |-----|--------------|
 | 💬 **Chat** | Talk to your AI assistant |
 | 📁 **Drive** | Store and organize your files |
-| ⚡ **Auto Tasks** | LLM-powered intelligent task execution |
+| ⚡ **Tasks** | LLM-powered intelligent task execution |
 | ✉ **Mail** | Send and receive emails |
 | 📅 **Calendar** | Schedule meetings and events |
 | 🎥 **Meet** | Video calls with your team |
@@ -38,7 +38,7 @@ Click any app icon in the top-right menu (⋮⋮⋮) to open it.
 |-------|-------|
 | `Alt + 1` | Chat |
 | `Alt + 2` | Drive |
-| `Alt + 3` | Auto Tasks |
+| `Alt + 3` | Tasks |
 | `Alt + 4` | Mail |
 | `Alt + 5` | Calendar |
 | `Alt + 6` | Meet |
@@ -59,7 +59,7 @@ Learn more about each app:
 
 - [Chat](./chat.md) - Talk to your AI assistant
 - [Drive](./drive.md) - Manage your files
-- [Auto Tasks](./tasks.md) - LLM-powered intelligent execution
+- [Tasks](./tasks.md) - LLM-powered intelligent execution
 - [Mail](./mail.md) - Handle your email
 - [Calendar](./calendar.md) - Manage your schedule
 - [Meet](./meet.md) - Join video calls
