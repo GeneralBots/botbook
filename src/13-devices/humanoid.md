@@ -2,6 +2,32 @@
 
 Build custom humanoid robots powered by General Bots, using computer vision from botmodels, LLM intelligence from botserver, and BASIC keywords for movement control.
 
+## Why Run General Bots on a Humanoid?
+
+A humanoid robot without an LLM orchestrator is just an expensive puppet. The hardware handles joints and sensors, but something needs to decide *what* to do with them. That's where General Bots comes in.
+
+**The robot becomes a server.** The same botserver that handles WhatsApp messages and web chat now handles servo commands and camera feeds. Your humanoid runs:
+
+- **botserver** on port 8088 — conversation, decisions, tool execution
+- **llama.cpp** on port 8080 — local LLM inference (optional, for offline)
+- **botmodels** — computer vision pipeline for face/object detection
+- **Stalwart** — yes, your robot can have its own email server
+- **PostgreSQL** — conversation history, user recognition data
+
+This isn't theoretical. The same stack that powers enterprise chatbots runs on a Jetson Orin Nano inside a robot chassis. When someone walks up and says "where's the bathroom?", the request flows through the same LLM pipeline, triggers the same BASIC keywords, and the response happens to include servo movements instead of just text.
+
+**Practical benefits:**
+
+| Traditional Robot | GB-Powered Robot |
+|-------------------|------------------|
+| Hardcoded responses | LLM-generated natural conversation |
+| Fixed behavior scripts | Event-driven, adaptive responses |
+| Separate control systems | Unified orchestration |
+| Cloud-dependent | Fully offline capable |
+| Custom integration work | Standard GB packages (.gbai) |
+
+The robot is just another deployment target. Same .gbai packages, same BASIC scripts, same tools — but with `ROBOT WALK` and `SERVO MOVE` alongside `SEND MAIL` and `POST`.
+
 ## Overview
 
 General Bots transforms humanoid robot kits into intelligent conversational assistants capable of:
@@ -9,7 +35,7 @@ General Bots transforms humanoid robot kits into intelligent conversational assi
 - **Natural conversation** via LLM integration
 - **Visual recognition** using botmodels CV pipelines
 - **Expressive movement** through BASIC keyword commands
-- **Autonomous behavior** with scheduled tasks and triggers
+- **Autonomous behavior** with event-driven triggers
 
 <img src="../assets/chapter-13/humanoid-architecture.svg" alt="Humanoid Robot Architecture" style="max-width: 100%; height: auto;">
 
@@ -48,12 +74,20 @@ General Bots transforms humanoid robot kits into intelligent conversational assi
 
 ### System Components
 
+The robot runs the full General Bots stack:
+
 | Component | Role | Technology |
 |-----------|------|------------|
 | **botserver** | Brain - LLM, conversation, decisions | Rust, Port 8088 |
 | **botmodels** | Eyes - CV, face recognition, object detection | Python, ONNX |
 | **BASIC Runtime** | Motor control - movement sequences | Keywords → servo commands |
 | **Hardware Bridge** | Translation layer | GPIO, Serial, CAN bus |
+| **llama.cpp** | Local LLM (optional) | C++, Port 8080 |
+| **PostgreSQL** | User data, conversation history | SQLite for embedded |
+| **SeaweedFS** | File storage (documents, images) | Optional |
+| **Stalwart** | Email server — robot has its own inbox | Optional |
+
+Yes, your robot can receive emails. A visitor sends an email to `robot@company.com`, and the humanoid can respond, schedule meetings, or notify staff. Same stack, different form factor.
 
 ### Communication Flow
 
@@ -97,278 +131,300 @@ General Bots transforms humanoid robot kits into intelligent conversational assi
 | Microphone Array | Voice input, direction | USB/I2S |
 | Force Sensors | Grip feedback | ADC |
 
-## BASIC Keywords for Robotics
+## Event-Driven Robotics with ON Events
 
-### Servo Control
+General Bots uses an **event-driven architecture** - no loops needed. The robot reacts to events automatically.
+
+### Vision Events
 
 ```basic
-' Initialize servo controller
-SERVO INIT "PCA9685", address: 0x40
+' React when a person is detected
+ON CV "person" DETECTED CALL person_detected
 
-' Move single servo
-SERVO MOVE channel, angle, speed
-SERVO MOVE 0, 90, 50      ' Channel 0 to 90° at speed 50
+' React when a specific person is recognized
+ON CV "face" RECOGNIZED CALL greet_person
 
-' Move multiple servos simultaneously
-SERVO SYNC moves
-SERVO SYNC [[0, 90], [1, 45], [2, 135]]
+' React when an object is seen
+ON CV "cat" DETECTED CALL react_to_cat
 
-' Read servo position
-position = SERVO READ channel
+' React when someone waves
+ON CV "gesture:wave" DETECTED CALL wave_back
+
+' React when someone approaches
+ON CV "person" DISTANCE < 1.5 CALL person_approaching
 ```
 
-### Predefined Movements
+### Voice Events
 
 ```basic
-' Humanoid poses
+' React to wake word
+ON HEAR "Hey robot" CALL wake_up
+
+' React to any speech
+ON HEAR CALL process_speech
+
+' React to specific commands
+ON HEAR "follow me" CALL start_following
+ON HEAR "stop" CALL emergency_stop
+ON HEAR "sit down" CALL sit_pose
+```
+
+### Sensor Events
+
+```basic
+' React to balance issues
+ON IMU TILT > 15 CALL stabilize
+
+' React to touch
+ON TOUCH "head" CALL head_touched
+ON TOUCH "hand_left" CALL hand_touched
+
+' React to obstacles
+ON DISTANCE "front" < 0.5 CALL obstacle_detected
+
+' React to battery level
+ON BATTERY < 20 CALL low_battery_warning
+```
+
+### Time Events
+
+```basic
+' Scheduled behaviors
+ON SCHEDULE "0 9 * * *" CALL morning_greeting
+ON SCHEDULE "*/5 * * * *" CALL idle_animation
+
+' Periodic checks
+ON INTERVAL 30000 CALL check_surroundings
+```
+
+## Movement Tools
+
+Define robot capabilities as **TOOLS** that the LLM can call naturally during conversation.
+
+### Basic Movement Tools
+
+```basic
+' wave-hello.bas
+PARAM person_name DESCRIPTION "Name of person to wave at"
+
+TALK "Hello " + person_name + "!"
+ROBOT ARM "right", action: "wave"
+WAIT 1500
 ROBOT POSE "stand"
-ROBOT POSE "sit"
-ROBOT POSE "wave"
-ROBOT POSE "bow"
-ROBOT POSE "point", direction: "left"
-
-' Walking
-ROBOT WALK steps, direction
-ROBOT WALK 5, "forward"
-ROBOT WALK 3, "backward"
-ROBOT TURN degrees
-ROBOT TURN 90      ' Turn right 90°
-ROBOT TURN -45     ' Turn left 45°
-
-' Arm movements
-ROBOT ARM "left", action: "raise"
-ROBOT ARM "right", action: "extend"
-ROBOT GRIP "left", "open"
-ROBOT GRIP "right", "close"
-
-' Head movements
-ROBOT HEAD "nod"
-ROBOT HEAD "shake"
-ROBOT HEAD "look", pan: 30, tilt: -15
 ```
 
-### Motion Sequences
-
 ```basic
-' Define custom sequence
-SEQUENCE DEFINE "greeting"
-    ROBOT POSE "stand"
-    WAIT 500
-    ROBOT HEAD "look", pan: 0, tilt: 0
-    ROBOT ARM "right", action: "wave"
-    WAIT 1000
-    ROBOT POSE "bow"
-    WAIT 800
-    ROBOT POSE "stand"
-SEQUENCE END
+' point-direction.bas
+PARAM direction DESCRIPTION "Direction to point: left, right, forward, behind"
 
-' Play sequence
-SEQUENCE PLAY "greeting"
-
-' Interrupt sequence
-SEQUENCE STOP
-```
-
-### Balance and Safety
-
-```basic
-' Enable balance control
-ROBOT BALANCE ON
-ROBOT BALANCE OFF
-
-' Set safety limits
-ROBOT LIMITS torque: 80, speed: 70
-
-' Emergency stop
-ROBOT STOP
-
-' Check stability
-stable = ROBOT STABLE
-IF NOT stable THEN
-    ROBOT POSE "stable"
-END IF
-```
-
-## Computer Vision Integration
-
-### Face Detection and Recognition
-
-```basic
-' Start face detection
-CV START "face_detection"
-
-' Wait for face
-face = CV DETECT "face", timeout: 5000
-
-IF face THEN
-    ' Get face details
-    name = face.identity
-    emotion = face.emotion
-    direction = face.direction
-    
-    ' React to person
-    ROBOT HEAD "look", pan: direction.x, tilt: direction.y
-    
-    IF name <> "unknown" THEN
-        TALK "Hello " + name + "!"
-        SEQUENCE PLAY "greeting"
-    ELSE
-        TALK "Hello! I don't think we've met."
-    END IF
-END IF
-```
-
-### Object Detection
-
-```basic
-' Detect objects in view
-objects = CV DETECT "objects"
-
-FOR EACH obj IN objects
-    IF obj.class = "cup" THEN
-        ' Point at the cup
+SELECT CASE direction
+    CASE "left"
+        ROBOT ARM "left", action: "point"
+        TALK "It's over there to the left"
+    CASE "right"
         ROBOT ARM "right", action: "point"
-        ROBOT HEAD "look", pan: obj.x, tilt: obj.y
-        TALK "I see a " + obj.color + " cup"
-    END IF
-NEXT
-```
-
-### Gesture Recognition
-
-```basic
-' Enable gesture detection
-CV START "gesture_detection"
-
-' React to gestures
-gesture = CV DETECT "gesture", timeout: 10000
-
-SELECT CASE gesture.type
-    CASE "wave"
-        SEQUENCE PLAY "wave_back"
-    CASE "thumbs_up"
-        ROBOT POSE "thumbs_up"
-        TALK "Great!"
-    CASE "come_here"
-        ROBOT WALK 3, "forward"
-    CASE "stop"
-        ROBOT STOP
+        TALK "It's over there to the right"
+    CASE "forward"
+        ROBOT ARM "right", action: "extend"
+        TALK "It's straight ahead"
+    CASE "behind"
+        ROBOT TURN 180
+        ROBOT ARM "right", action: "point"
+        TALK "It's behind us"
 END SELECT
 ```
 
-### Following Behavior
-
 ```basic
-' Follow a person
-CV START "person_tracking"
+' bow-greeting.bas
+PARAM style DESCRIPTION "Bow style: formal, casual, deep"
 
-WHILE TRUE
-    person = CV TRACK "person"
-    
-    IF person THEN
-        ' Keep person centered
-        IF person.x < -20 THEN
-            ROBOT TURN -10
-        ELSE IF person.x > 20 THEN
-            ROBOT TURN 10
-        END IF
-        
-        ' Maintain distance
-        IF person.distance < 1.0 THEN
-            ROBOT WALK 1, "backward"
-        ELSE IF person.distance > 2.0 THEN
-            ROBOT WALK 1, "forward"
-        END IF
-    ELSE
-        ' Lost tracking, look around
-        ROBOT HEAD "look", pan: 45, tilt: 0
+SELECT CASE style
+    CASE "formal"
+        ROBOT HEAD "look", pan: 0, tilt: -30
         WAIT 1000
-        ROBOT HEAD "look", pan: -45, tilt: 0
-        WAIT 1000
-    END IF
-    
-    WAIT 100
-WEND
+    CASE "casual"
+        ROBOT HEAD "nod"
+    CASE "deep"
+        ROBOT POSE "bow"
+        WAIT 1500
+        ROBOT POSE "stand"
+END SELECT
 ```
 
-## LLM-Driven Behavior
-
-### Conversational Movement
+### Navigation Tools
 
 ```basic
-' System prompt for embodied AI
-system_prompt = "You are a helpful humanoid robot assistant. "
-system_prompt = system_prompt + "When responding, include movement commands in brackets. "
-system_prompt = system_prompt + "Available: [wave], [nod], [shake_head], [bow], [point_left], [point_right], [think]"
+' walk-to-location.bas
+PARAM location DESCRIPTION "Where to walk: reception, elevator, exit, charging_station"
 
-SET SYSTEM PROMPT system_prompt
+locations = {
+    "reception": [0, 0],
+    "elevator": [5, 2],
+    "exit": [10, 0],
+    "charging_station": [-2, 1]
+}
 
-' Process conversation with movements
-response = LLM "How can I help you today?"
-
-' Parse and execute movements
-movements = EXTRACT_BRACKETS response
-FOR EACH move IN movements
-    SELECT CASE move
-        CASE "wave"
-            SEQUENCE PLAY "wave"
-        CASE "nod"
-            ROBOT HEAD "nod"
-        CASE "shake_head"
-            ROBOT HEAD "shake"
-        CASE "bow"
-            ROBOT POSE "bow"
-        CASE "point_left"
-            ROBOT ARM "left", action: "point"
-        CASE "point_right"
-            ROBOT ARM "right", action: "point"
-        CASE "think"
-            ROBOT HEAD "look", pan: 15, tilt: 15
-    END SELECT
-NEXT
-
-' Speak cleaned response
-clean_response = REMOVE_BRACKETS response
-TALK clean_response
+target = locations[location]
+ROBOT NAVIGATE target[0], target[1]
+TALK "I'll take you to the " + location
 ```
 
-### Autonomous Behavior Loop
+```basic
+' follow-person.bas
+PARAM duration_seconds DESCRIPTION "How long to follow in seconds"
+
+ROBOT MODE "follow"
+TALK "I'll follow you for " + duration_seconds + " seconds"
+WAIT duration_seconds * 1000
+ROBOT MODE "stationary"
+TALK "Okay, I'll stay here now"
+```
+
+### Expressive Tools
 
 ```basic
-' Main behavior loop
-WHILE TRUE
-    ' Check for voice input
-    input = HEAR timeout: 5000
-    
-    IF input <> "" THEN
-        ' Process with LLM
-        response = LLM input
-        ProcessResponse response
-    ELSE
-        ' Idle behaviors
-        idle_action = RANDOM 1, 5
-        
-        SELECT CASE idle_action
-            CASE 1
-                ' Look around
-                ROBOT HEAD "look", pan: RANDOM -30, 30, tilt: 0
-            CASE 2
-                ' Check for faces
-                face = CV DETECT "face", timeout: 1000
-                IF face THEN
-                    TALK "Hello there!"
-                    SEQUENCE PLAY "greeting"
-                END IF
-            CASE 3
-                ' Slight movement
-                ROBOT POSE "relax"
-            CASE 4, 5
-                ' Do nothing
-        END SELECT
-    END IF
-    
+' show-emotion.bas
+PARAM emotion DESCRIPTION "Emotion to display: happy, sad, surprised, thinking, confused"
+
+SELECT CASE emotion
+    CASE "happy"
+        ROBOT DISPLAY "face_happy"
+        ROBOT HEAD "nod"
+    CASE "sad"
+        ROBOT DISPLAY "face_sad"
+        ROBOT HEAD "look", pan: 0, tilt: -20
+    CASE "surprised"
+        ROBOT DISPLAY "face_surprised"
+        ROBOT HEAD "look", pan: 0, tilt: 10
+    CASE "thinking"
+        ROBOT DISPLAY "face_thinking"
+        ROBOT HEAD "look", pan: 20, tilt: 10
+    CASE "confused"
+        ROBOT DISPLAY "face_confused"
+        ROBOT HEAD "tilt", angle: 15
+END SELECT
+```
+
+```basic
+' dance-move.bas
+PARAM style DESCRIPTION "Dance style: wave, robot, celebration"
+
+SELECT CASE style
+    CASE "wave"
+        SEQUENCE PLAY "dance_wave"
+    CASE "robot"
+        SEQUENCE PLAY "dance_robot"
+    CASE "celebration"
+        SEQUENCE PLAY "dance_celebration"
+        TALK "Woohoo!"
+END SELECT
+```
+
+## Event Handlers
+
+### Person Detection Handler
+
+```basic
+' on-person-detected.bas
+' Called automatically when ON CV "person" DETECTED fires
+
+person = EVENT.data
+
+' Turn to face the person
+ROBOT HEAD "look", pan: person.direction.x, tilt: person.direction.y
+
+' Check if we know them
+IF person.identity <> "unknown" THEN
+    USE TOOL "wave-hello", person_name: person.identity
+ELSE
+    TALK "Hello! Welcome. How can I help you?"
+    USE TOOL "bow-greeting", style: "casual"
+END IF
+```
+
+### Cat Detection Handler
+
+```basic
+' on-cat-detected.bas  
+' Called automatically when ON CV "cat" DETECTED fires
+
+cat = EVENT.data
+
+TALK "Oh, I see a cat!"
+ROBOT HEAD "look", pan: cat.direction.x, tilt: cat.direction.y
+USE TOOL "show-emotion", emotion: "happy"
+
+' Crouch down to cat level
+ROBOT POSE "crouch"
+TALK "Here kitty kitty!"
+WAIT 3000
+ROBOT POSE "stand"
+```
+
+### Gesture Handler
+
+```basic
+' on-wave-detected.bas
+' Called automatically when ON CV "gesture:wave" DETECTED fires
+
+gesture = EVENT.data
+
+' Wave back
+ROBOT HEAD "look", pan: gesture.direction.x, tilt: gesture.direction.y
+USE TOOL "wave-hello", person_name: "there"
+```
+
+### Speech Handler
+
+```basic
+' on-speech.bas
+' Called automatically when ON HEAR fires
+
+speech = EVENT.data.text
+
+' Let LLM decide what to do with available tools
+response = LLM speech
+
+' LLM automatically calls tools like:
+' - wave-hello when greeting someone
+' - point-direction when giving directions
+' - show-emotion to express feelings
+' - walk-to-location when guiding someone
+
+TALK response
+```
+
+### Balance Handler
+
+```basic
+' on-balance-issue.bas
+' Called automatically when ON IMU TILT > 15 fires
+
+ROBOT BALANCE ON
+TALK "Whoa, let me steady myself"
+
+stable = ROBOT STABLE
+IF NOT stable THEN
+    ROBOT POSE "wide_stance"
     WAIT 1000
-WEND
+END IF
+
+ROBOT BALANCE OFF
+```
+
+### Low Battery Handler
+
+```basic
+' on-low-battery.bas
+' Called automatically when ON BATTERY < 20 fires
+
+TALK "My battery is getting low. I need to charge soon."
+USE TOOL "show-emotion", emotion: "sad"
+
+IF BATTERY < 10 THEN
+    TALK "I really need to go charge now. Excuse me."
+    USE TOOL "walk-to-location", location: "charging_station"
+END IF
 ```
 
 ## Configuration
@@ -411,7 +467,20 @@ Create `servos.csv` to map joints to channels:
 | left_grip | 14 | 0 | 90 | 0 | false |
 | right_grip | 15 | 0 | 90 | 0 | false |
 
-### Motion Files
+### Event Registration
+
+Create `events.csv` to register event handlers:
+
+| event | handler | enabled |
+|-------|---------|---------|
+| CV:person:detected | on-person-detected.bas | true |
+| CV:cat:detected | on-cat-detected.bas | true |
+| CV:gesture:wave:detected | on-wave-detected.bas | true |
+| HEAR | on-speech.bas | true |
+| IMU:tilt:15 | on-balance-issue.bas | true |
+| BATTERY:20 | on-low-battery.bas | true |
+
+### Motion Sequences
 
 Create `motions.csv` for predefined sequences:
 
@@ -421,11 +490,147 @@ Create `motions.csv` for predefined sequences:
 | bow | [{"t":0,"joints":{"head_tilt":0}},{"t":500,"joints":{"head_tilt":-30}},{"t":1500,"joints":{"head_tilt":0}}] |
 | nod | [{"t":0,"joints":{"head_tilt":0}},{"t":200,"joints":{"head_tilt":-15}},{"t":400,"joints":{"head_tilt":10}},{"t":600,"joints":{"head_tilt":0}}] |
 
+## Complete Example: Reception Robot
+
+### Package Structure
+
+| Path | Description |
+|------|-------------|
+| `reception.gbai/` | Root package |
+| `reception.gbdialog/` | BASIC scripts |
+| `reception.gbdialog/start.bas` | Initialization and event registration |
+| `reception.gbdialog/tools/` | Tool definitions |
+| `reception.gbdialog/handlers/` | Event handlers |
+| `reception.gbot/` | Configuration |
+| `reception.gbot/robot.csv` | Robot settings |
+| `reception.gbot/servos.csv` | Servo mapping |
+| `reception.gbot/events.csv` | Event registration |
+| `reception.gbkb/` | Knowledge base |
+
+### start.bas - Initialization
+
+```basic
+' reception.gbdialog/start.bas
+' Initialize the reception robot
+
+' Configure robot hardware
+SERVO INIT "PCA9685", address: 0x40
+ROBOT POSE "stand"
+ROBOT BALANCE ON
+
+' Set personality for LLM
+SET SYSTEM PROMPT "You are a friendly reception robot at TechCorp. " + _
+    "Greet visitors warmly, answer questions about the company, " + _
+    "and direct them to the right department. " + _
+    "Use your movement tools to be expressive and helpful."
+
+' Load company knowledge
+USE KB "company-info"
+
+' Register all tools for LLM
+USE TOOL "wave-hello"
+USE TOOL "point-direction"
+USE TOOL "bow-greeting"
+USE TOOL "walk-to-location"
+USE TOOL "show-emotion"
+USE TOOL "follow-person"
+
+' Register event handlers
+ON CV "person" DETECTED CALL handlers/on-person-detected.bas
+ON CV "face" RECOGNIZED CALL handlers/on-face-recognized.bas
+ON CV "gesture:wave" DETECTED CALL handlers/on-wave-detected.bas
+ON HEAR CALL handlers/on-speech.bas
+ON IMU TILT > 15 CALL handlers/on-balance-issue.bas
+ON BATTERY < 20 CALL handlers/on-low-battery.bas
+
+' Start with a ready pose
+TALK "Reception robot online and ready to help!"
+USE TOOL "show-emotion", emotion: "happy"
+```
+
+### handlers/on-person-detected.bas
+
+```basic
+' Called when a person enters the field of view
+
+person = EVENT.data
+
+' Face the person
+ROBOT HEAD "look", pan: person.direction.x, tilt: person.direction.y
+
+' Greet appropriately
+IF person.identity <> "unknown" THEN
+    ' Known person
+    TALK "Welcome back, " + person.identity + "! Great to see you again."
+    USE TOOL "wave-hello", person_name: person.identity
+ELSE
+    ' New visitor
+    TALK "Hello! Welcome to TechCorp. How may I assist you today?"
+    USE TOOL "bow-greeting", style: "casual"
+END IF
+```
+
+### handlers/on-face-recognized.bas
+
+```basic
+' Called when a known face is recognized
+
+face = EVENT.data
+
+' Get person info from database
+person_info = GET "employees", "name = '" + face.identity + "'"
+
+IF person_info THEN
+    ' Employee
+    TALK "Good morning, " + face.identity + "! " + _
+         "You have " + person_info.meetings_today + " meetings today."
+ELSE
+    ' Known visitor
+    TALK "Hello " + face.identity + "! Let me notify your contact that you've arrived."
+    SEND NOTIFICATION face.expected_contact, face.identity + " has arrived at reception"
+END IF
+```
+
+### handlers/on-speech.bas
+
+```basic
+' Called when speech is detected
+
+speech = EVENT.data.text
+
+' Use LLM with tools to generate response and actions
+' LLM will automatically call appropriate tools based on context:
+' - "Where is the bathroom?" → point-direction tool
+' - "Take me to the elevator" → walk-to-location + follow-person tools  
+' - "Thank you!" → show-emotion + wave-hello tools
+
+response = LLM speech
+TALK response
+```
+
+### tools/guide-visitor.bas
+
+```basic
+' guide-visitor.bas
+PARAM destination DESCRIPTION "Where to guide the visitor: meeting_room_a, meeting_room_b, cafeteria, restroom, elevator"
+PARAM visitor_name DESCRIPTION "Name of the visitor being guided"
+
+TALK "Of course, " + visitor_name + "! Please follow me to " + destination + "."
+USE TOOL "show-emotion", emotion: "happy"
+
+' Start walking and ask them to follow
+ROBOT MODE "guide"
+USE TOOL "walk-to-location", location: destination
+
+' Arrived
+ROBOT TURN 180
+TALK "Here we are! This is the " + destination + ". Is there anything else you need?"
+USE TOOL "bow-greeting", style: "casual"
+```
+
 ## Build Guides
 
-### Beginner: Desktop Companion
-
-**Budget: ~$600**
+### Beginner: Desktop Companion (~$600)
 
 | Component | Model | Price |
 |-----------|-------|-------|
@@ -434,15 +639,9 @@ Create `motions.csv` for predefined sequences:
 | Camera | Pi Camera v3 | $25 |
 | Microphone | USB mic | $15 |
 
-**Capabilities:**
-- Voice conversation via cloud LLM
-- Basic face detection
-- Gesture responses
-- Desktop assistant
+**Capabilities:** Voice conversation via cloud LLM, basic face detection, gesture responses, desktop assistant.
 
-### Intermediate: Service Robot
-
-**Budget: ~$10,000**
+### Intermediate: Service Robot (~$10,000)
 
 | Component | Model | Price |
 |-----------|-------|-------|
@@ -452,15 +651,9 @@ Create `motions.csv` for predefined sequences:
 | Microphone | ReSpeaker Array | $100 |
 | Speakers | USB powered | $50 |
 
-**Capabilities:**
-- Local LLM (Llama 3.2 3B)
-- Full body tracking
-- Object manipulation
-- Walking and navigation
+**Capabilities:** Local LLM (Llama 3.2 3B), full body tracking, object manipulation, walking and navigation.
 
-### Advanced: Research Platform
-
-**Budget: ~$20,000+**
+### Advanced: Research Platform (~$20,000+)
 
 | Component | Model | Price |
 |-----------|-------|-------|
@@ -468,13 +661,35 @@ Create `motions.csv` for predefined sequences:
 | Compute | Onboard + Workstation | $3,000 |
 | Sensors | LiDAR + Depth cameras | $1,000 |
 
-**Capabilities:**
-- Full autonomous navigation
-- Complex manipulation
-- Multi-modal interaction
-- Research-grade motion control
+**Capabilities:** Full autonomous navigation, complex manipulation, multi-modal interaction, research-grade motion control.
 
-## Safety Considerations
+## Deployment Notes
+
+### The Robot as a Server
+
+When you deploy GB to a humanoid, you're deploying a server that happens to have legs. The robot:
+
+- Has its own IP address on the network
+- Runs the full botserver API (REST, WebSocket)
+- Can be managed remotely via the Suite UI
+- Stores conversation history locally
+- Syncs with cloud when connected (optional)
+
+Multiple robots can share a central botserver, or each can run independently. For a fleet of reception robots, you might run one botserver with multiple robot clients. For a standalone assistant, everything runs on the robot itself.
+
+### Offline Operation
+
+With llama.cpp and local models, the robot operates without internet:
+
+| Model | RAM Required | Performance |
+|-------|--------------|-------------|
+| TinyLlama 1.1B | 2GB | ~5 tok/s on Pi 5 |
+| Phi-2 2.7B | 4GB | ~3 tok/s on Jetson |
+| Llama 3.2 3B | 6GB | ~4 tok/s on Orin Nano |
+
+Vision models run locally via ONNX. The robot sees, thinks, and acts without phoning home.
+
+## Safety
 
 ### Physical Safety
 
@@ -484,150 +699,35 @@ Create `motions.csv` for predefined sequences:
 - Ensure stable base before walking
 - Keep clear area around robot
 
-### Software Safety
+### Software Safety with Events
 
 ```basic
-' Always wrap motion code in error handling
-ON ERROR GOTO SafetyStop
+' on-emergency.bas
+' Called by hardware emergency button or voice command
 
-' Motion code here...
-
-END
-
-SafetyStop:
-    ROBOT STOP
-    ROBOT POSE "safe"
-    LOG ERROR "Emergency stop: " + ERROR MESSAGE
-    TALK "I need to stop for safety"
+ROBOT STOP
+ROBOT POSE "safe"
+ROBOT BALANCE OFF
+LOG ERROR "Emergency stop activated"
+TALK "Emergency stop. All movement halted."
 ```
+
+Register in events.csv:
+
+| event | handler | enabled |
+|-------|---------|---------|
+| EMERGENCY | on-emergency.bas | true |
+| HEAR:stop:emergency | on-emergency.bas | true |
 
 ### Operating Guidelines
 
-| Situation | Action |
-|-----------|--------|
-| Unknown obstacle detected | Stop, assess, navigate |
-| Balance threshold exceeded | Widen stance or sit |
-| Person too close | Step back, warn verbally |
-| Battery low | Announce, return to charger |
-| Communication lost | Safe pose, wait for reconnect |
-
-## Example: Reception Robot
-
-Complete example of a reception desk humanoid:
-
-```basic
-' reception-robot.bas
-' A humanoid reception assistant
-
-' Initialize systems
-SERVO INIT "PCA9685", address: 0x40
-CV START "face_detection"
-ROBOT POSE "stand"
-ROBOT BALANCE ON
-
-' Set personality
-SET SYSTEM PROMPT "You are a friendly reception robot at TechCorp. "
-SET SYSTEM PROMPT SYSTEM PROMPT + "Greet visitors, answer questions about the company, "
-SET SYSTEM PROMPT SYSTEM PROMPT + "and direct them to the right department. "
-SET SYSTEM PROMPT SYSTEM PROMPT + "Be warm and professional. Use [wave], [nod], [point_left], [point_right] for gestures."
-
-' Load company knowledge
-USE KB "company-info"
-
-' Main loop
-WHILE TRUE
-    ' Watch for approaching people
-    face = CV DETECT "face", timeout: 2000
-    
-    IF face THEN
-        ' Turn to face person
-        ROBOT HEAD "look", pan: face.direction.x, tilt: face.direction.y
-        
-        ' Check if known
-        IF face.identity <> "unknown" THEN
-            TALK "Welcome back, " + face.identity + "!"
-            SEQUENCE PLAY "wave"
-        ELSE
-            TALK "Hello! Welcome to TechCorp. How can I help you today?"
-            SEQUENCE PLAY "greeting"
-        END IF
-        
-        ' Enter conversation mode
-        ConversationLoop
-    END IF
-    
-    ' Idle animation
-    IdleBehavior
-    
-    WAIT 500
-WEND
-
-SUB ConversationLoop
-    silence_count = 0
-    
-    WHILE silence_count < 3
-        input = HEAR timeout: 10000
-        
-        IF input <> "" THEN
-            silence_count = 0
-            
-            ' Process with LLM
-            response = LLM input
-            
-            ' Execute gestures
-            ExecuteGestures response
-            
-            ' Speak response
-            TALK REMOVE_BRACKETS response
-            
-            ' Check for directions
-            IF CONTAINS response, "point_left" THEN
-                TALK "The elevators are to your left"
-            ELSE IF CONTAINS response, "point_right" THEN
-                TALK "You'll find that department to your right"
-            END IF
-        ELSE
-            silence_count = silence_count + 1
-            
-            IF silence_count = 2 THEN
-                TALK "Is there anything else I can help with?"
-                ROBOT HEAD "tilt", angle: 10
-            END IF
-        END IF
-    WEND
-    
-    TALK "Have a great day!"
-    SEQUENCE PLAY "wave"
-END SUB
-
-SUB IdleBehavior
-    action = RANDOM 1, 10
-    
-    SELECT CASE action
-        CASE 1
-            ROBOT HEAD "look", pan: RANDOM -20, 20, tilt: 0
-        CASE 2
-            ROBOT POSE "relax"
-        CASE 3, 4, 5, 6, 7, 8, 9, 10
-            ' Mostly stay still
-    END SELECT
-END SUB
-
-SUB ExecuteGestures response
-    IF CONTAINS response, "[wave]" THEN
-        SEQUENCE PLAY "wave"
-    END IF
-    IF CONTAINS response, "[nod]" THEN
-        ROBOT HEAD "nod"
-    END IF
-    IF CONTAINS response, "[point_left]" THEN
-        ROBOT ARM "left", action: "point"
-    END IF
-    IF CONTAINS response, "[point_right]" THEN
-        ROBOT ARM "right", action: "point"
-    END IF
-END SUB
-```
+| Situation | Event | Action |
+|-----------|-------|--------|
+| Unknown obstacle | ON DISTANCE < 0.5 | Stop, assess, navigate around |
+| Balance issue | ON IMU TILT > 15 | Widen stance or sit down |
+| Person too close | ON CV "person" DISTANCE < 0.8 | Step back, warn verbally |
+| Battery low | ON BATTERY < 20 | Announce, navigate to charger |
+| Communication lost | ON CONNECTION LOST | Safe pose, wait for reconnect |
 
 ## Resources
 
