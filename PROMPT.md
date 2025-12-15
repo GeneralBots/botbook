@@ -580,3 +580,100 @@ HEAR variable
 SEND MAIL to, subject, body, attachments
 SEND TEMPLATE recipients, template, variables
 ```
+
+---
+
+## Conversation Examples (WhatsApp Style)
+
+All conversation examples throughout the book use the WhatsApp-style HTML format. This provides a familiar, visually consistent representation of bot interactions.
+
+### Standard Format
+
+```html
+<div class="wa-chat">
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>User message goes here</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>Bot response goes here</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+</div>
+```
+
+### Message Classes
+
+| Class | Usage |
+|-------|-------|
+| `wa-chat` | Container for the conversation |
+| `wa-message` | Individual message wrapper |
+| `wa-message user` | User message (right-aligned, colored) |
+| `wa-message bot` | Bot message (left-aligned) |
+| `wa-bubble` | Message bubble with styling |
+| `wa-time` | Timestamp display |
+
+### Formatting Guidelines
+
+1. **User messages** — Use `wa-message user` class
+2. **Bot messages** — Use `wa-message bot` class
+3. **Timestamps** — Include `wa-time` div with realistic times
+4. **Multi-line responses** — Use separate `<p>` tags for each line
+5. **Status indicators** — Use text indicators (Success, Error, etc.) not emojis
+6. **Bold text** — Use `<strong>` for emphasis
+7. **Attachments** — Indicate with text like "[Attachment: filename.pdf]"
+
+### Complete Example
+
+```html
+<div class="wa-chat">
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>Hello! How can I help you today?</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>I want to enroll in computer science</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>I'll help you enroll! What's your name?</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>Sarah Chen</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p><strong>Success:</strong> Welcome to Computer Science, Sarah!</p>
+      <p>Your enrollment ID is: ENR-2025-0142</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+</div>
+```
+
+### When to Use Each Format
+
+| Content Type | Format |
+|--------------|--------|
+| Interface screenshots | SVG wireframe |
+| System architecture | SVG diagram |
+| Data flow diagrams | SVG diagram |
+| Bot conversations | WhatsApp HTML |
+| API examples | Code blocks |
+| Configuration | Code blocks |
+
+The WhatsApp chat styling is defined in `src/whatsapp-chat.css` and automatically included in the book build.
