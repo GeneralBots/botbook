@@ -1,6 +1,7 @@
 # Summary
 
 [Executive Vision](./executive-vision.md)
+[Roadmap 2024-2026](./ROADMAP.md)
 [Introduction](./introduction.md)
 
 # Part I - Getting Started
@@ -399,8 +400,6 @@
   - [Backup and Recovery](./19-maintenance/backup-recovery.md)
   - [Troubleshooting](./19-maintenance/troubleshooting.md)
 
-- [Appendix D: Documentation Style](./16-appendix-docs-style/conversation-examples.md)
-  - [SVG and Conversation Standards](./16-appendix-docs-style/svg.md)
 
 [Glossary](./glossary.md)
 [Contact](./contact/README.md)
