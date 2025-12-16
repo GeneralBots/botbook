@@ -1,0 +1,31 @@
+name: GBCI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: gbo
+
+    steps:
+      - name: Disable SSL verification (temporary)
+        run: git config --global http.sslVerify false
+
+      - uses: actions/checkout@v4
+
+      - name: Install mdBook
+        run: |
+          if ! command -v mdbook &> /dev/null; then
+            cargo install mdbook
+          fi
+
+      - name: Build documentation
+        run: mdbook build
+
+      - name: Deploy documentation
+        run: |
+          sudo cp -r ./book/* /opt/gbo/tenants/pragmatismo/proxy/data/websites/docs.pragmatismo.com.br/
+          sudo chown -R www-data:www-data /opt/gbo/tenants/pragmatismo/proxy/data/websites/docs.pragmatismo.com.br/
