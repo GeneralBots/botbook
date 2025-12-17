@@ -61,6 +61,7 @@
   - [Console Mode](./04-gbui/console-mode.md)
   - [Monitoring Dashboard](./04-gbui/monitoring.md)
   - [HTMX Architecture](./04-gbui/htmx-architecture.md)
+  - [Dev Chat Widget](./04-gbui/dev-chat.md)
   - [Suite Applications](./04-gbui/apps/README.md)
     - [Suite - Full Desktop](./04-gbui/apps/suite.md)
     - [Chat - AI Assistant](./04-gbui/apps/chat.md)
@@ -371,6 +372,15 @@
   - [Performance Testing](./17-testing/performance.md)
   - [Best Practices](./17-testing/best-practices.md)
   - [CI/CD Integration](./17-testing/ci-cd.md)
+
+# Part XVI - Autonomous Tasks
+
+- [Chapter 17: Autonomous Tasks](./21-autonomous-tasks/README.md)
+  - [Task Workflow](./21-autonomous-tasks/workflow.md)
+  - [App Generation](./21-autonomous-tasks/app-generation.md)
+  - [Data Model](./21-autonomous-tasks/data-model.md)
+  - [Progress Tracking](./21-autonomous-tasks/progress.md)
+  - [Examples](./21-autonomous-tasks/examples.md)
 
 # Appendices
 

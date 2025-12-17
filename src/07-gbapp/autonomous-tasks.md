@@ -4,608 +4,312 @@
 
 ---
 
-<img src="../assets/chapter-07/autonomous-task-flow.svg" alt="Autonomous Task AI Flow" style="max-width: 100%; height: auto;">
-
----
-
 ## Overview
 
-General Bots transforms how work gets done. Instead of humans executing tasks step-by-step, you describe what you want and the AI autonomously builds, deploys, and manages everything.
+Autonomous Tasks let you describe what you want and the system builds it. No coding required - just describe your application in plain language.
 
-**Traditional approach:**
-```
-Human thinks → Human plans → Human codes → Human deploys → Human maintains
-```
+**You say:**
+> "Create a CRM for my cellphone store"
 
-**General Bots approach:**
-```
-Human describes intent → AI plans → AI generates → AI deploys → AI monitors
-```
-
-This is not just task automation - it's **autonomous task execution** where the LLM acts as the brain that understands, plans, and accomplishes complex work.
+**You get:**
+- Working HTMX application at `/apps/cellphone-crm`
+- Database tables: `customers`, `products`, `sales`, `repairs`
+- Forms, lists, search, filters - all functional
+- Direct connection to botserver API
 
 ---
 
-## Core Architecture
-
-### The Foundation: .gbai + .gbdrive
-
-Every autonomous task operates within the General Bots package structure:
+## Architecture
 
 ```
-project.gbai/                    # The AI workspace
-├── project.gbdialog/            # BASIC scripts (auto-generated)
-│   ├── start.bas                # Entry point
-│   └── tools/                   # Generated tools
-├── project.gbkb/                # Knowledge base
-│   └── docs/                    # Reference documents
-├── project.gbot/                # Configuration
-│   └── config.csv               # Bot settings
-├── project.gbdrive/             # Online storage (MinIO bucket)
-│   ├── assets/                  # Generated assets
-│   ├── data/                    # Task data files
-│   └── output/                  # Produced artifacts
-└── project.gbtheme/             # UI customization
+┌─────────────────────────────────────────────────────────────────┐
+│                         Your App                                 │
+│                                                                  │
+│   ┌──────────┐    ┌──────────┐    ┌──────────┐                 │
+│   │  Forms   │    │  Lists   │    │  Actions │                 │
+│   └────┬─────┘    └────┬─────┘    └────┬─────┘                 │
+│        │               │               │                        │
+│        └───────────────┼───────────────┘                        │
+│                        │ HTMX                                   │
+└────────────────────────┼────────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      botserver API                               │
+│                                                                  │
+│   /api/db/*          /api/drive/*         /api/llm/*           │
+│   CRUD operations    File storage         AI features           │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              PostgreSQL + MinIO + LLM                           │
+│              (user_data virtual table)                          │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-**Key insight:** The `.gbdrive` folder is a live link to cloud storage (MinIO/S3). Everything the AI creates, processes, or outputs lives here - accessible via API, web UI, or direct bucket access.
+**Key insight:** Apps talk directly to botserver. No middleware, no generated backend code - just HTMX calling the API.
 
 ---
 
-## How Autonomous Tasks Work
+## The user_data Virtual Table
 
-### 1. Intent Compilation
-
-When you describe what you want, the LLM performs **intent compilation**:
+All app data lives in one flexible table system:
 
 ```
-User: "Create a CRM for tracking real estate leads with email automation"
-
-LLM Analysis:
-├── Action: CREATE
-├── Target: CRM application
-├── Domain: Real estate
-├── Features:
-│   ├── Lead tracking
-│   ├── Email automation
-│   └── Contact management
-├── Integrations: Email service
-└── Output: HTMX web application
+App: cellphone-crm
+Table: customers
+     │
+     ▼
+Namespace: cellphone-crm.customers
+     │
+     ▼
+Storage: user_data table with proper indexing
 ```
 
-### 2. Plan Generation
+Your app calls `/api/db/customers` and botserver handles the rest.
 
-The AI generates an execution plan with ordered steps:
+### Benefits
 
-| Step | Priority | Description | Keywords |
-|------|----------|-------------|----------|
-| 1 | CRITICAL | Create database schema | NEW_TABLE, COLUMN |
-| 2 | HIGH | Setup authentication | OAUTH, JWT |
-| 3 | HIGH | Build lead management UI | CREATE SITE, FORM |
-| 4 | MEDIUM | Create email templates | CREATE DRAFT |
-| 5 | MEDIUM | Setup automation rules | SET SCHEDULE, ON |
-| 6 | LOW | Deploy and configure | DEPLOY |
-
-### 3. Autonomous Execution
-
-The system executes each step, pausing only for:
-- High-risk operations requiring approval
-- Decisions that need human input
-- External integrations requiring credentials
+- **No migrations** - Tables created on demand
+- **Isolation** - Each app's data is separate
+- **Flexibility** - Add fields anytime
+- **Security** - Per-app access control
 
 ---
 
-## CREATE SITE: The App Generator
+## How It Works
 
-`CREATE SITE` is the cornerstone keyword for autonomous app creation. It generates complete HTMX-based web applications bound to the botserver API.
+### 1. Describe
 
-### How It Works
-
-```basic
-CREATE SITE "crm", "bottemplates/apps/crud", "Build a real estate CRM with lead tracking"
-```
-
-**Execution flow:**
-
-1. **Template Loading**
-   - Reads HTML templates from `bottemplates/apps/crud/`
-   - Combines all `.html` files as reference
-   - Extracts HTMX patterns and component structures
-
-2. **LLM Generation**
-   - Sends combined templates + prompt to LLM
-   - Generates new `index.html` with:
-     - HTMX attributes for dynamic behavior
-     - API bindings to botserver endpoints
-     - CSS using local `_assets` only (no external CDNs)
-
-3. **Deployment**
-   - Creates folder at `<site_path>/crm/`
-   - Writes generated `index.html`
-   - Copies required assets
-   - Site immediately available at `/crm`
-
-### Generated App Structure
+Tell the system what you want:
 
 ```
-sites/crm/
-├── index.html              # LLM-generated HTMX app
+"Create a CRM for my cellphone store with:
+- Customer tracking (name, phone, email)
+- Product inventory with stock levels
+- Sales linked to customers
+- Repair status board"
+```
+
+### 2. Plan
+
+System creates execution steps:
+
+```
+Step 1: Create tables (customers, products, sales, repairs)
+Step 2: Generate HTMX application
+Step 3: Add search and filters
+Step 4: Configure repair workflow
+```
+
+### 3. Execute
+
+Each step runs and shows progress:
+
+```
+[████████████████░░░░] 75%
+Step 3 of 4: Adding search...
+```
+
+### 4. Deliver
+
+Your app is ready:
+
+```
+✅ Application: /apps/cellphone-crm
+✅ Tables: customers, products, sales, repairs
+✅ Features: CRUD, search, status board
+```
+
+---
+
+## Generated App Structure
+
+```
+.gbdrive/apps/cellphone-crm/
+├── index.html          # HTMX application
 ├── _assets/
-│   ├── htmx.min.js         # HTMX library
-│   ├── app.js              # Custom interactions
-│   └── styles.css          # Themed styles
-└── api/                    # Handled by botserver
+│   ├── htmx.min.js     # HTMX library
+│   ├── app.js          # Helpers
+│   └── styles.css      # Styling
+└── schema.json         # Table definitions
 ```
 
-### HTMX + GB API Pattern
+---
 
-Generated apps use HTMX to communicate with botserver:
+## HTMX Patterns
+
+### List with Auto-Refresh
 
 ```html
-<!-- Lead list with live updates -->
-<div id="leads"
-     hx-get="/api/crm/leads"
+<div id="customers"
+     hx-get="/api/db/customers"
      hx-trigger="load, every 30s"
      hx-swap="innerHTML">
-    Loading leads...
-</div>
-
-<!-- Add new lead form -->
-<form hx-post="/api/crm/leads"
-      hx-target="#leads"
-      hx-swap="afterbegin"
-      hx-indicator="#saving">
-    <input name="name" placeholder="Lead name" required>
-    <input name="email" type="email" placeholder="Email">
-    <input name="phone" placeholder="Phone">
-    <button type="submit">
-        <span class="btn-text">Add Lead</span>
-        <span id="saving" class="htmx-indicator">Saving...</span>
-    </button>
-</form>
-
-<!-- Lead detail with inline editing -->
-<div class="lead-card"
-     hx-get="/api/crm/leads/${id}"
-     hx-trigger="click"
-     hx-target="#detail-panel">
-    <h3>${name}</h3>
-    <p>${email}</p>
+    Loading...
 </div>
 ```
 
-### API Binding
+### Create Form
 
-The generated HTMX calls map to botserver endpoints automatically:
+```html
+<form hx-post="/api/db/customers"
+      hx-target="#customers"
+      hx-swap="afterbegin">
+    <input name="name" required>
+    <input name="phone">
+    <button type="submit">Add</button>
+</form>
+```
 
-| HTMX Call | Botserver Handler | BASIC Equivalent |
-|-----------|-------------------|------------------|
-| `GET /api/crm/leads` | Query handler | `FIND "leads"` |
-| `POST /api/crm/leads` | Insert handler | `UPSERT "leads"` |
-| `PUT /api/crm/leads/:id` | Update handler | `SET "leads"` |
-| `DELETE /api/crm/leads/:id` | Delete handler | `DELETE "leads"` |
+### Search
+
+```html
+<input type="search"
+       hx-get="/api/db/customers"
+       hx-trigger="keyup changed delay:300ms"
+       hx-target="#customers"
+       placeholder="Search...">
+```
+
+### Delete
+
+```html
+<button hx-delete="/api/db/customers/${id}"
+        hx-target="closest tr"
+        hx-confirm="Delete?">
+    🗑️
+</button>
+```
 
 ---
 
-## The .gbdrive Workspace
+## API Mapping
 
-Every autonomous task uses `.gbdrive` as its workspace - a cloud-synced folder structure:
+| HTMX | Endpoint | Action |
+|------|----------|--------|
+| `hx-get` | `/api/db/customers` | List |
+| `hx-get` | `/api/db/customers/123` | Get one |
+| `hx-post` | `/api/db/customers` | Create |
+| `hx-put` | `/api/db/customers/123` | Update |
+| `hx-delete` | `/api/db/customers/123` | Delete |
 
-### Storage Architecture
+### Query Parameters
 
 ```
-.gbdrive/ (MinIO bucket)
-├── tasks/
-│   ├── task-001/
-│   │   ├── plan.json           # Execution plan
-│   │   ├── progress.json       # Current state
-│   │   ├── logs/               # Execution logs
-│   │   └── output/             # Generated files
-│   └── task-002/
-│       └── ...
-├── apps/
-│   ├── crm/
-│   │   ├── index.html
-│   │   └── _assets/
-│   └── dashboard/
-│       └── ...
-├── data/
-│   ├── leads.json
-│   ├── contacts.json
-│   └── reports/
-└── assets/
-    ├── templates/
-    ├── images/
-    └── documents/
+?q=john              # Search
+?status=active       # Filter
+?sort=created_at     # Sort
+?order=desc          # Direction
+?limit=20&offset=40  # Pagination
 ```
 
-### Accessing .gbdrive
+---
 
-**Via API:**
-```javascript
-// List files
-fetch('/api/drive/list?path=tasks/task-001')
+## Task Steps Storage
 
-// Download file
-fetch('/api/drive/download?path=apps/crm/index.html')
+Every task stores its steps for:
 
-// Upload file
-fetch('/api/drive/upload', {
-    method: 'POST',
-    body: formData
-})
-```
+- **Continuation** - Resume if interrupted
+- **Progress** - Know exactly where you are
+- **Debugging** - See what happened
 
-**Via BASIC:**
-```basic
-' List drive contents
-files = DIR ".gbdrive/tasks"
-
-' Copy to drive
-COPY "report.pdf" TO ".gbdrive/output/"
-
-' Read from drive
-data = LOAD ".gbdrive/data/leads.json"
-```
-
-**Via rclone:**
-```bash
-# Sync local to drive
-rclone sync ./mybot.gbai drive:mybot --watch
-
-# Download from drive
-rclone copy drive:mybot/output ./local-output
+```json
+{
+  "task_id": "abc123",
+  "steps": [
+    {"order": 1, "name": "Create tables", "status": "completed"},
+    {"order": 2, "name": "Generate UI", "status": "running", "progress": 60},
+    {"order": 3, "name": "Add search", "status": "pending"}
+  ]
+}
 ```
 
 ---
 
 ## Execution Modes
 
-### Semi-Automatic (Recommended)
-
-The AI executes autonomously but pauses for critical decisions:
-
-```
-[Step 1] Creating database... ✓
-[Step 2] Setting up auth... ✓
-[Step 3] Building UI... ✓
-[Step 4] ⚠️ APPROVAL REQUIRED
-         Action: Send 500 welcome emails
-         Impact: Email quota usage
-         [Approve] [Modify] [Skip]
-```
-
-### Supervised
-
-Every step requires explicit approval:
-
-```
-[Step 1] Create database schema
-         Tables: leads, contacts, activities
-         [Approve] [Modify] [Skip]
-```
-
-### Fully Automatic
-
-Complete autonomous execution without stops:
-
-```
-Task: "Build CRM for real estate"
-Status: RUNNING
-Progress: ████████████░░░░ 75%
-Current: Generating email templates
-ETA: 12 minutes
-```
-
-### Dry Run
-
-Simulates execution without making changes:
-
-```
-[SIMULATION] Step 1: Would create 3 tables
-[SIMULATION] Step 2: Would generate 5 HTML files
-[SIMULATION] Step 3: Would create 2 email templates
-[SIMULATION] Estimated cost: $0.45
-[SIMULATION] Estimated time: 25 minutes
-
-Proceed with actual execution? [Yes] [No]
-```
+| Mode | Behavior |
+|------|----------|
+| **Automatic** | Runs without stopping |
+| **Supervised** | Pauses before each step |
+| **Dry Run** | Shows what would happen |
 
 ---
 
-## Generated BASIC Programs
+## Dev Chat Widget
 
-Behind every autonomous task is a BASIC program. The LLM generates executable code:
+Test your app without leaving the page:
 
-```basic
-' =============================================================================
-' AUTO-GENERATED: Real Estate CRM
-' Created: 2024-01-15
-' =============================================================================
+1. Add `?dev=1` to URL or run on localhost
+2. Click the floating chat icon (or Ctrl+Shift+D)
+3. Talk to modify your app in real-time
 
-PLAN_START "Real Estate CRM", "Lead tracking with email automation"
-  STEP 1, "Create database", CRITICAL
-  STEP 2, "Build UI", HIGH
-  STEP 3, "Setup automation", MEDIUM
-PLAN_END
-
-' -----------------------------------------------------------------------------
-' STEP 1: Database Schema
-' -----------------------------------------------------------------------------
-
-NEW_TABLE "leads"
-  COLUMN "id", UUID, PRIMARY KEY
-  COLUMN "name", STRING, REQUIRED
-  COLUMN "email", STRING
-  COLUMN "phone", STRING
-  COLUMN "status", STRING, DEFAULT "new"
-  COLUMN "source", STRING
-  COLUMN "created_at", TIMESTAMP
-SAVE_TABLE
-
-NEW_TABLE "activities"
-  COLUMN "id", UUID, PRIMARY KEY
-  COLUMN "lead_id", UUID, FOREIGN KEY "leads.id"
-  COLUMN "type", STRING
-  COLUMN "notes", TEXT
-  COLUMN "created_at", TIMESTAMP
-SAVE_TABLE
-
-' -----------------------------------------------------------------------------
-' STEP 2: Generate Application
-' -----------------------------------------------------------------------------
-
-CREATE SITE "crm", "bottemplates/apps/crud", "Real estate CRM with:
-- Lead list with filtering and search
-- Lead detail view with activity timeline
-- Quick add form
-- Status pipeline view (Kanban)
-- Email integration buttons"
-
-' -----------------------------------------------------------------------------
-' STEP 3: Automation Rules
-' -----------------------------------------------------------------------------
-
-ON "leads" INSERT DO
-  ' Send welcome email to new leads
-  IF NEW.email != "" THEN
-    CREATE DRAFT NEW.email, "Welcome to Our Service", "
-      Hi " + NEW.name + ",
-      Thank you for your interest...
-    "
-  END IF
-  
-  ' Log activity
-  UPSERT "activities"
-    SET lead_id = NEW.id
-    SET type = "created"
-    SET notes = "Lead created from " + NEW.source
-END ON
-
-' Schedule daily digest
-SET SCHEDULE "0 9 * * *" DO
-  leads = FIND "leads", "status=new AND created_at > yesterday"
-  IF COUNT(leads) > 0 THEN
-    report = LLM "Create summary of " + COUNT(leads) + " new leads"
-    SEND MAIL "sales@company.com", "Daily Lead Digest", report
-  END IF
-END SCHEDULE
+```html
+<script src="/_assets/dev-chat.js"></script>
 ```
+
+The dev chat uses the same `user_data` system for history storage.
 
 ---
 
-## Task Lifecycle
+## Example: Cellphone Store CRM
 
-### States
+**Request:**
+> "CRM for cellphone store with customers, products, sales, and repair tracking"
 
-| State | Description |
-|-------|-------------|
-| `draft` | Task created, intent captured |
-| `compiling` | LLM generating execution plan |
-| `ready` | Plan generated, awaiting execution |
-| `running` | Currently executing steps |
-| `paused` | Execution paused by user |
-| `pending_approval` | Waiting for approval on high-risk step |
-| `waiting_decision` | Needs user input to continue |
-| `completed` | Successfully finished all steps |
-| `failed` | Encountered unrecoverable error |
-| `cancelled` | Stopped by user |
+**Result:**
 
-### Monitoring
+| Table | Fields |
+|-------|--------|
+| `customers` | id, name, phone, email, notes |
+| `products` | id, name, brand, model, price, stock |
+| `sales` | id, customer_id, product_id, quantity, total |
+| `repairs` | id, customer_id, device, status, price |
 
-Real-time task monitoring via WebSocket:
+**Features:**
+- Customer list with search
+- Product inventory with stock alerts
+- Sales entry form
+- Repair status board (Kanban)
 
-```javascript
-// Connect to task updates
-const ws = new WebSocket('wss://host/ws/autotask');
-
-ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    switch (data.type) {
-        case 'step_progress':
-            updateProgressBar(data.progress);
-            break;
-        case 'approval_required':
-            showApprovalDialog(data.approval);
-            break;
-        case 'task_completed':
-            showSuccessNotification(data.task);
-            break;
-    }
-};
-```
-
----
-
-## Building Your Own Autonomous Workflows
-
-### Example: Automated Report Generator
-
-```basic
-' Intent: "Generate weekly sales report every Monday"
-
-SET SCHEDULE "0 8 * * 1" DO
-  ' Gather data
-  sales = FIND "orders", "created_at > last_week"
-  customers = FIND "customers", "orders > 0"
-  
-  ' Generate analysis
-    analysis = LLM "Analyze sales data: " + JSON(sales)
-  
-    ' Create report site
-    CREATE SITE "report-" + TODAY(), "bottemplates/apps/dashboard", analysis
-  
-  ' Notify stakeholders
-  SEND MAIL "team@company.com", "Weekly Sales Report", "
-    Report ready: /report-" + TODAY()
-  "
-END SCHEDULE
-```
-
-### Example: Customer Onboarding Automation
-
-```basic
-' Triggered when new customer signs up
-ON "customers" INSERT DO
-  ' Create personalized welcome site
-  welcome_content = LLM "Create welcome page for " + NEW.name + " in " + NEW.industry
-  CREATE SITE "welcome-" + NEW.id, "bottemplates/apps/crud", welcome_content
-  
-  ' Schedule follow-up sequence
-  CREATE TASK "Follow up with " + NEW.name, "Call in 3 days"
-  
-  ' Send welcome email with site link
-  CREATE DRAFT NEW.email, "Welcome!", "
-    Hi " + NEW.name + ",
-    Your personalized portal is ready: /welcome-" + NEW.id
-  "
-END ON
-```
-
-### Example: Dynamic Dashboard Builder
-
-```basic
-' User asks: "Create a dashboard showing our KPIs"
-
-' Step 1: Analyze available data
-tables = SHOW TABLES
-schema = LLM "Analyze schema for KPI opportunities: " + JSON(tables)
-
-' Step 2: Generate dashboard
-CREATE SITE "dashboard", "bottemplates/apps/dashboard", "
-  Create executive dashboard with:
-  " + schema + "
-  
-  Include:
-  - Real-time metrics cards
-  - Trend charts (last 30 days)
-  - Comparison to previous period
-  - Export to PDF button
-"
-
-' Step 3: Set auto-refresh
-TALK "Dashboard created at /dashboard with live updates"
-```
-
----
-
-## Integration with GB Infrastructure
-
-### How Apps Use botserver
-
-Generated HTMX apps don't need their own backend - they use botserver's API:
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Generated HTMX App                        │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐       │
-│  │  Forms  │  │  Lists  │  │ Charts  │  │ Actions │       │
-│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘       │
-│       │            │            │            │              │
-│       └────────────┴────────────┴────────────┘              │
-│                         │ HTMX                              │
-└─────────────────────────┼───────────────────────────────────┘
-                          │
-┌─────────────────────────┼───────────────────────────────────┐
-│                    botserver API                             │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
-│  │   CRUD   │  │   LLM    │  │  Drive   │  │   Mail   │   │
-│  │ /api/db  │  │ /api/llm │  │/api/drive│  │/api/mail │   │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘   │
-│       │             │             │             │           │
-│  ┌────┴─────────────┴─────────────┴─────────────┴────┐     │
-│  │              PostgreSQL + MinIO + LLM              │     │
-│  └────────────────────────────────────────────────────┘     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Available API Endpoints
-
-| Endpoint | Purpose | HTMX Usage |
-|----------|---------|------------|
-| `/api/db/{table}` | CRUD operations | `hx-get`, `hx-post`, `hx-put`, `hx-delete` |
-| `/api/llm/complete` | LLM generation | `hx-post` with prompt |
-| `/api/drive/*` | File operations | `hx-get` for download, `hx-post` for upload |
-| `/api/mail/send` | Email sending | `hx-post` with recipients |
-| `/api/chat` | Conversational AI | WebSocket |
+**Access:** `/apps/cellphone-crm`
 
 ---
 
 ## Best Practices
 
-### Writing Effective Intents
+### Be Specific
 
-**Good:**
-```
-"Create a project management app for our marketing team with:
-- Kanban board for campaign tasks
-- Team member assignment
-- Deadline tracking with reminders
-- File attachments per task
-- Weekly progress reports"
-```
+✅ Good:
+> "CRM for cellphone store with customer tracking, sales, and repair status workflow"
 
-**Bad:**
-```
-"Make an app"
-```
+❌ Vague:
+> "Make an app"
 
-### Template Organization
+### Include Workflows
 
-Keep templates organized for reuse:
+✅ Good:
+> "Repair status: received → diagnosing → repairing → ready → delivered"
 
-```
-templates/
-├── app/                    # Full application templates
-│   ├── dashboard.html
-│   ├── crud-list.html
-│   └── form-wizard.html
-├── components/             # Reusable components
-│   ├── data-table.html
-│   ├── chart-card.html
-│   └── form-field.html
-├── emails/                 # Email templates
-│   ├── welcome.html
-│   └── notification.html
-└── reports/                # Report templates
-    ├── summary.html
-    └── detailed.html
-```
+❌ Missing:
+> "Track repairs"
 
-### Security Considerations
+### Mention Relationships
 
-- All generated apps inherit botserver authentication
-- API calls require valid session tokens
-- File uploads go through virus scanning
-- Database operations respect row-level security
-- LLM outputs are sanitized before rendering
+✅ Good:
+> "Sales linked to customers and products"
+
+❌ Unclear:
+> "Sales tracking"
 
 ---
 
 ## See Also
 
-- [CREATE SITE Keyword](../06-gbdialog/keyword-create-site.md) - Detailed syntax
-- [.gbai Architecture](../02-templates/gbai.md) - Package structure
-- [.gbdrive Storage](../02-templates/gbdrive.md) - File management
-- [HTMX Architecture](../04-gbui/htmx-architecture.md) - UI patterns
-- [API Reference](../10-rest/README.md) - botserver endpoints
+- [Autonomous Tasks Chapter](../21-autonomous-tasks/README.md) - Complete guide
+- [CREATE SITE](../06-gbdialog/keyword-create-site.md) - The keyword behind it
+- [REST API](../10-rest/README.md) - API reference
+- [HTMX Architecture](../04-gbui/htmx-architecture.md) - Frontend patterns
