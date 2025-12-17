@@ -1,33 +1,69 @@
 # Tasks
 
-> **The machine does the work**
+> **Describe What You Want, Get a Working App**
 
 ---
 
-<img src="../../assets/chapter-04/autotask-interface.svg" alt="Tasks Interface" style="max-width: 100%; height: auto;">
-
 ## What is Tasks?
 
-Tasks is where the machine does the work for you. Instead of manually tracking to-do items, you describe what you want to accomplish in natural language, and the system compiles your intent into an executable plan with automatic step-by-step execution.
+Tasks is where you describe what you want and the system builds it. No coding - just tell it what you need.
 
-| Old Way | Tasks Way |
-|---------|-----------|
-| Create a task | Describe your goal |
-| Do it yourself | Machine plans it |
-| Mark complete | Machine executes it |
-| Repeat | You approve critical steps |
+| You Say | You Get |
+|---------|---------|
+| "CRM for my cellphone store" | Working app with customers, sales, inventory |
+| "Track repair status" | Kanban board with status workflow |
+| "Sales dashboard" | Charts and metrics auto-updating |
 
 ---
 
 ## How It Works
 
-| Step | What Happens |
-|------|--------------|
-| **1. Describe** | Write what you want in plain English |
-| **2. Compile** | LLM analyzes intent, generates execution plan |
-| **3. Review** | See steps, estimates, risks before execution |
-| **4. Execute** | System runs the plan, pausing for approvals |
-| **5. Monitor** | Watch progress, make decisions when needed |
+```
+DESCRIBE → PLAN → EXECUTE → DONE
+```
+
+### 1. Describe
+
+Write what you want in plain language:
+
+```
+"Create a CRM for my cellphone store with:
+- Customer list (name, phone, email)
+- Product inventory with stock levels  
+- Sales tracking
+- Repair status board"
+```
+
+### 2. Plan
+
+System shows the execution plan:
+
+```
+Step 1: Create tables (customers, products, sales, repairs)
+Step 2: Generate application UI
+Step 3: Add search and filters
+Step 4: Configure repair workflow
+
+Confidence: 92% | ETA: 3 minutes
+```
+
+### 3. Execute
+
+Watch progress in real-time:
+
+```
+[████████████████░░░░] 75%
+Step 3 of 4: Adding search...
+```
+
+### 4. Done
+
+Your app is ready:
+
+```
+✅ Application: /apps/cellphone-crm
+✅ Tables: customers, products, sales, repairs
+```
 
 ---
 
@@ -35,296 +71,159 @@ Tasks is where the machine does the work for you. Instead of manually tracking t
 
 ### Write Your Intent
 
-In the intent box, describe what you want to accomplish:
+Be specific about what you want:
 
-| Good Examples |
-|---------------|
-| "Make a financial CRM for Deloitte with client management and reporting" |
-| "Create a website that collects leads and sends them to Salesforce" |
-| "Build an automated email campaign for our product launch" |
-| "Analyze Q4 sales data and generate a PDF report with charts" |
+| ✅ Good | ❌ Too Vague |
+|---------|--------------|
+| "CRM for cellphone store with customer tracking and repair status" | "Make an app" |
+| "Inventory with low stock alerts when below 10 units" | "Track stuff" |
+| "Sales dashboard with daily revenue chart" | "Dashboard" |
 
-**Tips for better results:**
+### Choose Mode
 
-- Be specific about the outcome you want
-- Mention the client or project name
-- Include key features or requirements
-- Specify integrations if needed
+| Mode | Best For |
+|------|----------|
+| **Automatic** | Trusted, simple tasks |
+| **Supervised** | Learning, want to review each step |
+| **Dry Run** | Testing - see what would happen |
 
-### Choose Execution Mode
+### Click Execute
 
-| Mode | Best For | How It Works |
-|------|----------|--------------|
-| **Semi-Automatic** | Most tasks | Runs automatically, pauses for high-risk steps |
-| **Supervised** | Learning/sensitive | Pauses before each step for your approval |
-| **Fully Automatic** | Trusted workflows | Runs everything without stopping |
-| **Dry Run** | Testing | Simulates execution without making changes |
-
-### Set Priority
-
-| Priority | Meaning |
-|----------|---------|
-| **Critical** | Urgent, run immediately |
-| **High** | Important, prioritize |
-| **Medium** | Normal priority (default) |
-| **Low** | Run when resources available |
-| **Background** | Run during idle time |
-
-### Click Compile & Plan
-
-The LLM will:
-
-1. Extract entities (action, target, domain, client)
-2. Generate an execution plan with ordered steps
-3. Assess risks and estimate resources
-4. Generate the underlying BASIC program
+The system runs each step and shows progress.
 
 ---
 
-## Understanding the Execution Plan
+## Task Progress
 
-After compilation, you see a detailed plan:
+### Status Icons
 
-### Plan Header
+| Icon | Meaning |
+|------|---------|
+| ✓ | Completed |
+| ◐ | Running |
+| ○ | Pending |
+| ⚠ | Needs attention |
+| ✕ | Failed |
 
-| Field | Description |
-|-------|-------------|
-| **Plan Name** | Auto-generated title for your task |
-| **Description** | Summary of what will be accomplished |
-| **Confidence** | How confident the LLM is in the plan (aim for 80%+) |
-| **Risk Level** | Overall risk assessment (None/Low/Medium/High/Critical) |
-| **Estimated Duration** | How long execution should take |
-| **Estimated Cost** | API and compute costs |
+### Steps Are Saved
 
-### Execution Steps
+Every step is stored so you can:
 
-Each step shows:
-
-| Field | Description |
-|-------|-------------|
-| **Step Number** | Order of execution |
-| **Priority** | CRITICAL, HIGH, MEDIUM, LOW |
-| **Step Name** | What this step does |
-| **Keywords** | BASIC keywords that will be used |
-| **Risk Level** | Risk for this specific step |
-
-### Plan Actions
-
-| Button | Action |
-|--------|--------|
-| **Discard** | Delete the plan, start over |
-| **Edit Plan** | Modify steps before execution |
-| **Simulate** | Preview impact without executing |
-| **Execute** | Start running the plan |
+- **Resume** if interrupted
+- **Track** exactly where you are
+- **Debug** if something fails
 
 ---
 
-## Monitoring Tasks
+## Your Generated App
 
-### Task States
+Apps are created at `.gbdrive/apps/{name}/`:
 
-| Status | Meaning |
-|--------|---------|
-| **Draft** | Created, not yet compiled |
-| **Compiling** | LLM is generating the plan |
-| **Ready** | Plan generated, waiting to start |
-| **Running** | Currently executing |
-| **Paused** | Execution paused by user |
-| **Pending Approval** | Waiting for you to approve a step |
-| **Waiting Decision** | Needs your input to continue |
-| **Completed** | Successfully finished |
-| **Failed** | Encountered an error |
-| **Cancelled** | Stopped by user |
+```
+.gbdrive/apps/cellphone-crm/
+├── index.html      # Your application
+├── _assets/
+│   ├── htmx.min.js
+│   └── styles.css
+└── schema.json     # Table definitions
+```
 
-### Filter Tabs
+### Direct API Access
 
-| Tab | Shows |
-|-----|-------|
-| **All** | Every task regardless of status |
-| **Running** | Currently executing tasks |
-| **Need Approval** | Tasks waiting for your approval |
-| **Decisions** | Tasks needing your input |
+Your app talks directly to botserver:
 
-### Progress Tracking
+```html
+<!-- List customers -->
+<div hx-get="/api/db/customers" hx-trigger="load">
 
-Each task shows:
+<!-- Add customer -->
+<form hx-post="/api/db/customers">
 
-- Current step number and name
-- Progress bar with percentage
-- Time elapsed and estimated remaining
+<!-- Search -->
+<input hx-get="/api/db/customers" 
+       hx-trigger="keyup changed delay:300ms">
+```
+
+No middleware - HTMX calls the API directly.
 
 ---
 
-## Approvals & Decisions
+## Data Storage
 
-### When Approvals Are Required
+All data uses the `user_data` virtual table:
 
-High-impact actions require your approval:
+```
+Your app: cellphone-crm
+Table: customers
+     ↓
+API: /api/db/customers
+     ↓
+Storage: user_data (namespaced)
+```
 
-- Sending emails to many recipients
-- Modifying production databases
-- Making external API calls with side effects
-- Deploying to live environments
-- Actions exceeding cost thresholds
+### Benefits
 
-### Approval Dialog
-
-When approval is needed, you see:
-
-| Field | Description |
-|-------|-------------|
-| **Action description** | What will happen |
-| **Impact summary** | What could be affected |
-| **Risk level** | How risky this step is |
-| **Simulation result** | Preview of the outcome |
-
-**Options:**
-
-| Action | Result |
-|--------|--------|
-| **Approve** | Continue execution |
-| **Defer** | Decide later |
-| **Reject** | Skip this step or stop execution |
-
-### Making Decisions
-
-Sometimes the system needs your input:
-
-- Choosing between alternative approaches
-- Selecting from multiple options
-- Providing missing information
-
-Each option shows pros, cons, and impact estimates.
+- Tables created on demand
+- Each app isolated
+- Add fields anytime
+- No migrations needed
 
 ---
 
 ## Task Actions
 
-| Action | When Available | What It Does |
-|--------|----------------|--------------|
-| **Details** | Always | View full task information |
-| **Simulate** | Before execution | Preview impact |
-| **Pause** | While running | Temporarily stop execution |
-| **Resume** | When paused | Continue execution |
-| **Cancel** | Anytime | Stop and discard task |
+| Action | When | What It Does |
+|--------|------|--------------|
+| **Pause** | Running | Stop temporarily |
+| **Resume** | Paused | Continue from where stopped |
+| **Cancel** | Anytime | Stop and discard |
+| **Retry** | Failed | Try failed step again |
 
 ---
 
-## Creating Tasks from Chat
+## From Chat
 
-You can also create tasks by talking to your bot:
+Create tasks by talking to your bot:
 
-**You:** "I need to build a customer portal for Acme Corp"
+**You:** "I need a CRM for my cellphone store"
 
-**Bot:** "I'll create a task for that. Here's the plan:
-- 5 steps, estimated 3 hours
-- Includes: database setup, authentication, dashboard, API integration
-- Risk: Low
+**Bot:** "I'll create that. Here's the plan:
+- 4 steps, ~3 minutes
+- Tables: customers, products, sales, repairs
 
-Should I execute this plan?"
+Execute?"
 
-**You:** "Yes, go ahead"
+**You:** "Yes"
 
-**Bot:** "Task started. I'll notify you when approvals are needed."
+**Bot:** "Started. I'll notify you when done."
 
 ---
 
-## Generated BASIC Code
+## Examples
 
-Every task generates a BASIC program behind the scenes. You can view and copy this code:
+### Cellphone Store CRM
 
-```bas
-' AUTO-GENERATED BASIC PROGRAM
-' Plan: Financial CRM for Deloitte
-
-PLAN_START "Financial CRM", "Client management system"
-  STEP 1, "Create database schema", CRITICAL
-  STEP 2, "Setup authentication", HIGH
-  STEP 3, "Build client module", HIGH
-PLAN_END
-
-NEW_TABLE "clients"
-  COLUMN "name", STRING
-  COLUMN "email", STRING
-  COLUMN "revenue", DECIMAL
-SAVE_TABLE
+```
+"CRM with customers, products, sales, and repair tracking 
+with status: received, diagnosing, repairing, ready, delivered"
 ```
 
-This code can be:
+### Restaurant Reservations
 
-- Copied for manual execution
-- Modified and saved as a template
-- Reused for similar projects
+```
+"Reservation system with tables, bookings, and waitlist"
+```
 
----
+### Inventory Tracker
 
-## Best Practices
-
-### Writing Good Intents
-
-| Do | Don't |
-|----|-------|
-| "Create a sales dashboard for Q4 data with charts showing revenue by region" | "Make something" |
-| "Build an email drip campaign: welcome email, 3-day follow-up, 7-day offer" | "Do the thing we discussed" |
-| "Analyze customer feedback CSV and generate sentiment report" | "Fix it" |
-
-### Choosing Execution Mode
-
-| Situation | Recommended Mode |
-|-----------|------------------|
-| New to Tasks | Supervised |
-| Routine tasks | Semi-Automatic |
-| Trusted, tested workflows | Fully Automatic |
-| Experimenting | Dry Run |
-
-### Managing Risk
-
-- Review the risk assessment before executing
-- Use Simulate for high-risk tasks
-- Set up approval thresholds in settings
-- Monitor running tasks actively
-
----
-
-## Troubleshooting
-
-### Compilation Failed
-
-- Check that your intent is clear and specific
-- Avoid ambiguous language
-- Include necessary context (client name, data sources)
-
-### Task Stuck on Running
-
-- Check if an approval is pending
-- Look for decision requests
-- Review the execution log for errors
-
-### Unexpected Results
-
-- Review the generated plan before executing
-- Use Dry Run to test first
-- Check the BASIC code for issues
-
----
-
-## Settings
-
-Configure Tasks behavior in Settings:
-
-| Setting | Description |
-|---------|-------------|
-| **Default execution mode** | Your preferred mode |
-| **Approval thresholds** | When to require approval |
-| **Cost limits** | Maximum spend per task |
-| **Notification preferences** | How to alert you |
-| **Auto-cleanup** | Remove completed tasks after X days |
+```
+"Inventory with products, suppliers, and low stock alerts"
+```
 
 ---
 
 ## See Also
 
-- [Autonomous Task AI](../../07-gbapp/autonomous-tasks.md) - Architecture details
-- [CREATE SITE](../../06-gbdialog/keyword-create-site.md) - App generation
-- [Calendar](./calendar.md) - Scheduled tasks
-- [Chat](./chat.md) - Create tasks through conversation
+- [Autonomous Tasks](../../21-autonomous-tasks/README.md) - Complete guide
+- [Dev Chat Widget](../dev-chat.md) - Test while developing
+- [HTMX Architecture](../htmx-architecture.md) - How the UI works
