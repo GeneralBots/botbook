@@ -143,6 +143,7 @@
     - [BOT REFLECTION](./06-gbdialog/keyword-bot-reflection.md)
     - [RUN PYTHON / JAVASCRIPT / BASH](./06-gbdialog/keyword-run-code.md)
     - [USE KB](./06-gbdialog/keyword-use-kb.md)
+    - [USE ACCOUNT](./06-gbdialog/keyword-use-account.md)
     - [CLEAR KB](./06-gbdialog/keyword-clear-kb.md)
     - [USE WEBSITE](./06-gbdialog/keyword-use-website.md)
     - [USE TOOL](./06-gbdialog/keyword-use-tool.md)
@@ -150,6 +151,8 @@
     - [GET](./06-gbdialog/keyword-get.md)
     - [SET](./06-gbdialog/keyword-set.md)
     - [ON](./06-gbdialog/keyword-on.md)
+    - [ON EMAIL](./06-gbdialog/keyword-on-email.md)
+    - [ON CHANGE](./06-gbdialog/keyword-on-change.md)
     - [SET SCHEDULE](./06-gbdialog/keyword-set-schedule.md)
     - [CREATE SITE](./06-gbdialog/keyword-create-site.md)
     - [CREATE DRAFT](./06-gbdialog/keyword-create-draft.md)
@@ -248,6 +251,8 @@
   - [Drive Integration](./08-config/drive.md)
   - [Multimodal Configuration](./08-config/multimodal.md)
   - [Secrets Management](./08-config/secrets-management.md)
+  - [System Limits](./08-config/system-limits.md)
+  - [Sources Sync Strategy](./08-config/sources-sync-strategy.md)
 
 # Part IX - Tools and Integration
 

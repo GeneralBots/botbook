@@ -5,6 +5,44 @@
 
 ---
 
+## Weekly Maintenance - EVERY MONDAY
+
+### Package Review Checklist
+
+**Every Monday, review the following:**
+
+1. **Dependency Updates**
+   ```bash
+   cargo outdated
+   cargo audit
+   ```
+
+2. **Package Consolidation Opportunities**
+   - Check if new crates can replace custom code
+   - Look for crates that combine multiple dependencies
+   - Review `Cargo.toml` for redundant dependencies
+
+3. **Documentation Sync**
+   - Verify docs match current implementation
+   - Check for deprecated keywords/features
+   - Update examples with latest syntax
+
+4. **Asset Updates**
+   - Sync icons with `botui/ui/suite/assets/icons/`
+   - Verify all screenshots are current
+   - Check external links are valid
+
+### Packages to Watch
+
+| Area | Potential Packages | Purpose |
+|------|-------------------|---------|
+| Markdown | `pulldown-cmark` | Better MD processing |
+| Search | `tantivy` | Full-text search in docs |
+| Diagrams | `mermaid` | Replace ASCII diagrams |
+| i18n | `fluent` | Translation management |
+
+---
+
 ## CRITICAL: Keyword Naming Rules
 
 **Keywords NEVER use underscores. Always use spaces.**
@@ -554,10 +592,10 @@ FILTER data, "condition"
 AGGREGATE data, "operation"
 ```
 
-### Knowledge Base
+### Knowledge Base & Accounts
 ```basic
-USE KB
 USE KB "collection"
+USE ACCOUNT "email@example.com"    ' LLM search + file ops
 CLEAR KB
 KB STATISTICS
 KB COLLECTION STATS "name"
@@ -577,8 +615,16 @@ USE MODEL "model-name"
 ```basic
 TALK "message"
 HEAR variable
-SEND MAIL to, subject, body, attachments
+SEND MAIL to, subject, body
+SEND MAIL to, subject, body USING "account@example.com"
 SEND TEMPLATE recipients, template, variables
+```
+
+### File Operations with Accounts
+```basic
+' account:// path notation (requires USE ACCOUNT first)
+COPY "account://user@gmail.com/file.pdf" TO "local.pdf"
+COPY "local.xlsx" TO "account://user@outlook.com/data.xlsx"
 ```
 
 ---

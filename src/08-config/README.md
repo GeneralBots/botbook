@@ -109,6 +109,9 @@ theme-title,Company Assistant
 - [config.csv Format](./config-csv.md) - Complete reference
 - [LLM Configuration](./llm-config.md) - Language model settings
 - [Parameters](./parameters.md) - All available parameters
+- [System Limits](./system-limits.md) - Rate limits, package sizes, and configurable limits
+- [Sources Sync Strategy](./sources-sync-strategy.md) - Gmail, Outlook, Drive sync to vector DB
+- [Secrets Management](./secrets-management.md) - Secure credential storage
 ---
 
 <div align="center">
