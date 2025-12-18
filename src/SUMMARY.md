@@ -404,6 +404,7 @@
   - [Console (XtreeUI)](./18-appendix-external-services/console.md)
 
 - [Appendix C: Maintenance](./19-maintenance/README.md)
+  - [CLI Reference](./19-maintenance/cli-reference.md)
   - [Updating Components](./19-maintenance/updating-components.md)
   - [Component Reference](./19-maintenance/component-reference.md)
   - [Security Auditing](./19-maintenance/security-auditing.md)
