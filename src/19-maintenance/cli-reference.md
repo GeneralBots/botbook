@@ -20,6 +20,7 @@ botserver <command> [options]
 | `stop` | Stop all components |
 | `restart` | Restart all components |
 | `vault` | Manage secrets in HashiCorp Vault |
+| `version` | Show version information |
 
 ## Global Options
 
@@ -28,6 +29,7 @@ botserver <command> [options]
 | `--container` | Use LXC container mode instead of local installation |
 | `--tenant <name>` | Specify tenant name (default: "default") |
 | `--help`, `-h` | Show help information |
+| `--version`, `-v` | Show version |
 
 ---
 
@@ -126,11 +128,18 @@ The `vault` subcommand manages secrets stored in HashiCorp Vault.
 
 ### Prerequisites
 
+> ⚠️ **SECURITY WARNING**: Never expose `VAULT_TOKEN` in shell history or scripts.
+> Use a secrets file with restricted permissions (600) or environment injection.
+
 Vault commands require these environment variables:
 
 ```bash
+# Secure method: use a file with restricted permissions
+echo "VAULT_TOKEN=<your-vault-token>" > ~/.vault-token
+chmod 600 ~/.vault-token
+source ~/.vault-token
+
 export VAULT_ADDR=http://<vault-ip>:8200
-export VAULT_TOKEN=<your-vault-token>
 ```
 
 ### Migrate Secrets from .env
@@ -284,6 +293,54 @@ x Vault not configured
 
 ---
 
+## Version Information
+
+Show botserver version and component status.
+
+```bash
+botserver version [--all]
+```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--all` | Show detailed info: build, components, Vault status |
+
+**Examples:**
+
+```bash
+# Simple version
+botserver version
+# Output: botserver 6.1.0
+
+# Detailed version with all components
+botserver version --all
+```
+
+**Output with --all:**
+
+```
+botserver 6.1.0
+
+Build Information:
+  rustc: rustc 1.83.0 (90b35a623 2024-11-26)
+  target: x86_64
+  os: linux
+
+Installed Components:
+  * vault (installed)
+  * tables (installed)
+  * cache (installed)
+
+Available Components: 15
+
+Secrets:
+  Vault: connected
+```
+
+---
+
 ## Complete Setup Example
 
 Here's a complete workflow to set up Vault and migrate secrets:
@@ -311,14 +368,18 @@ botserver vault get gbo/tables
 botserver vault get gbo/drive
 botserver vault get gbo/email
 
-# 7. Update .env to use Vault only
+# 7. Update .env to use Vault only (SECURE METHOD)
 cat > /opt/gbo/bin/system/.env << EOF
 RUST_LOG=info
 VAULT_ADDR=http://<vault-ip>:8200
-VAULT_TOKEN=<root-token>
 SERVER_HOST=0.0.0.0
 SERVER_PORT=5858
 EOF
+
+# Store token separately with restricted permissions
+echo "VAULT_TOKEN=<root-token>" > /opt/gbo/secrets/vault-token
+chmod 600 /opt/gbo/secrets/vault-token
+chown root:root /opt/gbo/secrets/vault-token
 
 # 8. Restart botserver
 botserver restart
@@ -454,4 +515,48 @@ lxc exec <tenant>-<component> -- journalctl -xe
 ```bash
 # Install system dependencies
 sudo apt-get install -y libpq-dev libssl-dev liblzma-dev
+```
+
+---
+
+## Security Best Practices
+
+> 🔒 **SECURITY NOTES**
+
+### Token Management
+
+- **NEVER** commit tokens or secrets to version control
+- **NEVER** pass tokens as command-line arguments (visible in `ps`)
+- **ALWAYS** use environment variables or secure files with `chmod 600`
+- **ROTATE** Vault tokens regularly (recommended: every 30 days)
+
+### File Permissions
+
+```bash
+# Secure your secrets directory
+chmod 700 /opt/gbo/secrets
+chmod 600 /opt/gbo/secrets/*
+chown -R root:root /opt/gbo/secrets
+```
+
+### Vault Hardening
+
+```bash
+# Enable audit logging
+botserver vault put gbo/audit enabled=true
+
+# Use short-lived tokens in production
+# Configure token TTL in Vault policies
+```
+
+### Network Security
+
+- Run Vault behind a firewall
+- Use TLS for Vault connections in production
+- Restrict Vault access to specific container IPs
+
+```bash
+# Example: Only allow botserver container to reach Vault
+iptables -A INPUT -p tcp --dport 8200 -s 10.16.164.33 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8200 -j DROP
 ```
