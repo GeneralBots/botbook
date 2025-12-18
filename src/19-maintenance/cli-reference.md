@@ -20,6 +20,8 @@ botserver <command> [options]
 | `stop` | Stop all components |
 | `restart` | Restart all components |
 | `vault` | Manage secrets in HashiCorp Vault |
+| `rotate-secret` | Rotate credentials for a component |
+| `rotate-secrets` | Rotate ALL credentials |
 | `version` | Show version information |
 
 ## Global Options
@@ -341,6 +343,124 @@ Secrets:
 
 ---
 
+## Secret Rotation
+
+Rotate credentials for security compliance and breach response.
+
+> 🔒 **SECURITY**: Regular credential rotation is a security best practice.
+> Recommended rotation schedule:
+> - **Production**: Every 90 days
+> - **After employee departure**: Immediately
+> - **After security incident**: Immediately
+
+### Rotate Single Component
+
+```bash
+botserver rotate-secret <component>
+```
+
+**Available Components:**
+
+| Component | What Gets Rotated |
+|-----------|-------------------|
+| `tables` | PostgreSQL password |
+| `drive` | MinIO access key and secret |
+| `cache` | Valkey/Redis password |
+| `email` | SMTP password |
+| `directory` | Zitadel client secret |
+| `encryption` | Master encryption key (⚠️ dangerous) |
+
+**Examples:**
+
+```bash
+# Rotate database password
+botserver rotate-secret tables
+
+# Output:
+# ⚠️  WARNING: You must update PostgreSQL with the new password!
+#
+# Run this SQL command:
+#   ALTER USER postgres WITH PASSWORD 'NewP@ssw0rd...';
+#
+# Old password: 67a6...
+# New password: Xk9m...
+# Save to Vault? [y/N]: y
+# ✓ Credentials saved to Vault
+
+# Rotate S3/MinIO credentials
+botserver rotate-secret drive
+
+# Rotate Redis password
+botserver rotate-secret cache
+```
+
+> ⚠️ **WARNING**: After rotating, you MUST manually update the service with the new credentials before restarting botserver.
+
+### Rotate All Secrets
+
+Rotate all credentials at once. Use for security incidents or compliance requirements.
+
+```bash
+botserver rotate-secrets --all
+```
+
+**Output:**
+
+```
+🔐 ROTATING ALL SECRETS
+========================
+
+⚠️  CRITICAL WARNING!
+This will generate new credentials for ALL components.
+You MUST update each service manually after rotation.
+
+Type 'ROTATE ALL' to continue: ROTATE ALL
+
+Generating new credentials...
+
+✓ tables: ALTER USER postgres WITH PASSWORD 'Xk9mP@ss...';
+✓ drive: mc admin user add myminio AKIAEXAMPLE... secretkey...
+✓ cache: redis-cli CONFIG SET requirepass 'NewRedisP@ss...'
+✓ email: new password = SmtpP@ss...
+✓ directory: new client_secret = ZitadelSecret...
+
+========================
+✓ All secrets rotated and saved to Vault
+
+⚠️  IMPORTANT: Run the commands above to update each service!
+⚠️  Then restart botserver: botserver restart
+```
+
+### Post-Rotation Checklist
+
+After rotating secrets, follow this checklist:
+
+```bash
+# 1. Update PostgreSQL
+lxc exec pragmatismo-tables -- psql -U postgres -c "ALTER USER postgres WITH PASSWORD 'new-password';"
+
+# 2. Update MinIO (create new user, migrate data, delete old)
+lxc exec pragmatismo-drive -- mc admin user add local newkey newsecret
+lxc exec pragmatismo-drive -- mc admin policy attach local readwrite --user newkey
+
+# 3. Update Valkey/Redis
+lxc exec pragmatismo-cache -- redis-cli CONFIG SET requirepass 'new-password'
+lxc exec pragmatismo-cache -- redis-cli CONFIG REWRITE
+
+# 4. Update Zitadel (via admin console)
+# Navigate to: Settings > OAuth > Applications > Update Secret
+
+# 5. Restart botserver
+botserver restart
+
+# 6. Verify all services
+botserver version --all
+```
+
+> 🔒 **ENCRYPTION KEY WARNING**: Rotating the encryption key (`botserver rotate-secret encryption`) will make ALL existing encrypted data unreadable. Only do this if you have re-encryption procedures in place.
+
+---
+
 ## Complete Setup Example
 
 Here's a complete workflow to set up Vault and migrate secrets:
@@ -521,14 +641,23 @@ sudo apt-get install -y libpq-dev libssl-dev liblzma-dev
 
 ## Security Best Practices
 
+> 🛡️ **SECURITY HARDENING GUIDE**
+
 > 🔒 **SECURITY NOTES**
 
 ### Token Management
 
 - **NEVER** commit tokens or secrets to version control
 - **NEVER** pass tokens as command-line arguments (visible in `ps`)
+- **NEVER** store tokens in shell history (use `HISTCONTROL=ignorespace`)
 - **ALWAYS** use environment variables or secure files with `chmod 600`
 - **ROTATE** Vault tokens regularly (recommended: every 30 days)
+- **ROTATE** service credentials regularly (recommended: every 90 days)
+
+```bash
+# Prevent command from being saved in history (note the leading space)
+ export VAULT_TOKEN=s.xxxx
+```
 
 ### File Permissions
 
@@ -559,4 +688,35 @@ botserver vault put gbo/audit enabled=true
 # Example: Only allow botserver container to reach Vault
 iptables -A INPUT -p tcp --dport 8200 -s 10.16.164.33 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8200 -j DROP
+```
+
+### Credential Rotation Schedule
+
+| Component | Rotation Frequency | Command |
+|-----------|-------------------|---------|
+| Vault Token | 30 days | Vault UI or API |
+| Database | 90 days | `botserver rotate-secret tables` |
+| S3/MinIO | 90 days | `botserver rotate-secret drive` |
+| Redis | 90 days | `botserver rotate-secret cache` |
+| Email | 90 days | `botserver rotate-secret email` |
+| All at once | After incident | `botserver rotate-secrets --all` |
+
+### Incident Response
+
+If you suspect a credential breach:
+
+```bash
+# 1. Immediately rotate ALL secrets
+botserver rotate-secrets --all
+
+# 2. Update all services with new credentials (see output)
+
+# 3. Restart all services
+botserver restart
+
+# 4. Check for unauthorized access in logs
+grep -r "authentication failed" /opt/gbo/logs/
+
+# 5. Review Vault audit logs
+vault audit list
 ```
