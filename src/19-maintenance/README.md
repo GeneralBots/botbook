@@ -49,6 +49,7 @@ botserver-installers/    # Downloaded archives (cache)
 
 ## Chapter Contents
 
+- [CLI Reference](./cli-reference.md) - Command-line interface for botserver
 - [Updating Components](./updating-components.md) - How to update individual services
 - [Component Reference](./component-reference.md) - Detailed info for each component
 - [Security Auditing](./security-auditing.md) - Running security audits
