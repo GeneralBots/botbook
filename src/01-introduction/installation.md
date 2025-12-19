@@ -2,6 +2,58 @@
 
 botserver installs itself automatically through the bootstrap process. Just run the binary.
 
+## Runtime Dependencies
+
+Before running the botserver binary, you must install required system libraries on the **host system**.
+
+### Quick Install (Recommended)
+
+Download and run the dependency installer:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/GeneralBots/botserver/main/scripts/install-dependencies.sh | sudo bash
+```
+
+Or if you have the script locally:
+
+```bash
+sudo ./scripts/install-dependencies.sh
+```
+
+### Manual Install (Debian/Ubuntu)
+
+```bash
+sudo apt update
+sudo apt install -y \
+    libpq5 \
+    libssl3 \
+    liblzma5 \
+    zlib1g \
+    ca-certificates \
+    curl \
+    wget
+
+# For container support (LXC)
+sudo snap install lxd
+sudo lxd init --auto
+```
+
+### Manual Install (Fedora/RHEL)
+
+```bash
+sudo dnf install -y \
+    libpq \
+    openssl-libs \
+    xz-libs \
+    zlib \
+    ca-certificates \
+    curl \
+    wget \
+    lxc
+```
+
+> ⚠️ **Common Error**: If you see `error while loading shared libraries: libpq.so.5`, install `libpq5` (Debian/Ubuntu) or `libpq` (Fedora/RHEL).
+
 ## System Requirements
 
 | Resource | Minimum | Production |
@@ -122,6 +174,19 @@ Requires CUDA installed and 12GB+ VRAM.
 | **Local** | Development, single instance | This page |
 | **Docker** | Production, microservices | [Docker Deployment](../chapter-07-gbapp/docker-deployment.md) |
 | **LXC** | Isolated components, Linux | [Container Deployment](../chapter-07-gbapp/containers.md) |
+
+> ⚠️ **IMPORTANT**: Container create commands (`botserver install ... --container`) must be run from the **host system**, not inside a container.
+
+### Example: Create Vault and VectorDB
+
+```bash
+# Run on HOST system
+botserver install vault --container --tenant mycompany
+botserver install vector_db --container --tenant mycompany
+
+# Verify containers
+lxc list | grep mycompany
+```
 
 ## Troubleshooting
 
