@@ -2,6 +2,8 @@
 
 botserver uses LXC (Linux Containers) for isolated component deployment with system-level containerization.
 
+> ⚠️ **IMPORTANT**: All container create and management commands must be run from the **host system**, not from inside a container. The botserver binary manages LXC containers from the host level.
+
 ## What is LXC?
 
 - **System containers** - Full Linux userspace (lightweight VMs)
@@ -10,6 +12,8 @@ botserver uses LXC (Linux Containers) for isolated component deployment with sys
 - **Resource control** - CPU, memory, I/O limits
 
 ## Automatic Setup
+
+Run on the **host system**:
 
 ```bash
 ./botserver --container
@@ -57,6 +61,8 @@ Data persists even if containers are deleted.
 | 6379 | 6379 | Cache |
 
 ## Common Operations
+
+Run these commands on the **host system**:
 
 ```bash
 # List containers
@@ -114,9 +120,34 @@ lxc restore default-tables backup-2024-01-15
 | Easy cleanup/reinstall | Simple deployment |
 | Security isolation | Direct service access |
 
+## Example: Create Vault and VectorDB Containers
+
+Run on the **host system**:
+
+```bash
+# Install Vault for secrets management
+botserver install vault --container --tenant mycompany
+
+# Install VectorDB (Qdrant) for embeddings
+botserver install vector_db --container --tenant mycompany
+
+# Verify containers are running
+lxc list | grep mycompany
+
+# Get container IPs
+lxc list mycompany-vault -c n4 --format csv
+lxc list mycompany-vectordb -c n4 --format csv
+
+# Test services
+curl http://<vault-ip>:8200/v1/sys/health
+curl http://<vectordb-ip>:6333/health
+```
+
 ## Migration
 
 ### Local → Container
+
+Run on the **host system**:
 
 ```bash
 pg_dump botserver > backup.sql
@@ -125,6 +156,8 @@ lxc exec default-tables -- psql -U gbuser botserver < backup.sql
 ```
 
 ### Container → Local
+
+Run on the **host system**:
 
 ```bash
 lxc exec default-tables -- pg_dump -U gbuser botserver > backup.sql

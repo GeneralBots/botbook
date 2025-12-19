@@ -2,6 +2,8 @@
 
 botserver provides a command-line interface for managing components, secrets, and services.
 
+> ⚠️ **IMPORTANT**: All container create commands (`botserver install ... --container`) must be run from the **host system**, not from inside a container. The botserver binary manages LXC containers from the host level.
+
 ## General Usage
 
 ```bash
@@ -43,17 +45,50 @@ botserver <command> [options]
 botserver install <component> [--container] [--tenant <name>]
 ```
 
+> ⚠️ **Run from host**: Container install commands must be executed on the host machine, not inside any container.
+
 **Examples:**
 
 ```bash
 # Install vault locally
 botserver install vault
 
-# Install vault in an LXC container with tenant name
+# Install vault in an LXC container with tenant name (run on HOST)
 botserver install vault --container --tenant pragmatismo
 
-# Install vector database
+# Install vector database (run on HOST)
 botserver install vector_db --container --tenant pragmatismo
+```
+
+**Example: Create Vault and VectorDB containers**
+
+This example shows how to create both Vault (secrets management) and VectorDB (Qdrant for embeddings) containers from scratch:
+
+```bash
+# Run these commands on the HOST system, not inside a container
+
+# Step 1: Install Vault container
+botserver install vault --container --tenant mycompany
+
+# Step 2: Install VectorDB (Qdrant) container
+botserver install vector_db --container --tenant mycompany
+
+# Step 3: Verify containers are running
+lxc list | grep mycompany
+
+# Expected output:
+# | mycompany-vault     | RUNNING | 10.x.x.x (eth0) | ... |
+# | mycompany-vectordb  | RUNNING | 10.x.x.x (eth0) | ... |
+
+# Step 4: Get container IPs for configuration
+lxc list mycompany-vault -c n4 --format csv
+lxc list mycompany-vectordb -c n4 --format csv
+
+# Step 5: Test Vault health
+curl http://<vault-ip>:8200/v1/sys/health
+
+# Step 6: Test VectorDB health
+curl http://<vectordb-ip>:6333/health
 ```
 
 **Available Components:**
@@ -463,13 +498,15 @@ botserver version --all
 
 ## Complete Setup Example
 
-Here's a complete workflow to set up Vault and migrate secrets:
+Here's a complete workflow to set up Vault and migrate secrets.
+
+> ⚠️ **Run all commands on the HOST system**, not inside any container.
 
 ```bash
-# 1. Install Vault in a container
+# 1. Install Vault in a container (run on HOST)
 botserver install vault --container --tenant pragmatismo
 
-# 2. Install Vector DB for embeddings
+# 2. Install Vector DB for embeddings (run on HOST)
 botserver install vector_db --container --tenant pragmatismo
 
 # 3. Get Vault container IP
@@ -632,8 +669,23 @@ lxc exec <tenant>-<component> -- journalctl -xe
 
 ### Missing Dependencies
 
+If you see errors like `error while loading shared libraries: libpq.so.5`, install the runtime dependencies:
+
 ```bash
-# Install system dependencies
+# Quick install (recommended) - run on HOST system
+curl -fsSL https://raw.githubusercontent.com/GeneralBots/botserver/main/scripts/install-dependencies.sh | sudo bash
+
+# Or manual install (Debian/Ubuntu)
+sudo apt-get install -y libpq5 libssl3 liblzma5 zlib1g ca-certificates curl wget
+
+# Or manual install (Fedora/RHEL)
+sudo dnf install -y libpq openssl-libs xz-libs zlib ca-certificates curl wget
+```
+
+For development/building from source:
+
+```bash
+# Install development dependencies
 sudo apt-get install -y libpq-dev libssl-dev liblzma-dev
 ```
 
