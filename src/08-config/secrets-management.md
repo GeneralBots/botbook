@@ -236,6 +236,267 @@ UNSEAL_KEY=$(cat botserver-stack/conf/vault/init.json | jq -r '.unseal_keys_b64[
 vault operator unseal $UNSEAL_KEY
 ```
 
+## Vault Auto-Unseal Options
+
+When Vault restarts (server reboot, container restart), it starts in a **sealed** state and cannot serve secrets until unsealed. This section covers 4 local options for auto-unseal **without depending on big tech cloud providers**.
+
+### Comparison Table
+
+| Option | Security | Cost | Complexity | Best For |
+|--------|----------|------|------------|----------|
+| **Secrets File** | ⭐⭐⭐ Medium | Free | Low | Development, Small Production |
+| **TPM** | ⭐⭐⭐⭐ High | Free (if hardware has TPM) | Medium | Servers with TPM 2.0 |
+| **HSM** | ⭐⭐⭐⭐⭐ Highest | $500-$2000+ | High | Enterprise, Compliance |
+| **Transit (2nd Vault)** | ⭐⭐⭐⭐ High | Free | Medium | Multi-server setups |
+
+---
+
+### Option 1: Secrets File (Default)
+
+Store unseal keys in a separate file with restricted permissions. This is the **default** for botserver.
+
+**How it works:**
+- Unseal keys stored in `/opt/gbo/secrets/vault-unseal-keys`
+- File has `chmod 600` (root only)
+- botserver reads this file at startup to auto-unseal
+- Keys are never logged or exposed
+
+**Setup:**
+
+```bash
+# Create secrets directory
+mkdir -p /opt/gbo/secrets
+chmod 700 /opt/gbo/secrets
+
+# After vault init, save unseal keys (replace with your actual keys)
+cat > /opt/gbo/secrets/vault-unseal-keys << 'EOF'
+VAULT_UNSEAL_KEY_1=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VAULT_UNSEAL_KEY_2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VAULT_UNSEAL_KEY_3=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+EOF
+
+chmod 600 /opt/gbo/secrets/vault-unseal-keys
+chown root:root /opt/gbo/secrets/vault-unseal-keys
+```
+
+**In your .env:**
+
+```env
+VAULT_ADDR=http://10.16.164.168:8200
+VAULT_TOKEN=<root-token>
+VAULT_UNSEAL_KEYS_FILE=/opt/gbo/secrets/vault-unseal-keys
+```
+
+**Security considerations:**
+- ✅ Separate from `.env` (which might be in git, logs)
+- ✅ Only root can read
+- ⚠️ Anyone with root access can unseal
+- ⚠️ Backup this file securely (encrypted)
+
+---
+
+### Option 2: TPM (Trusted Platform Module)
+
+Use server's TPM hardware chip to store unseal keys. Keys **never leave the hardware**.
+
+**Requirements:**
+- TPM 2.0 chip (most modern servers have this)
+- Linux with `tpm2-tools` installed
+
+**Check if your server has TPM:**
+
+```bash
+# Check for TPM device
+ls -la /dev/tpm*
+
+# Install TPM tools
+apt install tpm2-tools
+
+# Check TPM status
+tpm2_getcap properties-fixed
+```
+
+**Setup Vault with TPM seal:**
+
+```hcl
+# /opt/gbo/conf/vault/config.hcl
+seal "pkcs11" {
+  lib            = "/usr/lib/x86_64-linux-gnu/libtpm2_pkcs11.so"
+  slot           = "0"
+  pin            = "userpin"
+  key_label      = "vault-unseal"
+  hmac_key_label = "vault-hmac"
+}
+
+storage "file" {
+  path = "/opt/gbo/data/vault"
+}
+
+listener "tcp" {
+  address     = "0.0.0.0:8200"
+  tls_disable = 1
+}
+```
+
+**Cost:** Free (hardware already in server)
+
+**Security considerations:**
+- ✅ Keys never leave TPM hardware
+- ✅ Cannot be extracted even with root access
+- ✅ Tied to physical server
+- ⚠️ If server dies, keys are lost (need backup strategy)
+
+---
+
+### Option 3: HSM (Hardware Security Module)
+
+Dedicated hardware device for cryptographic operations. **Highest security** for enterprise/compliance.
+
+**Popular HSM Options:**
+
+| Device | Price | Form Factor | Best For |
+|--------|-------|-------------|----------|
+| **YubiHSM 2** | ~$650 | USB stick | Small business, startups |
+| **Nitrokey HSM 2** | ~$109 | USB stick | Budget-conscious |
+| **Thales Luna** | $5,000-$20,000 | PCIe/Network | Enterprise |
+| **AWS CloudHSM** | ~$1.50/hr | Cloud | Hybrid setups |
+| **SoftHSM** | Free | Software | Testing only |
+
+**Setup with YubiHSM 2:**
+
+```bash
+# Install YubiHSM connector
+apt install yubihsm-connector yubihsm-shell
+
+# Start connector
+systemctl enable yubihsm-connector
+systemctl start yubihsm-connector
+```
+
+```hcl
+# /opt/gbo/conf/vault/config.hcl
+seal "pkcs11" {
+  lib         = "/usr/lib/x86_64-linux-gnu/libyubihsm_pkcs11.so"
+  slot        = "0"
+  pin         = "0001password"
+  key_label   = "vault-unseal-key"
+  mechanism   = "0x1085"  # CKM_SHA256_HMAC
+}
+```
+
+**Setup with Nitrokey HSM 2 (Budget Option):**
+
+```bash
+# Install OpenSC
+apt install opensc
+
+# Initialize Nitrokey
+sc-hsm-tool --initialize --so-pin 3537363231383830 --pin 648219
+
+# Create key for Vault
+pkcs11-tool --module /usr/lib/opensc-pkcs11.so --login --pin 648219 \
+  --keypairgen --key-type EC:secp256k1 --label vault-key
+```
+
+```hcl
+# /opt/gbo/conf/vault/config.hcl
+seal "pkcs11" {
+  lib       = "/usr/lib/opensc-pkcs11.so"
+  slot      = "0"
+  pin       = "648219"
+  key_label = "vault-key"
+}
+```
+
+**Security considerations:**
+- ✅ FIPS 140-2 certified (compliance)
+- ✅ Tamper-resistant hardware
+- ✅ Keys cannot be extracted
+- ✅ Audit logging built-in
+- ⚠️ Higher cost
+- ⚠️ Physical device management
+
+---
+
+### Option 4: Transit Auto-Unseal (Second Vault)
+
+Use a second "unsealer" Vault instance to unseal the main one. Both can be local.
+
+**Architecture:**
+
+```
+┌─────────────────┐      unseals      ┌─────────────────┐
+│  Unsealer Vault │ ───────────────► │   Main Vault    │
+│  (minimal data) │                   │ (all secrets)   │
+│  manual unseal  │                   │  auto-unseal    │
+└─────────────────┘                   └─────────────────┘
+```
+
+**Setup Unsealer Vault:**
+
+```bash
+# Create separate container for unsealer
+botserver install vault --container --tenant unsealer
+
+# Initialize unsealer (manual unseal - use Shamir)
+lxc exec unsealer-vault -- /opt/gbo/bin/vault operator init \
+  -key-shares=5 -key-threshold=3
+
+# Enable transit secrets engine
+lxc exec unsealer-vault -- /opt/gbo/bin/vault secrets enable transit
+
+# Create auto-unseal key
+lxc exec unsealer-vault -- /opt/gbo/bin/vault write -f transit/keys/autounseal
+```
+
+**Configure Main Vault to use Transit:**
+
+```hcl
+# /opt/gbo/conf/vault/config.hcl (main vault)
+seal "transit" {
+  address         = "http://unsealer-vault-ip:8200"
+  token           = "unsealer-vault-token"
+  disable_renewal = "false"
+
+  key_name   = "autounseal"
+  mount_path = "transit/"
+}
+```
+
+**Security considerations:**
+- ✅ No cloud dependency
+- ✅ Separation of concerns
+- ✅ Unsealer can be on separate network
+- ⚠️ Still need to unseal the unsealer manually (or use TPM/HSM for it)
+- ⚠️ More infrastructure to manage
+
+---
+
+### Recommendation by Use Case
+
+| Scenario | Recommended Option |
+|----------|-------------------|
+| **Development/Testing** | Secrets File |
+| **Single Server Production** | TPM (if available) or Secrets File |
+| **Compliance Required (PCI, HIPAA)** | HSM (YubiHSM 2 or Nitrokey) |
+| **Multi-Server Cluster** | Transit Auto-Unseal |
+| **Enterprise (budget available)** | Thales Luna HSM |
+| **Budget-Conscious Production** | Nitrokey HSM 2 (~$109) |
+
+### Quick Cost Summary
+
+| Solution | One-Time Cost | Monthly Cost |
+|----------|---------------|--------------|
+| Secrets File | $0 | $0 |
+| TPM | $0 (built-in) | $0 |
+| Nitrokey HSM 2 | ~$109 | $0 |
+| YubiHSM 2 | ~$650 | $0 |
+| Thales Luna (Network) | $15,000+ | Support contract |
+| AWS CloudHSM | $0 | ~$1,100/month |
+| Azure Dedicated HSM | $0 | ~$4,500/month |
+
+**Note:** All 4 options work completely **locally without internet** and **without depending on AWS, Azure, or Google Cloud**. You maintain full control of your keys.
+
 ## Migrating from Environment Variables
 
 If you're currently using environment variables:
