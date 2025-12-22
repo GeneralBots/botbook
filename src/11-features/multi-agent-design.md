@@ -2207,23 +2207,88 @@ impl FormulaEngine {
 
         // Lookup functions
         self.register("VLOOKUP", |args| {
-            // Implementation for VLOOKUP
-            CellValue::Error("#N/A".to_string()) // Placeholder
+            if args.len() < 3 {
+                return CellValue::Error("#VALUE!".to_string());
+            }
+            let lookup_value = &args[0];
+            let table_array = args.get(1);
+            let col_index = args.get(2).and_then(|v| v.as_number()).unwrap_or(1.0) as usize;
+            
+            if let Some(CellValue::Array(rows)) = table_array {
+                for row in rows {
+                    if let CellValue::Array(cells) = row {
+                        if let Some(first_cell) = cells.get(0) {
+                            if first_cell == lookup_value {
+                                if let Some(result) = cells.get(col_index.saturating_sub(1)) {
+                                    return result.clone();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            CellValue::Error("#N/A".to_string())
         });
 
         self.register("HLOOKUP", |args| {
-            // Implementation for HLOOKUP
-            CellValue::Error("#N/A".to_string()) // Placeholder
+            if args.len() < 3 {
+                return CellValue::Error("#VALUE!".to_string());
+            }
+            let lookup_value = &args[0];
+            let table_array = args.get(1);
+            let row_index = args.get(2).and_then(|v| v.as_number()).unwrap_or(1.0) as usize;
+            
+            if let Some(CellValue::Array(rows)) = table_array {
+                if let Some(CellValue::Array(header_row)) = rows.get(0) {
+                    for (col_idx, cell) in header_row.iter().enumerate() {
+                        if cell == lookup_value {
+                            if let Some(CellValue::Array(target_row)) = rows.get(row_index.saturating_sub(1)) {
+                                if let Some(result) = target_row.get(col_idx) {
+                                    return result.clone();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            CellValue::Error("#N/A".to_string())
         });
 
         self.register("INDEX", |args| {
-            // Implementation for INDEX
-            CellValue::Error("#REF!".to_string()) // Placeholder
+            if args.len() < 2 {
+                return CellValue::Error("#VALUE!".to_string());
+            }
+            let array = args.get(0);
+            let row_num = args.get(1).and_then(|v| v.as_number()).unwrap_or(1.0) as usize;
+            let col_num = args.get(2).and_then(|v| v.as_number()).unwrap_or(1.0) as usize;
+            
+            if let Some(CellValue::Array(rows)) = array {
+                if let Some(CellValue::Array(row)) = rows.get(row_num.saturating_sub(1)) {
+                    if let Some(cell) = row.get(col_num.saturating_sub(1)) {
+                        return cell.clone();
+                    }
+                } else if let Some(cell) = rows.get(row_num.saturating_sub(1)) {
+                    return cell.clone();
+                }
+            }
+            CellValue::Error("#REF!".to_string())
         });
 
         self.register("MATCH", |args| {
-            // Implementation for MATCH
-            CellValue::Error("#N/A".to_string()) // Placeholder
+            if args.len() < 2 {
+                return CellValue::Error("#VALUE!".to_string());
+            }
+            let lookup_value = &args[0];
+            let lookup_array = args.get(1);
+            
+            if let Some(CellValue::Array(cells)) = lookup_array {
+                for (idx, cell) in cells.iter().enumerate() {
+                    if cell == lookup_value {
+                        return CellValue::Number((idx + 1) as f64);
+                    }
+                }
+            }
+            CellValue::Error("#N/A".to_string())
         });
 
         // Date functions

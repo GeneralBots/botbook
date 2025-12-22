@@ -535,6 +535,7 @@ Before committing documentation:
 - **Keywords**: NEVER use underscores - always spaces
 - **Models**: Use generic references or current model names
 - **Errors**: Document `ON ERROR RESUME NEXT` for error handling
+- **Session Continuation**: When running out of context or time, NEVER use excuses like "due to time constraints". Instead, create a detailed summary of: (1) what was done, (2) what remains to be done, (3) specific files and line numbers to fix, (4) exact next steps. This allows the next session to continue seamlessly.
 
 ---
 
