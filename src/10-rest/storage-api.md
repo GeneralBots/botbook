@@ -1,7 +1,5 @@
 # Storage API
 
-> *⚠️ Note: This API is not yet implemented and is planned for a future release.*
-
 botserver provides a RESTful API for managing file storage and object management through its S3-compatible storage backend.
 
 ## Overview

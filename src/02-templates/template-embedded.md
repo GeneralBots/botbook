@@ -97,7 +97,10 @@ SUB handleCommand(command)
             TALK "Current temperature is " + currentTemp + " degrees. Target is " + targetTemp + ". Heating is " + heating
             
         CASE "schedule"
-            TALK "Scheduling not yet implemented"
+            scheduleTime = intent.time
+            scheduleTemp = intent.temperature
+            SET SCHEDULER "thermostat_schedule", scheduleTime, "setTemperature", scheduleTemp
+            TALK "Scheduled temperature change to " + scheduleTemp + " degrees at " + scheduleTime
     END SELECT
 END SUB
 ```
