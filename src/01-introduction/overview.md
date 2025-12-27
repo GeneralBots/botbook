@@ -173,6 +173,27 @@ Example bots in the `templates/` directory demonstrate common patterns. Test sui
 General Bots is open source under the AGPL (GNU Affero General Public License). The GitHub repository hosts all development activity. Issue tracking manages bug reports and feature requests. Pull requests from the community are welcome and encouraged.
 
 
+## Codebase Statistics
+
+The General Bots workspace contains the following lines of code by language:
+
+| Language   | Lines of Code |
+|------------|---------------|
+| HTML       | 318,676       |
+| Rust       | 232,015       |
+| Markdown   | 135,130       |
+| SVG        | 47,196        |
+| JSON       | 45,743        |
+| CSS        | 40,476        |
+| SQL        | 26,242        |
+| JavaScript | 16,257        |
+| TOML       | 5,640         |
+| YAML       | 4,762         |
+| Shell      | 3,602         |
+| TypeScript | 13            |
+| **Total**  | **875,752**   |
+
+
 ## Summary
 
 botserver provides a complete platform for building conversational AI applications. The combination of simple BASIC scripting, automatic setup, and enterprise features bridges the gap between simple chatbots and complex AI systems. The focus on packages, minimal configuration, and multi-channel support makes botserver suitable for both rapid prototyping and production deployments serving millions of users.
