@@ -37,14 +37,6 @@
     <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
       <circle cx="10" cy="10" r="1" fill="#6366F1" opacity="0.08"/>
     </pattern>
-
-    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#8B5CF6"/>
-    </marker>
-
-    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="3" refY="9" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L6,0 L3,9 z" fill="#8B5CF6"/>
-    </marker>
   </defs>
 
   <style>
@@ -76,8 +68,9 @@
     <text x="100" y="30" text-anchor="middle" font-size="14" font-weight="600" class="white-text">USER</text>
   </g>
 
-  <!-- Arrow down from User -->
-  <line x1="450" y1="130" x2="450" y2="160" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <!-- Arrow down from User to Intent Classifier -->
+  <line x1="450" y1="125" x2="450" y2="155" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="450,165 443,152 457,152" fill="#8B5CF6"/>
 
   <!-- Intent Classifier -->
   <g transform="translate(250, 165)">
@@ -88,17 +81,36 @@
     <text x="200" y="50" text-anchor="middle" font-size="10" class="secondary-text">LLM classifies user request into intent type</text>
   </g>
 
-  <!-- Branching arrows -->
-  <line x1="450" y1="230" x2="450" y2="260" stroke="#8B5CF6" stroke-width="2"/>
+  <!-- Main vertical line from Intent Classifier -->
+  <line x1="450" y1="225" x2="450" y2="260" stroke="#8B5CF6" stroke-width="2"/>
+
+  <!-- Horizontal distribution line -->
   <line x1="100" y1="260" x2="800" y2="260" stroke="#8B5CF6" stroke-width="2"/>
 
-  <!-- Vertical drops to intent types -->
-  <line x1="100" y1="260" x2="100" y2="290" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <line x1="240" y1="260" x2="240" y2="290" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <line x1="380" y1="260" x2="380" y2="290" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <line x1="520" y1="260" x2="520" y2="290" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <line x1="660" y1="260" x2="660" y2="290" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <line x1="800" y1="260" x2="800" y2="290" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <!-- Vertical drops with arrow triangles to intent types -->
+  <!-- Arrow to APP CREATE -->
+  <line x1="100" y1="260" x2="100" y2="285" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="100,295 93,282 107,282" fill="#8B5CF6"/>
+
+  <!-- Arrow to TODO -->
+  <line x1="240" y1="260" x2="240" y2="285" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="240,295 233,282 247,282" fill="#8B5CF6"/>
+
+  <!-- Arrow to MONITOR -->
+  <line x1="380" y1="260" x2="380" y2="285" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="380,295 373,282 387,282" fill="#8B5CF6"/>
+
+  <!-- Arrow to ACTION -->
+  <line x1="520" y1="260" x2="520" y2="285" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="520,295 513,282 527,282" fill="#8B5CF6"/>
+
+  <!-- Arrow to SCHEDULE -->
+  <line x1="660" y1="260" x2="660" y2="285" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="660,295 653,282 667,282" fill="#8B5CF6"/>
+
+  <!-- Arrow to GOAL -->
+  <line x1="800" y1="260" x2="800" y2="285" stroke="#8B5CF6" stroke-width="2"/>
+  <polygon points="800,295 793,282 807,282" fill="#8B5CF6"/>
 
   <!-- Intent Type 1: APP CREATE -->
   <g transform="translate(40, 295)">
