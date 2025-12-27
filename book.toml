@@ -12,7 +12,7 @@ build-dir = "book"
 default-theme = "light"
 preferred-dark-theme = "navy"
 smart-punctuation = true
-additional-css = ["src/custom.css", "src/whatsapp-chat.css"]
+additional-css = ["src/custom.css", "src/whatsapp-chat.css", "src/designer-panel.css"]
 additional-js = ["src/theme-sync.js"]
 
 [output.html.favicon]

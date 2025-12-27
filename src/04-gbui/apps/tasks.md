@@ -224,6 +224,6 @@ with status: received, diagnosing, repairing, ready, delivered"
 
 ## See Also
 
-- [Autonomous Tasks](../../21-autonomous-tasks/README.md) - Complete guide
+- [Autonomous Tasks](../../17-autonomous-tasks/README.md) - Complete guide
 - [Dev Chat Widget](../dev-chat.md) - Test while developing
 - [HTMX Architecture](../htmx-architecture.md) - How the UI works
