@@ -309,7 +309,7 @@ The dev chat uses the same `user_data` system for history storage.
 
 ## See Also
 
-- [Autonomous Tasks Chapter](../21-autonomous-tasks/README.md) - Complete guide
+- [Autonomous Tasks Chapter](../17-autonomous-tasks/README.md) - Complete guide
 - [CREATE SITE](../06-gbdialog/keyword-create-site.md) - The keyword behind it
 - [REST API](../10-rest/README.md) - API reference
 - [HTMX Architecture](../04-gbui/htmx-architecture.md) - Frontend patterns

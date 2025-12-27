@@ -380,12 +380,12 @@
 
 # Part XVI - Autonomous Tasks
 
-- [Chapter 17: Autonomous Tasks](./21-autonomous-tasks/README.md)
-  - [Task Workflow](./21-autonomous-tasks/workflow.md)
-  - [App Generation](./21-autonomous-tasks/app-generation.md)
-  - [Data Model](./21-autonomous-tasks/data-model.md)
-  - [Progress Tracking](./21-autonomous-tasks/progress.md)
-  - [Examples](./21-autonomous-tasks/examples.md)
+- [Chapter 17: Autonomous Tasks](./17-autonomous-tasks/README.md)
+  - [Task Workflow](./17-autonomous-tasks/workflow.md)
+  - [App Generation](./17-autonomous-tasks/app-generation.md)
+  - [Data Model](./17-autonomous-tasks/data-model.md)
+  - [Examples](./17-autonomous-tasks/examples.md)
+  - [Designer](./17-autonomous-tasks/designer.md)
 
 # Appendices
 
