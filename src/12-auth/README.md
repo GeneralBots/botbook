@@ -1,10 +1,10 @@
 # Chapter 12: Authentication & Security
 
-User authentication and permission management for botserver.
+User authentication, permission management, and resource protection for botserver.
 
 ## Overview
 
-botserver provides enterprise-grade security with flexible authentication options and granular permissions.
+botserver provides enterprise-grade security with flexible authentication options, granular permissions, and comprehensive rate limiting to prevent abuse.
 
 ## Authentication Methods
 
@@ -30,7 +30,8 @@ END IF
 
 - **Password Hashing**: Argon2 with secure defaults
 - **Session Management**: Cryptographic tokens, configurable expiry
-- **Rate Limiting**: Prevent brute force attacks
+- **Rate Limiting**: Per-user and global limits with HTTP 429 responses
+- **System Limits**: Loop protection, file size limits, resource constraints
 - **Audit Logging**: Track all authentication events
 - **Encryption**: AES-GCM for data at rest
 
@@ -63,6 +64,7 @@ auth-lockout-duration,900
 - [Compliance Requirements](./compliance-requirements.md) - GDPR, LGPD, HIPAA
 - [Permissions Matrix](./permissions-matrix.md) - Access control
 - [User vs System Context](./user-system-context.md) - Execution contexts
+- [System Limits & Rate Limiting](./system-limits.md) - Resource constraints and abuse prevention
 
 ## See Also
 

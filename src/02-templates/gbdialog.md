@@ -2,6 +2,27 @@
 
 The [`.gbdialog`](../chapter-02/gbdialog.md) package contains BASIC scripts that define conversation flows, tool integrations, and bot behavior.
 
+## ⚠️ System Limits & Safety
+
+All `.gbdialog` scripts run in a **sandboxed environment** with enforced limits to prevent abuse:
+
+| Limit | Value | Description |
+|-------|-------|-------------|
+| **Loop Iterations** | 100,000 | Maximum iterations per loop (WHILE/FOR) |
+| **Script Timeout** | 300 seconds | Maximum execution time |
+| **String Length** | 10 MB | Maximum string size |
+| **Array Length** | 1,000,000 | Maximum array elements |
+| **File Size** | 100 MB | Maximum file size for GET/SAVE |
+| **API Calls** | 1,000/minute | Rate limit per user |
+
+**Important:**
+- Loops automatically terminate if they exceed the iteration limit
+- Scripts that run too long are forcefully stopped
+- Excessive API calls return HTTP 429 (Too Many Requests)
+- File operations are restricted to the bot's `.gbdrive` scope
+
+See [System Limits](../12-auth/system-limits.md) for complete documentation.
+
 ## What is .gbdialog?
 
 `.gbdialog` files are written in a specialized BASIC dialect that controls:
@@ -229,6 +250,9 @@ The system handles errors gracefully:
 - Runtime errors logged but don't crash
 - LLM provides fallback responses
 - Timeouts prevent infinite operations
+- **Loop limit exceeded**: Script terminates with "Maximum iterations exceeded" error
+- **Rate limit exceeded**: Returns HTTP 429 with `retry_after_secs` value
+- **File too large**: Operation fails with "Limit exceeded for file_size" error
 
 ## Script Execution
 
@@ -238,6 +262,9 @@ Scripts run in a sandboxed environment with:
 - Knowledge base search
 - Tool execution rights
 - External API access (configured)
+- **Enforced resource limits** (see System Limits above)
+- **No direct filesystem access** - only `.gbdrive` via keywords
+- **Rate limiting** - excessive requests return 429
 
 ## Migration from Traditional Bots
 
