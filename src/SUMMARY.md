@@ -240,6 +240,7 @@
   - [Service Layer](./07-gbapp/services.md)
   - [Creating Custom Keywords](./07-gbapp/custom-keywords.md)
   - [Adding Dependencies](./07-gbapp/dependencies.md)
+  - [Testing & Safety Tooling](./07-gbapp/testing-safety.md)
 
 # Part VIII - Bot Configuration
 
@@ -329,6 +330,8 @@
   - [Compliance Requirements](./12-auth/compliance-requirements.md)
   - [Permissions Matrix](./12-auth/permissions-matrix.md)
   - [User Context vs System Context](./12-auth/user-system-context.md)
+  - [System Limits & Rate Limiting](./12-auth/system-limits.md)
+  - [Security Checklist for SaaS](./12-auth/security-checklist.md)
 
 # Part XII - Device & Offline Deployment
 
