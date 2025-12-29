@@ -390,6 +390,12 @@
   - [Examples](./17-autonomous-tasks/examples.md)
   - [Designer](./17-autonomous-tasks/designer.md)
 
+# Part XVII - Scale
+
+- [Chapter 18: Scale](./21-scale/README.md)
+  - [Sharding Architecture](./21-scale/sharding.md)
+  - [Database Optimization](./21-scale/database-optimization.md)
+
 # Appendices
 
 - [Appendix A: Database Model](./15-appendix/README.md)
