@@ -371,9 +371,12 @@ END IF
 
 | Error Code | Meaning | Solution |
 |------------|---------|----------|
+| 130472 | User's number is part of an experiment | The user is in a WhatsApp beta test or Meta is testing new features on their account. Message delivery is temporarily blocked during these tests. Wait and retry later. |
+| 131026 | Message undeliverable | The phone number may be invalid, the user may have blocked your business number, deleted their WhatsApp account, or there are temporary network issues. This is usually a permanent error for that specific number. |
 | 131030 | User not on WhatsApp | Verify phone number |
 | 131047 | Re-engagement required | Send template message |
 | 131048 | Spam rate limit | Reduce message frequency |
+| 131049 | Message not delivered to maintain healthy ecosystem engagement | You are sending too many messages too quickly, or WhatsApp detected spam-like behavior. This is a temporary rate limit - reduce your sending frequency and implement proper throttling. |
 | 131051 | Unsupported message type | Check message format |
 | 131052 | Media download failed | Verify media URL |
 | 132000 | Template not found | Check template name |

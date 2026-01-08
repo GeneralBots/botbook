@@ -74,6 +74,7 @@
     - [Paper - AI Writing](./04-gbui/apps/paper.md)
     - [Research - AI Search](./04-gbui/apps/research.md)
     - [Analytics - Dashboards](./04-gbui/apps/analytics.md)
+    - [Dashboards - Custom BI](./04-gbui/apps/dashboards.md)
     - [Designer - Visual Builder](./04-gbui/apps/designer.md)
     - [Sources - Prompts & Templates](./04-gbui/apps/sources.md)
     - [Compliance - Security Scanner](./04-gbui/apps/compliance.md)
@@ -321,6 +322,7 @@
 # Part XI - Security
 
 - [Chapter 12: Authentication & Permissions](./12-auth/README.md)
+  - [Initial Setup & Bootstrap](./12-auth/initial-setup.md)
   - [User Authentication](./12-auth/user-auth.md)
   - [Password Security](./12-auth/password-security.md)
   - [API Endpoints](./12-auth/api-endpoints.md)
@@ -328,10 +330,21 @@
   - [Security Features](./12-auth/security-features.md)
   - [Security Policy](./12-auth/security-policy.md)
   - [Compliance Requirements](./12-auth/compliance-requirements.md)
+  - [RBAC Overview](./12-auth/rbac-overview.md)
   - [Permissions Matrix](./12-auth/permissions-matrix.md)
+  - [Permissions Reference](./12-auth/permissions-reference.md)
   - [User Context vs System Context](./12-auth/user-system-context.md)
   - [System Limits & Rate Limiting](./12-auth/system-limits.md)
   - [Security Checklist for SaaS](./12-auth/security-checklist.md)
+
+- [Chapter 23: Advanced Security](./23-security/README.md)
+  - [RBAC & Security Design](./23-security/rbac-design.md)
+  - [RBAC Configuration Guide](./23-security/rbac-configuration.md)
+  - [Organization Multi-Tenancy](./23-security/organizations.md)
+  - [Knowledge Base Permissions](./23-security/kb-permissions.md)
+  - [Knowledge Base Security](./23-security/kb-security.md)
+  - [SOC 2 Compliance](./23-security/soc2-compliance.md)
+  - [Security Matrix Reference](./23-security/security-matrix.md)
 
 # Part XII - Device & Offline Deployment
 
@@ -395,6 +408,10 @@
 - [Chapter 18: Scale](./21-scale/README.md)
   - [Sharding Architecture](./21-scale/sharding.md)
   - [Database Optimization](./21-scale/database-optimization.md)
+
+# Part XVIII - White Label
+
+- [Chapter 19: White Label](./22-white-label/README.md)
 
 # Appendices
 

@@ -4,7 +4,147 @@ This chapter provides a comprehensive reference for the API endpoints exposed by
 
 ## Authentication Endpoints
 
-Authentication in General Bots is delegated to the Directory Service, which implements industry-standard OAuth2 and OpenID Connect protocols. The authentication endpoints primarily serve as integration points with this external identity provider.
+Authentication in General Bots is delegated to the Directory Service (Zitadel), which implements industry-standard OAuth2 and OpenID Connect protocols. The authentication endpoints serve as integration points with this external identity provider.
+
+### Login
+
+```
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "<your-password>",
+  "remember": true
+}
+```
+
+**Response (Success)**:
+```json
+{
+  "success": true,
+  "user_id": "abc123...",
+  "access_token": "eyJ...",
+  "refresh_token": "eyJ...",
+  "expires_in": 3600,
+  "requires_2fa": false,
+  "redirect": "/"
+}
+```
+
+**Response (2FA Required)**:
+```json
+{
+  "success": false,
+  "requires_2fa": true,
+  "session_token": "temp-session-token"
+}
+```
+
+### Logout
+
+```
+POST /api/auth/logout
+Authorization: Bearer <access_token>
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "message": "Logged out successfully"
+}
+```
+
+### Get Current User
+
+```
+GET /api/auth/me
+Authorization: Bearer <access_token>
+```
+
+**Response**:
+```json
+{
+  "id": "user-uuid",
+  "username": "johndoe",
+  "email": "john@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "display_name": "John Doe",
+  "roles": ["user", "bot_operator"],
+  "organization_id": "org-uuid"
+}
+```
+
+### Refresh Token
+
+```
+POST /api/auth/refresh
+Content-Type: application/json
+
+{
+  "refresh_token": "eyJ..."
+}
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "access_token": "eyJ...",
+  "refresh_token": "eyJ...",
+  "expires_in": 3600
+}
+```
+
+### Bootstrap Admin (First-Time Setup)
+
+This endpoint is only available when `GB_BOOTSTRAP_SECRET` is set and no admin users exist.
+
+```
+POST /api/auth/bootstrap
+Content-Type: application/json
+
+{
+  "bootstrap_secret": "your-secret",
+  "organization_name": "My Company",
+  "first_name": "John",
+  "last_name": "Doe",
+  "username": "admin",
+  "email": "admin@example.com",
+  "password": "<your-secure-password>"
+}
+```
+
+**Response (Success)**:
+```json
+{
+  "success": true,
+  "message": "Admin user 'admin' created successfully...",
+  "user_id": "abc123...",
+  "organization_id": "org456..."
+}
+```
+
+### Anonymous Session (Chat)
+
+Anonymous users can obtain a session for chat without authentication:
+
+```
+GET /api/auth?bot_name=default
+```
+
+**Response**:
+```json
+{
+  "user_id": "anonymous-uuid",
+  "session_id": "session-uuid",
+  "status": "authenticated"
+}
+```
+
+## OAuth Endpoints
 
 ### OAuth Login
 
@@ -95,6 +235,131 @@ The API supports Cross-Origin Resource Sharing (CORS) to enable browser-based ap
 ## Health Monitoring
 
 The `/health` endpoint provides a simple way to verify the server is operational. Unlike other endpoints, this one requires no authentication, making it suitable for external monitoring systems and load balancer health checks. The response includes a status indicator and a timestamp, providing basic confirmation that the server can process requests.
+
+## Directory User Management Endpoints
+
+These endpoints require admin privileges and interact with the Zitadel directory service.
+
+### List Users
+
+```
+GET /api/directory/users/list?page=1&per_page=20&organization_id=org-uuid
+Authorization: Bearer <access_token>
+```
+
+**Response**:
+```json
+{
+  "users": [
+    {
+      "id": "user-uuid",
+      "username": "johndoe",
+      "email": "john@example.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "state": "active",
+      "organization_id": "org-uuid",
+      "roles": ["user"]
+    }
+  ],
+  "total": 1,
+  "page": 1,
+  "per_page": 20
+}
+```
+
+### Create User
+
+```
+POST /api/directory/users/create
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "email": "newuser@example.com",
+  "first_name": "New",
+  "last_name": "User",
+  "organization_id": "org-uuid",
+  "roles": ["user"]
+}
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "message": "User newuser created successfully",
+  "user_id": "new-user-uuid"
+}
+```
+
+### Assign User to Organization
+
+```
+POST /api/directory/users/:user_id/organization
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "organization_id": "org-uuid",
+  "roles": ["user", "bot_operator"]
+}
+```
+
+### Update User Roles
+
+```
+PUT /api/directory/users/:user_id/organization/:org_id/roles
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "roles": ["admin", "org_owner"]
+}
+```
+
+### Delete User
+
+```
+DELETE /api/directory/users/:user_id/delete
+Authorization: Bearer <access_token>
+```
+
+## Group Management Endpoints
+
+### List Groups
+
+```
+GET /api/directory/groups/list?page=1&per_page=20
+Authorization: Bearer <access_token>
+```
+
+### Create Group
+
+```
+POST /api/directory/groups/create
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "name": "Marketing Team",
+  "description": "Marketing department users"
+}
+```
+
+### Add Member to Group
+
+```
+POST /api/directory/groups/:group_id/members/add
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "user_id": "user-uuid",
+  "roles": ["member"]
+}
+```
 
 ## Implementation Status
 

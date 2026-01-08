@@ -6,7 +6,7 @@ Complete file and document management operations including upload, download, cop
 
 The Files API provides comprehensive file management capabilities built on top of S3-compatible storage. All file operations support both single files and folders with recursive operations.
 
-**Base Path**: `/files`
+**Base Path**: `/api/files`
 
 ## Authentication
 
@@ -22,7 +22,7 @@ Authorization: Bearer <token>
 
 List files and folders in a bucket or path.
 
-**Endpoint**: `GET /files/list`
+**Endpoint**: `GET /api/files/list`
 
 **Query Parameters**:
 - `bucket` (optional) - Bucket name
@@ -55,7 +55,7 @@ List files and folders in a bucket or path.
 
 **Example**:
 ```bash
-curl -X GET "http://localhost:3000/files/list?bucket=my-bucket&path=/documents" \
+curl -X GET "http://localhost:3000/api/files/list?bucket=my-bucket&path=/documents" \
   -H "Authorization: Bearer <token>"
 ```
 
@@ -63,7 +63,7 @@ curl -X GET "http://localhost:3000/files/list?bucket=my-bucket&path=/documents" 
 
 Read file content from storage.
 
-**Endpoint**: `POST /files/read`
+**Endpoint**: `POST /api/files/read`
 
 **Request Body**:
 ```json
@@ -82,7 +82,7 @@ Read file content from storage.
 
 **Example**:
 ```bash
-curl -X POST "http://localhost:3000/files/read" \
+curl -X POST "http://localhost:3000/api/files/read" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"bucket":"my-bucket","path":"/file.txt"}'
@@ -92,15 +92,15 @@ curl -X POST "http://localhost:3000/files/read" \
 
 Alias for read file with alternative naming.
 
-**Endpoint**: `POST /files/getContents`
+**Endpoint**: `POST /api/files/getContents`
 
-Same parameters and response as `/files/read`.
+Same parameters and response as `/api/files/read`.
 
 ### Write File
 
 Write or update file content.
 
-**Endpoint**: `POST /files/write`
+**Endpoint**: `POST /api/files/write`
 
 **Request Body**:
 ```json
@@ -123,15 +123,15 @@ Write or update file content.
 
 Alias for write file.
 
-**Endpoint**: `POST /files/save`
+**Endpoint**: `POST /api/files/save`
 
-Same parameters and response as `/files/write`.
+Same parameters and response as `/api/files/write`.
 
 ### Upload File
 
 Upload file to storage.
 
-**Endpoint**: `POST /files/upload`
+**Endpoint**: `POST /api/files/upload`
 
 **Request Body**:
 ```json
@@ -154,7 +154,7 @@ Upload file to storage.
 
 Download file from storage.
 
-**Endpoint**: `POST /files/download`
+**Endpoint**: `POST /api/files/download`
 
 **Request Body**:
 ```json
@@ -175,7 +175,7 @@ Download file from storage.
 
 Copy file or folder to another location.
 
-**Endpoint**: `POST /files/copy`
+**Endpoint**: `POST /api/files/copy`
 
 **Request Body**:
 ```json
@@ -199,7 +199,7 @@ Copy file or folder to another location.
 
 Move file or folder to another location.
 
-**Endpoint**: `POST /files/move`
+**Endpoint**: `POST /api/files/move`
 
 **Request Body**:
 ```json
@@ -225,7 +225,7 @@ Move file or folder to another location.
 
 Delete file or folder.
 
-**Endpoint**: `POST /files/delete`
+**Endpoint**: `POST /api/files/delete`
 
 **Request Body**:
 ```json
@@ -249,7 +249,7 @@ Delete file or folder.
 
 Create a new folder.
 
-**Endpoint**: `POST /files/createFolder`
+**Endpoint**: `POST /api/files/createFolder`
 
 **Request Body**:
 ```json
@@ -268,13 +268,13 @@ Create a new folder.
 }
 ```
 
-**Alternative Endpoint**: `POST /files/create-folder` (dash notation)
+**Alternative Endpoint**: `POST /api/files/create-folder` (dash notation)
 
 ### List Folder Contents
 
 List contents of a specific folder.
 
-**Endpoint**: `POST /files/dirFolder`
+**Endpoint**: `POST /api/files/dirFolder`
 
 **Request Body**:
 ```json
@@ -304,7 +304,7 @@ List contents of a specific folder.
 
 Search for files across buckets.
 
-**Endpoint**: `GET /files/search`
+**Endpoint**: `GET /api/files/search`
 
 **Query Parameters**:
 - `bucket` (optional) - Limit search to specific bucket
@@ -327,7 +327,7 @@ Search for files across buckets.
 
 **Example**:
 ```bash
-curl -X GET "http://localhost:3000/files/search?query=report&file_type=.pdf" \
+curl -X GET "http://localhost:3000/api/files/search?query=report&file_type=.pdf" \
   -H "Authorization: Bearer <token>"
 ```
 
@@ -335,7 +335,7 @@ curl -X GET "http://localhost:3000/files/search?query=report&file_type=.pdf" \
 
 Get recently modified files.
 
-**Endpoint**: `GET /files/recent`
+**Endpoint**: `GET /api/files/recent`
 
 **Query Parameters**:
 - `bucket` (optional) - Filter by bucket
@@ -360,7 +360,7 @@ Get recently modified files.
 
 List user's favorite files.
 
-**Endpoint**: `GET /files/favorite`
+**Endpoint**: `GET /api/files/favorite`
 
 **Response**:
 ```json
@@ -375,7 +375,7 @@ List user's favorite files.
 
 Share folder with other users.
 
-**Endpoint**: `POST /files/shareFolder`
+**Endpoint**: `POST /api/files/shareFolder`
 
 **Request Body**:
 ```json
@@ -400,7 +400,7 @@ Share folder with other users.
 
 Get files and folders shared with user.
 
-**Endpoint**: `GET /files/shared`
+**Endpoint**: `GET /api/files/shared`
 
 **Response**:
 ```json
@@ -411,7 +411,7 @@ Get files and folders shared with user.
 
 Get permissions for file or folder.
 
-**Endpoint**: `GET /files/permissions`
+**Endpoint**: `GET /api/files/permissions`
 
 **Query Parameters**:
 - `bucket` (required) - Bucket name
@@ -438,7 +438,7 @@ Get permissions for file or folder.
 
 Check storage quota information.
 
-**Endpoint**: `GET /files/quota`
+**Endpoint**: `GET /api/files/quota`
 
 **Response**:
 ```json
@@ -452,7 +452,7 @@ Check storage quota information.
 
 **Example**:
 ```bash
-curl -X GET "http://localhost:3000/files/quota" \
+curl -X GET "http://localhost:3000/api/files/quota" \
   -H "Authorization: Bearer <token>"
 ```
 
@@ -462,7 +462,7 @@ curl -X GET "http://localhost:3000/files/quota" \
 
 Get current synchronization status.
 
-**Endpoint**: `GET /files/sync/status`
+**Endpoint**: `GET /api/files/sync/status`
 
 **Response**:
 ```json
@@ -484,7 +484,7 @@ Get current synchronization status.
 
 Start file synchronization.
 
-**Endpoint**: `POST /files/sync/start`
+**Endpoint**: `POST /api/files/sync/start`
 
 **Response**:
 ```json
@@ -498,7 +498,7 @@ Start file synchronization.
 
 Stop file synchronization.
 
-**Endpoint**: `POST /files/sync/stop`
+**Endpoint**: `POST /api/files/sync/stop`
 
 **Response**:
 ```json
@@ -570,7 +570,7 @@ Status: 500
 
 ```javascript
 // 1. Upload file
-const uploadResponse = await fetch('/files/upload', {
+const uploadResponse = await fetch('/api/files/upload', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer token',
@@ -584,7 +584,7 @@ const uploadResponse = await fetch('/files/upload', {
 });
 
 // 2. Share with team
-const shareResponse = await fetch('/files/shareFolder', {
+const shareResponse = await fetch('/api/files/shareFolder', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer token',
@@ -609,7 +609,7 @@ import requests
 
 # Search for files
 response = requests.get(
-    'http://localhost:3000/files/search',
+    'http://localhost:3000/api/files/search',
     params={'query': 'report', 'file_type': '.pdf'},
     headers={'Authorization': 'Bearer token'}
 )
@@ -619,7 +619,7 @@ files = response.json()
 # Download first result
 if files:
     download_response = requests.post(
-        'http://localhost:3000/files/download',
+        'http://localhost:3000/api/files/download',
         json={
             'bucket': 'my-bucket',
             'path': files[0]['path']
