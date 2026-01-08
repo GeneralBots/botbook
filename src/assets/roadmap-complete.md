@@ -15,10 +15,10 @@ This table merges the proposed timeline with all features documented in botbook/
 | 2025 H1 | Rust Migration | 10 | ✅ Complete |
 | 2025 H2 | Features & Tasks | 10 | ✅ Complete |
 | 2026 Q1 | Autonomous GO | 12 | 📋 Planned |
-| 2026 Q2 | Collaboration | 12 | 📋 Planned |
-| 2026 Q3 | AI Features | 8 | 📋 Planned |
-| 2026 Q4 | Enterprise | 8 | 📋 Planned |
-| **TOTAL** | | **80** | |
+| 2026 Q2 | Collaboration & AI | 14 | 📋 Planned |
+| 2026 Q3 | Advanced Features | 6 | 📋 Planned |
+| 2026 Q4 | Enterprise | 7 | 📋 Planned |
+| **TOTAL** | | **79** | |
 
 ---
 
@@ -67,9 +67,9 @@ This table merges the proposed timeline with all features documented in botbook/
 | 5 | Drive Storage (S3) | Your list + botbook | 02-templates/gbdrive.md |
 | 6 | Email System (IMAP/SMTP) | Your list + botbook | 11-features/email.md |
 | 7 | REST API | Your list + botbook | 10-rest/ |
-| 8 | **Telegram Channel** | botbook ROADMAP | 11-features/channels.md |
-| 9 | **PDF Generation** | botbook ROADMAP | 06-gbdialog/keyword-generate-pdf.md |
-| 10 | **WhatsApp Channel** | botbook ROADMAP | 11-features/channels.md |
+| 8 | **Telegram Channel** | botbook | 11-features/channels.md |
+| 9 | **PDF Generation** | botbook | 06-gbdialog/keyword-generate-pdf.md |
+| 10 | **WhatsApp Channel** | botbook | 11-features/channels.md |
 
 ---
 
@@ -104,27 +104,29 @@ This table merges the proposed timeline with all features documented in botbook/
 | 8 | Speech to Text | Your list | 08-config/multimodal.md |
 | 9 | Image Generation | Your list | 08-config/multimodal.md |
 | 10 | Vision Analysis | Your list | 08-config/multimodal.md |
-| 11 | **Transfer to Human** | botbook | 11-features/transfer-to-human.md |
-| 12 | **LLM-Assisted Attendant** | botbook | 11-features/attendant-llm-assist.md |
+| 11 | **MS Teams Channel** | Your list + botbook | 11-features/channels.md |
+| 12 | **Multi-Agent System** | Your list + botbook | 11-features/multi-agent-orchestration.md |
 
 ---
 
-## 2026 Q2: Collaboration Tools 📋
+## 2026 Q2: Collaboration & AI Tools 📋
 
 | # | Feature | Source | Documentation |
 |---|---------|--------|---------------|
-| 1 | Multi-Agent System | Your list + botbook | 11-features/multi-agent-orchestration.md |
-| 2 | Bot Marketplace | Your list | Future |
-| 3 | Compliance Suite | Your list + botbook | 04-gbui/apps/compliance.md |
-| 4 | MS Teams Channel | Your list | 11-features/channels.md |
-| 5 | Analytics Reports | Your list + botbook | 10-rest/analytics-api.md |
-| 6 | **Google Meet** | botbook ROADMAP | 04-gbui/apps/meet.md |
-| 7 | **Zoom Integration** | botbook ROADMAP | Future |
-| 8 | **Slack Channel** | botbook ROADMAP | 11-features/channels.md |
-| 9 | **Discord Channel** | botbook ROADMAP | 11-features/channels.md |
-| 10 | **Google Sheets** | botbook ROADMAP | Future |
-| 11 | **Excel Online** | botbook ROADMAP | Future |
+| 1 | **Paper App (AI Writing)** | botbook | 04-gbui/apps/paper.md |
+| 2 | **Research App (AI Search)** | botbook | 04-gbui/apps/research.md |
+| 3 | **Transfer to Human** | botbook | 11-features/transfer-to-human.md |
+| 4 | **LLM-Assisted Attendant** (AI Copilot for Agents) | botbook | 11-features/attendant-llm-assist.md |
+| 5 | Bot Marketplace | Your list | Future |
+| 6 | Compliance Suite | Your list + botbook | 04-gbui/apps/compliance.md |
+| 7 | Analytics Reports | Your list + botbook | 10-rest/analytics-api.md |
+| 8 | **Slack Channel** | botbook | 11-features/channels.md |
+| 9 | **Discord Channel** | botbook | 11-features/channels.md |
+| 10 | **Google Sheets** | botbook | Future |
+| 11 | **Excel Online** | botbook | Future |
 | 12 | **Whiteboard Collaboration** | botbook | 10-rest/whiteboard-api.md |
+| 13 | **Player App (Media)** | botbook | 04-gbui/apps/player.md |
+| 14 | **Sources App (Prompts)** | botbook | 04-gbui/apps/sources.md |
 
 ---
 
@@ -134,12 +136,10 @@ This table merges the proposed timeline with all features documented in botbook/
 |---|---------|--------|---------------|
 | 1 | Workflow Designer | Your list + botbook | 04-gbui/apps/designer.md |
 | 2 | CRM Integration | Your list | 02-templates/template-crm.md |
-| 3 | **Voice Synthesis (TTS)** | botbook ROADMAP | 08-config/multimodal.md |
-| 4 | **ERP Integration** | botbook ROADMAP | 02-templates/template-erp.md |
-| 5 | **Paper App (AI Writing)** | botbook | 04-gbui/apps/paper.md |
-| 6 | **Research App (AI Search)** | botbook | 04-gbui/apps/research.md |
-| 7 | **Player App (Media)** | botbook | 04-gbui/apps/player.md |
-| 8 | **Sources App (Prompts)** | botbook | 04-gbui/apps/sources.md |
+| 3 | **Voice Synthesis (TTS)** | botbook | 08-config/multimodal.md |
+| 4 | **ERP Integration** | botbook | 02-templates/template-erp.md |
+| 5 | **Instagram Channel** | botbook | 11-features/channels.md |
+| 6 | **SMS Channel** | botbook | 06-gbdialog/keyword-sms.md |
 
 ---
 
@@ -149,12 +149,11 @@ This table merges the proposed timeline with all features documented in botbook/
 |---|---------|--------|---------------|
 | 1 | Mobile Apps (iOS/Android) | Your list + botbook | 13-devices/mobile.md |
 | 2 | Enterprise SSO (SAML/OIDC) | Your list + botbook | 12-auth/ |
-| 3 | White Label | Your list | Future |
-| 4 | **Backup & Restore** | botbook | 10-rest/backup-api.md |
-| 5 | **NVIDIA GPU Support** | botbook | 09-tools/nvidia-gpu-setup.md |
-| 6 | **Docker Deployment** | botbook | 07-gbapp/docker-deployment.md |
-| 7 | **LXC Containers** | botbook | 07-gbapp/containers.md |
-| 8 | **Advanced Monitoring** | botbook | 10-rest/monitoring-api.md |
+| 3 | **Backup & Restore** | botbook | 10-rest/backup-api.md |
+| 4 | **NVIDIA GPU Support** | botbook | 09-tools/nvidia-gpu-setup.md |
+| 5 | **Docker Deployment** | botbook | 07-gbapp/docker-deployment.md |
+| 6 | **LXC Containers** | botbook | 07-gbapp/containers.md |
+| 7 | **Advanced Monitoring** | botbook | 10-rest/monitoring-api.md |
 
 ---
 
@@ -162,19 +161,19 @@ This table merges the proposed timeline with all features documented in botbook/
 
 | App | Category | Timeline | Documentation |
 |-----|----------|----------|---------------|
-| Chat | Core | 2025 H1 | 04-gbui/apps/chat.md |
-| Drive | Storage | 2025 H1 | 04-gbui/apps/drive.md |
-| Tasks | Productivity | 2025 H2 | 04-gbui/apps/tasks.md |
-| Mail | Communication | 2025 H1 | 04-gbui/apps/mail.md |
-| Calendar | Scheduling | 2026 Q1 | 04-gbui/apps/calendar.md |
-| Meet | Video | 2026 Q2 | 04-gbui/apps/meet.md |
-| Paper | AI Writing | 2026 Q3 | 04-gbui/apps/paper.md |
-| Research | AI Search | 2026 Q3 | 04-gbui/apps/research.md |
-| Analytics | Reports | 2025 H2 | 04-gbui/apps/analytics.md |
-| Designer | Visual | 2026 Q3 | 04-gbui/apps/designer.md |
-| Sources | Prompts | 2026 Q3 | 04-gbui/apps/sources.md |
-| Compliance | Security | 2026 Q2 | 04-gbui/apps/compliance.md |
-| Player | Media | 2026 Q3 | 04-gbui/apps/player.md |
+| Chat | Core | 2025 H1 ✅ | 04-gbui/apps/chat.md |
+| Drive | Storage | 2025 H1 ✅ | 04-gbui/apps/drive.md |
+| Tasks | Productivity | 2025 H2 ✅ | 04-gbui/apps/tasks.md |
+| Mail | Communication | 2025 H1 ✅ | 04-gbui/apps/mail.md |
+| Calendar | Scheduling | 2026 Q1 📋 | 04-gbui/apps/calendar.md |
+| Meet | Video | 2026 Q2 📋 | 04-gbui/apps/meet.md |
+| Paper | AI Writing | 2026 Q2 📋 | 04-gbui/apps/paper.md |
+| Research | AI Search | 2026 Q2 📋 | 04-gbui/apps/research.md |
+| Analytics | Reports | 2025 H2 ✅ | 04-gbui/apps/analytics.md |
+| Designer | Visual | 2026 Q3 📋 | 04-gbui/apps/designer.md |
+| Sources | Prompts | 2026 Q2 📋 | 04-gbui/apps/sources.md |
+| Compliance | Security | 2026 Q2 📋 | 04-gbui/apps/compliance.md |
+| Player | Media | 2026 Q2 📋 | 04-gbui/apps/player.md |
 
 ---
 
@@ -185,11 +184,19 @@ This table merges the proposed timeline with all features documented in botbook/
 | Web Chat | 2025 H1 ✅ | 04-gbui/apps/chat.md |
 | WhatsApp | 2025 H1 ✅ | 11-features/channels.md |
 | Telegram | 2025 H1 ✅ | 11-features/channels.md |
-| MS Teams | 2026 Q2 📋 | 11-features/channels.md |
+| MS Teams | 2026 Q1 📋 | 11-features/channels.md |
 | Slack | 2026 Q2 📋 | 11-features/channels.md |
 | Discord | 2026 Q2 📋 | 11-features/channels.md |
-| Instagram | Future | 11-features/channels.md |
-| SMS | Future | 06-gbdialog/keyword-sms.md |
+| Instagram | 2026 Q3 📋 | 11-features/channels.md |
+| SMS | 2026 Q3 📋 | 06-gbdialog/keyword-sms.md |
+
+---
+
+## Completed Features (Outside Roadmap)
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| White Label | ✅ Complete | Branding customization available |
 
 ---
 

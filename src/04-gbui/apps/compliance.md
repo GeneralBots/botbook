@@ -1,6 +1,6 @@
-# Compliance - Security Scanner
+# Compliance Center
 
-> **Your privacy and security guardian**
+> **Your privacy, security, and data governance guardian**
 
 <img src="../../assets/suite/compliance-screen.svg" alt="Compliance Interface Screen" style="max-width: 100%; height: auto;">
 
@@ -8,7 +8,14 @@
 
 ## Overview
 
-Compliance is the security and privacy management app in General Bots Suite. Monitor data handling, manage consent, respond to data subject requests, and ensure your bots comply with regulations like LGPD, GDPR, and CCPA. Compliance helps you protect user data and maintain trust.
+Compliance Center is the comprehensive security, privacy, and data governance app in General Bots Suite. Monitor data handling, manage consent, respond to data subject requests, prevent data loss, manage legal holds, classify sensitive information, and ensure your bots comply with regulations like LGPD, GDPR, HIPAA, and CCPA.
+
+**Key Capabilities:**
+- **DLP (Data Loss Prevention)** - Detect and prevent sensitive data leaks
+- **eDiscovery** - Legal holds, content search, and case management
+- **Information Protection** - Classify and protect sensitive documents
+- **Compliance Scanning** - Automated regulatory compliance checks
+- **Data Subject Requests** - Handle GDPR/LGPD rights requests
 
 ---
 
@@ -41,6 +48,169 @@ The dashboard gives you an at-a-glance view of your compliance status:
 | 70-89% | ⚠ Good | Address minor issues |
 | 50-69% | ⚠ Fair | Prioritize improvements |
 | Below 50% | ✗ Poor | Immediate action required |
+
+---
+
+---
+
+## Data Loss Prevention (DLP)
+
+Automatically detect and prevent sensitive data from being shared inappropriately.
+
+### Sensitive Data Types Detected
+
+| Type | Examples | Severity |
+|------|----------|----------|
+| **Credit Card** | Visa, MasterCard, Amex | Critical |
+| **SSN/CPF** | Social Security, Brazilian CPF | Critical |
+| **Health ID** | Medicare, Medical Record Numbers | Critical |
+| **Bank Account** | Account numbers, IBAN | High |
+| **API Keys** | AWS, Azure, GCP credentials | Critical |
+| **Private Keys** | RSA, SSH, PGP keys | Critical |
+| **JWT Tokens** | Authentication tokens | High |
+| **Email** | Email addresses | Medium |
+| **Phone** | Phone numbers | Medium |
+| **IP Address** | IPv4, IPv6 addresses | Low |
+
+### DLP Policies
+
+Create policies to control how sensitive data is handled:
+
+**Policy Actions:**
+
+| Action | Description |
+|--------|-------------|
+| **Allow** | Log but permit the action |
+| **Warn** | Show warning to user |
+| **Redact** | Mask sensitive data automatically |
+| **Block** | Prevent the action entirely |
+| **Quarantine** | Hold for manual review |
+
+**Example Policy:**
+```
+Name: Block Credit Cards in External Emails
+Data Types: Credit Card
+Scope: Outbound emails
+Action: Block
+Severity Threshold: High
+```
+
+### DLP Scanning Integration
+
+DLP scans are integrated with:
+- **Mail** - Inbound and outbound email scanning
+- **Drive** - File upload scanning
+- **Chat** - Message content scanning
+- **Social** - Post content scanning
+
+---
+
+## eDiscovery
+
+Manage legal holds, search content, and export data for legal proceedings.
+
+### Case Management
+
+Create and manage legal cases:
+
+1. **Create Case** - Name, description, matter ID
+2. **Add Custodians** - Users whose data to preserve
+3. **Apply Legal Hold** - Prevent data deletion
+4. **Search Content** - Find relevant documents
+5. **Review & Tag** - Mark documents as relevant
+6. **Export** - Generate production packages
+
+### Legal Hold
+
+Legal holds prevent data deletion for specified users:
+
+| Status | Description |
+|--------|-------------|
+| **Active** | Data is preserved, deletion blocked |
+| **Released** | Hold removed, normal retention applies |
+| **Pending** | Awaiting approval |
+
+**What's Preserved:**
+- Emails and attachments
+- Chat messages
+- Drive files
+- Calendar events
+- Social posts
+- Conversation logs
+
+### Content Search
+
+Search across all data sources:
+
+**Search Operators:**
+
+| Operator | Example | Description |
+|----------|---------|-------------|
+| `AND` | contract AND confidential | Both terms required |
+| `OR` | contract OR agreement | Either term |
+| `NOT` | contract NOT draft | Exclude term |
+| `"..."` | "final agreement" | Exact phrase |
+| `from:` | from:john@company.com | Sender filter |
+| `to:` | to:legal@company.com | Recipient filter |
+| `date:` | date:2024-01-01..2024-12-31 | Date range |
+| `type:` | type:pdf | File type filter |
+
+### Export Formats
+
+| Format | Use Case |
+|--------|----------|
+| **PST** | Email archives for Outlook |
+| **PDF** | Document production |
+| **Native** | Original file formats |
+| **ZIP** | Bulk download |
+| **Load File** | Litigation support systems |
+
+---
+
+## Information Protection
+
+Classify and protect documents based on sensitivity levels.
+
+### Sensitivity Labels
+
+| Label | Icon | Description | Protections |
+|-------|------|-------------|-------------|
+| **Public** | 🟢 | Can be shared externally | None |
+| **Internal** | 🔵 | Employees only | Watermark |
+| **Confidential** | 🟡 | Restricted groups | Encrypt, watermark |
+| **Highly Confidential** | 🔴 | Need-to-know basis | Encrypt, no copy/print, expire |
+
+### Auto-Labeling Rules
+
+Automatically classify documents based on content:
+
+| Rule | Trigger | Label Applied |
+|------|---------|---------------|
+| Contains "salary" or "compensation" | Keywords | Confidential |
+| Contains CPF/SSN | PII detection | Highly Confidential |
+| Contains "public announcement" | Keywords | Public |
+| Medical records | Content type | Highly Confidential |
+| Financial statements | Content type | Confidential |
+
+### Protection Actions
+
+Based on label, apply protections:
+
+| Protection | Description |
+|------------|-------------|
+| **Encryption** | AES-256 encryption at rest |
+| **Watermark** | Visual marking with user info |
+| **No Copy** | Disable copy/paste |
+| **No Print** | Disable printing |
+| **No Forward** | Prevent email forwarding |
+| **Expiration** | Auto-revoke access after date |
+| **Audit** | Log all access attempts |
+
+### Label Inheritance
+
+- Files inherit labels from parent folders
+- Attachments inherit labels from emails
+- Exports maintain original labels
 
 ---
 
@@ -400,9 +570,44 @@ Response:
 
 ---
 
+---
+
+## API Endpoints Summary
+
+### DLP Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/compliance/dlp/scan` | POST | Scan content for sensitive data |
+| `/api/compliance/dlp/policies` | GET/POST | List or create DLP policies |
+| `/api/compliance/dlp/policies/{id}` | PUT/DELETE | Update or delete policy |
+| `/api/compliance/dlp/violations` | GET | List DLP violations |
+
+### eDiscovery Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/compliance/ediscovery/cases` | GET/POST | List or create cases |
+| `/api/compliance/ediscovery/cases/{id}` | GET/PUT | Get or update case |
+| `/api/compliance/ediscovery/cases/{id}/holds` | POST | Apply legal hold |
+| `/api/compliance/ediscovery/cases/{id}/search` | POST | Search case content |
+| `/api/compliance/ediscovery/cases/{id}/export` | POST | Export case data |
+
+### Information Protection Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/compliance/protection/labels` | GET/POST | List or create labels |
+| `/api/compliance/protection/labels/{id}` | PUT/DELETE | Update or delete label |
+| `/api/compliance/protection/classify` | POST | Classify a document |
+| `/api/compliance/protection/rules` | GET/POST | Auto-labeling rules |
+
+---
+
 ## See Also
 
 - [Compliance API Reference](./compliance-api.md) - Full API documentation
 - [Analytics App](./analytics.md) - Monitor compliance metrics
+- [Dashboards App](./dashboards.md) - Create compliance dashboards
 - [Sources App](./sources.md) - Configure bot policies
 - [How To: Monitor Your Bot](../how-to/monitor-sessions.md)
