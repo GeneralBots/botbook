@@ -15,7 +15,7 @@ The Security Protection module provides comprehensive host-level security throug
                               ▼ HTMX/API calls
 ┌─────────────────────────────────────────────────────────────┐
 │                    botserver (port 8088)                     │
-│              /api/v1/security/protection/*                   │
+│              /api/security/protection/*                      │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼ sudo (via sudoers)
@@ -187,33 +187,33 @@ All endpoints are under `/api/v1/security/protection/`
 
 **Get Status of All Tools:**
 ```http
-GET /api/v1/security/protection/status
+GET /api/security/protection/status
 ```
 
 **Get Specific Tool Status:**
 ```http
-GET /api/v1/security/protection/lynis/status
+GET /api/security/protection/lynis/status
 ```
 
 **Run a Scan:**
 ```http
-POST /api/v1/security/protection/lynis/run
+POST /api/security/protection/lynis/run
 ```
 
 **Start/Stop Services:**
 ```http
-POST /api/v1/security/protection/suricata/start
-POST /api/v1/security/protection/suricata/stop
+POST /api/security/protection/suricata/start
+POST /api/security/protection/suricata/stop
 ```
 
 **Update Definitions:**
 ```http
-POST /api/v1/security/protection/clamav/update
+POST /api/security/protection/clamav/update
 ```
 
 **Get Scan Report:**
 ```http
-GET /api/v1/security/protection/rkhunter/report
+GET /api/security/protection/rkhunter/report
 ```
 
 ## Tool Details
