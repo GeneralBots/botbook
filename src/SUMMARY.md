@@ -73,6 +73,10 @@
     - [Player - Media Viewer](./04-gbui/apps/player.md)
     - [Paper - AI Writing](./04-gbui/apps/paper.md)
     - [Research - AI Search](./04-gbui/apps/research.md)
+    - [CRM - Sales Pipeline](./04-gbui/apps/crm.md)
+    - [Billing - Invoices & Payments](./04-gbui/apps/billing.md)
+    - [Products - Catalog Management](./04-gbui/apps/products.md)
+    - [Tickets - Support Cases](./04-gbui/apps/tickets.md)
     - [Analytics - Dashboards](./04-gbui/apps/analytics.md)
     - [Dashboards - Custom BI](./04-gbui/apps/dashboards.md)
     - [Designer - Visual Builder](./04-gbui/apps/designer.md)
@@ -343,6 +347,7 @@
   - [Organization Multi-Tenancy](./23-security/organizations.md)
   - [Knowledge Base Permissions](./23-security/kb-permissions.md)
   - [Knowledge Base Security](./23-security/kb-security.md)
+  - [Protection Tools](./23-security/protection-tools.md)
   - [SOC 2 Compliance](./23-security/soc2-compliance.md)
   - [Security Matrix Reference](./23-security/security-matrix.md)
 
