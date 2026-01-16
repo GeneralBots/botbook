@@ -126,7 +126,7 @@ use tokio::sync::Mutex;
 use uuid::Uuid;
 
 // 3. Local crates
-use crate::config::Config;
+use crate::core::config::Config;
 use crate::models::User;
 
 // 4. Super/self
