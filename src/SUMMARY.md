@@ -304,6 +304,7 @@
 - [Chapter 11: Feature Reference](./11-features/README.md)
   - [Feature Editions](./11-features/editions.md)
   - [Core Features](./11-features/core-features.md)
+  - [Cargo Feature Map](./11-features/feature-map.md)
   - [Conversation Management](./11-features/conversation.md)
   - [AI and LLM](./11-features/ai-llm.md)
   - [Knowledge Base](./11-features/knowledge-base.md)
