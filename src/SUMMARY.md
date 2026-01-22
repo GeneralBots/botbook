@@ -301,6 +301,7 @@
 
 # Part X - Feature Deep Dive
 
+- [Feature System & Dependency Tree](./features.md)
 - [Chapter 11: Feature Reference](./11-features/README.md)
   - [Feature Editions](./11-features/editions.md)
   - [Core Features](./11-features/core-features.md)
