@@ -31,7 +31,10 @@ sudo apt install -y \
     zlib1g \
     ca-certificates \
     curl \
-    wget
+    wget \
+    libabseil-dev \
+    libclang-dev \
+    pkg-config
 
 # For container support (LXC)
 sudo snap install lxd
