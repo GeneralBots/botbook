@@ -1,6 +1,6 @@
-# Desktop & Workstation Hardware Guide (Brazil Focus)
+# Desktop & Workstation Hardware Guide
 
-A detailed guide focusing on the Brazilian scenario, crossing high-performance AI models with hardware available in the local market (Mercado Livre, OLX, etc.).
+A detailed guide crossing high-performance AI models with hardware availability and pricing (prices in BRL).
 
 > **Important Note:** Proprietary models like **Claude Opus 4.5**, **GPT-5.2**, and **Gemini 3 Pro** represent the cutting edge of Cloud AI. For **Local AI**, we focus on efficiently running models that approximate this power using **MoE (Mixture of Experts)** technology, specifically **GLM-4.7**, **DeepSeek**, and **OSS120B-GPT**.
 
@@ -14,6 +14,11 @@ Mapping mentioned top-tier models to their local "runnable" equivalents.
 | **GPT-5.2** | API Only | **DeepSeek-V3** (MoE) | ~236B (Single RTX High RAM) |
 | **Gemini 3 Pro** | API Only | **OSS120B-GPT** (MoE) | ~120B (Single RTX) |
 | **GPT-4o** | API Only | DeepSeek-V2-Lite | ~16B (efficient) |
+ 
+ ### Recommended Models (GGUF Links)
+ *   **GLM-4.7 (9B Chat):** [THUDM/glm-4-9b-chat-gguf](https://huggingface.co/THUDM/glm-4-9b-chat-gguf)
+ *   **DeepSeek-V3 (MoE):** [DeepSeek-V3-GGUF](https://huggingface.co/MaziyarPanahi/DeepSeek-V3-GGUF) (Simulated Link - use V2.5 or latest available)
+ *   **OSS120B-GPT (Mistral Large):** [Mistral-Large-Instruct-2407-GGUF](https://huggingface.co/bartowski/Mistral-Large-Instruct-2407-GGUF)
 
 ## Compatibility Matrix (GPU x Model x Quantization)
 
@@ -33,8 +38,8 @@ Defining how well each GPU runs the listed models, focusing on "Best Performance
 | **RTX 3090** | 24 GB | 64 GB | **Q8_0** (Dual) | **Q6_K** (Perfect) | **Q4_K_M** (Usable) |
 | **2x RTX 3090** | 48 GB | 128 GB | N/A | **Q8_0** (Native) | **Q6_K** (Fast) |
 
-## Brazilian Market Pricing & Minimum Specs
-*Approximate prices on Mercado Livre (ML) and OLX (Brazil) as of late 2024.*
+## Market Pricing & Minimum Specs
+*Approximate prices in BRL (R$).*
 
 | GPU | Used Price (OLX/ML) | New Price (ML) | Min System RAM | RAM Cost (Approx.) | Min CPU | Viability for DeepSeek/GLM |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -57,10 +62,10 @@ To achieve performance similar to **GLM 4** or **DeepSeek** locally, consider th
     *   12GB cards (3060) are **useless** for this locally (requires CPU offloading, very slow).
     *   24GB cards (3090/4090) run it in **Q3_K_M** or **Q4_K_M** (tight). This reaches GPT-4 class intelligence.
 
-### 2. The Brazilian Scenario
-In Brazil, the **RTX 3060 12GB** and **RTX 3090 24GB** are the most critical cards for AI.
-*   **Why not 4060 Ti 16GB?** It costs almost double a used 3060. For budget setups ("custo-benefício"), the used 3060 12GB at ~R$ 1.200 is unbeatable.
-*   **Why the 3090?** To run 70B models, you *need* 24GB. The 4090 is faster, but a used 3090 at R$ 4.000 does the same AI job for 1/3 the price.
+### 2. Hardware Selection Strategy
+The **RTX 3060 12GB** and **RTX 3090 24GB** are critical cards for AI due to their VRAM-to-Price ratio.
+*   **Why not 4060 Ti 16GB?** It costs almost double a used 3060. For budget setups ("custo-benefício"), the used 3060 12GB is unbeatable.
+*   **Why the 3090?** To run 70B models, you *need* 24GB. The 4090 is faster, but a used 3090 does the same AI job for 1/3 the price.
 
 ### 3. DeepSeek & MoE (Mixture of Experts) in General Bots
 
