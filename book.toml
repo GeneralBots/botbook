@@ -2,7 +2,7 @@
 title = "General Bots Documentation"
 authors = ["General Bots Team"]
 language = "en"
-multilingual = false
+
 src = "src"
 
 [build]
