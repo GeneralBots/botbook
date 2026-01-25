@@ -185,3 +185,4 @@ mdbook serve --open
 - **Keywords** - NEVER use underscores - always spaces
 - **NO ASCII art** - Use SVG diagrams only
 - **Version 6.2.0** - Always reference 6.2.0
+- **GIT WORKFLOW** - ALWAYS push to ALL repositories (github, pragmatismo)
