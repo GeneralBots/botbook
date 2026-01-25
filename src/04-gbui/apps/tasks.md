@@ -169,7 +169,7 @@ Event-driven triggers:
       <p>✅ Monitor created:</p>
       <p>📄 low-stock-alert.bas</p>
       <p>👁️ Watching: products.stock</p>
-      <p>⚡ Triggers when: stock < 10</p>
+      <p>⚡ Triggers when: stock &lt; 10</p>
       <div class="wa-time">15:30</div>
     </div>
   </div>
