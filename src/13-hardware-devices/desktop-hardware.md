@@ -2,7 +2,7 @@
 
 A detailed guide focusing on the Brazilian scenario, crossing high-performance AI models with hardware available in the local market (Mercado Livre, OLX, etc.).
 
-> **Important Note:** Proprietary models like **GPT-5.2**, **Claude 3.5 Opus**, and **Gemini 3 Pro** represent the cutting edge of Cloud AI. For **Local AI**, we focus on efficiently running models that approximate this power using **MoE (Mixture of Experts)** technology, specifically **DeepSeek**, **GLM 4**, and **OSS120B-GPT**. Dense models like Llama 3.1 405B/70B are mentioned for reference but are less efficient for consumer hardware.
+> **Important Note:** Proprietary models like **Claude Opus 4.5**, **GPT-5.2**, and **Gemini 3 Pro** represent the cutting edge of Cloud AI. For **Local AI**, we focus on efficiently running models that approximate this power using **MoE (Mixture of Experts)** technology, specifically **GLM-4.7**, **DeepSeek**, and **OSS120B-GPT**.
 
 ## AI Model Scaling for Local Hardware
 
@@ -10,10 +10,9 @@ Mapping mentioned top-tier models to their local "runnable" equivalents.
 
 | Citation Model | Real Status | Local Equivalent (GPU) | Size (Params) |
 | :--- | :--- | :--- | :--- |
-| **Claude 3.5 Opus** | API Only | **OSS120B-GPT (MoE)** / Mistral-Large | ~120B (Single RTX via MoE) |
+| **Claude Opus 4.5** | API Only | **GLM-4.7** (MoE) | ~9B to 16B (Highly Efficient) |
 | **GPT-5.2** | API Only | **DeepSeek-V3** (MoE) | ~236B (Single RTX High RAM) |
-| **Gemini 3 Pro** | API Only | **GLM 4** (9B) | ~9B (Blazing Fast) |
-| **Llama 3.1 405B** | Legacy Dense | Not Recommended Local | ~405B (Too Heavy) |
+| **Gemini 3 Pro** | API Only | **OSS120B-GPT** (MoE) | ~120B (Single RTX) |
 | **GPT-4o** | API Only | DeepSeek-V2-Lite | ~16B (efficient) |
 
 ## Compatibility Matrix (GPU x Model x Quantization)
@@ -26,13 +25,13 @@ Defining how well each GPU runs the listed models, focusing on "Best Performance
 *   **Q8_0:** Near perfection (FP16 equivalent), but very heavy.
 *   **Offload CPU:** Model fits in system RAM, not VRAM (slow).
 
-| GPU | VRAM | **GLM 4 (9B)** <br>*(Daily Driver)* | **DeepSeek-V3 (MoE)** <br>*(Coding/Reasoning)* | **OSS120B-GPT (MoE)** <br>*(Heavy Duty)* | Performance Notes |
+| GPU | VRAM | System RAM | **GLM-4.7** <br>*(Daily Driver)* | **DeepSeek-V3** <br>*(Coding)* | **OSS120B-GPT** <br>*(Heavy Duty)* |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **RTX 3050** | 8 GB | **Q8_0** (Perfect) | **Q2_K** (Slow/Tight) | Impossible | Great for GLM 4. Struggles with large MoEs. |
-| **RTX 3060** | 12 GB | **Q8_0** (Instant) | **Q4_K_M** (Good) | **Q2_K** (Slow w/ RAM) | **Best Value.** Runs DeepSeek nicely. |
-| **RTX 4060 Ti** | 16 GB | **Q8_0** (Overkill) | **Q6_K** (Great) | **Q3_K_M** (Doable) | Good middle ground for MoE exploration. |
-| **RTX 3090** | 24 GB | **Q8_0** (Dual) | **Q6_K** (Perfect) | **Q4_K_M** (Usable) | **King of Local AI.** Runs 120B MoE with offloading. |
-| **2x RTX 3090** | 48 GB | N/A | **Q8_0** (native) | **Q6_K** (Fast) | The only way to run 120B+ comfortably fast. |
+| **RTX 3050** | 8 GB | 16 GB | **Q8_0** (Perfect) | **Q2_K** (Slow) | Impossible |
+| **RTX 3060** | 12 GB | 32 GB | **Q8_0** (Instant) | **Q4_K_M** (Good) | **Q2_K** (Slow) |
+| **RTX 4060 Ti** | 16 GB | 32 GB | **Q8_0** (Overkill) | **Q6_K** (Great) | **Q3_K_M** (Doable) |
+| **RTX 3090** | 24 GB | 64 GB | **Q8_0** (Dual) | **Q6_K** (Perfect) | **Q4_K_M** (Usable) |
+| **2x RTX 3090** | 48 GB | 128 GB | N/A | **Q8_0** (Native) | **Q6_K** (Fast) |
 
 ## Brazilian Market Pricing & Minimum Specs
 *Approximate prices on Mercado Livre (ML) and OLX (Brazil) as of late 2024.*
