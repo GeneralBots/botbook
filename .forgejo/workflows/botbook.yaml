@@ -33,7 +33,7 @@ jobs:
 
       - name: Deploy documentation
         run: |
-          sudo mkdir -p /opt/gbo/bin/proxy/data/websites/docs.pragmatismo.com.br/
-          sudo rm -rf /opt/gbo/bin/proxy/data/websites/docs.pragmatismo.com.br/*
-          sudo cp -r ./book/* /opt/gbo/bin/proxy/data/websites/docs.pragmatismo.com.br/
-          sudo chown -R www-data:www-data /opt/gbo/bin/proxy/data/websites/docs.pragmatismo.com.br/
+
+          sudo rm -rf /opt/gbo/bin/proxy/docs.pragmatismo.com.br/*
+          sudo cp -r ./book/* /opt/gbo/bin/proxy/docs.pragmatismo.com.br/
+          sudo chown -R www-data:www-data /opt/gbo/bin/proxy/docs.pragmatismo.com.br/
