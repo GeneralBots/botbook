@@ -35,5 +35,5 @@ jobs:
         run: |
           sudo rm -rf /opt/gbo/bin/proxy/docs.pragmatismo.com.br/*
           sudo cp -r ./book/* /opt/gbo/bin/proxy/docs.pragmatismo.com.br/
-          sudo chown -R caddy:caddy /opt/gbo/bin/proxy/docs.pragmatismo.com.br/
+          sudo chown -R gbuser:gbuser /opt/gbo/bin/proxy/docs.pragmatismo.com.br/
           sudo chmod -R 755 /opt/gbo/bin/proxy/docs.pragmatismo.com.br/
