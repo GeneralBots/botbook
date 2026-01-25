@@ -355,12 +355,13 @@
 
 # Part XII - Device & Offline Deployment
 
-- [Chapter 13: Device Deployment](./13-devices/README.md)
-  - [Buying Guide for Beginners](./13-devices/buying-guide.md)
-  - [Mobile (Android & HarmonyOS)](./13-devices/mobile.md)
-  - [Supported Hardware (SBCs)](./13-devices/hardware.md)
-  - [Quick Start](./13-devices/quick-start.md)
-  - [Local LLM with llama.cpp](./13-devices/local-llm.md)
+- [Chapter 13: Hardware & Device Deployment](./13-hardware-devices/README.md)
+  - [Buying Guide for Beginners](./13-hardware-devices/buying-guide.md)
+  - [Mobile (Android & HarmonyOS)](./13-hardware-devices/mobile.md)
+  - [Supported Hardware (SBCs)](./13-hardware-devices/hardware.md)
+  - [Desktop & Server Hardware](./13-hardware-devices/desktop-hardware.md)
+  - [Quick Start](./13-hardware-devices/quick-start.md)
+  - [Local LLM with llama.cpp](./13-hardware-devices/local-llm.md)
 
 # Part XIII - Community
 
