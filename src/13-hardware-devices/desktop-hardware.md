@@ -13,7 +13,7 @@ Mapping mentioned top-tier models to their local "runnable" equivalents.
 | **Claude 3.5 Sonnet** | API Only | Llama-3.1-70B / Mistral-Large | ~70B |
 | **Claude Opus** | API Only | Llama-3.1-405B (Ref.) | ~405B (Hard for Consumers) |
 | **GPT-4o** | API Only | DeepSeek-V2-Lite / Qwen-2.5-72B | ~16B to 72B |
-| **OSS120B-GPT** | Offline (OSS) | Mistral-Large-124B / Yi-1.5-34B | ~120B (Requires 2+ GPUs) |
+| **OSS120B-GPT** | Offline (OSS) | Mistral-Large-124B / Yi-1.5-34B | ~120B (Single RTX via MoE) |
 | **GLM 4** | Offline (OSS) | GLM-4-9B-Chat | ~9B (Fast) |
 | **DeepSeek** | Offline (OSS) | DeepSeek-V2.5 / DeepSeek-Coder-V2 | ~16B to 236B (MoE) |
 | **Gemini Pro** | API Only | Gemma-2-27B | ~27B |
