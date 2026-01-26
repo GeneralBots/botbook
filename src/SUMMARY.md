@@ -449,6 +449,7 @@
   - [Security Auditing](./19-maintenance/security-auditing.md)
   - [Backup and Recovery](./19-maintenance/backup-recovery.md)
   - [Troubleshooting](./19-maintenance/troubleshooting.md)
+  - [LXC Migration](./19-maintenance/lxc-migration.md)
 
 
 [Glossary](./glossary.md)
