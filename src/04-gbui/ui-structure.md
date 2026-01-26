@@ -99,6 +99,21 @@ For Tauri desktop builds, `tauri.conf.json` specifies the frontend distribution:
 }
 ```
 
+### Asset Serving Strategy
+
+BotUI supports two methods for serving static assets:
+
+1.  **FileSystem (Default)**: Reads files from `./ui/` directory at runtime. Best for development as changes are reflected immediately.
+2.  **Embedded (`embed-ui`)**: Compiles all assets into the binary using `rust-embed`. Best for CI/CD and single-file distribution.
+
+To enable embedded assets:
+
+```bash
+cargo build -p botui --features embed-ui
+```
+
+The CI pipeline automatically enables this feature, producing a standalone `botui` binary that requires no external `ui/` folder.
+
 ### Routing
 
 Both interfaces can be served simultaneously with different routes:

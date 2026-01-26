@@ -166,6 +166,24 @@ lxc exec default-tables -- pg_dump -U gbuser botserver > backup.sql
 psql -U gbuser botserver < backup.sql
 ```
 
+## Brother Mode Configuration
+
+If you are running `botserver` itself inside a container (e.g., LXC or Docker) but want it to manage other LXC containers on the host ("Brother Mode"), you must expose the host's LXD socket.
+
+### Required LXD Profile
+
+To allow child containers to communicate with the host LXD daemon, add the `lxd-sock` proxy device to the default profile. This maps the host's socket to `/tmp/lxd.sock` inside the container, avoiding conflicts with missing `/var/lib/lxd` directories in standard images.
+
+```bash
+lxc profile device add default lxd-sock proxy \
+  connect=unix:/var/lib/lxd/unix.socket \
+  listen=unix:/tmp/lxd.sock \
+  bind=container \
+  uid=0 gid=0 mode=0660
+```
+
+> **Note**: The `botserver` installer attempts to configure this automatically. If you encounter "socket not found" errors, verify this proxy device exists.
+
 ## See Also
 
 - [Installation](../chapter-01/installation.md) - Local setup
