@@ -433,6 +433,11 @@
   - [LLM Providers](./18-appendix-external-services/llm-providers.md)
   - [Weather API](./18-appendix-external-services/weather.md)
   - [Channel Integrations](./18-appendix-external-services/channels.md)
+    - [Quick Start Guide](./18-appendix-external-services/whatsapp-quick-start.md)
+    - [Webhook Configuration](./18-appendix-external-services/whatsapp-webhooks.md)
+    - [Code Examples](./18-appendix-external-services/whatsapp-examples.md)
+    - [Troubleshooting](./18-appendix-external-services/whatsapp-troubleshooting.md)
+    - [Quick Reference](./18-appendix-external-services/whatsapp-quick-reference.md)
   - [Storage Services](./18-appendix-external-services/storage.md)
   - [Directory Services](./18-appendix-external-services/directory.md)
   - [Attendance Queue](./18-appendix-external-services/attendance-queue.md)
@@ -450,6 +455,8 @@
   - [Backup and Recovery](./19-maintenance/backup-recovery.md)
   - [Troubleshooting](./19-maintenance/troubleshooting.md)
   - [LXC Migration](./19-maintenance/lxc-migration.md)
+
+
 
 
 [Glossary](./glossary.md)
