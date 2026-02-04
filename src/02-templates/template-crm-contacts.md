@@ -62,7 +62,7 @@ Add these settings to your `config.csv`:
   </div>
   <div class="wa-message user">
     <div class="wa-bubble">
-      <p>maria.santos@company.com</p>
+      <p>santos@company.com</p>
       <div class="wa-time">10:33</div>
     </div>
   </div>
@@ -97,7 +97,7 @@ Add these settings to your `config.csv`:
       <p>📋 <strong>Contact Details</strong></p>
       <p>━━━━━━━━━━━━━━━━━</p>
       <p>👤 <strong>Name:</strong> Maria Santos</p>
-      <p>📧 <strong>Email:</strong> maria.santos@company.com</p>
+      <p>📧 <strong>Email:</strong> santos@company.com</p>
       <p>📱 <strong>Phone:</strong> +55 11 98765-4321</p>
       <p>🏢 <strong>Company:</strong> Tech Solutions Ltd</p>
       <p>🏷️ <strong>Tags:</strong> lead</p>
@@ -139,7 +139,7 @@ Add these settings to your `config.csv`:
     <div class="wa-bubble">
       <p>🔍 Found 3 contacts at "Tech Solutions":</p>
       <p></p>
-      <p>1. <strong>Maria Santos</strong> - maria.santos@company.com</p>
+      <p>1. <strong>Maria Santos</strong> - santos@company.com</p>
       <p>   📱 +55 11 98765-4321 | 🏷️ lead</p>
       <p></p>
       <p>2. <strong>João Silva</strong> - joao.silva@techsolutions.com</p>

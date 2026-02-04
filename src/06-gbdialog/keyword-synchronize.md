@@ -51,12 +51,12 @@ pageVariable = "pagina"
 limitVariable = "limite"
 
 SEND EMAIL admin, "Syncing categories..."
-SYNCHRONIZE /categorias/receitas-despesas, maria.CategoriaReceita, Id, pageVariable, limitVariable
+SYNCHRONIZE /categorias/receitas-despesas, CategoriaReceita, Id, pageVariable, limitVariable
 SEND EMAIL admin, REPORT
 RESET REPORT
 
 ' Sync payment methods
-SYNCHRONIZE /formas-pagamentos, maria.FormaDePagamento, Id, pageVariable, limitVariable
+SYNCHRONIZE /formas-pagamentos, FormaDePagamento, Id, pageVariable, limitVariable
 SEND EMAIL admin, REPORT
 RESET REPORT
 ```
@@ -69,7 +69,7 @@ Until `SYNCHRONIZE` is implemented, use this pattern:
 ' Manual sync equivalent
 pageVariable = "pagina"
 limitVariable = "limite"
-tableName = "maria.CategoriaReceita"
+tableName = "CategoriaReceita"
 endpoint = "/categorias/receitas-despesas"
 
 page = 1
@@ -112,7 +112,7 @@ TALK "Synced " + totalSynced + " records to " + tableName
 When implemented, `SYNCHRONIZE` should:
 
 1. Use the global `host`, `limit`, `pages` variables from config
-2. Support connection prefixes (e.g., `maria.TableName`)
+2. Support connection prefixes (e.g., `TableName`)
 3. Handle API errors gracefully with retry logic
 4. Update the `REPORT` variable with sync statistics
 5. Support both REST JSON responses and paginated arrays

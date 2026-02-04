@@ -237,7 +237,7 @@ These conversations show how the HR Employees template works in real-world scena
       <p>✅ <strong>Employee Added Successfully!</strong></p>
       <p></p>
       <p>🆔 Employee ID: EMP-2025-0147</p>
-      <p>📧 Email: maria.santos@company.com</p>
+      <p>📧 Email: santos@company.com</p>
       <p>📞 Extension: 4587</p>
       <p></p>
       <p>📧 Welcome email sent to Maria</p>

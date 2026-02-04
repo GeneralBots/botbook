@@ -139,7 +139,7 @@ These conversations show how the enrollment template works in real-world scenari
 
   <div class="wa-message user">
     <div class="wa-bubble">
-      <p>maria.santos@email.com</p>
+      <p>santos@email.com</p>
       <div class="wa-time">10:32 <span class="wa-status read"></span></div>
     </div>
   </div>
@@ -177,7 +177,7 @@ These conversations show how the enrollment template works in real-world scenari
       <p>Please confirm your details:</p>
       <p><strong>Name:</strong> Maria Santos Silva</p>
       <p><strong>Birth Date:</strong> 15/03/1990</p>
-      <p><strong>Email:</strong> maria.santos@email.com</p>
+      <p><strong>Email:</strong> santos@email.com</p>
       <p><strong>Personal ID:</strong> 12345678901</p>
       <p><strong>Address:</strong> Rua das Palmeiras, 456 - São Paulo, SP</p>
       <div class="wa-time">10:33</div>

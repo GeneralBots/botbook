@@ -5,7 +5,7 @@ The `TABLE` keyword defines database tables directly in your `.bas` files. Table
 ## Syntax
 
 ```basic
-TABLE TableName ON connection
+TABLE TableName
     FieldName dataType[(length[,precision])] [key] [references OtherTable]
     ...
 END TABLE
@@ -70,7 +70,7 @@ conn-maria-Driver,mariadb
 ### Basic Table Definition
 
 ```basic
-TABLE Contacts ON maria
+TABLE Contacts
     Id number key
     Nome string(150)
     Email string(255)
@@ -82,7 +82,7 @@ END TABLE
 ### Table with Multiple Field Types
 
 ```basic
-TABLE Produtos ON maria
+TABLE Produtos
     Id number key
     Nome string(150)
     Sku string(20)
@@ -98,7 +98,7 @@ END TABLE
 ### Table with Foreign Key References
 
 ```basic
-TABLE Pedidos ON maria
+TABLE Pedidos
     Id number key
     Numero integer
     Data date
@@ -108,7 +108,7 @@ TABLE Pedidos ON maria
     Vendedor_id number
 END TABLE
 
-TABLE PedidosItem ON maria
+TABLE PedidosItem
     Id number key
     Pedido_id number
     Produto_id number
@@ -122,7 +122,7 @@ END TABLE
 
 ```basic
 ' Contact management tables
-TABLE Contatos ON maria
+TABLE Contatos
     Id number key
     Nome string(150)
     Codigo string(50)
@@ -142,7 +142,7 @@ TABLE Contatos ON maria
 END TABLE
 
 ' Payment methods
-TABLE FormaDePagamento ON maria
+TABLE FormaDePagamento
     Id number key
     Descricao string(255)
     TipoPagamento integer
@@ -153,7 +153,7 @@ TABLE FormaDePagamento ON maria
 END TABLE
 
 ' Accounts receivable
-TABLE ContasAReceber ON maria
+TABLE ContasAReceber
     Id number key
     Situacao integer
     Vencimento date

@@ -105,7 +105,7 @@ These conversations show how the authentication template works in real-world sce
 
   <div class="wa-message user">
     <div class="wa-bubble">
-      <p>maria.santos</p>
+      <p>santos</p>
       <div class="wa-time">09:00 <span class="wa-status read"></span></div>
     </div>
   </div>
