@@ -7,9 +7,35 @@ This guide covers building botserver from source, including dependencies, featur
 ### System Requirements
 
 - **Operating System**: Linux, macOS, or Windows
-- **Rust**: 1.70 or later (2021 edition)
+- **Rust**: 1.90 or later (2021 edition)
 - **Memory**: 4GB RAM minimum (8GB recommended)
 - **Disk Space**: 8GB for development environment
+
+### Install Git
+
+Git is required to clone the repository and manage submodules.
+
+#### Linux
+
+```bash
+sudo apt install git
+```
+
+#### macOS
+
+```bash
+brew install git
+```
+
+#### Windows
+
+Download and install from: https://git-scm.com/download/win
+
+Or use winget:
+
+```powershell
+winget install Git.Git
+```
 
 ### Install Rust
 
@@ -31,49 +57,146 @@ cargo --version
 
 #### Linux (Ubuntu/Debian)
 
+**Critical: Install clang linker first** (fixes "linker `clang` not found" error):
+
 ```bash
 sudo apt update
 sudo apt install -y \
+    clang \
+    lld \
     build-essential \
     pkg-config \
     libssl-dev \
     libpq-dev \
-    cmake
+    cmake \
+    git
+```
+
+Configure Rust to use clang as the linker:
+
+```bash
+mkdir -p ~/.cargo
+cat >> ~/.cargo/config.toml << EOF
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+EOF
 ```
 
 #### Linux (Fedora/RHEL)
 
 ```bash
 sudo dnf install -y \
+    clang \
+    lld \
     gcc \
     gcc-c++ \
     make \
     pkg-config \
     openssl-devel \
     postgresql-devel \
-    cmake
+    cmake \
+    git
+```
+
+Configure Rust to use clang as the linker:
+
+```bash
+mkdir -p ~/.cargo
+cat >> ~/.cargo/config.toml << EOF
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+EOF
 ```
 
 #### macOS
 
 ```bash
-brew install postgresql openssl cmake
+brew install postgresql openssl cmake git
+xcode-select --install
 ```
 
 #### Windows
 
-Install Visual Studio Build Tools with C++ support, then:
+Install Visual Studio Build Tools with C++ support from:
+https://visualstudio.microsoft.com/downloads/
 
-```powershell
-# Install PostgreSQL (for libpq)
-choco install postgresql
-```
+Select "Desktop development with C++" workload during installation.
+
+Then install PostgreSQL manually from:
+https://www.postgresql.org/download/windows/
 
 ## Clone Repository
 
 ```bash
-git clone https://github.com/GeneralBots/botserver.git
-cd botserver
+git clone --recursive https://github.com/GeneralBots/gb.git
+cd gb
+```
+
+If you cloned without `--recursive`, initialize submodules:
+
+```bash
+git submodule update --init --recursive
+```
+
+## Build Cache with sccache
+
+sccache (Shared Compilation Cache) dramatically speeds up rebuilds by caching compilation artifacts. Highly recommended for development.
+
+### Install sccache
+
+#### Linux
+
+```bash
+cargo install sccache
+```
+
+#### macOS
+
+```bash
+brew install sccache
+```
+
+#### Windows
+
+```powershell
+cargo install sccache
+```
+
+### Configure Cargo to Use sccache
+
+Add to `~/.cargo/config.toml`:
+
+```toml
+[build]
+compiler = "sccache"
+```
+
+### Verify sccache is Working
+
+```bash
+export RUSTC_WRAPPER=sccache
+cargo build --release
+sccache --show-stats
+```
+
+Expected output shows cache hits/misses:
+
+```
+Compile requests                    45
+Compile requests executed           12
+Cache hits                           8
+Cache misses                         4
+Cache hit rate                    66.67%
+```
+
+### Clear sccache
+
+If you need to clear the cache:
+
+```bash
+sccache --zero-stats
 ```
 
 ## Build Configurations
@@ -256,6 +379,27 @@ cross build --release --target x86_64-pc-windows-gnu
 
 ## Troubleshooting
 
+### Linker Errors (Linux)
+
+**Error: `linker 'clang' not found`**
+
+This occurs when clang/lld is not installed:
+
+```bash
+sudo apt install clang lld
+```
+
+Then configure Rust to use clang:
+
+```bash
+mkdir -p ~/.cargo
+cat >> ~/.cargo/config.toml << EOF
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+EOF
+```
+
 ### OpenSSL Errors
 
 If you encounter OpenSSL linking errors:
@@ -272,10 +416,10 @@ cargo build --release
 ```
 
 **Windows:**
-```bash
+```powershell
 # Use vcpkg
 vcpkg install openssl:x64-windows
-set OPENSSL_DIR=C:\vcpkg\installed\x64-windows
+$env:OPENSSL_DIR="C:\vcpkg\installed\x64-windows"
 cargo build --release
 ```
 
@@ -295,14 +439,22 @@ export PQ_LIB_DIR=$(brew --prefix postgresql)/lib
 ```
 
 **Windows:**
-```bash
+```powershell
 # Ensure PostgreSQL is in PATH
-set PQ_LIB_DIR=C:\Program Files\PostgreSQL\15\lib
+$env:PQ_LIB_DIR="C:\Program Files\PostgreSQL\15\lib"
 ```
 
 ### Out of Memory During Build
 
-Reduce parallel jobs:
+Use sccache to cache compilations:
+
+```bash
+cargo install sccache
+export RUSTC_WRAPPER=sccache
+cargo build --release
+```
+
+Or reduce parallel jobs:
 
 ```bash
 cargo build --release -j 2
@@ -331,6 +483,118 @@ xcode-select --install
 **Windows:**
 Install Visual Studio Build Tools with C++ support.
 
+## Common Build Errors
+
+### Error: `linker 'clang' not found`
+
+**Cause:** The C/C++ toolchain is missing or not configured.
+
+**Solution (Linux):**
+
+1. Install clang and lld:
+```bash
+sudo apt update
+sudo apt install -y clang lld build-essential
+```
+
+2. Configure Rust to use clang:
+```bash
+mkdir -p ~/.cargo
+cat > ~/.cargo/config.toml << 'EOF'
+[build]
+rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=lld"]
+
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+EOF
+```
+
+3. Clean and rebuild:
+```bash
+cargo clean
+cargo build --release
+```
+
+**Solution (macOS):**
+
+```bash
+xcode-select --install
+```
+
+**Solution (Windows):**
+
+Install Visual Studio Build Tools with "Desktop development with C++" workload.
+
+### Error: `could not find native library pq`
+
+**Cause:** PostgreSQL development libraries are missing.
+
+**Solution:**
+
+**Linux:**
+```bash
+sudo apt install libpq-dev
+```
+
+**macOS:**
+```bash
+brew install postgresql
+export PQ_LIB_DIR=$(brew --prefix postgresql)/lib
+```
+
+**Windows:** Install PostgreSQL from postgresql.org
+
+### Error: `openssl-sys` build failures
+
+**Cause:** OpenSSL headers are missing.
+
+**Solution:**
+
+**Linux:**
+```bash
+sudo apt install libssl-dev pkg-config
+```
+
+**macOS:**
+```bash
+brew install openssl
+export OPENSSL_DIR=$(brew --prefix openssl)
+export OPENSSL_LIB_DIR=$(brew --prefix openssl)/lib
+export OPENSSL_INCLUDE_DIR=$(brew --prefix openssl)/include
+```
+
+### Error: Out of memory during build
+
+**Cause:** Too many parallel compilation jobs.
+
+**Solution:**
+
+Reduce parallel jobs:
+```bash
+CARGO_BUILD_JOBS=2 cargo build --release
+```
+
+Or limit memory:
+```bash
+ulimit -v 4000000  # Limit to 4GB
+cargo build --release
+```
+
+### Error: Submodule references not found
+
+**Cause:** Submodules not initialized.
+
+**Solution:**
+
+```bash
+git submodule update --init --recursive
+```
+
+Or re-clone with submodules:
+```bash
+git clone --recursive https://github.com/GeneralBots/gb.git
+```
+
 ## Verify Build
 
 After building, verify the binary works:
@@ -339,7 +603,7 @@ After building, verify the binary works:
 ./target/release/botserver --version
 ```
 
-Expected output: `botserver 6.0.8` or similar.
+Expected output: `botserver 6.2.0` or similar.
 
 ## Development Builds
 
@@ -423,6 +687,16 @@ cargo audit
 
 This should be run regularly during development to ensure dependencies are secure.
 
+### Quick Build Check
+
+Check if everything compiles without building:
+
+```bash
+cargo check --all-features
+```
+
+This is much faster than a full build and catches most errors.
+
 ## Build Artifacts
 
 After a successful release build, you'll have:
@@ -449,17 +723,6 @@ upx --best --lzma target/release/botserver
 
 Note: UPX may cause issues with some systems. Test thoroughly.
 
-## Incremental Compilation
-
-For faster development builds:
-
-```bash
-export CARGO_INCREMENTAL=1
-cargo build
-```
-
-Note: This is enabled by default for debug builds.
-
 ## Clean Build
 
 Remove all build artifacts:
@@ -468,7 +731,44 @@ Remove all build artifacts:
 cargo clean
 ```
 
-## LXC Build
+## CI/CD Builds
+
+For automated builds in CI/CD pipelines:
+
+### GitHub Actions
+
+```yaml
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y clang lld build-essential pkg-config libssl-dev libpq-dev cmake
+      
+      - name: Cache sccache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/sccache
+          key: ${{ runner.os }}-sccache-${{ hashFiles('**/Cargo.lock') }}
+      
+      - name: Build
+        run: cargo build --release --all-features
+```
+
+### LXC Build
 
 Build inside LXC container:
 
@@ -488,14 +788,14 @@ lxc-start -n botserver-build
 # Install build dependencies
 lxc-attach -n botserver-build -- bash -c "
 apt-get update
-apt-get install -y build-essential pkg-config libssl-dev libpq-dev cmake curl git
+apt-get install -y clang lld build-essential pkg-config libssl-dev libpq-dev cmake curl git
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source \$HOME/.cargo/env
 "
 
 # Build botserver
 lxc-attach -n botserver-build -- bash -c "
-git clone https://github.com/GeneralBots/botserver /build
+git clone --recursive https://github.com/GeneralBots/gb.git /build
 cd /build
 source \$HOME/.cargo/env
 cargo build --release --no-default-features
@@ -519,6 +819,27 @@ Or create a symlink:
 ```bash
 ln -s $(pwd)/target/release/botserver ~/.local/bin/botserver
 ```
+
+Verify installation:
+
+```bash
+botserver --version
+```
+
+Expected output: `botserver 6.2.0` or similar.
+
+## Quick Reference
+
+| Command | Purpose |
+|---------|---------|
+| `cargo build --release` | Optimized production build |
+| `cargo build --release -j 2` | Build with limited parallelism |
+| `cargo check` | Fast syntax/type checking |
+| `cargo test` | Run all tests |
+| `cargo clippy` | Lint code |
+| `cargo clean` | Remove build artifacts |
+| `CARGO_BUILD_JOBS=2 cargo build` | Limit build jobs |
+| `RUSTC_WRAPPER=sccache cargo build` | Use compilation cache |
 
 ## Next Steps
 
