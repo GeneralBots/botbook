@@ -204,7 +204,22 @@ sccache --zero-stats
 
 ## Build Configurations
 
-### Standard Build
+### Minimal Build (Recommended for Server)
+
+Build without desktop GUI dependencies:
+
+```bash
+cargo build --release --no-default-features
+```
+
+This excludes:
+- Desktop GUI (Tauri) - No GTK libraries required
+- Vector database (Qdrant)
+- Email integration (IMAP)
+
+**Use this for:** Server deployments, Docker containers, CI/CD, or when GTK libraries are not available.
+
+### Standard Build (Requires Desktop GUI Dependencies)
 
 Build with default features (includes desktop support):
 
@@ -212,20 +227,9 @@ Build with default features (includes desktop support):
 cargo build --release
 ```
 
-The compiled binary will be at `target/release/botserver`.
+**Requires:** GTK development libraries (see "Desktop GUI dependencies" in prerequisites).
 
-### Minimal Build
-
-Build without any optional features:
-
-```bash
-cargo build --release --no-default-features
-```
-
-This excludes:
-- Desktop GUI (Tauri)
-- Vector database (Qdrant)
-- Email integration (IMAP)
+**Use this for:** Desktop application development or when you need native GUI features.
 
 ### Feature-Specific Builds
 
