@@ -96,7 +96,8 @@ sudo apt install -y \
     libwebkit2gtk-4.0-dev \
     libjavascriptcoregtk-4.1-dev \
     libayatana-appindicator3-dev \
-    librsvg2-dev
+    librsvg2-dev \
+    libsoup-3.0-dev
 ```
 
 **Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
@@ -140,7 +141,8 @@ sudo dnf install -y \
     webkit2gtk3-devel \
     javascriptcore-gtk-devel \
     libappindicator-gtk3-devel \
-    librsvg2-devel
+    librsvg2-devel \
+    libsoup3-devel
 ```
 
 **Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
@@ -439,6 +441,33 @@ vcpkg install openssl:x64-windows
 $env:OPENSSL_DIR="C:\vcpkg\installed\x64-windows"
 cargo build --release
 ```
+
+### libsoup-3.0 Dependency Warning
+
+**Warning:** `pkg-config exited with status code 1` when searching for `libsoup-3.0`
+
+This occurs when the libsoup-3.0 development library is missing but is required by a transitive dependency for desktop features.
+
+**Solution (Linux):**
+
+```bash
+sudo apt install libsoup-3.0-dev
+```
+
+**Solution (Fedora/RHEL):**
+
+```bash
+sudo dnf install libsoup3-devel
+```
+
+**Solution (macOS):**
+
+```bash
+brew install libsoup
+export PKG_CONFIG_PATH=$(brew --prefix libsoup)/lib/pkgconfig:$PKG_CONFIG_PATH
+```
+
+**Note:** This library is only needed for desktop/Tauri builds with GTK dependencies. If building with `--no-default-features` for server-only deployments, this library is not required and the warning can be safely ignored.
 
 ### PostgreSQL Library Errors
 
