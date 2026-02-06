@@ -2,6 +2,21 @@
 
 This guide covers building botserver from source, including dependencies, feature flags, and platform-specific considerations.
 
+## Quick Start
+
+**For server deployment (no desktop GUI):**
+
+```bash
+cargo build --release --no-default-features
+```
+
+**For desktop application development (requires GTK libraries):**
+
+```bash
+sudo apt install -y libglib2.0-dev libgtk-3-dev libgdk-pixbuf-2.0-dev libcairo2-dev libpango1.0-dev libatk1.0-dev libxkbcommon-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
+cargo build --release
+```
+
 ## Prerequisites
 
 ### System Requirements
