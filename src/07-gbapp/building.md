@@ -93,14 +93,9 @@ sudo apt install -y \
 sudo apt install -y \
     libglib2.0-dev \
     libgtk-3-dev \
-    libgdk-pixbuf-2.0-dev \
-    libcairo2-dev \
-    libpango1.0-dev \
-    libatk1.0-dev \
-    libxkbcommon-dev \
-    libxcb-render0-dev \
-    libxcb-shape0-dev \
-    libxcb-xfixes0-dev
+    libwebkit2gtk-4.0-dev \
+    libayatana-appindicator3-dev \
+    librsvg2-dev
 ```
 
 **Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
@@ -139,13 +134,11 @@ sudo dnf install -y \
 ```bash
 sudo dnf install -y \
     glib2-devel \
+    gobject-introspection-devel \
     gtk3-devel \
-    gdk-pixbuf2-devel \
-    cairo-devel \
-    pango-devel \
-    atk-devel \
-    libxkbcommon-devel \
-    libxcb-devel
+    webkit2gtk3-devel \
+    libappindicator-gtk3-devel \
+    librsvg2-devel
 ```
 
 **Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
