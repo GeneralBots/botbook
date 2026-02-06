@@ -93,12 +93,14 @@ sudo apt install -y \
 sudo apt install -y \
     libglib2.0-dev \
     libgtk-3-dev \
-    libwebkit2gtk-4.0-dev \
+    libwebkit2gtk-4.1-dev \
     libjavascriptcoregtk-4.1-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
     libsoup-3.0-dev
 ```
+
+**Note:** The webkit2gtk library must be version 4.1, not 4.0. Using the wrong version will cause build failures with error: `error: failed to run custom build command for webkit2gtk-sys v2.0.2`
 
 **Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
 
@@ -640,6 +642,36 @@ Or re-clone with submodules:
 ```bash
 git clone --recursive https://github.com/GeneralBots/gb.git
 ```
+
+### Error: `#[derive(RustEmbed)] folder '$CARGO_MANIFEST_DIR/ui' does not exist`
+
+**Cause:** The `rust-embed` crate cannot expand the `$CARGO_MANIFEST_DIR` variable without the `interpolate-folder-path` feature enabled.
+
+**Solution:**
+
+Ensure the workspace `Cargo.toml` has the feature enabled:
+
+```toml
+rust-embed = { version = "8.5", features = ["interpolate-folder-path"] }
+```
+
+This feature allows rust-embed to expand cargo environment variables like `$CARGO_MANIFEST_DIR` in the folder path attribute.
+
+### Warning: `ignoring invalid dependency 'botserver' which is missing a lib target`
+
+**Cause:** The `bottest` crate incorrectly specifies `botserver` as a dependency, but `botserver` is a binary-only crate with no library target.
+
+**Solution:**
+
+Remove the invalid dependency from `bottest/Cargo.toml`:
+
+```toml
+[dependencies]
+# Note: botserver is a binary-only crate, tested by spawning the process
+botlib = { path = "../botlib", features = ["database"] }
+```
+
+Integration tests should spawn the botserver binary as a separate process rather than linking against it as a library.
 
 ## Verify Build
 
