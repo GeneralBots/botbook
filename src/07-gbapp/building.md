@@ -57,7 +57,7 @@ cargo --version
 
 #### Linux (Ubuntu/Debian)
 
-**Critical: Install clang linker first** (fixes "linker `clang` not found" error):
+**Base dependencies** (required for all builds):
 
 ```bash
 sudo apt update
@@ -72,6 +72,24 @@ sudo apt install -y \
     git
 ```
 
+**Desktop GUI dependencies** (required for Tauri/desktop builds):
+
+```bash
+sudo apt install -y \
+    libglib2.0-dev \
+    libgtk-3-dev \
+    libgdk-pixbuf-2.0-dev \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libatk1.0-dev \
+    libxkbcommon-dev \
+    libxcb-render0-dev \
+    libxcb-shape0-dev \
+    libxcb-xfixes0-dev
+```
+
+**Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
+
 Configure Rust to use clang as the linker:
 
 ```bash
@@ -84,6 +102,8 @@ EOF
 ```
 
 #### Linux (Fedora/RHEL)
+
+**Base dependencies** (required for all builds):
 
 ```bash
 sudo dnf install -y \
@@ -98,6 +118,22 @@ sudo dnf install -y \
     cmake \
     git
 ```
+
+**Desktop GUI dependencies** (required for Tauri/desktop builds):
+
+```bash
+sudo dnf install -y \
+    glib2-devel \
+    gtk3-devel \
+    gdk-pixbuf2-devel \
+    cairo-devel \
+    pango-devel \
+    atk-devel \
+    libxkbcommon-devel \
+    libxcb-devel
+```
+
+**Note:** Desktop GUI dependencies are only needed if building with `--features desktop`. For minimal builds without desktop GUI, these libraries are not required.
 
 Configure Rust to use clang as the linker:
 
