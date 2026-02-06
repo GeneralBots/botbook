@@ -178,58 +178,25 @@ git submodule update --init --recursive
 
 ## Build Cache with sccache
 
-sccache (Shared Compilation Cache) dramatically speeds up rebuilds by caching compilation artifacts. Highly recommended for development.
+sccache caches compilation artifacts for faster rebuilds.
 
-### Install sccache
-
-#### Linux
+Install and configure:
 
 ```bash
 cargo install sccache
-```
-
-#### macOS
-
-```bash
-brew install sccache
-```
-
-#### Windows
-
-```powershell
-cargo install sccache
-```
-
-### Configure Cargo to Use sccache
-
-Add to `~/.cargo/config.toml`:
-
-```toml
-[build]
-compiler = "sccache"
-```
-
-### Verify sccache is Working
-
-```bash
+mkdir -p ~/.cargo
+echo '[build]
+compiler = "sccache"' >> ~/.cargo/config.toml
 export RUSTC_WRAPPER=sccache
-cargo build --release
+```
+
+Verify cache hits:
+
+```bash
 sccache --show-stats
 ```
 
-Expected output shows cache hits/misses:
-
-```
-Compile requests                    45
-Compile requests executed           12
-Cache hits                           8
-Cache misses                         4
-Cache hit rate                    66.67%
-```
-
-### Clear sccache
-
-If you need to clear the cache:
+Clear cache if needed:
 
 ```bash
 sccache --zero-stats
