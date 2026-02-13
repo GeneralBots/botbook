@@ -1,15 +1,15 @@
 # botbook Development Guide
 
-**Version:** 6.2.0  
+**Version:** 6.2.0
 **Purpose:** Documentation for General Bots (mdBook)
 
 ---
 
-## 📚 CRITICAL: Keyword Naming Rules
+## CRITICAL: Keyword Naming Rules
 
 **Keywords NEVER use underscores. Always use spaces.**
 
-### ✅ Correct Syntax
+### Correct Syntax
 ```basic
 SEND MAIL to, subject, body, attachments
 GENERATE PDF template, data, output
@@ -20,7 +20,7 @@ SET BOT MEMORY key, value
 KB STATISTICS
 ```
 
-### ❌ WRONG - Never Use Underscores
+### WRONG - Never Use Underscores
 ```basic
 SEND_MAIL          ' WRONG!
 GENERATE_PDF       ' WRONG!
@@ -39,7 +39,7 @@ DELETE_HTTP        ' WRONG!
 
 ---
 
-## 🎨 OFFICIAL ICONS - MANDATORY
+## OFFICIAL ICONS - MANDATORY
 
 **NEVER generate icons with LLM. Use official SVG icons from `botui/ui/suite/assets/icons/`**
 
@@ -55,7 +55,7 @@ DELETE_HTTP        ' WRONG!
 
 ---
 
-## 📁 STRUCTURE
+## STRUCTURE
 
 ```
 botbook/
@@ -76,7 +76,7 @@ botbook/
 
 ---
 
-## 📖 DOCUMENTATION RULES
+## DOCUMENTATION RULES
 
 ```
 - All documentation MUST match actual source code
@@ -88,18 +88,18 @@ botbook/
 
 ---
 
-## 🚫 NO ASCII DIAGRAMS — MANDATORY
+## NO ASCII DIAGRAMS - MANDATORY
 
 **NEVER use ASCII art diagrams. ALL diagrams must be SVG.**
 
-### ❌ Prohibited ASCII Patterns
+### Prohibited ASCII Patterns
 ```
-┌─────────┐    ╔═══════╗    +-------+
-│  Box    │    ║ Box   ║    | Box   |
-└─────────┘    ╚═══════╝    +-------+
++-------+
+|  Box  |
++-------+
 ```
 
-### ✅ What to Use Instead
+### What to Use Instead
 
 | Instead of... | Use... |
 |---------------|--------|
@@ -109,7 +109,7 @@ botbook/
 
 ---
 
-## 🎨 SVG DIAGRAM GUIDELINES
+## SVG DIAGRAM GUIDELINES
 
 All SVGs must support light/dark modes:
 
@@ -117,7 +117,7 @@ All SVGs must support light/dark modes:
 <style>
   .title-text { fill: #1E1B4B; }
   .main-text { fill: #334155; }
-  
+
   @media (prefers-color-scheme: dark) {
     .title-text { fill: #F1F5F9; }
     .main-text { fill: #E2E8F0; }
@@ -127,7 +127,7 @@ All SVGs must support light/dark modes:
 
 ---
 
-## 💬 CONVERSATION EXAMPLES
+## CONVERSATION EXAMPLES
 
 Use WhatsApp-style HTML format for bot interactions:
 
@@ -150,19 +150,42 @@ Use WhatsApp-style HTML format for bot interactions:
 
 ---
 
-## 📋 SOURCE CODE REFERENCES
+## SOURCE CODE REFERENCES
 
 | Topic | Source Location |
 |-------|-----------------|
 | BASIC Keywords | `botserver/src/basic/keywords/` |
-| Database Models | `botserver/src/shared/models.rs` |
+| Database Models | `botserver/src/core/shared/models.rs` |
 | API Routes | `botserver/src/core/urls.rs` |
 | Configuration | `botserver/src/core/config/` |
 | Templates | `botserver/templates/` |
 
 ---
 
-## 🔧 BUILDING DOCUMENTATION
+## BUILDING BOTSERVER
+
+**CRITICAL: ALWAYS USE DEBUG BUILD DURING DEVELOPMENT**
+
+```bash
+# CORRECT - Use debug build (FAST)
+cargo build
+
+# WRONG - NEVER use --release during development (SLOW)
+# cargo build --release  # DO NOT USE!
+
+# Run debug server
+cargo run
+```
+
+**Why Debug Build:**
+- Debug builds compile in ~30 seconds
+- Release builds take 5-10 minutes with LTO
+- Debug builds are sufficient for development and testing
+- Only use `--release` for production deployment
+
+---
+
+## BUILDING DOCUMENTATION
 
 ```bash
 # Install mdBook
@@ -177,7 +200,73 @@ mdbook serve --open
 
 ---
 
-## 🔑 REMEMBER
+## TESTING PROCEDURES
+
+### Tool Testing Workflow
+
+**CRITICAL: NO STOP UNTIL NO MORE ERRORS IN TOOLS**
+
+When testing bot tools, follow this sequential process WITHOUT STOPPING:
+
+```
+1. Test Tool #1
+   ├─ Fill form one field at a time (if multi-step form)
+   ├─ Verify NO ERRORS in output
+   ├─ Check Result types are NOT visible (no "core::result::Result<..." strings)
+   ├─ Verify database save (if applicable)
+   ├─ IF ERRORS FOUND: FIX THEM IMMEDIATELY, RE-TEST SAME TOOL
+   ├─ ONLY move to next tool when CURRENT tool has ZERO errors
+
+2. Test Tool #2
+   └─ (repeat process - DO NOT STOP if errors found)
+
+3. Continue until ALL tools tested with ZERO errors
+```
+
+**IMPORTANT:**
+- Do NOT stop testing to summarize or ask questions
+- Do NOT move to next tool if current tool has errors
+- Fix errors immediately, rebuild, re-test same tool
+- Only proceed when current tool is completely error-free
+
+### Error Patterns to Watch For
+
+**CRITICAL ERRORS (Must Fix Before Proceeding):**
+- `core::result::Result<alloc::string::String, alloc::string::String>` in output
+- `invalid input syntax for type timestamp`
+- `Some("Desculpe, houve um erro...")`
+- Empty balloon messages
+- Rust debug info visible to users
+
+### Playwright Testing Tricks
+
+```javascript
+// Click tool button
+await page.getByRole('button', { name: 'Evento/Iluminação' }).click();
+
+// Wait for response
+await page.waitForTimeout(3000);
+
+// Take snapshot
+await page.snapshot();
+
+// Fill form field by field
+await page.getByRole('textbox').fill('field value');
+await page.getByRole('textbox').press('Enter');
+```
+
+### Test Documentation
+
+After testing each tool, document:
+1. Tool name and ID
+2. All required parameters
+3. Expected behavior
+4. Any issues found and fixes applied
+5. Final test result (PASS/FAIL)
+
+---
+
+## REMEMBER
 
 - **Accuracy** - Must match botserver source code
 - **Completeness** - No placeholder sections
@@ -186,3 +275,5 @@ mdbook serve --open
 - **NO ASCII art** - Use SVG diagrams only
 - **Version 6.2.0** - Always reference 6.2.0
 - **GIT WORKFLOW** - ALWAYS push to ALL repositories (github, pragmatismo)
+- **TESTING** - Test tools ONE BY ONE, fix ALL errors before moving to next tool
+- **NO STOP** - DO NOT STOP testing until ALL tools have ZERO errors - fix immediately and re-test
