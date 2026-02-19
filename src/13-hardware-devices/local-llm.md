@@ -83,7 +83,7 @@ wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/
     --threads 4
 
 # Verify
-curl http://localhost:8080/v1/models
+curl http://localhost:9000/v1/models
 ```
 
 ### Systemd Service
@@ -127,7 +127,7 @@ sudo systemctl start llama-server
 ```env
 # Use local llama.cpp
 LLM_PROVIDER=llamacpp
-LLM_API_URL=http://127.0.0.1:8080
+LLM_API_URL=http://127.0.0.1:9000
 LLM_MODEL=tinyllama
 
 # Memory limits
@@ -263,7 +263,7 @@ llama.cpp exposes an OpenAI-compatible API:
 ### Chat Completion
 
 ```bash
-curl http://localhost:8080/v1/chat/completions \
+curl http://localhost:9000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "tinyllama",
@@ -277,7 +277,7 @@ curl http://localhost:8080/v1/chat/completions \
 ### Streaming
 
 ```bash
-curl http://localhost:8080/v1/chat/completions \
+curl http://localhost:9000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "tinyllama",
@@ -289,8 +289,8 @@ curl http://localhost:8080/v1/chat/completions \
 ### Health Check
 
 ```bash
-curl http://localhost:8080/health
-curl http://localhost:8080/v1/models
+curl http://localhost:9000/health
+curl http://localhost:9000/v1/models
 ```
 
 ## Monitoring

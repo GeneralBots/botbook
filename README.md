@@ -55,7 +55,7 @@ On first run, botserver automatically:
 - Installs required components (PostgreSQL, S3 storage, Cache, LLM)
 - Sets up database with migrations
 - Downloads AI models
-- Starts HTTP server at `http://127.0.0.1:8080`
+- Starts HTTP server at `http://127.0.0.1:9000`
 
 ### Run the Desktop App
 

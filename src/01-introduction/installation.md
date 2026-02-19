@@ -120,7 +120,7 @@ psql $DATABASE_URL -c "SELECT version();"
 curl http://localhost:8081/v1/models
 
 # Open UI
-open http://localhost:8080
+open http://localhost:9000
 ```
 
 ## Bot Deployment

@@ -87,7 +87,7 @@ scale-rule-queue-action,up
 for i in {2..5}; do
   lxc launch images:debian/12 botserver-$i
   lxc config device add botserver-$i port-$((8080+i)) proxy \
-    listen=tcp:0.0.0.0:$((8080+i)) connect=tcp:127.0.0.1:8080
+    listen=tcp:0.0.0.0:$((8080+i)) connect=tcp:127.0.0.1:9000
 done
 ```
 
@@ -207,7 +207,7 @@ update_load_balancer() {
     upstreams=""
     for container in $(lxc list -c n --format csv | grep "^botserver-"); do
         ip=$(lxc list $container -c 4 --format csv | cut -d' ' -f1)
-        upstreams="$upstreams\n        to $ip:8080"
+        upstreams="$upstreams\n        to $ip:9000"
     done
     
     # Update Caddy config
@@ -268,12 +268,12 @@ bot.example.com {
     
     # Health check endpoint (no load balancing)
     handle /api/health {
-        reverse_proxy localhost:8080
+        reverse_proxy localhost:9000
     }
     
     # WebSocket connections (sticky sessions)
     handle /ws* {
-        reverse_proxy botserver-1:8080 botserver-2:8080 botserver-3:8080 {
+        reverse_proxy botserver-1:9000 botserver-2:9000 botserver-3:9000 {
             lb_policy cookie
             lb_try_duration 5s
             health_uri /api/health
@@ -284,7 +284,7 @@ bot.example.com {
     
     # API requests (round robin)
     handle /api/* {
-        reverse_proxy botserver-1:8080 botserver-2:8080 botserver-3:8080 {
+        reverse_proxy botserver-1:9000 botserver-2:9000 botserver-3:9000 {
             lb_policy round_robin
             lb_try_duration 5s
             health_uri /api/health
@@ -295,7 +295,7 @@ bot.example.com {
     
     # Static files (any instance)
     handle {
-        reverse_proxy botserver-1:8080 botserver-2:8080 botserver-3:8080 {
+        reverse_proxy botserver-1:9000 botserver-2:9000 botserver-3:9000 {
             lb_policy first
         }
     }
@@ -353,7 +353,7 @@ bot.example.com {
                 window 1m
             }
         }
-        reverse_proxy botserver:8080
+        reverse_proxy botserver:9000
     }
 }
 ```

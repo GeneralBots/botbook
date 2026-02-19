@@ -67,7 +67,7 @@ return {
   'botserver/nvim-botserver',
   config = function()
     require('botserver').setup({
-      server_url = 'http://localhost:8080',
+      server_url = 'http://localhost:9000',
       default_bot = 'edu'
     })
   end

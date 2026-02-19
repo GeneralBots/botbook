@@ -123,7 +123,7 @@ Document WebSocket protocols with connection details, message formats for both d
 
 ### Connection
 ```
-ws://localhost:8080/ws
+ws://localhost:9000/ws
 ```
 
 ### Message Format

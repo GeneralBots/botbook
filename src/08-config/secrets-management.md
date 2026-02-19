@@ -162,7 +162,7 @@ Use the Vault CLI or API:
 ```bash
 # Directory (Zitadel) - includes URL, no longer in .env
 vault kv put gbo/directory \
-  url=https://localhost:8080 \
+  url=https://localhost:9000 \
   project_id=your-project-id \
   client_id=your-client-id \
   client_secret=your-client-secret
@@ -506,7 +506,7 @@ If you're currently using environment variables:
 ```bash
 # .env - TOO MANY SECRETS!
 DATABASE_URL=postgres://user:password@localhost/db
-DIRECTORY_URL=https://localhost:8080
+DIRECTORY_URL=https://localhost:9000
 DIRECTORY_CLIENT_ID=your-client-id
 DIRECTORY_CLIENT_SECRET=your-client-secret
 REDIS_PASSWORD=redis-secret
@@ -528,7 +528,7 @@ VAULT_TOKEN=hvs.xxxxx
 ```bash
 # EVERYTHING in Vault
 vault kv put gbo/directory \
-  url=https://localhost:8080 \
+  url=https://localhost:9000 \
   project_id=12345 \
   client_id=xxx \
   client_secret=xxx
@@ -579,7 +579,7 @@ fi
 
 # Store everything in Vault
 vault kv put gbo/directory \
-  url="${DIRECTORY_URL:-https://localhost:8080}" \
+  url="${DIRECTORY_URL:-https://localhost:9000}" \
   project_id="${DIRECTORY_PROJECT_ID:-}" \
   client_id="${ZITADEL_CLIENT_ID:-}" \
   client_secret="${ZITADEL_CLIENT_SECRET:-}"

@@ -359,7 +359,7 @@ Register new user (if self-registration enabled).
 
 For full user management, access Zitadel admin console:
 
-1. **Access Console**: `http://localhost:8080` (or your Zitadel URL)
+1. **Access Console**: `http://localhost:9000` (or your Zitadel URL)
 2. **Create Users**: Organization → Users → Add
 3. **Manage Roles**: Users → Select User → Authorizations
 4. **Reset Passwords**: Users → Select User → Actions → Reset Password

@@ -299,7 +299,7 @@ Or continue reading for the full journey:
     <div class="wa-bubble">
       <p>Great! Just run:</p>
       <p><code>./botserver</code></p>
-      <p>Then open http://localhost:8080</p>
+      <p>Then open http://localhost:9000</p>
       <p>That's it! 🚀</p>
       <div class="wa-time">09:00</div>
     </div>

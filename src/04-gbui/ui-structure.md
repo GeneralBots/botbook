@@ -59,7 +59,7 @@ The Suite interface provides multi-application integration with seamless navigat
 
 The Suite interface is best suited for enterprise deployments requiring full functionality, power users working with multiple services simultaneously, desktop application distribution via Tauri builds, and multi-service integrations where context switching between modules matters.
 
-You can access the Suite interface via web at `http://localhost:8080/suite` or as a native desktop application using the `botui` Tauri app (see [BotUI Desktop](../botui/README.md)).
+You can access the Suite interface via web at `http://localhost:9000/suite` or as a native desktop application using the `botui` Tauri app (see [BotUI Desktop](../botui/README.md)).
 
 ## Minimal Interface
 
@@ -69,7 +69,7 @@ This lightweight interface provides core chat and basic interactions only, fast 
 
 The Minimal interface excels for mobile web access, embedded chatbots in external websites, low-bandwidth environments, quick access terminals and kiosks, and scenarios where simplicity matters more than features.
 
-Access the Minimal interface at the root URL `http://localhost:8080` where it is served by default, explicitly at `http://localhost:8080/minimal`, or embedded via iframe or WebView in your own applications.
+Access the Minimal interface at the root URL `http://localhost:9000` where it is served by default, explicitly at `http://localhost:9000/minimal`, or embedded via iframe or WebView in your own applications.
 
 ## Configuration
 
@@ -211,11 +211,11 @@ ls -la ui/suite/
 ls -la ui/minimal/
 
 # Test interfaces
-curl http://localhost:8080/
-curl http://localhost:8080/suite/
+curl http://localhost:9000/
+curl http://localhost:9000/suite/
 
 # Check static file serving
-curl http://localhost:8080/js/htmx-app.js
+curl http://localhost:9000/js/htmx-app.js
 ```
 
 ## Customization

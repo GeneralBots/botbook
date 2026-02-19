@@ -102,7 +102,7 @@ Default template for browser access:
 
 ```bash
 ./botserver
-# Browse to http://localhost:8080
+# Browse to http://localhost:9000
 # Loads Suite interface
 ```
 

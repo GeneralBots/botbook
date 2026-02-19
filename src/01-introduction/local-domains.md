@@ -10,7 +10,7 @@ botserver certificates include `127.0.0.1` as a Subject Alternative Name (SAN), 
 
 | Component | Description | IP:Port |
 |-----------|-------------|---------|
-| api | Main botserver API | `127.0.0.1:8443` (HTTPS) / `127.0.0.1:8080` (HTTP) |
+| api | Main botserver API | `127.0.0.1:8443` (HTTPS) / `127.0.0.1:9000` (HTTP) |
 | tables | PostgreSQL database | `127.0.0.1:5432` |
 | drive | Object storage (S3-compatible) | `127.0.0.1:9000` |
 | cache | Redis cache | `127.0.0.1:6379` |

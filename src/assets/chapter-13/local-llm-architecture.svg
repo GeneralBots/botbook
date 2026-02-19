@@ -90,7 +90,7 @@
 
     <text x="85" y="52" text-anchor="middle" font-size="10" class="main-text">Rust Runtime</text>
     <text x="85" y="68" text-anchor="middle" font-size="9" class="mono-text">Session Manager</text>
-    <text x="85" y="84" text-anchor="middle" font-size="9" class="mono-text">Port 8088</text>
+    <text x="85" y="84" text-anchor="middle" font-size="9" class="mono-text">Port 9000</text>
   </g>
 
   <!-- Arrow 2 -->

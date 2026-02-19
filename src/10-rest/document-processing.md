@@ -14,7 +14,7 @@ The Document Processing API enables:
 ## Base URL
 
 ```
-http://localhost:8080/api/v1/documents
+http://localhost:9000/api/v1/documents
 ```
 
 ## Authentication
@@ -47,7 +47,7 @@ curl -X POST \
   -H "Authorization: Bearer token123" \
   -F "file=@document.pdf" \
   -F 'process_options={"extract_text":true,"extract_metadata":true}' \
-  http://localhost:8080/api/v1/documents/upload
+  http://localhost:9000/api/v1/documents/upload
 ```
 
 **Response:**
@@ -532,7 +532,7 @@ import requests
 # Upload and process document
 with open('document.pdf', 'rb') as f:
     response = requests.post(
-        'http://localhost:8080/api/v1/documents/upload',
+        'http://localhost:9000/api/v1/documents/upload',
         headers={'Authorization': 'Bearer token123'},
         files={'file': f},
         data={'process_options': '{"extract_text": true}'}
@@ -542,7 +542,7 @@ document_id = response.json()['document_id']
 
 # Get extracted text
 text_response = requests.get(
-    f'http://localhost:8080/api/v1/documents/{document_id}/text',
+    f'http://localhost:9000/api/v1/documents/{document_id}/text',
     headers={'Authorization': 'Bearer token123'}
 )
 

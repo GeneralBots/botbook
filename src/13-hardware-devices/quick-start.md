@@ -22,9 +22,9 @@ cd botserver
 ```
 
 That's it! After ~10-15 minutes:
-- botserver runs on port 8088
-- llama.cpp runs on port 8080 with TinyLlama
-- Embedded UI available at `http://your-device:8088/embedded/`
+- botserver runs on port 9000
+- llama.cpp runs on port 8081 with TinyLlama
+- Embedded UI available at `http://your-device:9000/embedded/`
 
 ## Step-by-Step Guide
 
@@ -87,17 +87,17 @@ ssh pi@raspberrypi.local 'sudo systemctl status botserver'
 ssh pi@raspberrypi.local 'sudo systemctl status llama-server'
 
 # Test botserver
-curl http://raspberrypi.local:8088/health
+curl http://raspberrypi.local:9000/health
 
 # Test llama.cpp
-curl http://raspberrypi.local:8080/v1/models
+curl http://raspberrypi.local:9000/v1/models
 ```
 
 ### Step 5: Access the Interface
 
 Open in your browser:
 ```
-http://raspberrypi.local:8088/embedded/
+http://raspberrypi.local:9000/embedded/
 ```
 
 Or set up kiosk mode (auto-starts on boot):
@@ -142,11 +142,11 @@ Key settings:
 ```env
 # Server
 HOST=0.0.0.0
-PORT=8088
+PORT=9000
 
 # Local LLM
 LLM_PROVIDER=llamacpp
-LLM_API_URL=http://127.0.0.1:8080
+LLM_API_URL=http://127.0.0.1:8081
 LLM_MODEL=tinyllama
 
 # Memory limits for small devices

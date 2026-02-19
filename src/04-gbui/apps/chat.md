@@ -96,7 +96,7 @@ Bot responses support full Markdown rendering:
 ### WebSocket Connection
 
 ```
-ws://your-server:8080/ws
+ws://your-server:9000/ws
 ```
 
 **Message Types:**

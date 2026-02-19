@@ -23,7 +23,7 @@ General Bots Suite is your all-in-one workspace that combines communication, pro
 ### Opening the Suite
 
 1. **Open your web browser** (Chrome, Firefox, Safari, or Edge)
-2. **Go to your General Bots address** (example: `http://your-company.bot:8080`)
+2. **Go to your General Bots address** (example: `http://your-company.bot:9000`)
 3. **The Suite loads automatically** - you'll see the workspace in seconds
 
 ### Your First Look

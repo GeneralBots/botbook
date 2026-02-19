@@ -404,6 +404,7 @@ botserver rotate-secret <component>
 | `email` | SMTP password |
 | `directory` | Zitadel client secret |
 | `encryption` | Master encryption key (⚠️ dangerous) |
+| `jwt` | JWT signing secret (⚠️ invalidates refresh tokens) |
 
 **Examples:**
 
@@ -493,6 +494,73 @@ botserver version --all
 ```
 
 > 🔒 **ENCRYPTION KEY WARNING**: Rotating the encryption key (`botserver rotate-secret encryption`) will make ALL existing encrypted data unreadable. Only do this if you have re-encryption procedures in place.
+
+---
+
+## Security Considerations
+
+### Current Limitations
+
+⚠️ **Manual Service Updates Required**
+After rotating credentials, you MUST manually update each service:
+
+- **Database (tables):** Run the provided SQL command to update PostgreSQL user password
+- **Drive (MinIO):** Run the provided `mc admin` commands to update S3 credentials
+- **Cache (Redis):** Run the provided `redis-cli` command to update password
+- **Directory (Zitadel):** Update client secret via admin console
+
+⚠️ **Service Restart Required**
+After rotating **JWT secret**, you MUST restart botserver:
+```bash
+botserver restart
+```
+
+All users will need to re-login (refresh tokens invalidated). Access tokens (15-minute expiry) will expire naturally.
+
+⚠️ **No Automatic Rollback**
+If verification fails, you must manually restore from backups:
+```bash
+# Database: Re-run SQL with old password
+# JWT: Restore .env.backup.<timestamp>
+# Other: Use backup values shown in rotation output
+```
+
+### Available Components for Rotation
+
+| Component | Credential Type | Manual Update Required | Service Restart |
+|-----------|----------------|------------------------|-----------------|
+| `tables` | PostgreSQL password | ✅ Run SQL command | ❌ No |
+| `drive` | MinIO S3 credentials | ✅ Run mc commands | ❌ No |
+| `cache` | Redis/Valkey password | ✅ Run redis-cli | ❌ No |
+| `email` | SMTP password | ✅ Update mail server | ❌ No |
+| `directory` | Zitadel client secret | ✅ Update via console | ❌ No |
+| `encryption` | Master encryption key | ⚠️ Re-encrypt all data | ❌ No |
+| `jwt` | JWT signing secret | ❌ No | ✅ **Yes** |
+
+### Best Practices
+
+1. **Test in staging first** - Never rotate in production without testing
+2. **Schedule during low traffic** - Rotate JWT outside peak hours
+3. **Have rollback plan ready** - Save backup paths shown during rotation
+4. **Monitor logs** - Check for authentication failures after rotation:
+   ```bash
+   tail -f /var/log/botserver/app.log | grep -i "authentication\\|jwt\\|token"
+   ```
+5. **Rotate regularly** - Every 90 days for production, per security compliance
+6. **After JWT rotation** - Verify all services are healthy before declaring success
+
+### Verification
+
+The `rotate-secret` command includes automatic verification where possible:
+
+- **Database:** Tests PostgreSQL connection with new credentials
+- **JWT:** Checks health endpoint (requires service to be running)
+- **Other:** Displays manual verification instructions
+
+If verification fails:
+1. Check the error message for specific failure details
+2. Restore from backup if needed
+3. Re-run rotation after fixing the issue
 
 ---
 

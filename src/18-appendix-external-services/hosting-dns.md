@@ -100,7 +100,7 @@ lxc config set botserver limits.memory 4GB
 lxc config set botserver limits.cpu 2
 
 # Forward ports
-lxc config device add botserver http proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:8080
+lxc config device add botserver http proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:9000
 lxc config device add botserver https proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:8443
 
 # Set environment for Vault
@@ -118,7 +118,7 @@ services:
   botserver:
     image: generalbots/botserver:latest
     ports:
-      - "8080:8080"
+      - "8080:9000"
     environment:
       - VAULT_ADDR=http://vault:8200
     volumes:

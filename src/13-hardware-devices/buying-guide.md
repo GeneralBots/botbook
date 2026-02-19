@@ -229,7 +229,7 @@ cd botserver
 
 Open in your browser:
 ```
-http://mybot.local:8088
+http://mybot.local:9000
 ```
 
 ## Common Beginner Mistakes

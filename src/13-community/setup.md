@@ -313,7 +313,7 @@ cargo test --all-features
 
 3. **Port Already in Use**
    - Change SERVER_PORT in .env
-   - Kill existing process: `lsof -i :8080`
+   - Kill existing process: `lsof -i :9000`
 
 4. **Compilation Errors**
    - Update Rust: `rustup update`

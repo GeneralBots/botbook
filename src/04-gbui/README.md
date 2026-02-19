@@ -19,10 +19,10 @@ General Bots UI system built with HTMX and server-side rendering.
 ## Quick Access
 
 ```
-http://localhost:8080           → Main interface
-http://localhost:8080/chat      → Chat app
-http://localhost:8080/drive     → File manager
-http://localhost:8080/console   → Terminal mode
+http://localhost:9000           → Main interface
+http://localhost:9000/chat      → Chat app
+http://localhost:9000/drive     → File manager
+http://localhost:9000/console   → Terminal mode
 ```
 
 ## Suite Applications

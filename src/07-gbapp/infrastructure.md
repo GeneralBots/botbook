@@ -292,7 +292,7 @@ bot.example.com {
     
     # WebSocket (sticky sessions)
     handle /ws* {
-        reverse_proxy botserver-1:8080 botserver-2:8080 {
+        reverse_proxy botserver-1:9000 botserver-2:9000 {
             lb_policy cookie
             health_uri /api/health
             health_interval 10s
@@ -301,7 +301,7 @@ bot.example.com {
     
     # API (round robin)
     handle /api/* {
-        reverse_proxy botserver-1:8080 botserver-2:8080 {
+        reverse_proxy botserver-1:9000 botserver-2:9000 {
             lb_policy round_robin
             fail_duration 30s
         }
@@ -400,7 +400,7 @@ VAULT_ADDR=https://localhost:8200
 VAULT_TOKEN=hvs.your-token-here
 
 # Directory for user auth (Zitadel)
-DIRECTORY_URL=https://localhost:8080
+DIRECTORY_URL=https://localhost:9000
 DIRECTORY_CLIENT_ID=your-client-id
 DIRECTORY_CLIENT_SECRET=your-client-secret
 

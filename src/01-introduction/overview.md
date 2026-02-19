@@ -105,7 +105,7 @@ Installation begins by downloading and running the botserver binary. The bootstr
 
 Bot deployment uses object storage buckets. Each bot receives its own bucket for file storage. Bots are deployed to the drive rather than the work folder, which is reserved for internal operations as documented in the gbapp chapter.
 
-After startup, access the UI interface at `http://localhost:8080` to interact with your bots and monitor their operation.
+After startup, access the UI interface at `http://localhost:9000` to interact with your bots and monitor their operation.
 
 
 ## Use Cases

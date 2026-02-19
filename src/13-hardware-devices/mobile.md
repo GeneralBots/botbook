@@ -231,7 +231,7 @@ BotDevice can work offline with local LLM:
 1. Install botserver on the device (see [Local LLM](./local-llm.md))
 2. Configure to use localhost:
    ```javascript
-   window.BOTSERVER_URL = "http://127.0.0.1:8088";
+   window.BOTSERVER_URL = "http://127.0.0.1:9000";
    ```
 3. Run llama.cpp with small model (TinyLlama on 4GB+ devices)
 

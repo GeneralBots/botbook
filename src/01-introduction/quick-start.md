@@ -28,13 +28,13 @@ Installing Cache...
 Creating bots from templates...
    default.gbai deployed
    announcements.gbai deployed
-botserver ready at http://localhost:8080
+botserver ready at http://localhost:9000
 ```
 
 ### 3. Open Browser
 
 ```
-http://localhost:8080
+http://localhost:9000
 ```
 
 Start chatting with your bot!

@@ -46,7 +46,7 @@
   <g transform="translate(320, 80)">
     <rect width="240" height="280" rx="10" fill="#E8F5E9" stroke="#388E3C" stroke-width="2"/>
     <text x="120" y="30" text-anchor="middle" class="box-label">botserver (Rust)</text>
-    <text x="120" y="50" text-anchor="middle" class="small-text">Port 8088</text>
+    <text x="120" y="50" text-anchor="middle" class="small-text">Port 9000</text>
     <rect x="20" y="70" width="200" height="40" rx="4" fill="#C8E6C9" stroke="#388E3C"/>
     <text x="120" y="95" text-anchor="middle" class="small-text">BASIC Interpreter</text>
     <rect x="20" y="120" width="200" height="40" rx="4" fill="#C8E6C9" stroke="#388E3C"/>

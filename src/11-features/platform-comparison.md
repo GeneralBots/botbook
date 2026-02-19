@@ -159,7 +159,7 @@ Run General Bots on your own infrastructure with single binary deployment, conta
 ./botserver
 ```
 
-Access at `http://localhost:8080` and start building.
+Access at `http://localhost:9000` and start building.
 
 ## Summary
 

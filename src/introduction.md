@@ -250,7 +250,7 @@ chmod +x botserver
 
 ### 2. Open Browser
 ```
-http://localhost:8080
+http://localhost:9000
 ```
 
 ### 3. Start Chatting

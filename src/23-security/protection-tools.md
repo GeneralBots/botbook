@@ -14,7 +14,7 @@ The Security Protection module provides comprehensive host-level security throug
                               │
                               ▼ HTMX/API calls
 ┌─────────────────────────────────────────────────────────────┐
-│                    botserver (port 8088)                     │
+│                    botserver (port 9000)                     │
 │              /api/security/protection/*                      │
 └─────────────────────────────────────────────────────────────┘
                               │

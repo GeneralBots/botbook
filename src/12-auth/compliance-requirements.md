@@ -85,7 +85,7 @@ app.example.com {
 | ⚠️ | Password Rotation | Directory | HIPAA | Configure 90-day rotation policy |
 | 📝 | Access Reviews | Directory | All | Quarterly manual review of user permissions |
 
-**Configuration**: Directory Admin Console (`http://localhost:8080`)
+**Configuration**: Directory Admin Console (`http://localhost:9000`)
 
 **Key Settings**:
 - Password min length: 12 characters
@@ -206,7 +206,7 @@ directory = "oidc"
 
 [directory."oidc"]
 type = "oidc"
-issuer = "http://localhost:8080"
+issuer = "http://localhost:9000"
 ```
 
 **DNS Records**:

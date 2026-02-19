@@ -158,7 +158,7 @@ greeting,Welcome to support!
 ```bash
 cp -r my-bot.gbai/ templates/
 ./botserver restart
-# Visit http://localhost:8080/my-bot
+# Visit http://localhost:9000/my-bot
 ```
 
 ### Production Server

@@ -4,10 +4,22 @@ Sends a message to the current conversation or to a specific recipient on any su
 
 ## Syntax
 
+### Single Message
+
 ```basic
 TALK message
 
 TALK TO recipient, message
+```
+
+### Multi-Line Block with Variable Substitution
+
+```basic
+BEGIN TALK
+Line 1 with ${variable}
+Line 2 with ${anotherVariable}
+Plain text line
+END TALK
 ```
 
 ## Parameters
@@ -16,6 +28,7 @@ TALK TO recipient, message
 |-----------|------|-------------|
 | message | String | The message to send |
 | recipient | String | Channel and address in format `channel:address` |
+| ${variable} | Expression | Variable substitution within TALK blocks |
 
 ## Description
 
@@ -23,6 +36,151 @@ TALK TO recipient, message
 
 - **TALK message** - Sends to the current conversation (web chat, WhatsApp, etc.)
 - **TALK TO recipient, message** - Sends to a specific recipient on any channel
+- **BEGIN TALK / END TALK** - Multi-line block with automatic variable substitution
+
+## BEGIN TALK / END TALK Blocks
+
+The `BEGIN TALK / END TALK` block syntax allows you to write multiple messages with automatic variable substitution using `${variable}` syntax.
+
+### Syntax
+
+```basic
+BEGIN TALK
+Hello ${name}!
+Your order ${orderId} is confirmed.
+Total: ${FORMAT(total, "currency")}
+Thank you for your purchase!
+END TALK
+```
+
+Each line within the block becomes a separate `TALK` statement. The `${variable}` syntax is automatically converted to string concatenation.
+
+### How It Works
+
+**Input:**
+```basic
+nomeNoivo = "Carlos"
+protocolo = "CAS123456"
+
+BEGIN TALK
+Solicitacao de Casamento enviada com sucesso!
+PROTOCOLO: ${protocolo}
+Noivo: ${nomeNoivo}
+END TALK
+```
+
+**Converted to:**
+```basic
+TALK "Solicitacao de Casamento enviada com sucesso!"
+TALK "PROTOCOLO: " + protocolo
+TALK "Noivo: " + nomeNoivo
+```
+
+### Variable Substitution Rules
+
+- `${variableName}` - Replaced with the variable value using string concatenation
+- `${FUNCTION(args)}` - Function calls are evaluated and substituted
+- Plain text without `${}` is treated as a string literal
+- Special characters like `$` (not followed by `{`) are preserved as-is
+
+### Examples
+
+#### Simple Substitution
+
+```basic
+nome = "João"
+idade = 30
+
+BEGIN TALK
+Olá ${nome}!
+Você tem ${idade} anos.
+END TALK
+```
+
+**Equivalent to:**
+```basic
+TALK "Olá " + nome + "!"
+TALK "Você tem " + idade + " anos."
+```
+
+#### With Function Calls
+
+```basic
+total = 299.90
+numero = 42
+
+BEGIN TALK
+Seu pedido: ${numero}
+Total: ${FORMAT(total, "currency")}
+Obrigado pela preferência!
+END TALK
+```
+
+#### Mixed Content
+
+```basic
+nome = "Maria"
+codigo = "PROMO2024"
+desconto = 20
+
+BEGIN TALK
+🎉 Oferta Especial para ${nome}!
+
+Use o código: ${codigo}
+Desconto de ${desconto}%
+
+Aproveite!
+END TALK
+```
+
+### Real-World Example: Wedding Confirmation
+
+```basic
+PARAM nomeNoivo AS STRING LIKE "Carlos" DESCRIPTION "Nome do noivo"
+PARAM nomeNoiva AS STRING LIKE "Ana" DESCRIPTION "Nome da noiva"
+PARAM protocolo AS STRING LIKE "CAS123456" DESCRIPTION "Protocolo"
+PARAM dataCasamento AS DATE LIKE "2026-12-15" DESCRIPTION "Data do casamento"
+
+casamentoId = "CAS-" + FORMAT(NOW(), "yyyyMMddHHmmss")
+dataDisplay = FORMAT(dataCasamento, "dd/MM/yyyy")
+
+BEGIN TALK
+✅ Solicitação de Casamento enviada com sucesso!
+
+Protocolo: ${protocolo}
+ID: ${casamentoId}
+Noivo: ${nomeNoivo}
+Noiva: ${nomeNoiva}
+Data: ${dataDisplay}
+
+Status: Aguardando verificação de disponibilidade
+Contato: (21) 4101-0770
+END TALK
+```
+
+This is much cleaner than writing individual TALK statements with manual concatenation:
+
+**Old way:**
+```basic
+TALK "Solicitacao de Casamento enviada com sucesso!"
+TALK "Protocolo: " + protocolo
+TALK "ID: " + casamentoId
+TALK "Noivo: " + nomeNoivo
+TALK "Noiva: " + nomeNoiva
+TALK "Data: " + dataDisplay
+TALK "Status: Aguardando verificacao de disponibilidade"
+TALK "Contato: (21) 4101-0770"
+```
+
+### Advantages
+
+1. **Cleaner Syntax** - No more repetitive `TALK` statements and `+` concatenations
+2. **Easier to Read** - Multi-line messages are more natural to write
+3. **Less Error-Prone** - Automatic substitution reduces typos in variable names
+4. **Template-Like** - Write messages like templates with `${variable}` placeholders
+5. **Perfect for TOOL Functions** - Variables are automatically filled by user input
+
+## TALK - Current Conversation
 
 ## TALK - Current Conversation
 

@@ -79,7 +79,7 @@
     <text x="80" y="20" text-anchor="middle" font-size="11" font-weight="600" class="white-text">botserver</text>
 
     <text x="80" y="55" text-anchor="middle" font-size="10" class="main-text">(Rust)</text>
-    <text x="80" y="72" text-anchor="middle" font-size="10" font-weight="500" class="main-text">Port 8088</text>
+    <text x="80" y="72" text-anchor="middle" font-size="10" font-weight="500" class="main-text">Port 9000</text>
     <text x="80" y="95" text-anchor="middle" font-size="9" class="mono-text">ARM64 Binary</text>
   </g>
 

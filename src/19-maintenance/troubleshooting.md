@@ -63,7 +63,7 @@ ss -tlnp | grep LISTEN
 1. **Port already in use**
    ```bash
    # Find what's using the port
-   lsof -i :8080
+   lsof -i :9000
    lsof -i :5432
    
    # Kill conflicting process

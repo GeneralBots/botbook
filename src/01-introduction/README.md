@@ -35,7 +35,7 @@ By the end of this chapter, you will:
 ./botserver
 ```
 
-Open `http://localhost:8080`. Start chatting. That's it.
+Open `http://localhost:9000`. Start chatting. That's it.
 
 Everything installs automatically on first run—PostgreSQL, storage, cache, and your first bot.
 
@@ -55,7 +55,7 @@ Everything installs automatically on first run—PostgreSQL, storage, cache, and
       <p>Just three steps:</p>
       <p>1️⃣ Download <code>botserver</code></p>
       <p>2️⃣ Run <code>./botserver</code></p>
-      <p>3️⃣ Open your browser to localhost:8080</p>
+      <p>3️⃣ Open your browser to localhost:9000</p>
       <p>The bootstrap process handles everything else automatically!</p>
       <div class="wa-time">09:00</div>
     </div>
