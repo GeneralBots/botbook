@@ -410,6 +410,7 @@
   - [Data Model](./17-autonomous-tasks/data-model.md)
   - [Examples](./17-autonomous-tasks/examples.md)
   - [Designer](./17-autonomous-tasks/designer.md)
+  - [Agent Workspaces](./17-autonomous-tasks/agent-workspaces.md)
 
 # Part XVII - Scale
 

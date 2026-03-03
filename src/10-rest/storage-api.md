@@ -14,7 +14,7 @@ The Storage API allows you to:
 ## Base URL
 
 ```
-http://localhost:9000/api/v1/storage
+http://localhost:8080/api/v1/storage
 ```
 
 ## Authentication
@@ -190,7 +190,7 @@ Generate a presigned URL for temporary access.
 **Response:**
 ```json
 {
-  "url": "http://localhost:9000/mybot.gbai/file.pdf?X-Amz-Algorithm=...",
+  "url": "http://localhost:8080/mybot.gbai/file.pdf?X-Amz-Algorithm=...",
   "expires_at": "2024-01-15T11:30:00Z"
 }
 ```
@@ -268,7 +268,7 @@ curl -X PUT \
   -H "Authorization: Bearer token123" \
   -H "Content-Type: application/pdf" \
   --data-binary @document.pdf \
-  http://localhost:9000/api/v1/storage/buckets/mybot.gbai/objects/docs/manual.pdf
+  http://localhost:8080/api/v1/storage/buckets/mybot.gbai/objects/docs/manual.pdf
 ```
 
 ### Download File
@@ -276,7 +276,7 @@ curl -X PUT \
 ```bash
 curl -X GET \
   -H "Authorization: Bearer token123" \
-  http://localhost:9000/api/v1/storage/buckets/mybot.gbai/objects/docs/manual.pdf \
+  http://localhost:8080/api/v1/storage/buckets/mybot.gbai/objects/docs/manual.pdf \
   -o downloaded.pdf
 ```
 
@@ -285,7 +285,7 @@ curl -X GET \
 ```bash
 curl -X GET \
   -H "Authorization: Bearer token123" \
-  "http://localhost:9000/api/v1/storage/buckets/mybot.gbai/objects?prefix=docs/"
+  "http://localhost:8080/api/v1/storage/buckets/mybot.gbai/objects?prefix=docs/"
 ```
 
 ## Storage Organization
