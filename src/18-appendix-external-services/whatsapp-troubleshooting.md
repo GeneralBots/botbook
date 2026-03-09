@@ -12,6 +12,7 @@ This comprehensive guide helps you diagnose and resolve common issues when integ
 - [Twilio-Specific Issues](#twilio-specific-issues)
 - [Meta-Specific Issues](#meta-specific-issues)
 - [Performance Issues](#performance-issues)
+  - [LLM Hallucination Loop](#issue-llm-hallucination-loop)
 - [Security Issues](#security-issues)
 
 ## Diagnostic Tools
@@ -895,6 +896,75 @@ pm2 monit
        }
      }
    }, 60 * 60 * 1000); // Every hour
+   ```
+
+### Issue: LLM Hallucination Loop
+
+**Symptoms:**
+- Bot sends repeated content endlessly
+- Same token/phrase appears multiple times (e.g., "GBJ2KP GBJ2KP GBJ2KP...")
+- Stream never completes
+- Logs show rapid repeated patterns
+
+**Diagnosis:**
+
+```bash
+# Check logs for hallucination detection
+grep -E "hallucination (detected|loop)" botserver.log
+
+# Look for identical token repetition
+grep "identical token repeated" botserver.log
+```
+
+**Solutions:**
+
+1. **Built-in Hallucination Detector**
+   General Bots includes automatic detection for LLM hallucination loops in the LLM layer:
+   - Works for all channels (Web, WhatsApp, Telegram, etc.)
+   - Detects identical tokens repeated 10+ times
+   - Detects patterns repeated 5+ times consecutively
+   - Detects patterns appearing 8+ times in recent 500 chars
+   - Automatically stops stream and sends accumulated content
+
+2. **Detection Thresholds**
+   ```rust
+   // Configured in botserver/src/llm/hallucination_detector.rs
+   HallucinationConfig {
+       min_text_length: 50,           // Minimum text before detection
+       pattern_lengths: [3,4,5,6,8,10,15,20],  // Pattern sizes to check
+       consecutive_threshold: 5,      // Consecutive repetitions to trigger
+       occurrence_threshold: 8,       // Total occurrences in window to trigger
+       recent_text_window: 500,       // Window size for occurrence counting
+       identical_token_threshold: 10, // Identical tokens to trigger
+   }
+   ```
+
+3. **Monitor Detection in Logs**
+   ```bash
+   # Look for hallucination warnings (works for all channels)
+   grep -E "hallucination (detected|loop)" botserver.log
+
+   # Example log output:
+   # WARN LLM hallucation detected: identical token repeated 10 times: "GBJ2KP"
+   # WARN LLM hallucination loop detected: pattern "XYZ123"
+   # WARN WA hallucination detected: Some("XYZ123"), stopping stream
+   ```
+
+4. **Reduce Hallucination Risk**
+   - Use clear, specific system prompts
+   - Set appropriate temperature (0.7-0.9 for chat)
+   - Limit max tokens in responses
+   - Use well-structured prompts with examples
+
+5. **Customize Detection (Advanced)**
+   ```rust
+   // Adjust thresholds in botserver/src/llm/hallucination_detector.rs
+   let config = HallucinationConfig {
+       identical_token_threshold: 8,  // Lower for more aggressive detection
+       consecutive_threshold: 4,      // Fewer repetitions to trigger
+       ..Default::default()
+   };
+   let mut detector = HallucinationDetector::new(config);
    ```
 
 ## Security Issues
