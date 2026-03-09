@@ -310,7 +310,28 @@ CARD #{
 
 ## Rate Limits and Best Practices
 
-### Messaging Limits
+### Official Meta Rate Limits (Per Recipient)
+
+**Base Rate**: 1 message per 6 seconds per recipient (0.17 messages/second)
+- Equals ~10 messages per minute or 600 per hour per recipient
+- Exceeding this triggers error code **131056**
+
+**Burst Allowance**: Up to 45 messages in a 6-second burst
+- "Borrows" from future quota
+- After burst, must wait equivalent time at normal rate
+- Example: 20-message burst requires ~2-minute cooldown
+
+**Retry Strategy**: When rate limit hit (error 131056):
+- Wait 4^X seconds before retry (X starts at 0)
+- X increments by 1 after each failure
+- Retry sequence: 1s, 4s, 16s, 64s, 256s
+
+**Implementation**: BotServer automatically manages rate limiting via Redis queue
+- Messages are queued and sent at compliant rate
+- Per-recipient tracking prevents violations
+- Automatic exponential backoff on 131056 errors
+
+### Daily Messaging Limits (Tier-Based)
 
 | Tier | Messages/24h | How to Upgrade |
 |------|--------------|----------------|
@@ -354,9 +375,9 @@ TALK "Processing your request..."
 IF ERROR THEN
     error_msg = ERROR MESSAGE
     
-    IF INSTR(error_msg, "rate limit") > 0 THEN
-        PRINT "Rate limited, queuing message for retry"
-        ' Queue for later
+    IF INSTR(error_msg, "131056") > 0 THEN
+        PRINT "Rate limit exceeded - message queued for automatic retry"
+        ' BotServer handles retry automatically
     ELSE IF INSTR(error_msg, "invalid phone") > 0 THEN
         PRINT "Invalid phone number format"
     ELSE IF INSTR(error_msg, "not registered") > 0 THEN
@@ -378,6 +399,7 @@ END IF
 | 131048 | Spam rate limit | Reduce message frequency |
 | 131049 | Message not delivered to maintain healthy ecosystem engagement | You are sending too many messages too quickly, or WhatsApp detected spam-like behavior. This is a temporary rate limit - reduce your sending frequency and implement proper throttling. |
 | 131051 | Unsupported message type | Check message format |
+| 131056 | Rate limit exceeded | Sending too fast to same recipient (>1 msg/6s). BotServer automatically retries with exponential backoff. |
 | 131052 | Media download failed | Verify media URL |
 | 132000 | Template not found | Check template name |
 | 132001 | Template paused | Resume in WhatsApp Manager |
