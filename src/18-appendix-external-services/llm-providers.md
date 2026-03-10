@@ -68,32 +68,43 @@ llm-model,claude-sonnet-4.5
 - Premium pricing
 - Newer provider, smaller ecosystem
 
-### Google (Gemini Series)
+### Google (Gemini & Vertex AI)
 
-Google's multimodal AI models with strong reasoning capabilities.
+Google's multimodal AI models with strong reasoning capabilities. General Bots natively supports both the public AI Studio API and Enterprise Vertex AI.
 
 | Model | Context | Best For | Speed |
 |-------|---------|----------|-------|
-| Gemini Pro | 2M | Complex reasoning, benchmarks | Medium |
-| Gemini Flash | 1M | Fast multimodal tasks | Fast |
+| Gemini 1.5 Pro | 2M | Complex reasoning, benchmarks | Medium |
+| Gemini 1.5 Flash | 1M | Fast multimodal tasks | Fast |
 
-**Configuration (config.csv):**
+**Configuration for AI Studio (Public API):**
 
 ```csv
 name,value
 llm-provider,google
-llm-model,gemini-pro
+llm-model,gemini-1.5-pro
+llm-url,https://generativelanguage.googleapis.com
+llm-key,AIza...
 ```
+
+**Configuration for Vertex AI (Enterprise):**
+
+```csv
+name,value
+llm-provider,vertex
+llm-model,gemini-1.5-pro
+llm-url,https://us-central1-aiplatform.googleapis.com
+llm-key,~/.vertex.json
+```
+*Note: The bots will handle the Google OAuth2 JWT authentication internally if you provide the path or the raw JSON to a Service Account.*
 
 **Strengths:**
 - Largest context window (2M tokens)
 - Native multimodal (text, image, video, audio)
-- Strong at structured data
-- Good coding abilities
+- Vertex AI support enables enterprise VPC/IAM integration
 
 **Considerations:**
-- Some features region-limited
-- API changes more frequently
+- Different endpoints for public vs enterprise deployments
 
 ### xAI (Grok Series)
 
@@ -202,6 +213,98 @@ llm-server-url,https://api.deepseek.com
 **Considerations:**
 - Data processed in China
 - Newer provider
+
+### Amazon Bedrock
+
+AWS managed service for foundation models, supporting Claude, Llama, Titan, and others.
+
+| Model | Context | Best For | Speed |
+|-------|---------|----------|-------|
+| Claude 3.5 Sonnet | 200K | High capability tasks | Fast |
+| Llama 3.1 70B | 128K | Open-weight performance | Fast |
+
+**Configuration (config.csv):**
+
+```csv
+name,value
+llm-provider,bedrock
+llm-model,anthropic.claude-3-5-sonnet-20240620-v1:0
+llm-url,https://bedrock-runtime.us-east-1.amazonaws.com/model/anthropic.claude-3-5-sonnet-20240620-v1:0/invoke
+llm-key,YOUR_BEDROCK_API_KEY
+```
+
+**Strengths:**
+- Native AWS integration
+- Enterprise-grade security
+- Multiple model families in one API
+
+### Azure OpenAI
+
+Enterprise-grade deployment of OpenAI models hosted on Microsoft Azure.
+
+| Model | Context | Best For | Speed |
+|-------|---------|----------|-------|
+| GPT-4o | 128K | Advanced multimodal | Fast |
+
+**Configuration (config.csv):**
+
+```csv
+name,value
+llm-provider,azureclaude
+llm-model,gpt-4o
+llm-url,https://YOUR_RESOURCE.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT/chat/completions?api-version=2024-02-15-preview
+llm-key,YOUR_AZURE_API_KEY
+```
+
+**Strengths:**
+- High enterprise compliance (HIPAA, SOC2)
+- Azure VNet integration
+- Guaranteed provisioned throughput available
+
+### Cerebras
+
+Ultra-fast inference powered by Wafer-Scale Engine hardware, specifically tuned for open-source models like Llama.
+
+| Model | Context | Best For | Speed |
+|-------|---------|----------|-------|
+| Llama 3.1 70B | 8K | High-speed general tasks | Extremely Fast |
+
+**Configuration (config.csv):**
+
+```csv
+name,value
+llm-provider,cerebras
+llm-model,llama3.1-8b
+llm-url,https://api.cerebras.ai/v1/chat/completions
+llm-key,YOUR_CEREBRAS_API_KEY
+```
+
+**Strengths:**
+- Highest tokens-per-second available
+- Excellent for real-time agent loops
+
+### Zhipu AI (GLM)
+
+High-capability bilingual models (English/Chinese) directly competing with state-of-the-art global models.
+
+| Model | Context | Best For | Speed |
+|-------|---------|----------|-------|
+| GLM-4 | 128K | General purpose | Medium |
+| GLM-4-Long | 1M | Long document analysis | Medium |
+
+**Configuration (config.csv):**
+
+```csv
+name,value
+llm-provider,glm
+llm-model,glm-4
+llm-url,https://open.bigmodel.cn/api/paas/v4/chat/completions
+llm-key,YOUR_ZHIPU_API_KEY
+```
+
+**Strengths:**
+- Excellent bilingual performance
+- Large context windows (up to 1M)
 
 ## Local Models
 
@@ -456,8 +559,12 @@ llm-log-timing,true
 |-------|---------|------|-----------|
 | GPT-5 | OpenAI | Proprietary | Most advanced all-in-one |
 | Claude Opus/Sonnet 4.5 | Anthropic | Proprietary | Extended thinking, complex reasoning |
-| Gemini 3 Pro | Google | Proprietary | Benchmarks, reasoning |
+| Gemini 1.5/3 Pro | Google | Proprietary | Benchmarks, reasoning, 2M context |
 | Grok 4 | xAI | Proprietary | Real-time X data |
+| Claude / Llama | Amazon Bedrock | Managed API | Enterprise AWS integration |
+| GPT-4o / GPT-5 | Azure OpenAI | Managed API | Enterprise compliance, Azure VNet |
+| Llama / Open Models | Cerebras | Hardware Cloud | Extreme inference speed |
+| GLM-4 | Zhipu AI | Proprietary | English/Chinese bilingual, up to 1M context |
 | DeepSeek-V3.1/R1 | DeepSeek | Open (MIT/Apache) | Cost-optimized, reasoning |
 | Llama 4 | Meta | Open-weight | 10M context, multimodal |
 | Qwen3 | Alibaba | Open (Apache) | Efficient MoE |
