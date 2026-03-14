@@ -8,6 +8,20 @@ The AutoTask system uses an LLM-powered intent classifier to understand your req
 
 ---
 
+## Vibe Mode
+
+For a complete AI-powered development environment, use **Vibe** - the visual interface with multi-agent orchestration.
+
+### Vibe Documentation
+- [Vibe Guide](./vibe.md) - Main documentation
+- [Vibe Terminal](./vibe-terminal.md) - Isolated container terminal
+- [Vibe Editor](./vibe-editor.md) - Monaco editor
+- [Vibe Database](./vibe-database.md) - PostgreSQL browser
+- [Vibe Git](./vibe-git.md) - Git operations
+- [Vibe MCP](./vibe-mcp.md) - MCP integrations
+
+---
+
 ## Intent Types
 
 | Type | Example | What Gets Created |

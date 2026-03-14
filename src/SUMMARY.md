@@ -324,6 +324,7 @@
   - [Hybrid RAG Search](./11-features/hybrid-search.md)
   - [Transfer to Human](./11-features/transfer-to-human.md)
   - [LLM-Assisted Attendant](./11-features/attendant-llm-assist.md)
+  - [Attendance Suite](./attendance.md)
 
 # Part XI - Security
 
@@ -352,6 +353,7 @@
   - [Protection Tools](./23-security/protection-tools.md)
   - [SOC 2 Compliance](./23-security/soc2-compliance.md)
   - [Security Matrix Reference](./23-security/security-matrix.md)
+  - [Endpoint Security Checklist](./23-security/endpoint-checklist.md)
 
 # Part XII - Device & Offline Deployment
 

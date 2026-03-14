@@ -307,12 +307,30 @@ These conversations show how the sales pipeline template works in real-world sce
 
 | Stage | Win Probability | Description |
 |-------|-----------------|-------------|
-| Lead | 20% | Initial contact, not yet qualified |
-| Qualified | 40% | BANT criteria confirmed |
-| Proposal | 50% | Quote or proposal sent |
-| Negotiation | 80% | Active deal discussions |
-| Closed Won | 100% | Deal successfully closed |
-| Closed Lost | 0% | Deal lost or abandoned |
+| new | 10% | Initial contact, not qualified |
+| qualified | 30% | BANT criteria confirmed |
+| proposal | 50% | Quote or proposal sent |
+| negotiation | 70% | Active deal discussions |
+| won | 100% | Deal successfully closed |
+| lost | 0% | Deal lost or abandoned |
+
+> **Note**: The new unified CRM uses `crm_deals` table with stages: `new`, `qualified`, `proposal`, `negotiation`, `won`, `lost`. Use `department_id` to filter by business unit (e.g., Comercial SP, Inside Sales, Enterprise).
+
+## Department Filtering
+
+Filter deals by business unit using `department_id`:
+
+```basic
+' Filter deals by department
+deals = FIND "crm_deals", "department_id = '" + departmentId + "' AND stage != 'won' AND stage != 'lost'"
+
+' Get department stats
+SELECT pd.name, COUNT(cd.id) AS total_deals, COALESCE(SUM(cd.value), 0) AS total_value
+FROM people_departments pd
+LEFT JOIN crm_deals cd ON cd.department_id = pd.id
+WHERE pd.org_id = $1
+GROUP BY pd.id, pd.name
+```
 
 ## Template Structure
 
@@ -336,14 +354,22 @@ sales-pipeline.gbai/
 
 ## Create Deal Tool: create-deal.bas
 
+> **Updated for CRM v2.5**: Uses unified `crm_deals` table. Include `department_id` to assign to business unit.
+
 ```basic
 PARAM company AS STRING LIKE "Acme Corp" DESCRIPTION "Company or account name"
 PARAM value AS NUMBER LIKE 50000 DESCRIPTION "Deal value in dollars"
 PARAM close_date AS DATE LIKE "2025-03-31" DESCRIPTION "Expected close date"
+PARAM department_id AS STRING DESCRIPTION "Business unit ID (e.g., Comercial SP)" OPTIONAL
 PARAM contact AS STRING DESCRIPTION "Primary contact name" OPTIONAL
 PARAM notes AS STRING DESCRIPTION "Deal notes" OPTIONAL
 
 DESCRIPTION "Create a new deal in the sales pipeline"
+
+' Get department if not provided
+IF NOT department_id THEN
+    department_id = GET USER MEMORY("default_department")
+END IF
 
 ' Generate deal ID
 dealId = "DEAL-" + FORMAT(NOW(), "YYYY") + "-" + FORMAT(RANDOM(1000, 9999))

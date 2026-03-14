@@ -195,6 +195,13 @@ These parameters configure external database connections for use with BASIC keyw
 | `video-generator-gpu-layers` | GPU offload layers | `15` | Number |
 | `video-generator-batch-size` | Batch size | `1` | Number |
 
+## Real-time Audio Parameters
+
+| Parameter | Description | Default | Type |
+|-----------|-------------|---------|------|
+| `realtime-audio-model` | Real-time S2S audio model path | Not set | Path |
+| `realtime-audio-enabled` | Enable real-time audio processing | `false` | Boolean |
+
 ## BotModels Service Parameters
 
 | Parameter | Description | Default | Type |

@@ -17,6 +17,7 @@ General Bots integrates with botmodels—a Python service for multimodal AI task
       │ - VIDEO                      │ - Zeroscope
       │ - AUDIO                      │ - TTS/Whisper
       │ - SEE                        │ - BLIP2
+      │                              │ - Real-time Audio (S2S)
 ```
 
 When a BASIC script calls a multimodal keyword, botserver forwards the request to botmodels, which runs the appropriate AI model and returns the generated content.
@@ -57,6 +58,13 @@ Add these settings to your bot's `config.csv` file to enable multimodal capabili
 | `video-generator-height` | `576` | Output video height in pixels |
 | `video-generator-gpu-layers` | `15` | Layers to offload to GPU |
 | `video-generator-batch-size` | `1` | Batch size for generation |
+
+### Real-time Audio (S2S)
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `realtime-audio-model` | — | Path to Real-time S2S model |
+| `realtime-audio-enabled` | `false` | Enable real-time audio processing |
 
 ## Example Configuration
 
@@ -160,6 +168,7 @@ The botmodels service exposes these REST endpoints:
 | `/api/vision/describe` | POST | Describe an image |
 | `/api/vision/describe_video` | POST | Describe a video |
 | `/api/vision/vqa` | POST | Visual question answering |
+| `/api/speech/realtime` | POST | Real-time speech-to-speech interaction |
 | `/api/health` | GET | Health check |
 
 All endpoints except `/api/health` require the `X-API-Key` header for authentication.
