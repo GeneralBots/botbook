@@ -164,6 +164,7 @@
    - [Monitoring Dashboard](./07-user-interface/monitoring.md)
    - [HTMX Architecture](./07-user-interface/htmx-architecture.md)
    - [Suite - Full Desktop](./07-user-interface/apps/suite.md)
+   - [Vibe - AI Dev Environment](./07-user-interface/apps/vibe.md)
    - [Chat - AI Assistant](./07-user-interface/apps/chat.md)
    - [Drive - File Management](./07-user-interface/apps/drive.md)
    - [Tasks](./07-user-interface/apps/tasks.md)

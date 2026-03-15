@@ -116,6 +116,20 @@ Real-time dashboard showing:
 
 ---
 
+## Email Tab
+
+The **Email** tab in CRM shows all emails linked to the selected contact. Click any contact row to load their emails via `GET /api/ui/email/list?contact_email=`.
+
+Click **Compose Email** to open the email modal which posts to `POST /api/crm/email/send`. The email is automatically linked to the contact via `email_crm_links`.
+
+## Enabling CRM
+
+Add `crm` to `apps=` in `botserver/.product`:
+
+```
+apps=...,crm
+```
+
 ## API Endpoints
 
 | Endpoint | Method | Description |

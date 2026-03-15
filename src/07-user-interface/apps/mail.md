@@ -305,6 +305,31 @@ email-from,Your Name <you@gmail.com>
 
 ---
 
+## Integration Features
+
+### Snooze
+Hide an email until later. Click the snooze button in the toolbar to pick a time (later today, tomorrow, next week). The email reappears automatically at the chosen time via `POST /api/email/snooze`.
+
+### CRM Panel
+When viewing an email, the CRM panel automatically looks up the sender via `GET /api/crm/contact/by-email/:email` and shows linked deals. Click **Log to CRM** to record the email against a contact or opportunity.
+
+### AI Lead Suggestion
+If the email looks like a sales inquiry, an AI banner appears offering to create a lead via `POST /api/ai/extract-lead`.
+
+### Campaign Actions
+Add the sender to a marketing list directly from the email via `POST /api/crm/lists/:id`.
+
+### Smart Replies
+AI-suggested short replies appear below the email content.
+
+## Enabling Mail
+
+Add `mail` to `apps=` in `botserver/.product`:
+
+```
+apps=...,mail
+```
+
 ## See Also
 
 - [Suite Manual](../suite-manual.md) - Complete user guide
