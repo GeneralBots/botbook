@@ -2369,7 +2369,7 @@ O plano atual cobre **~70% das features enterprise-grade**:
 ## 14. Arquivo de Referência
 
 Ver também:
-- [Transfer to Human](11-features/transfer-to-human.md)
-- [LLM Assist](11-features/attendant-llm-assist.md)
-- [Attendance Queue](18-appendix-external-services/attendance-queue.md)
-- [WhatsApp Setup](chapter-04-gbui/how-to/connect-whatsapp.md)
+- [Transfer to Human](03-knowledge-ai/transfer-to-human.md)
+- [LLM Assist](03-knowledge-ai/attendant-llm-assist.md)
+- [Attendance Queue](06-channels/attendance-queue.md)
+- [WhatsApp Setup](07-user-interface/how-to/connect-whatsapp.md)

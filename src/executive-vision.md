@@ -274,15 +274,15 @@ Pragmatismo develops General Bots as an open-source platform for enterprise AI a
 
 Ready to see it in action? Skip to the hands-on guide:
 
-**[⚡ Quick Start: Run Your First Bot in 5 Minutes →](./chapter-01/quick-start.md)**
+**[⚡ Quick Start: Run Your First Bot in 5 Minutes →](./01-getting-started/quick-start.md)**
 
 Or continue reading for the full journey:
 
 | Path | Time | Best For |
 |------|------|----------|
-| [Quick Start](./chapter-01/quick-start.md) | 5 min | Developers who want to dive in immediately |
+| [Quick Start](./01-getting-started/quick-start.md) | 5 min | Developers who want to dive in immediately |
 | [Introduction](./introduction.md) | 10 min | Understanding the "No Forms" philosophy |
-| [Chapter 01](./chapter-01/README.md) | 15 min | Complete installation and first conversation |
+| [Chapter 01](./01-getting-started/README.md) | 15 min | Complete installation and first conversation |
 
 ---
 
@@ -306,4 +306,4 @@ Or continue reading for the full journey:
   </div>
 </div>
 
-[Chapter 01: Run and Talk →](./chapter-01/README.md)
+[Chapter 01: Run and Talk →](./01-getting-started/README.md)

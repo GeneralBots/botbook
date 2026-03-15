@@ -1,15 +1,15 @@
 # Introduction to General Bots
 
-> **⚡ Want to skip ahead?** [Quick Start →](./chapter-01/quick-start.md) gets you running in 5 minutes.
+> **⚡ Want to skip ahead?** [Quick Start →](./01-getting-started/quick-start.md) gets you running in 5 minutes.
 
-**Build conversational AI bots in minutes, not months.** General Bots lets you create intelligent chatbots by writing simple [BASIC scripts](./chapter-06-gbdialog/basics.md) and dropping in your [documents](./chapter-02/gbkb.md). No complex frameworks, no cloud dependencies, no AI expertise required.
+**Build conversational AI bots in minutes, not months.** General Bots lets you create intelligent chatbots by writing simple [BASIC scripts](./04-basic-scripting/basics.md) and dropping in your [documents](./02-architecture-packages/gbkb.md). No complex frameworks, no cloud dependencies, no AI expertise required.
 
 | Your Goal | Go To |
 |-----------|-------|
-| Run a bot NOW | [Quick Start](./chapter-01/quick-start.md) |
+| Run a bot NOW | [Quick Start](./01-getting-started/quick-start.md) |
 | Understand the vision | Keep reading below |
-| Write your first script | [Chapter 06: BASIC Dialogs](./chapter-06-gbdialog/README.md) |
-| Add documents to bot | [Chapter 02: Packages](./chapter-02/README.md) |
+| Write your first script | [Chapter 06: BASIC Dialogs](./04-basic-scripting/README.md) |
+| Add documents to bot | [Chapter 02: Packages](./02-architecture-packages/README.md) |
 
 ## The No Forms Movement
 
@@ -134,14 +134,14 @@ This is why General Bots focuses on:
 
 Want a student enrollment bot? Here's all you need:
 
-1. **Drop your documents** in a [`.gbkb` folder](./chapter-02/gbkb.md):
+1. **Drop your documents** in a [`.gbkb` folder](./02-architecture-packages/gbkb.md):
 ```
 edu.gbkb/
   enrollment-policy.pdf
   course-catalog.pdf
 ```
 
-2. **Write a simple [tool](./chapter-03/kb-and-tools.md)** (optional):
+2. **Write a simple [tool](./03-knowledge-ai/kb-and-tools.md)** (optional):
 ```basic
 ' enrollment.bas
 PARAM name, email, course
@@ -165,10 +165,10 @@ No form. No UI. Just conversation.
 ```bash
 ./botserver
 ```
-That's it. No Kubernetes, no cloud accounts. The [bootstrap process](./chapter-01/installation.md) installs everything locally in 2-5 minutes. PostgreSQL, vector database, object storage, cache - all configured automatically with secure credentials stored in Vault.
+That's it. No Kubernetes, no cloud accounts. The [bootstrap process](./01-getting-started/installation.md) installs everything locally in 2-5 minutes. PostgreSQL, vector database, object storage, cache - all configured automatically with secure credentials stored in Vault.
 
 ### Real BASIC, Real Simple
-We brought BASIC back for conversational AI. See our [complete keyword reference](./chapter-06-gbdialog/keywords.md):
+We brought BASIC back for conversational AI. See our [complete keyword reference](./04-basic-scripting/keywords.md):
 ```basic
 ' save-note.bas - A simple tool
 PARAM topic, content
@@ -291,10 +291,10 @@ The default bot is ready. Ask it anything. Modify `templates/default.gbai/` to c
 
 ## What's Next?
 
-- **[Chapter 01](./chapter-01/README.md)** - Install and run your first bot
-- **[Chapter 02](./chapter-02/README.md)** - Understanding packages
-- **[Chapter 06](./chapter-06-gbdialog/README.md)** - Writing BASIC dialogs
-- **[Templates](./chapter-02/templates.md)** - Explore example bots
+- **[Chapter 01](./01-getting-started/README.md)** - Install and run your first bot
+- **[Chapter 02](./02-architecture-packages/README.md)** - Understanding packages
+- **[Chapter 06](./04-basic-scripting/README.md)** - Writing BASIC dialogs
+- **[Templates](./02-architecture-packages/templates.md)** - Explore example bots
 
 ## Community
 
@@ -304,7 +304,7 @@ General Bots is open source (AGPL-3.0) developed by Pragmatismo.com.br and contr
 - **Version**: 6.1.0
 - **Status**: Production Ready
 
-Ready to build your bot? Turn to [Chapter 01](./chapter-01/README.md) and let's go!
+Ready to build your bot? Turn to [Chapter 01](./01-getting-started/README.md) and let's go!
 
 ---
 
