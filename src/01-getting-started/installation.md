@@ -193,11 +193,13 @@ docker run -d \
   --name botserver \
   --network host \
   --privileged \
-  -v /var/lib/lxd/unix.socket:/var/lib/lxd/unix.socket \
+  -v /var/snap/lxd/common/lxd/unix.socket:/var/snap/lxd/common/lxd/unix.socket \
   -e VAULT_ADDR="https://127.0.0.1:8200" \
   -e VAULT_TOKEN="<your-token>" \
   botserver:latest
 ```
+
+> **Note**: For non-snap LXD, use `-v /var/lib/lxd/unix.socket:/var/lib/lxd/unix.socket` instead.
 
 The installer detects if it is running in a container but needs to manage the host (brother mode) and will configure the host's LXD/LXC environment safely.
 

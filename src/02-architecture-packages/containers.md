@@ -174,6 +174,18 @@ If you are running `botserver` itself inside a container (e.g., LXC or Docker) b
 
 To allow child containers to communicate with the host LXD daemon, add the `lxd-sock` proxy device to the default profile. This maps the host's socket to `/tmp/lxd.sock` inside the container, avoiding conflicts with missing `/var/lib/lxd` directories in standard images.
 
+LXD installed via snap uses `/var/snap/lxd/common/lxd/unix.socket`:
+
+```bash
+lxc profile device add default lxd-sock proxy \
+  connect=unix:/var/snap/lxd/common/lxd/unix.socket \
+  listen=unix:/tmp/lxd.sock \
+  bind=container \
+  uid=0 gid=0 mode=0660
+```
+
+For LXD installed via packages (non-snap), use:
+
 ```bash
 lxc profile device add default lxd-sock proxy \
   connect=unix:/var/lib/lxd/unix.socket \

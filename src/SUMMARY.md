@@ -92,6 +92,7 @@
    - [DELEGATE TO BOT](./04-basic-scripting/keyword-delegate-to-bot.md)
    - [RUN CODE](./04-basic-scripting/keyword-run-code.md)
    - [USE KB](./04-basic-scripting/keyword-use-kb.md)
+   - [THINK KB](./04-basic-scripting/keyword-think-kb.md)
    - [GET](./04-basic-scripting/keyword-get.md)
    - [SET](./04-basic-scripting/keyword-set.md)
    - [ON](./04-basic-scripting/keyword-on.md)
