@@ -134,6 +134,7 @@ See [Script Execution Flow](./script-execution-flow.md) for complete details.
 | `USER FACTS` | Memory | Get all stored user facts |
 | `UPLOAD` | Files | Upload file to storage |
 | `USE KB` | Knowledge | Load knowledge base |
+| `THINK KB` | Knowledge | Explicit KB search with structured results |
 | `USE TOOL` | Tools | Register tool definition |
 | `USE WEBSITE` | Knowledge | Associate website with session |
 | `WAIT` | Control | Pause execution |
@@ -203,6 +204,7 @@ See [Script Execution Flow](./script-execution-flow.md) for complete details.
 | Keyword | Syntax | Description |
 |---------|--------|-------------|
 | USE KB | `USE KB "kbname"` | Load knowledge base |
+| THINK KB | `result = THINK KB "query"` | Explicit KB search with structured results |
 | CLEAR KB | `CLEAR KB` or `CLEAR KB "kbname"` | Unload knowledge base |
 | USE WEBSITE | `USE WEBSITE "url"` | Associate website with session |
 | FIND | `result = FIND "file", "filter"` | Search in files or KB |

@@ -22,6 +22,7 @@ This document provides a comprehensive reference of all BASIC keywords in Genera
 | `SET CONTEXT` | ✅ Implemented | AI | Add context for LLM |
 | `SET USER` | ✅ Implemented | Session | Set user context |
 | `USE KB` | ✅ Implemented | Knowledge | Load knowledge base |
+| `THINK KB` | ✅ Implemented | Knowledge | Explicit KB search with structured results |
 | `CLEAR KB` | ✅ Implemented | Knowledge | Unload knowledge base |
 | `USE WEBSITE` | ✅ Implemented | Knowledge | Associate website |
 | `ADD TOOL` | ✅ Implemented | Tools | Register tool |
