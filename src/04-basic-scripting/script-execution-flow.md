@@ -2,6 +2,8 @@
 
 Understanding how General Bots BASIC scripts are loaded, compiled, and executed is essential for building effective automation. This document covers the complete execution lifecycle.
 
+> **Two execution modes exist:** RUNTIME (default) and WORKFLOW. See [Execution Modes](./execution-modes.md) for the full comparison.
+
 ## Execution Entry Points
 
 Scripts in General Bots can be triggered through several entry points:

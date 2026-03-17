@@ -73,6 +73,7 @@
 
 - [Chapter 4: BASIC Scripting](./04-basic-scripting/README.md)
    - [BASIC Basics](./04-basic-scripting/basics.md)
+   - [Execution Modes: RUNTIME vs WORKFLOW](./04-basic-scripting/execution-modes.md)
    - [API Possibilities](./04-basic-scripting/api-possibilities.md)
    - [Universal Messaging](./04-basic-scripting/universal-messaging.md)
    - [BASIC vs n8n/Zapier/Make](./04-basic-scripting/basic-vs-automation-tools.md)

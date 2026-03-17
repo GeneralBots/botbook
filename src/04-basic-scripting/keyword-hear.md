@@ -2,6 +2,17 @@
 
 The `HEAR` keyword pauses script execution and waits for user input. With optional type validation, it automatically verifies and normalizes input, retrying with helpful error messages when validation fails.
 
+## Execution behavior by mode
+
+| Mode | HEAR behavior | Thread held | Crash-safe |
+|------|--------------|-------------|------------|
+| **RUNTIME** (default) | Blocks `spawn_blocking` thread | Yes (up to `hear-timeout-secs`) | No |
+| **WORKFLOW** ⚗️ | Saves state to DB, returns immediately | No | Yes |
+
+In RUNTIME mode, the script thread is suspended — not re-run from the top. All code above `HEAR` does **not** execute again when the user replies. The timeout is configurable via `hear-timeout-secs` in `config.csv` (default: 3600 seconds).
+
+In WORKFLOW mode (`#workflow` pragma), `HEAR` persists the current step and all variables to PostgreSQL and returns. The thread is released. When the user replies, execution resumes from the exact `HEAR` line. See [Execution Modes](./execution-modes.md).
+
 <img src="../assets/gb-decorative-header.svg" alt="General Bots" style="max-height: 100px; width: 100%; object-fit: contain;">
 
 ## Basic Syntax
