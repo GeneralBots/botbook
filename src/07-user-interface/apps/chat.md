@@ -61,6 +61,78 @@ Pre-built action chips for common requests:
 | 📅 Schedule | Today's calendar |
 | ❓ Help | Available commands |
 
+### Response Format Switchers
+
+Persistent toggle buttons that control how AI formats responses. Unlike suggestions, switchers stay active until deactivated and can be combined.
+
+**Available Format Options:**
+
+| ID | Label | Description | Example Use Case |
+|----|--------|-------------|------------------|
+| tables | Tabelas | Responses as structured HTML tables | Comparisons, data summaries |
+| infographic | Infográfico | Visual SVG and progress bar representations | Statistics, metrics, dashboards |
+| cards | Cards | Card-based HTML layout with borders and shadows | Profiles, items, entities |
+| list | Lista | Bulleted and numbered HTML lists | Steps, features, options |
+| comparison | Comparação | Side-by-side HTML grid comparisons | Pros/cons, alternatives |
+| timeline | Timeline | Chronological HTML timeline with border markers | History, events, milestones |
+| markdown | Markdown | Standard CommonMark formatting | Documentation, code |
+| chart | Gráfico | SVG charts (line, bar, pie, area) with axes and legends | Data visualization |
+
+**Custom Switchers:**
+You can also add custom format instructions:
+```
+ADD SWITCHER "sempre mostrar 10 perguntas" AS "Mostrar Perguntas"
+```
+
+**Using Switchers:**
+1. Click any format chip to toggle it ON
+2. Active switchers are highlighted with their color
+3. Multiple switchers can be active simultaneously
+4. Click again to toggle OFF
+5. Format applies to all responses until deactivated
+
+**Example Workflow:**
+
+<div class="wa-chat">
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p>[📊 Tabelas] [📈 Infográfico]</p>
+      <p>Hello! How can I help you today?</p>
+      <div class="wa-time">10:30</div>
+    </div>
+  </div>
+  <div class="wa-message user">
+    <div class="wa-bubble">
+      <p>Compare the three course options</p>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+  <div class="wa-message bot">
+    <div class="wa-bubble">
+      <p><strong>Course Comparison Table:</strong></p>
+      <table>
+        <tr><th>Course</th><th>Duration</th><th>Price</th></tr>
+        <tr><td>Basic</td><td>40h</td><td>$299</td></tr>
+        <tr><td>Advanced</td><td>80h</td><td>$599</td></tr>
+        <tr><td>Premium</td><td>120h</td><td>$999</td></tr>
+      </table>
+      <div class="wa-time">10:31</div>
+    </div>
+  </div>
+</div>
+
+**Technical Implementation:**
+- Switchers are defined in start.bas using: `ADD SWITCHER "id" AS "Label"`
+- Standard switchers use predefined IDs that map to backend prompts
+- Custom switchers allow any instruction string: `ADD SWITCHER "custom prompt" AS "Label"`
+- Frontend injects active switcher prompts into every user message
+- Prompts are prepended with "---" separator
+- Bot passes the enhanced message directly to LLM (no parsing needed)
+- LLM follows the REGRAS DE FORMATO instructions to format output
+- State is maintained during conversation session
+- Each format has distinct color coding for easy identification
+- Multiple switchers can be active simultaneously (all prompts concatenated)
+
 ### Message History
 
 - Auto-loads previous messages on page open
